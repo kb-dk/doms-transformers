@@ -1,0 +1,51 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>dk.statsbiblioteket.doms</groupId>
+        <artifactId>doms</artifactId>
+        <version>0.1.1</version>
+    </parent>
+
+    <groupId>dk.statsbiblioteket.doms.transformers</groupId>
+    <artifactId>transformers</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>Doms Transformers package</name>
+
+    <packaging>pom</packaging>
+
+    <scm>
+        <connection>scm:svn:https://doms.svn.sourceforge.net/svnroot/doms/examples/transformers/trunk</connection>
+        <developerConnection>scm:svn:https://doms.svn.sourceforge.net/svnroot/doms/examples/transformers/trunk
+        </developerConnection>
+        <url>http://doms.svn.sourceforge.net/viewvc/doms/examples/transformers/trunk</url>
+    </scm>
+
+
+    <modules>
+        <module>shardmigrator</module>
+        <module>shardremover</module>
+    </modules>
+
+    <dependencyManagement>
+
+        <dependencies>
+            <dependency>
+                <groupId>dk.statsbiblioteket.doms.domsutil</groupId>
+                <artifactId>domsutil-webservice-common</artifactId>
+                <version>0.0.20</version>
+            </dependency>
+            <dependency>
+              <groupId>dk.statsbiblioteket.doms.ingestClient</groupId>
+              <artifactId>ingestClientImpl</artifactId>
+              <version>0.0.13</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.8.2</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+</project>
