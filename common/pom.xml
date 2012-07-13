@@ -10,7 +10,7 @@
 
     <groupId>dk.statsbiblioteket.doms.transformers</groupId>
     <artifactId>common</artifactId>
-    <version>${parent.project.version}</version>
+    <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
