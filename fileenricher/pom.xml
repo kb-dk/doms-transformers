@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -9,7 +11,7 @@
     </parent>
 
     <groupId>dk.statsbiblioteket.doms.transformers</groupId>
-    <artifactId>shardmigrator</artifactId>
+    <artifactId>fileenricher</artifactId>
     <version>${parent.project.version}</version>
 
     <dependencies>
@@ -46,7 +48,6 @@
         </dependency>
     </dependencies>
 
-
     <build>
         <plugins>
             <plugin>
@@ -57,7 +58,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>dk.statsbiblioteket.doms.transformers.shardmigrator.ShardMigrator</mainClass>
+                            <mainClass>dk.statsbiblioteket.doms.transformers.fileenricher.FileEnricher</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -87,6 +88,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

@@ -1,5 +1,5 @@
 <assembly>
-    <id>ingester</id>
+    <id>transformer</id>
     <formats>
         <format>zip</format>
     </formats>

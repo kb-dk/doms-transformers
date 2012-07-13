@@ -10,9 +10,14 @@
 
     <groupId>dk.statsbiblioteket.doms.transformers</groupId>
     <artifactId>shardremover</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${parent.project.version}</version>
 
     <dependencies>
+        <dependency>
+            <groupId>dk.statsbiblioteket.doms.transformers</groupId>
+            <artifactId>common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -25,6 +30,15 @@
         <dependency>
           <groupId>dk.statsbiblioteket.doms.ingestClient</groupId>
           <artifactId>ingestClientImpl</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-core</artifactId>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
