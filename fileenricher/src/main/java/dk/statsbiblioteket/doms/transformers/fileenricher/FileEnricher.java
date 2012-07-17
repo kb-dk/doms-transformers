@@ -10,6 +10,7 @@ import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
 
+import javax.xml.bind.JAXBException;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  * Takes as input a file with program uuids (one per line). For each file, enriches metadata.
  */
 public class FileEnricher {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, JAXBException {
         //TODO: Setup apache CLI
         File uuidfile = new File(args[0]);
         File configfile = new File(args[1]);
