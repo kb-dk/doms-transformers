@@ -7,14 +7,10 @@ import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.client.exceptions.NotFoundException;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
-import org.apache.commons.io.FileUtils;
-import sun.misc.IOUtils;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
