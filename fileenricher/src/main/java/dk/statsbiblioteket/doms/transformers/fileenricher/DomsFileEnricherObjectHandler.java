@@ -38,9 +38,16 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         throw new UnsupportedOperationException("Not implemented yet");
     }
 
-
-    private BroadcastFileDescriptiveMetadataType decodeFilename(String filename) {
-        return null;
+    public BroadcastFileDescriptiveMetadataType decodeFilename(String filename) {
+        if(filename.endsWith(".ts")) {
+            return decodeMuxFilename(filename);
+        } else if(filename.endsWith(".wav")) {
+            return decodeRadioFilename(filename);
+        } else if(filename.endsWith(".mpeg")) {
+            return decodeMpegFilename(filename);
+        } else {
+            return null;
+        }
     }
 
     //TODO: get fixed channel list for Mux1 and mux2
@@ -51,9 +58,9 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         ChannelIDsType channels = new ChannelIDsType();
         metadata.setChannelIDs(channels);
         
-        String startUnixTime = filename.split(".")[1].split("-")[0]; 
+        String startUnixTime = filename.split("\\.")[1].split("-")[0]; 
         String stopUnixTime = filename.split("_")[1].split("-")[0];
-        String recorder = filename.split("_")[2].split(".")[0];
+        String recorder = filename.split("_")[2].split("\\.")[0];
         
         metadata.setStartTimeDate(CalendarUtils.getXmlGregorianCalendar(startUnixTime));
         metadata.setEndTimeDate(CalendarUtils.getXmlGregorianCalendar(stopUnixTime));
