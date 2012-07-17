@@ -10,16 +10,15 @@
         <xs:sequence>
             <xs:element type="tns:channelIDsType" name="channelIDs" />
             <xs:element type="xs:string" name="format"/>
-            <xs:element type="xs:string" name="startTimeDate"/>
-            <xs:element type="xs:string" name="endTimeDate"/>
-            <xs:element type="xs:string" name="filename"/>
-            <xs:element type="xs:string" name="checksum"/>
+            <xs:element type="xs:dateTime" name="startTimeDate"/>
+            <xs:element type="xs:dateTime" name="endTimeDate"/>
+            <xs:element type="xs:string" name="checksum" minOccurs="0"/>
             <xs:element type="xs:string" name="recorder" minOccurs="0"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="channelIDsType" >
         <xs:sequence>
-            <xs:element type="xs:string" name="channelID" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element type="xs:string" name="channel" minOccurs="1" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 </xs:schema>

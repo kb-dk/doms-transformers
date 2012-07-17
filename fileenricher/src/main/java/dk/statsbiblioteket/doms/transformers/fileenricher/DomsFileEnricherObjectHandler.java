@@ -34,6 +34,7 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         return null;
     }
 
+    //TODO: get fixed channel list for Mux1 and mux2
     private BroadcastFileDescriptiveMetadataType decodeMuxFilename(String filename){
         //mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts
         //(type).(timestart)-(timestart)_(timeend)-(timeEnd)_(recorder).ts
