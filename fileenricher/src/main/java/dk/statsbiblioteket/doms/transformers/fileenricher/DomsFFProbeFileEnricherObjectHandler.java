@@ -1,0 +1,83 @@
+package dk.statsbiblioteket.doms.transformers.fileenricher;
+
+import dk.statsbiblioteket.doms.central.CentralWebservice;
+import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
+import dk.statsbiblioteket.doms.central.InvalidResourceException;
+import dk.statsbiblioteket.doms.central.MethodFailedException;
+import dk.statsbiblioteket.doms.client.exceptions.NotFoundException;
+import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
+import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
+import org.apache.commons.io.FileUtils;
+import sun.misc.IOUtils;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.List;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: abr
+ * Date: 7/17/12
+ * Time: 11:36 AM
+ * To change this template use File | Settings | File Templates.
+ */
+public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
+
+    private final DomsConfig config;
+    private final CentralWebservice webservice;
+
+    private final File ffprobeDir;
+
+
+    /**
+     * Initialise object handler.
+     * @param config Configuration.
+     * @param webservice The DOMS WebService.
+     */
+    public DomsFFProbeFileEnricherObjectHandler(DomsConfig config, CentralWebservice webservice, String ffprobeContentFiles){
+        this.config = config;
+        this.webservice = webservice;
+        ffprobeDir = new File(ffprobeContentFiles);
+    }
+
+
+
+    @Override
+    public void transform(String uuid) throws Exception {
+        getFFProbeXml(uuid);
+    }
+
+    private  String getFFProbeXml(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException, IOException {
+        String ffprobe;
+        try {
+            ffprobe = getFFProbeFromObject(uuid);
+        } catch (NotFoundException e) {
+            ffprobe = getFFProbeXMLFromFile(uuid);
+            addFFProbeToObject(uuid,ffprobe);
+        }
+        return ffprobe;
+    }
+
+    private  String getFFProbeXMLFromFile(String uuid) throws IOException {
+        File ffprobeFile = new File(ffprobeDir, uuid + ".ffprobe.xml");
+        String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeFile));
+        return ffprobeContents;//TODO clean xml initial tag?
+
+    }
+
+    private void addFFProbeToObject(String uuid, String ffprobe) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+        webservice.modifyDatastream(uuid,"FFPROBE",ffprobe,"Adding ffprobe as part of the radio/tv datamodel upgrade");
+    }
+
+    private String getFFProbeFromObject(String uuid) throws NotFoundException, InvalidCredentialsException, MethodFailedException {
+        try {
+            String contents = webservice.getDatastreamContents(uuid, "FFPROBE");
+            return contents;
+        } catch (InvalidResourceException e) {
+            throw new NotFoundException("Failed to retrieve FFPROBE datastream ",e);
+        }
+
+    }
+}
