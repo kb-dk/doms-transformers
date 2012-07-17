@@ -4,6 +4,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 /**
  * Created by IntelliJ IDEA.
  * User: abr
@@ -24,6 +27,6 @@ public class DomsFileEnricherObjectHandlerTest {
 
     @Test
     public void testTransform() throws Exception {
-
+        assertThat("Thing",is("Thang"));
     }
 }
