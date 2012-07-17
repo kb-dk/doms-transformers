@@ -36,10 +36,10 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
      * @param config Configuration.
      * @param webservice The DOMS WebService.
      */
-    public DomsFFProbeFileEnricherObjectHandler(DomsConfig config, CentralWebservice webservice, String ffprobeContentFiles){
+    public DomsFFProbeFileEnricherObjectHandler(FileEnricherConfig config, CentralWebservice webservice){
         this.config = config;
         this.webservice = webservice;
-        ffprobeDir = new File(ffprobeContentFiles);
+        ffprobeDir = new File(config.getFFprobeFilesLocation());
     }
 
 
@@ -61,9 +61,10 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
     }
 
     private  String getFFProbeXMLFromFile(String uuid) throws IOException {
-        File ffprobeFile = new File(ffprobeDir, uuid + ".ffprobe.xml");
+        File ffprobeFile = new File(ffprobeDir, uuid + ".stdout");
         String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeFile));
-        return ffprobeContents;//TODO clean xml initial tag?
+        ffprobeContents = ffprobeContents.substring(ffprobeContents.indexOf("<ffprobe"));
+        return ffprobeContents;
 
     }
 

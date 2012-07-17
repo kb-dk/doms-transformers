@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ffprobe:ffprobe xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:ffprobe='http://www.ffmpeg.org/schema/ffprobe' xsi:schemaLocation='http://www.ffmpeg.org/schema/ffprobe ffprobe.xsd'>
+    <streams>
+        <stream index="0" codec_name="h264" codec_long_name="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10" codec_type="video" codec_time_base="1/50" codec_tag_string="[27][0][0][0]" codec_tag="0x001b" width="704" height="576" has_b_frames="4" sample_aspect_ratio="16:11" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="30" id="0x7db" r_frame_rate="25/1" avg_frame_rate="25/1" time_base="1/90000" start_time="77723.876278" duration="3599.280000"/>
+        <stream index="1" codec_name="aac_latm" codec_long_name="AAC LATM (Advanced Audio Codec LATM syntax)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[17][0][0][0]" codec_tag="0x0011" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x7e5" r_frame_rate="0/0" avg_frame_rate="11625/472" time_base="1/90000" start_time="77721.881400" duration="3599.872000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="2" codec_type="subtitle" codec_time_base="1/90000" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x7ef" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="77721.796200" duration="3599.960000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="3" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="1/90000" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x7f3" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="7494.786978" duration="73828.369300">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="4" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="1/90000" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x7f4" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="7494.786978" duration="73828.369300">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="5" codec_name="h264" codec_long_name="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10" codec_type="video" codec_time_base="1/100" codec_tag_string="[27][0][0][0]" codec_tag="0x001b" width="1280" height="720" has_b_frames="4" sample_aspect_ratio="1:1" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="40" id="0x907" r_frame_rate="50/1" avg_frame_rate="1825/33" time_base="1/90000" start_time="11397.559233" duration="3599.920000"/>
+        <stream index="6" codec_name="aac_latm" codec_long_name="AAC LATM (Advanced Audio Codec LATM syntax)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[17][0][0][0]" codec_tag="0x0011" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x849" r_frame_rate="0/0" avg_frame_rate="375/16" time_base="1/90000" start_time="8376.724289">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="7" codec_name="h264" codec_long_name="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10" codec_type="video" codec_time_base="1/50" codec_tag_string="[27][0][0][0]" codec_tag="0x001b" width="704" height="576" has_b_frames="1" sample_aspect_ratio="16:11" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="30" id="0x83f" r_frame_rate="25/1" avg_frame_rate="850/29" time_base="1/90000" start_time="8377.997400" duration="3600.080000"/>
+        <stream index="8" codec_name="h264" codec_long_name="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10" codec_type="video" codec_time_base="1/50" codec_tag_string="[27][0][0][0]" codec_tag="0x001b" width="704" height="576" has_b_frames="4" sample_aspect_ratio="16:11" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="30" id="0x8d5" r_frame_rate="25/1" avg_frame_rate="1725/61" time_base="1/90000" start_time="7496.108767" duration="3600.040000"/>
+        <stream index="9" codec_name="aac_latm" codec_long_name="AAC LATM (Advanced Audio Codec LATM syntax)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[17][0][0][0]" codec_tag="0x0011" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x8df" r_frame_rate="0/0" avg_frame_rate="375/16" time_base="1/90000" start_time="7494.786978" duration="3599.872000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="10" codec_name="h264" codec_long_name="H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10" codec_type="video" codec_time_base="1/50" codec_tag_string="[27][0][0][0]" codec_tag="0x001b" width="704" height="576" has_b_frames="1" sample_aspect_ratio="16:11" display_aspect_ratio="16:9" pix_fmt="yuv420p" level="30" id="0x80d" r_frame_rate="25/1" avg_frame_rate="850/29" time_base="1/90000" start_time="77256.728678" duration="3600.040000"/>
+        <stream index="11" codec_name="aac_latm" codec_long_name="AAC LATM (Advanced Audio Codec LATM syntax)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[17][0][0][0]" codec_tag="0x0011" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x8e1" r_frame_rate="0/0" avg_frame_rate="12375/512" time_base="1/90000" start_time="7494.806422" duration="3599.872000">
+            <tag key="language" value="eng"/>
+        </stream>
+        <stream index="12" codec_name="aac_latm" codec_long_name="AAC LATM (Advanced Audio Codec LATM syntax)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[17][0][0][0]" codec_tag="0x0011" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x817" r_frame_rate="0/0" avg_frame_rate="11625/488" time_base="1/90000" start_time="77255.521511" duration="3599.872000">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="13" codec_name="aac_latm" codec_long_name="AAC LATM (Advanced Audio Codec LATM syntax)" codec_type="audio" codec_time_base="0/1" codec_tag_string="[17][0][0][0]" codec_tag="0x0011" sample_fmt="s16" sample_rate="48000" channels="2" bits_per_sample="0" id="0x911" r_frame_rate="0/0" avg_frame_rate="11625/472" time_base="1/90000" start_time="11396.198244">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="14" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x825" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="7494.786978" duration="73828.369300">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="15" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x826" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="7494.786978" duration="73828.369300">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="16" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x857" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="7494.786978" duration="73828.369300">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="17" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x858" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="7494.786978" duration="73828.369300">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="18" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x91f" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="7494.786978" duration="73828.369300">
+            <tag key="language" value="dan"/>
+        </stream>
+        <stream index="19" codec_name="dvbsub" codec_long_name="DVB subtitles" codec_type="subtitle" codec_time_base="0/1" codec_tag_string="[6][0][0][0]" codec_tag="0x0006" id="0x920" r_frame_rate="0/0" avg_frame_rate="0/0" time_base="1/90000" start_time="7494.786978" duration="73828.369300">
+            <tag key="language" value="dan"/>
+        </stream>
+    </streams>
+
+    <format filename="mux2.1258452000-2009-11-17-11.00.00_1258455600-2009-11-17-12.00.00_dvb1-2.ts" nb_streams="20" format_name="mpegts" format_long_name="MPEG-2 transport stream format" start_time="7494.786978" duration="73828.369300" size="8957654800" bit_rate="970646"/>
+</ffprobe:ffprobe>
