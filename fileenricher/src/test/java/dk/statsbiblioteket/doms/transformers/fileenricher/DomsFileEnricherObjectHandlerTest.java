@@ -18,21 +18,19 @@ import static org.junit.Assert.assertThat;
  * To change this template use File | Settings | File Templates.
  */
 public class DomsFileEnricherObjectHandlerTest {
-    private String testMuxFileName = "mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts";
-    private String testMuxStartTime = "1287514800";
-    private String testMuxStopTime = "1287518400";
-    private String testMuxRecoder = "dvb1-1";
+
     String testObjectPid;
     
     DomsFileEnricherObjectHandler handler;
     
     @Before
     public void setUp() throws Exception {
+        String testMuxFileName = "mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts";
         CentralWebservice webservice = new MockWebservice();
 
         testObjectPid = webservice.newObject(null, null, null);
         webservice.addFileFromPermanentURL(testObjectPid,null,null,"http://bitfinder.statsbiblioteket.dk/bart/"+testMuxFileName,null,null);
-        handler = new DomsFileEnricherObjectHandler(null, webservice,null);
+        handler = new DomsFileEnricherObjectHandler(null, webservice, null);
     }
 
     @After
@@ -48,19 +46,51 @@ public class DomsFileEnricherObjectHandlerTest {
 
     @Test
     public void testDecodeMuxFilename() throws Exception {
+        String testMuxFileName = "mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts";
+        String testMuxStartTime = "1287514800";
+        String testMuxStopTime = "1287518400";
+        String testMuxRecorder = "dvb1-1";
+        
         BroadcastFileDescriptiveMetadataType metadata = handler.decodeFilename(testMuxFileName);
-        assertThat(metadata.getRecorder(), is(testMuxRecoder));
+        assertThat(metadata.getRecorder(), is(testMuxRecorder));
         assertThat(metadata.getStartTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testMuxStartTime)));
         assertThat(metadata.getEndTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testMuxStopTime)));
     }
     
     @Test
     public void testRadioFileNameTransform() throws Exception {
-        
+      String testRadioFileName = "drp1_88.100_DR-P1_pcm_20080509045602_20080510045501_encoder5-2.wav";
+      String testRadioRecorder = "encoder5-2";
+      String testRadioChannel = "drp1";
+      String testRadioStartTime = "1210301762";
+      String testRadioStopTime = "1210388101";
+      String testRadioFormatUri = "info:pronom/fmt/6";
+      
+      BroadcastFileDescriptiveMetadataType metadata = handler.decodeFilename(testRadioFileName);
+      assertThat(metadata.getRecorder(), is(testRadioRecorder));
+      assertThat(metadata.getStartTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStartTime)));
+      assertThat(metadata.getEndTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStopTime)));
+      assertThat(metadata.getChannelIDs().getChannel().get(0), is(testRadioChannel));
+      assertThat(metadata.getFormat(), is(testRadioFormatUri));
+
+      
     }
     
     @Test
     public void testMPEGFileNameTransform() throws Exception {
+        String testMPEGFileName = "tv2c_623.250_K40-TV2-Charlie_mpeg1_20080503121001_20080504030601_encoder3-2.mpeg";
+        String testMPEGRecorder = "encoder3-2";
+        String testMPEGChannel = "tv2c";
+        String testMPEGStartTime = "1209809401";
+        String testMPEGStopTime = "1209863161";
+        String testMPEGFormatUri = "info:pronom/x-fmt/385";
+        
+        BroadcastFileDescriptiveMetadataType metadata = handler.decodeFilename(testMPEGFileName);
+        assertThat(metadata.getRecorder(), is(testMPEGRecorder));
+        assertThat(metadata.getStartTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testMPEGStartTime)));
+        assertThat(metadata.getEndTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testMPEGStopTime)));
+        assertThat(metadata.getChannelIDs().getChannel().get(0), is(testMPEGChannel));
+        assertThat(metadata.getFormat(), is(testMPEGFormatUri));
         
     }
 }
