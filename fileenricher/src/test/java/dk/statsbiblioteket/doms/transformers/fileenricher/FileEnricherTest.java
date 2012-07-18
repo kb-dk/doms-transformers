@@ -54,8 +54,7 @@ public class FileEnricherTest {
     @Test
     public void testMain() throws Exception {
 
-        ObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config, webservice);
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,delegate);
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice);
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
 

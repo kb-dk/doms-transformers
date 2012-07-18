@@ -30,8 +30,7 @@ public class FileEnricher {
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
         FileEnricherConfig config = new FFProbeLocationPropertyBasedDomsConfig(configfile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
-        ObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config, webservice);
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,delegate);
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice);
 
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
