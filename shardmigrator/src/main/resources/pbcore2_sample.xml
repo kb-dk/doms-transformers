@@ -1,0 +1,133 @@
+<namespace:PBCoreDescriptionDocument xmlns:namespace="http://www.pbcore.org/PBCore/PBCoreNamespace.html"
+                                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                     xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html pbcore2.0.xsd">
+    <namespace:pbcoreIdentifier>
+        <namespace:identifier>130087RitzauProgram</namespace:identifier>
+        <namespace:identifierSource>id</namespace:identifierSource>
+    </namespace:pbcoreIdentifier>
+    <namespace:pbcoreTitle>
+        <namespace:title>Nyhederne, Finans, Sporten</namespace:title>
+        <namespace:titleType>titel</namespace:titleType>
+    </namespace:pbcoreTitle>
+    <namespace:pbcoreTitle>
+        <namespace:titleType>originaltitel</namespace:titleType>
+    </namespace:pbcoreTitle>
+    <namespace:pbcoreTitle>
+        <namespace:titleType>episodetitel</namespace:titleType>
+    </namespace:pbcoreTitle>
+    <namespace:pbcoreDescription>
+        <namespace:descriptionType>langomtale1</namespace:descriptionType>
+    </namespace:pbcoreDescription>
+    <namespace:pbcoreDescription>
+        <namespace:descriptionType>langomtale2</namespace:descriptionType>
+    </namespace:pbcoreDescription>
+    <namespace:pbcoreDescription>
+        <namespace:descriptionType>kortomtale</namespace:descriptionType>
+    </namespace:pbcoreDescription>
+    <namespace:pbcoreGenre>
+        <namespace:genre>hovedgenre: Nyheder &amp; Aktualitet</namespace:genre>
+    </namespace:pbcoreGenre>
+    <namespace:pbcoreGenre>
+        <namespace:genre>undergenre: Nyheder</namespace:genre>
+    </namespace:pbcoreGenre>
+    <namespace:pbcoreGenre>
+        <namespace:genre>indhold_emne:</namespace:genre>
+    </namespace:pbcoreGenre>
+    <namespace:pbcoreCreator>
+        <namespace:creatorRole>forfatter</namespace:creatorRole>
+    </namespace:pbcoreCreator>
+    <namespace:pbcoreContributor>
+        <namespace:contributorRole>medvirkende</namespace:contributorRole>
+    </namespace:pbcoreContributor>
+    <namespace:pbcoreContributor>
+        <namespace:contributorRole>instruktion</namespace:contributorRole>
+    </namespace:pbcoreContributor>
+    <namespace:pbcorePublisher>
+        <namespace:publisher>tv2d</namespace:publisher>
+        <namespace:publisherRole>channel_name</namespace:publisherRole>
+    </namespace:pbcorePublisher>
+    <namespace:pbcorePublisher>
+        <namespace:publisher>TV 2</namespace:publisher>
+        <namespace:publisherRole>kanalnavn</namespace:publisherRole>
+    </namespace:pbcorePublisher>
+    <namespace:pbcoreInstantiation>
+        <namespace:dateCreated>0</namespace:dateCreated>
+        <namespace:formatMediaType>Moving Image</namespace:formatMediaType>
+        <namespace:formatStandard>ikke hd</namespace:formatStandard>
+        <namespace:formatDuration>0</namespace:formatDuration>
+        <namespace:formatAspectRatio>,</namespace:formatAspectRatio>
+        <namespace:formatColors>farve</namespace:formatColors>
+        <namespace:formatChannelConfiguration>ikke surround</namespace:formatChannelConfiguration>
+        <namespace:pbcoreDateAvailable>
+            <namespace:dateAvailableStart>2008-05-07T12:00:00+0200</namespace:dateAvailableStart>
+            <namespace:dateAvailableEnd>2008-05-07T12:10:00+0200</namespace:dateAvailableEnd>
+        </namespace:pbcoreDateAvailable>
+        <namespace:pbcoreFormatID>
+            <namespace:formatIdentifier>[INSERT_PBC_FORMAT_ID]</namespace:formatIdentifier>
+            <namespace:formatIdentifierSource>[INSERT_PBC_FORMAT_ID_SOURCE]</namespace:formatIdentifierSource>
+        </namespace:pbcoreFormatID>
+    </namespace:pbcoreInstantiation>
+    <namespace:pbcoreExtension>
+        <namespace:extension>antalepisoder:0</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>episodenr:0</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>premiere:ikke premiere</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>genudsendelse:ikke genudsendelse</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>hovedgenre_id:9</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>kanalid:6</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>live:ikke live</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>lydlink:</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>produktionsland:</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>produktionsland_id:0</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>program_id:10410909</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>program_ophold:ikke program ophold</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>undergenre_id:666</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>urllink:</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>afsnit_id:0</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>saeson_id:0</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>serie_id:0</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>tekstet:ikke tekstet</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>th:ikke tekstet for hørehæmmede</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>ttv:ikke tekst-tv</namespace:extension>
+    </namespace:pbcoreExtension>
+    <namespace:pbcoreExtension>
+        <namespace:extension>showviewcode:97755</namespace:extension>
+    </namespace:pbcoreExtension>
+</namespace:PBCoreDescriptionDocument>

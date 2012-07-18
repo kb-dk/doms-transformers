@@ -32,7 +32,7 @@ public class DomsFileEnricherObjectHandlerTest {
 
         testObjectPid = webservice.newObject(null, null, null);
         webservice.addFileFromPermanentURL(testObjectPid,null,null,"http://bitfinder.statsbiblioteket.dk/bart/"+testMuxFileName,null,null);
-        handler = new DomsFileEnricherObjectHandler(null, webservice);
+        handler = new DomsFileEnricherObjectHandler(null, webservice,null);
     }
 
     @After
