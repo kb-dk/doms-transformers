@@ -9,6 +9,7 @@ import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
+import dk.statsbiblioteket.doms.transformers.fileenricher.checksums.ChecksumParser;
 
 import javax.xml.bind.JAXBException;
 import java.io.File;
@@ -30,8 +31,11 @@ public class FileEnricher {
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
         FileEnricherConfig config = new FFProbeLocationPropertyBasedDomsConfig(configfile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
+
+        ChecksumParser checksums = new ChecksumParser(new File(Thread.currentThread().getContextClassLoader().getResource("md5s.zip").toURI()));
+
         ObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,delegate);
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,checksums,delegate);
 
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);

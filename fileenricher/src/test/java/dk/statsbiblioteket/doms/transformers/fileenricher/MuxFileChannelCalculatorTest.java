@@ -1,11 +1,10 @@
 package dk.statsbiblioteket.doms.transformers.fileenricher;
 
-import org.hamcrest.CoreMatchers;
+import dk.statsbiblioteket.doms.transformers.fileenricher.muxchannels.MuxFileChannelCalculator;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.net.URI;
 import java.util.Date;
 import java.util.List;
 

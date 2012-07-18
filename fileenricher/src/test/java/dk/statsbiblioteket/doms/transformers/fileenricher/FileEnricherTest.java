@@ -2,8 +2,8 @@ package dk.statsbiblioteket.doms.transformers.fileenricher;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.transformers.common.*;
+import dk.statsbiblioteket.doms.transformers.fileenricher.checksums.ChecksumParser;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -54,7 +54,8 @@ public class FileEnricherTest {
     @Test
     public void testMain() throws Exception {
         DomsFFProbeFileEnricherObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,delegate);
+        ChecksumParser checksums = new ChecksumParser(new File(Thread.currentThread().getContextClassLoader().getResource("md5s.zip").toURI()));
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums, delegate);
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
 
