@@ -65,7 +65,7 @@ public class TVMeterReader {
     
     private static String cleanupValue(String value) {
         String temp = value.replaceAll("\\&apos\\;", "");
-        temp = temp.replaceAll("\\s", "");
+        temp = temp.trim();
         return temp;
     }
     
