@@ -19,7 +19,7 @@ public class FFProbeLocationPropertyBasedDomsConfig extends PropertyBasedDomsCon
      @Override
     public String getFFprobeFilesLocation() {
         return properties.getProperty(FFPROBE_FILE_LOCATION,
-                                      "/home/abr/Downloads/ffprobe.result/ffprobe.result/");
+                                      "/tmp/ffprobe.result/ffprobe.result/");
     }
 
     public FFProbeLocationPropertyBasedDomsConfig() {
