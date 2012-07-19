@@ -1,22 +1,22 @@
-<ns:pbcoreDescriptionDocument xmlns:ns="http://www.pbcore.org/PBCore/PBCoreNamespace.html"
-                              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                              xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html"
-                              xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html pbcore_xsd/pbcore2.0.xsd">
-    <pbcoreAssetDate dateType="programScheduledStart">2009-06-18T06:35:00+0200</pbcoreAssetDate>
-    <pbcoreAssetDate dateType="programScheduledEnd">2009-06-18T06:35:00+0200</pbcoreAssetDate>
-    <pbcoreIdentifier source="DigiTV">3743294RitzauProgram</pbcoreIdentifier>
-    <pbcoreTitle titleType="titel">Konstanse</pbcoreTitle>
+<pbcoreDescriptionDocument xmlns:ns="http://www.pbcore.org/PBCore/PBCoreNamespace.html"
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+    <pbcoreAssetDate dateType="programScheduledStart">2009-06-18T23:30:00+0200</pbcoreAssetDate>
+    <pbcoreAssetDate dateType="programScheduledEnd">2009-06-18T23:30:00+0200</pbcoreAssetDate>
+    <pbcoreIdentifier source="DigiTV">3745932RitzauProgram</pbcoreIdentifier>
+    <pbcoreTitle titleType="titel">Backstage Special med Sys Bjerre</pbcoreTitle>
     <pbcoreTitle titleType="originaltitel"/>
     <pbcoreTitle titleType="episodetitel"/>
-    <pbcoreDescription descriptionType="langomtale1">Konstanse på fem år og hendes store famile bor på en lille ø i
-        skærgården. Her er der nok at gøre
-        med at arbejde i haven og pasning af alle dyrene.
+    <pbcoreDescription descriptionType="langomtale1">Når man taler dansk populærmusik 2009, er det svært at komme uden
+        om Sys Bjerre. Med mere end 82.000 solgte albums er der tale om alt andet end et one-hit-wonder. Vejen til
+        succesen var lang, og da den endelig kom, var prisen langt højere, end Sys nogensinde havde forestillet sig. Se
+        Sys Bjerre i et ærligt og åbenhjertigt interview med Camilla Jane Lea.
     </pbcoreDescription>
     <pbcoreDescription descriptionType="langomtale2"/>
-    <pbcoreDescription descriptionType="kortomtale">Katteliv.</pbcoreDescription>
-    <pbcoreGenre annotation="hovedgenre">Børn &amp; Ungdom</pbcoreGenre>
-    <pbcoreGenre annotation="undergenre">Ungdom</pbcoreGenre>
-    <pbcoreGenre annotation="indhold_emne">Psykologisk drama</pbcoreGenre>
+    <pbcoreDescription descriptionType="kortomtale"/>
+    <pbcoreGenre annotation="hovedgenre">Musik</pbcoreGenre>
+    <pbcoreGenre annotation="undergenre">Pop &amp; Rock m.m.</pbcoreGenre>
+    <pbcoreGenre annotation="indhold_emne">Rytmisk musik</pbcoreGenre>
     <pbcoreCreator>
         <creator/>
         <creatorRole>forfatter</creatorRole>
@@ -41,16 +41,13 @@
         <instantiationIdentifier source="[INSERT_PBC_FORMAT_ID_SOURCE]">[INSERT_PBC_FORMAT_ID]</instantiationIdentifier>
         <instantiationDate dateType="created">0</instantiationDate>
         <instantiationDate dateType="issued"/>
-        <instantiationDate dateType="dateActualStart">2009-06-18T06:35:00+0200</instantiationDate>
-        <instantiationDate dateType="dateActualEnd">2009-06-18T06:40:00+0200</instantiationDate>
-
-        <instantiationDimensions unitsOfMeasure="aspectRatio">,</instantiationDimensions>
+        <instantiationDate dateType="dateActualStart">2009-06-18T23:30:00+0200</instantiationDate>
+        <instantiationDate dateType="dateActualEnd">2009-06-19T00:00:00+0200</instantiationDate>
+        <instantiationDimensions unitsOfMeasure="aspectRatio">16:9,</instantiationDimensions>
         <instantiationStandard>ikke hd</instantiationStandard>
-
         <instantiationLocation/>
         <instantiationMediaType>Moving Image</instantiationMediaType>
-
-        <instantiationDuration>366000</instantiationDuration>
+        <instantiationDuration>1713000</instantiationDuration>
         <instantiationColors>farve</instantiationColors>
         <instantiationChannelConfiguration>ikke surround</instantiationChannelConfiguration>
         <instantiationAnnotation/>
@@ -86,7 +83,7 @@
     <pbcoreExtension>
         <extensionWrap>
             <extensionElement>hovedgenre_id</extensionElement>
-            <extensionValue>16</extensionValue>
+            <extensionValue>11</extensionValue>
             <extensionAuthorityUsed>Ritzau</extensionAuthorityUsed>
         </extensionWrap>
     </pbcoreExtension>
@@ -128,7 +125,7 @@
     <pbcoreExtension>
         <extensionWrap>
             <extensionElement>program_id</extensionElement>
-            <extensionValue>11953701</extensionValue>
+            <extensionValue>11953743</extensionValue>
             <extensionAuthorityUsed>Ritzau</extensionAuthorityUsed>
         </extensionWrap>
     </pbcoreExtension>
@@ -142,7 +139,7 @@
     <pbcoreExtension>
         <extensionWrap>
             <extensionElement>undergenre_id</extensionElement>
-            <extensionValue>756</extensionValue>
+            <extensionValue>654</extensionValue>
             <extensionAuthorityUsed>Ritzau</extensionAuthorityUsed>
         </extensionWrap>
     </pbcoreExtension>
@@ -191,15 +188,15 @@
     <pbcoreExtension>
         <extensionWrap>
             <extensionElement>ttv</extensionElement>
-            <extensionValue>ikke tekst-tv</extensionValue>
+            <extensionValue>tekst-tv</extensionValue>
             <extensionAuthorityUsed>Ritzau</extensionAuthorityUsed>
         </extensionWrap>
     </pbcoreExtension>
     <pbcoreExtension>
         <extensionWrap>
             <extensionElement>showviewcode</extensionElement>
-            <extensionValue>80993692</extensionValue>
+            <extensionValue>1708</extensionValue>
             <extensionAuthorityUsed>Ritzau</extensionAuthorityUsed>
         </extensionWrap>
     </pbcoreExtension>
-</ns:pbcoreDescriptionDocument>
+</pbcoreDescriptionDocument>

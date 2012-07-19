@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<tvmeterProgram>
+    <originalEntry>00010906182332020906190000352600323052002200110010001915800010004000220020090000Backstage Special med
+        Sys Bjerre Backstage: Special med Sys Bjerre 010000000000000000000Stereo 16:9 150000000000008609102100 000001
+    </originalEntry>
+    <sourceFileName>de090618.std</sourceFileName>
+    <logFormat>FORMAT_2</logFormat>
+    <stationID>DR1</stationID>
+    <startDate>2009-06-18 23:32:02.0</startDate>
+    <endDate>2009-06-19 00:00:35.0</endDate>
+    <parsedProgramClassification>
+        <!--Goes into pbCoreAudienceLevel-->
+        <targetGroup>Voksne i alderen 21-60</targetGroup>
+
+        <!--Goes into pbcoreSubject-->
+        <contentsItem>Rytmisk musik</contentsItem>
+
+        <!--Goes into pbcoreSubject-->
+        <form>Musik</form>
+
+        <!--extension-->
+        <frequency>Ugentligt</frequency>
+
+        <!--pbcoreCreater-->
+        <origin>National prod. (DR TV, TV 2/DANMARK, TV 2 Zulu eller TV3)</origin>
+
+        <!--extension-->
+        <sendstatus>Førstegangsudsendelse</sendstatus>
+
+        <!--pbcoreCreater-->
+        <productionDepartment>Radio Rytmisk</productionDepartment>
+
+        <!--pbcoreCreater-->
+        <itemCountry>Ikke geografisk bestemt</itemCountry>
+
+        <!--pbcoreCreater-->
+        <productionCountry>Danmark</productionCountry>
+
+        <!--Goes into pbcoreSubject-->
+        <intent>.. er at give oplevelser</intent>
+
+        <!--pbcoreCreater-->
+        <productionTimeAndPlace>Forskudt/redigeret</productionTimeAndPlace>
+
+        <!--Goes into dateCreated-->
+        <targetGroupProductionYear>2009</targetGroupProductionYear>
+
+        <!--ignored-->
+        <targetGroupProposedPlacement>0000</targetGroupProposedPlacement>
+    </parsedProgramClassification>
+    <mainTitle>Backstage</mainTitle>
+    <subTitle>Special med Sys Bjerre</subTitle>
+    <originalTitle>Backstage: Special med Sys Bjerre</originalTitle>
+    <episodeNumber></episodeNumber>
+    <broadcastType></broadcastType>
+    <overflowFlag>0</overflowFlag>
+    <regionFlags>10000000000000000000</regionFlags>
+    <expectedGRP>Stereo</expectedGRP>
+    <additionDeductionOnPrice>16:9</additionDeductionOnPrice>
+    <commonCode>5. Musik.</commonCode>
+    <price>0000000000</price>
+    <internalIDCode>8609102100</internalIDCode>
+    <bid>00000</bid>
+    <emmisionsLevel>1</emmisionsLevel>
+</tvmeterProgram>
