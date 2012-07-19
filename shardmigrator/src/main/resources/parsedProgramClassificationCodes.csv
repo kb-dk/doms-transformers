@@ -1,0 +1,1320 @@
+Field (n of 13),Code,Description (DK),Description (ENG)
+targetGroup,1000,Børn & unge,Children and youth
+targetGroup,1100,Børn,Children
+targetGroup,1110,Små  børn 3-7 år,Small children 3-7
+targetGroup,1120,Halvstore børn 7-9 år,Half grown children 7-9
+targetGroup,1130,Store børn 9-12 år,Big children 9-12
+targetGroup,1140,Børn i alderen 3-9 år,Children in the age of 3-9
+targetGroup,1150,Børn i alderen 7-12 år,Children in the age of 7-12
+targetGroup,1160,Børn i alderen 8-11 år,Children in the age of 8-11
+targetGroup,1170,Børn i alderen 12-14 år,Children in the age of 12-14
+targetGroup,1180,Børn i alderen 3-10 år,Children in the age of 3-10
+targetGroup,1200,Unge,Youth
+targetGroup,1210,13-16 år,13-16 year-olds
+targetGroup,1220,17-20 år,17-20 year-olds
+targetGroup,1230,15-25 år,15-25 year-olds
+targetGroup,2000,Voksne,Grown-ups
+targetGroup,2100,Kvinder,Women
+targetGroup,2200,Mænd,Men
+targetGroup,2300,Unge voksne (21-30),Young adults (21-30)
+targetGroup,2310,Kvinder,Women
+targetGroup,2320,Mænd,Men
+targetGroup,2400,Voksne (31-60),Adults (31-60)
+targetGroup,2410,Kvinder,Women
+targetGroup,2420,Mænd,Men
+targetGroup,2500,Ældre (61+),Elderly people (61+)
+targetGroup,2510,Kvinder,Women
+targetGroup,2520,Mænd,Men
+targetGroup,2600,Voksne i alderen 21-60,Adults in the age of 21-60
+targetGroup,2610,Kvinder,Women
+targetGroup,2620,Mænd,Men
+targetGroup,2700,Voksne i alderen 31+,Adults in the age of 31+
+targetGroup,2710,Kvinder,Women
+targetGroup,2720,Mænd,Men
+targetGroup,2800,Unge og unge voksne (15-30),Young and young adult (15-30)
+targetGroup,2810,Kvinder,Women
+targetGroup,2820,Mænd,Men
+targetGroup,2900,Unge og unge voksne (15-40),Young and young adult (15-40)
+targetGroup,2910,Kvinder,Women
+targetGroup,2920,Mænd,Men
+targetGroup,3000,Familie ( mindst 2 generationer),Family ( at least 2 generations)
+targetGroup,4000,Specielle målgrupper,Special target groups
+targetGroup,4100,Etniske minoriteter,Ethnic minorities
+targetGroup,4118,Børn i alderen 3-10 år,Children in the age of 3-10
+targetGroup,4123,15-25 år,15-25 year-olds
+targetGroup,4200,Handicappede,Handicapped persons
+targetGroup,4210,Døve og hørehæmmede,Deaf and hearing-impaired persons
+targetGroup,4211,Børn 3-12 år,Børn (3-12)
+targetGroup,4212,Unge 13-20 år,Unge (13-20)
+targetGroup,4213,Voksne,Grown-ups
+targetGroup,4220,Andet handicap,Other handicap
+targetGroup,4300,Specifikt erhverv,Specific occupation
+targetGroup,4400,Specifik interessegruppe,Specific interest group
+targetGroup,4410,Interesse for Kulturudsendelser,Interest in Culture programmes
+targetGroup,4420,Interesse for Religion,Interest in Religion
+targetGroup,4430,Interesse for Politisk debat,Interest in Political debate
+targetGroup,4440,Interesse for Almindelige mennesker,Interest in Ordinary people
+targetGroup,4450,Interesse for Quiz,Interest in Quiz shows
+targetGroup,4460,Interesse for Naturvidenskab,Interest in Science
+targetGroup,4470,Interesse for Gør-det-selv,Interest in Do-it-yourself
+targetGroup,4480,Interesse for Have,Interest in Gardening
+targetGroup,4490,Interesse for Sport i tv,Interest in Sports on TV
+targetGroup,4500,RISC-Segmenter,RISC-Segments
+targetGroup,4510,Blå,Blue
+targetGroup,4520,Grøn,Green
+targetGroup,4530,Grå,Gray
+targetGroup,4540,Violet,Violet
+targetGroup,4550,Rosa,Pink
+targetGroup,4560,Nord (Blå + Grøn),North (Blue + Green)
+targetGroup,4570,Syd  (Violet + Rosa),South (Violet + Rose)
+targetGroup,4580,Vest (Blå  + Violet),West  (Blue + Violet)
+targetGroup,4590,Øst  (Grøn + Rosa),East  (Green + Pink)
+targetGroup,4610,Moderne,Modern
+targetGroup,4620,Moderne individorienterede,Modern individual
+targetGroup,4630,Individorienterede,Individual
+targetGroup,4640,Traditionelle individorienterede,Traditional individual
+targetGroup,4650,Traditionelle,Traditional
+targetGroup,4660,Traditionelle fællesskabsorienterede,Traditional community orientated
+targetGroup,4670,Fællesskabsorienterede,Community orientated
+targetGroup,4680,Moderne Fællesskabsorienterede,Modern community orientated
+targetGroup,4690,Center,Centre
+targetGroup,5000,Til  alle (Incl: uden målgruppeangivelse),For everybody (Incl: no target group specification)
+contentsItem,1000,Samfundsforhold (fakta),Social conditions (facts)
+contentsItem,1100,Samfundsforhold i et land,Social conditions in a country
+contentsItem,1110,Politiske forhold,Political conditions
+contentsItem,1111,Kongehus,The royal house
+contentsItem,1112,Regering/ Folketing,Government/the Danish Parliament
+contentsItem,1113,De  politiske partier,The political parties
+contentsItem,1114,Valg,Election
+contentsItem,1119,Andet,Other
+contentsItem,1120,Sociale og retslige forhold,Social and legal conditions
+contentsItem,1121,Kriminalitet,Crime
+contentsItem,1122,Lov og pligt,Law and duty
+contentsItem,1123,Svage grupper,Underprivileged
+contentsItem,1124,Indvandrere,Immigrants
+contentsItem,1125,Øvrige sociale forhold,Other social conditions
+contentsItem,1126,Øvrige retslige forhold,Other legal conditions
+contentsItem,1129,Andet,Other
+contentsItem,1130,Økonomi og erhvervsforhold,Economy and trade conditions
+contentsItem,1131,Arbejdsmarked,Labour market
+contentsItem,1132,Industri,Industry
+contentsItem,1133,Servicefag,Service trades
+contentsItem,1134,Håndværk,Crafts
+contentsItem,1135,Landbrug/fiskeri,Agriculture/fishing
+contentsItem,1136,Energi,Energy
+contentsItem,1137,Forbrugerstof,Consumer issues
+contentsItem,1138,Skat og privatøkonomi,Taxes and private economy
+contentsItem,1139,Andet,Other
+contentsItem,1140,"Miljø, økologi og sundhed","Environment, ecology and health"
+contentsItem,1141,Miljø og økologi,Environment and ecology
+contentsItem,1142,Sundhed,Health
+contentsItem,1144,Boligforhold,Housing conditions
+contentsItem,1149,Andet,Other
+contentsItem,1150,Trafik & Kommunikation,Traffic and communication
+contentsItem,1151,Trafik,Traffic
+contentsItem,1152,Telekommunikation og post,Telecommunication and post
+contentsItem,1153,Mediepolitik,Media politics
+contentsItem,1159,Andet,Other
+contentsItem,1160,Undervisning og Kultur,Education and culture
+contentsItem,1161,"Skoleforhold, undervisning, uddannelse iøvrigt","School conditions, education, education in addition"
+contentsItem,1162,Kulturforhold,Culture
+contentsItem,1169,Andet,Other
+contentsItem,1170,"Forsvar, Udenrigspolitik og Udviklingsbistand","Defence, foreign policy and development aid"
+contentsItem,1171,Forsvar,Defence
+contentsItem,1172,Udenrigspolitik,Foreign policy
+contentsItem,1173,Udviklingsbistand,Development aid
+contentsItem,1180,"Grønland, Færørene og Sydslesvig","Greenland, the Faroe Islands and South Schleswig"
+contentsItem,1190,Andet,Other
+contentsItem,1200,Internationale forhold,International conditions
+contentsItem,1210,Internationale organisationer,International organizations
+contentsItem,1211,FN,UN
+contentsItem,1212,EU,EU
+contentsItem,1213,NATO,NATO
+contentsItem,1214,Anden international organisa-,Other international organization
+contentsItem,1220,Internationale konflikter/krig,International conflicts/war
+contentsItem,1290,Andet,Other
+contentsItem,2000,Natur og kultur (fakta),Nature and culture (fact-oriented)
+contentsItem,2100,Natur,Nature
+contentsItem,2110,Natur og dyr,Nature and animals
+contentsItem,2111,Vilde dyr,Wild animals
+contentsItem,2112,Husdyr,Domestic animals
+contentsItem,2113,Planter,Plants
+contentsItem,2120,Naturlandskaber,Sceneries
+contentsItem,2130,Geografi og opdagelsesrejser,Geography and voyages of discovery
+contentsItem,2140,Vejr og klima,Weather and climate
+contentsItem,2190,Andet,Other
+contentsItem,2200,Teknik og naturvidenskab,Technology and science
+contentsItem,2210,Teknik,Technology
+contentsItem,2211,Opfindelser,Inventions
+contentsItem,2212,Bil og motor,Car and engine
+contentsItem,2213,EDB/Computer,EDP/Computer
+contentsItem,2214,Medicinsk teknologi,Medical technology
+contentsItem,2219,"Andet, teknik","Other, technology"
+contentsItem,2220,Naturvidenskab,Science
+contentsItem,2221,Bio-teknologi,Bio-technology
+contentsItem,2222,Verdensrummet,Space
+contentsItem,2229,"Andet, naturvidenskab","Other, science"
+contentsItem,2300,Kultur,Culture
+contentsItem,2310,Arkæologi,Science
+contentsItem,2320,Historie og kulturhistorie,Archaeology
+contentsItem,2321,Historie,History
+contentsItem,2322,Kulturhistorie,Cultural history
+contentsItem,2330,Fremmede folkeslag,History and cultural history
+contentsItem,2340,Sprog,Foreign nations
+contentsItem,2390,Andet,Language
+contentsItem,2400,Litteratur,Literature
+contentsItem,2410,Prosa,Other
+contentsItem,2420,Poesi,Prose
+contentsItem,2490,Andet,Poetry
+contentsItem,2500,Medier,Media
+contentsItem,2510,Tv  og video,Other
+contentsItem,2520,Aviser,Television and video
+contentsItem,2530,Film,News papers
+contentsItem,2540,Teater,Films
+contentsItem,2590,Andet,Theatre
+contentsItem,2600,Kunst og arkitektur,Art and architecture
+contentsItem,2610,Malerkunst,Other
+contentsItem,2620,Skulptur,Painting
+contentsItem,2630,Arkitektur,Sculpture
+contentsItem,2690,Andet,Architecture
+contentsItem,2700,Individet,The individual
+contentsItem,2710,Sundhed,Other
+contentsItem,2711,Helse,General health issues
+contentsItem,2712,Sjælelivet,Mental life
+contentsItem,2713,Seksualitet,Sexuality
+contentsItem,2719,"Andet, sundhed","Other, health"
+contentsItem,2720,Livsberetninger og skæbner,Health
+contentsItem,2721,Politiske forhold,Political conditions
+contentsItem,2722,Social og retlige forhold,Social and legal conditions
+contentsItem,2723,Økonomi og erhvervsforhold,Economy and trade conditions
+contentsItem,2724,"Miljø, økologi og sundhed","Environment, ecology and health *"
+contentsItem,2725,Trafik og kommunikation,Traffic and communication
+contentsItem,2726,Undervisning og kultur,Education and culture
+contentsItem,2727,"Forsvar, udenrigspolitik og","Defence, foreign policy and development aid"
+contentsItem,2728,"Grønland, Færøerne og Sydsles-","Greenland, the Faroe Islands and South"
+contentsItem,2729,Andet,Other
+contentsItem,2790,Andet,Memoirs and destinies
+contentsItem,2800,Fritid,Leisure time
+contentsItem,2810,Mad og drikke,Food and beverage
+contentsItem,2820,"Turisme, ferier, rejser","Tourism, holidays, journeys"
+contentsItem,2830,Mode og lifestyle,Fashion and life style
+contentsItem,2840,Bolig,Home
+contentsItem,2850,Have,Garden
+contentsItem,2860,"Hobby, gør det selv","Hobby, do it yourself"
+contentsItem,2870,Antikviteter,Antiques
+contentsItem,2880,Friluftsaktiviteter (ikke sport),Outdoor activities (not sports)
+contentsItem,2890,Andet,Other
+contentsItem,2900,Blandet,Miscellaneous
+contentsItem,3000,"Fiktion, musik og ballet","Fiction, music and ballet"
+contentsItem,3100,Fiktion,Fiction
+contentsItem,3110,Klassisk,Classic
+contentsItem,3111,Klassisk tragedie,Classic tragedy
+contentsItem,3112,Klassisk komedie,Classic comedy
+contentsItem,3119,Andet,Other
+contentsItem,3120,Spænding,Suspense
+contentsItem,3121,Krig,War
+contentsItem,3122,Action,Action
+contentsItem,3123,"Trillers: Krimi, detektiv, spion","Thrillers: detective, spy"
+contentsItem,3124,Politi,Police
+contentsItem,3125,Gyser/Skræk/Katastrofe,Thriller/horror/disaster
+contentsItem,3126,Science-fiction,Science-fiction
+contentsItem,3127,Western,Western
+contentsItem,3128,Adventure/Eventyrlige film,Adventure/fantastic films
+contentsItem,3129,Andet,Other
+contentsItem,3130,Kærlighed,Love
+contentsItem,3131,Love-story/Melodrama,Love-story/Melodrama
+contentsItem,3132,Erotik,Eroticism
+contentsItem,3139,Andet,Other
+contentsItem,3140,Humor,Humour
+contentsItem,3141,Lystspil,Comedy
+contentsItem,3142,Comedy/Situation Comedy,Comedy/Situation Comedy
+contentsItem,3143,Farce/spoof,Farce/spoof
+contentsItem,3144,Folkekomedie/familiefilm,People's comedy/family movie
+contentsItem,3149,Andet,Other
+contentsItem,3150,Soap,Soap operas
+contentsItem,3151,Soap hverdagsliv,Soap everyday life
+contentsItem,3152,Soap glamour,Soap glamour
+contentsItem,3159,Anden soap,Other soap
+contentsItem,3160,"Psykologisk, socialt og historisk drama","Psychological, social and historical drama"
+contentsItem,3161,Psykologisk drama,Psychological drama
+contentsItem,3162,Socialt drama,Social drama
+contentsItem,3163,Historisk drama og biografier,Historical drama and biographies
+contentsItem,3164,Melodrama/love-story,Melodrama/love-story
+contentsItem,3170,Eventyr og dyr,Adventure and animals
+contentsItem,3171,Dyr med central rolle,Animals with a central part
+contentsItem,3172,Eventyr,Adventure
+contentsItem,3179,Andet,Other
+contentsItem,3180,Musik- og dansefilm,Music and dance films
+contentsItem,3190,Andet,Other
+contentsItem,3200,Musik,Music
+contentsItem,3210,Klassisk musik,Classic music
+contentsItem,3211,Før klassisk musik,Pre classic music
+contentsItem,3212,Klassisk og romantisk,Classic and romantic
+contentsItem,3213,Musik fra det 20.århundrede,Music from the 20th century
+contentsItem,3220,Let musik,Light music
+contentsItem,3221,Operette/musical,Musical comedy/musical
+contentsItem,3222,Evergreens,Evergreens
+contentsItem,3223,"Populær musik, popmusik","Popular music, pop music"
+contentsItem,3229,Andet,Other
+contentsItem,3230,Rytmisk musik,Rhythmical music
+contentsItem,3231,Rock,Rock
+contentsItem,3232,Beat,Beat
+contentsItem,3233,Jazz,Jazz
+contentsItem,3234,Soul,Soul
+contentsItem,3235,Folke musik,Folk music
+contentsItem,3236,Country musik,Country music
+contentsItem,3239,Andet,Other
+contentsItem,3240,Blandede musikprogrammer,Mixed music programmes
+contentsItem,3290,Andet,Other
+contentsItem,3300,Ballet og dans,Ballet and dance
+contentsItem,3310,Klassisk ballet og dans,Classic ballet and dance
+contentsItem,3320,Moderne ballet og dans,Modern ballet and dance
+contentsItem,3330,Eksperimenterende og avantgarde,Experimenting and avantgarde
+contentsItem,3390,Andet,Other
+contentsItem,4000,"Folkekirke, Religion og livsanskuelse","The established church, religion and philosophy of life"
+contentsItem,4100,Gudstjeneste(folkekirkelige),Service (of the established church)
+contentsItem,4200,Folkekirken,The established church
+contentsItem,4300,Religiøse emner(ikke folkekirkelige),Religious subjects (not of the established church)
+contentsItem,4400,Forkyndende sangprogrammer,Preaching song programmes
+contentsItem,4500,Livsanskuelse og filosofi,View of life and philosophy
+contentsItem,4900,Andet,Other
+contentsItem,5000,Sport,Sports
+contentsItem,5100,Fodbold,Football
+contentsItem,5110,Dansk klub-fodbold,Danish league football *
+contentsItem,5111,Superligaen,Superligaen
+contentsItem,5112,1.division,First division
+contentsItem,5120,Danske fodboldlandskampe,International Danish football matches *
+contentsItem,5130,"OL-, EM og VM-fodboldlandskampe","International Olympic Games, European Cham-"
+contentsItem,5140,Europacup-fodbold,European Cup football *
+contentsItem,5150,Engelsk klub-fodbold.,English league football
+contentsItem,5160,Italiensk klub-fodbold.,Italian league football
+contentsItem,5170,Spansk klub-fodbold.,Spanish league football
+contentsItem,5180,Tysk klub-fodbold.,German league football
+contentsItem,5190,Anden fodbold.,Other football
+contentsItem,5191,Fransk klub-fodbold,French team fotball
+contentsItem,5192,Hollandsk klub-fodbold,Dutch  team fotball
+contentsItem,5193,Skotsk klub-fodbold,Scottish team fotball
+contentsItem,5194,Skolefodbold,School football
+contentsItem,5200,Andre ikke instrumentale boldspil.,Other non-instrumental games
+contentsItem,5210,Håndbold.,Team handball
+contentsItem,5211,Dansk klub-håndbold - kvinder,Danish team handball - women
+contentsItem,5212,Dansk klub-håndbold - herrer,Danish team handball - men
+contentsItem,5213,Danske håndboldlandskampe - kvinder,Danish international handball matches - women
+contentsItem,5214,Danske håndboldlandskampe - herrer,Danish international handball matches - men
+contentsItem,5215,"OL-, EM- og VM-håndboldkampe - kvinder","Olympiad, European Championship and World Championchip handb"
+contentsItem,5216,"OL-, EM- og VM-håndboldkampe - herrer","Olympiad, European Championship and World Championchip handb"
+contentsItem,5217,Europa cup-kampe - kvinder,European cup matches - women
+contentsItem,5218,Europa cup-kampe - herrer,European cup matches - men
+contentsItem,5219,Anden håndbold,Other handball
+contentsItem,5220,Basketball.,Basketball
+contentsItem,5230,Volleyball.,Volleyball
+contentsItem,5231,Beach volley,Beach volley
+contentsItem,5240,Bowling.,Bowling
+contentsItem,5250,American football.,American football
+contentsItem,5260,Rugby,Rugby
+contentsItem,5270,Australien football,Australian football
+contentsItem,5290,Andet.,Other
+contentsItem,5300,Instrumentale spil.,Instrumental games
+contentsItem,5310,Tennis.,Tennis
+contentsItem,5320,Bordtennis.,Table tennis
+contentsItem,5330,Badminton.,Badminton
+contentsItem,5340,Golf.,Golf
+contentsItem,5350,Billard.,Billiard
+contentsItem,5360,Skak.,Chess
+contentsItem,5370,Bridge.,Bridge.
+contentsItem,5380,Poker,Poker
+contentsItem,5390,Andet.,Other
+contentsItem,5400,Væddeløb og hesteløb.,Race and horse race
+contentsItem,5410,Cykling.,Bicycling
+contentsItem,5411,Banecykling,Racing track cycling
+contentsItem,5412,Landevejscykling,Road cycling
+contentsItem,5413,Cykelcross,Cross country cycling
+contentsItem,5420,Motorsport.,Motor sports
+contentsItem,5421,Formel 1,Formula 1
+contentsItem,5430,Speedway.,Speedway
+contentsItem,5440,"Hestesport (gallop, trav, ridebane","Horse sports (gallop, trotting, riding ground etc)"
+contentsItem,5490,Andet.,Other
+contentsItem,5500,Vintersport.,Winter sports
+contentsItem,5510,Ishockey.,Icehockey
+contentsItem,5520,Skisport.,Ski-ing
+contentsItem,5521,Styrtløb,Downhill
+contentsItem,5522,Pukkelpist,Free style
+contentsItem,5523,Skeetskydning,Biathlon
+contentsItem,5524,Super G,Super G
+contentsItem,5525,Skihop,Ski jump
+contentsItem,5526,Slalom,Slalom
+contentsItem,5527,Langrend,Cross country skiing
+contentsItem,5530,Skøjteløb.,Skating
+contentsItem,5531,Hurtigløb,Sprinting
+contentsItem,5532,Isdans,Ice dancing
+contentsItem,5540,Bobslæde,Bobsleigh
+contentsItem,5550,Curling,Curling
+contentsItem,5560,Isspeedway,Ice speedway
+contentsItem,5570,Snowboard,Snowboard
+contentsItem,5590,Andet.,Other
+contentsItem,5600,Vandsport.,Water sports
+contentsItem,5610,Svømning.,Swimming
+contentsItem,5620,Sejlsport.,Yachting
+contentsItem,5630,Kano/kajak/roning.,Canoe/kayak/rowing
+contentsItem,5640,Windsurfing,Windsurfing
+contentsItem,5650,Vandski,Water skiing
+contentsItem,5660,Vandpolo,Water polo
+contentsItem,5670,Undervandsrugby,Under water rugby
+contentsItem,5690,Andet.,Other
+contentsItem,5700,Kampsport og vægtløftning.,Martial arts and weight-lifting
+contentsItem,5710,Taekwon-do o.lign.,Taekwon-do and the like
+contentsItem,5720,Boksning.,Boxing
+contentsItem,5721,Amatører,Amateurs
+contentsItem,5722,Professionelle,Professionals
+contentsItem,5730,Vægtløftning.,Weight-lifting
+contentsItem,5740,Anden styrkesport,Other bodybuliding
+contentsItem,5790,Andet.,Other
+contentsItem,5800,"Atletik, gymnastik og dans.","Athletics, gymnastics and dancing"
+contentsItem,5810,Atletik.,Athletics
+contentsItem,5820,Gymnastik.,Gymnastics
+contentsItem,5830,Sportsdans.,Sports dancing
+contentsItem,5840,Aerobic,Aerobic
+contentsItem,5850,Fitness,Fitness
+contentsItem,5860,Løb (herunder maraton og kapgang),Running (including marathon and race walking)
+contentsItem,5890,Andet.,Other
+contentsItem,5900,"Blandet, handicap og andet.","Mixed, handicap and other"
+contentsItem,5910,Blandet sport - nyhedspræget uden,Mixed sports - news-oriented - no audience
+contentsItem,5920,Blandet sport - nyhedspræget med,Mixed sports - news-oriented and present audience
+contentsItem,5930,Sportstema - blandet sport uden,Sports theme - Mixed sports without news-orienta-
+contentsItem,5940,Optaktsudsendelser til sportbegiven-,Prelude programmes to sporting events
+contentsItem,5950,Handicapidræt.,Handicap sports
+contentsItem,5960,Folkelig idræt (herunder f.eks.-,National sports (including national conventions and
+contentsItem,5970,Blandede OL-udsendelser.,Mixed olympic games programmes
+contentsItem,5990,Andet.,Other
+contentsItem,6000,Underholdning,Entertainment
+contentsItem,6100,Shows,Shows
+contentsItem,6200,Variete,Music hall
+contentsItem,6300,Kabaret,Cabaret
+contentsItem,6400,"Revy, satire","Revue, satire"
+contentsItem,6500,"Quiz, game (hvis ingen emnekategorisering)","Quiz, game (If no subject category)"
+contentsItem,6600,Cirkus,Circus
+contentsItem,6700,Journalistisk underholdning,Journalistic entertainment
+contentsItem,6800,"Skjult kamera, amatørvideo, o.l.","Candid camera, amateur video and such"
+contentsItem,6900,Anden underholdning,Other entertainment
+contentsItem,6910,Realityprogrammer uden fagligt indhold,Reality Applications without professional content
+contentsItem,6920,Faktuel underholdning,Factual entertainment
+contentsItem,6921,Motorprogrammer,Cars & Motors
+contentsItem,6922,Teknik/science/engineering,Technical/science/engineering
+contentsItem,6923,Adventure,Adventure
+contentsItem,6924,Techno/mande soap,Techno/man soap
+contentsItem,7000,Andet,Other
+contentsItem,7100,Øvrige programsatte udsendelser,Other programmes due to be transmitted
+contentsItem,7110,Reklameblokke og Breaks,Commercials
+contentsItem,7111,Blå,Blue
+contentsItem,7112,Rød,Red
+contentsItem,7113,Grøn,Green
+contentsItem,7114,Gul,Yellow
+contentsItem,7115,Blokke med GRP niveau  0-6  grp.,GRP: 0-6
+contentsItem,7116,Blokke med GRP niveau  7-12 grp.,GRP: 7-12
+contentsItem,7117,Blokke med GRP niveau 13-20 grp.,GRP:13-20
+contentsItem,7118,Blokke med GRP niveau 21-25 grp.,GRP: 21-25
+contentsItem,7119,Blokke med GRP niveau  26+  grp.,GRP: 26+
+contentsItem,7120,OBS,Information from the Danish State Information Service
+contentsItem,7130,Eksperimentalprogrammer,Experimental programmes
+contentsItem,7140,TTV-Nyheder,Teletext news
+contentsItem,7150,Andet TTV,Other Teletext news
+contentsItem,7160,Programoversigter (Programsatte),Programme news (due to be transmitted)
+contentsItem,7161,Levende billeder,Moving pictures
+contentsItem,7162,Ikke levende billeder,Stills
+contentsItem,7190,Andet,Other
+contentsItem,7200,Ikke programsatte udsendelser,Programmes not due to be transmitted
+contentsItem,7210,TR: (tekst) [trailer],TR: (text) [trailer]
+contentsItem,7211,TR: Med sponsor,TR: With sponsor
+contentsItem,7212,TR: Uden sponsor,TR: Without sponsor
+contentsItem,7220,SI: Statens Informationer / TV 2,SI: Information from the State / TV 2
+contentsItem,7230,F:  (tekst på den ikke programsatte,F: (text on the filler which is not due to be transmitted
+contentsItem,7240,"S:  (tekst) [skilt, spot, ur, oplæg]","S: (text) [sign, spot, watch, introduction]"
+contentsItem,7250,PR: (tekst) [programoversigt],PR: (text) [programme news]
+contentsItem,7251,Levende billeder,Moving pictures
+contentsItem,7252,Ikke levende billeder,Stills
+contentsItem,7260,P:  Pause (sort skærm/skilt m. teknisk,P: Pause (black screen/sign with technical hitch)
+contentsItem,7270,SP: Sponsorintro/-outro,SP: Sponsor intro/-outro
+contentsItem,7290,A:  Andet,A: Other
+contentsItem,8000,TV  2-regionale emner,TV  2-region subjects
+contentsItem,8100,"Regionale nyhedsudsendelser på alle kanaler, der",Region News
+contentsItem,8200,"Regionale valgudsendelser, herunder folkeafstem-",Region election
+contentsItem,8300,Regionale jobs/arbejdsmarkedsudsendelser på alle,Region job/labour market
+contentsItem,8400,"Turistinformation på alle kanaler, der er i",Turistinformation
+contentsItem,8500,"Sportsudsendelser på alle kanaler, der er i",Sports
+contentsItem,8600,Transmissioner af regionale begivenheder på alle,Region events
+contentsItem,8700,Åben,Open
+contentsItem,8800,Åben,Open
+contentsItem,8900,Andet eller en blanding af forskellige program-,Other or a mix of different programs
+form,1000,Journalistiske programmer.,Journalistic programmes
+form,1100,Nyhedsuds.,News programmes
+form,1200,Reportage,On-the-spot report
+form,1300,Dokumentar,Documentary
+form,1400,Magasin,Magazine
+form,1500,Portræt,Portrait
+form,1600,Transmission,Transmission
+form,1700,Amatørvideo,Amateur video
+form,1800,Journalistik med underholdning/Værtspræget underholdning,Journalism with entertainment/Host Embossed entertainment
+form,1900,Andet,Other
+form,2000,Snakkeprogrammer (diskussion).,Talk shows (discussion)
+form,2100,Interview,Interview
+form,2110,Værtspræget,Host-oriented
+form,2120,Uden særligt værtspræg,Not particularly host-oriented
+form,2200,Debat,Debate
+form,2210,Værtspræget,Host-oriented
+form,2220,Uden særligt værtspræg,Not particularly host-oriented
+form,2300,Andet,Other
+form,3000,Show-programmer.,Show programmes
+form,3100,"Quiz, Game","Quiz, Game"
+form,3110,m/  alm. mennesker,With ordinary people
+form,3120,m/  amatøreksperter,With amateur experts
+form,3130,m/  prof. eksperter,With professional experts
+form,3140,m/  kendte mennesker,With famous people
+form,3200,Optræden,Performance
+form,3300,Underholdningsmagasin,Entertainment magazine
+form,3400,Reality,Reality
+form,3900,Andet,Other
+form,4000,Fiktion,Fiction
+form,4100,Skuespil,Plays
+form,4200,Film,Films
+form,4210,Biograffilm,Movie
+form,4220,TV-film (film lavet til TV),TV-Movie
+form,4230,Film lavet direkte til udgivelse på video/DVD,Movies made directly to release on video/DVD
+form,4300,Kortfilm/novellefilm (under 65 minutter),Short film/films based on short stories (less 65 min.)
+form,4400,Serie,Series
+form,4410,Episode  (uanset antal),Episode * (regardless of number)
+form,4411,Kort varighed,Short duration
+form,4412,Mellem varighed,Medium duration
+form,4413,Lang varighed,Long duration
+form,4420,Miniserie  (føljeton) (2-6 afsnit),Mini series * (serial) (2-6 episodes)
+form,4421,Kort varighed,Short duration
+form,4422,Mellem varighed,Medium duration
+form,4423,Lang varighed,Long duration
+form,4430,Føljeton  (7+ afsnit),Serial * (7+ episodes)
+form,4431,Kort varighed,Short duration
+form,4432,Mellem varighed,Medium duration
+form,4433,Lang varighed,Long duration
+form,4500,Animation,Animation
+form,4510,Tegnefilm,Cartoons
+form,4520,Dukkefilm,Puppet films
+form,4590,Andet,Other
+form,4900,Andet,Other
+form,5000,Musisk,Artistic
+form,5100,Musikdramatik (opera),Music drama (opera)
+form,5200,Musik,Music
+form,5300,Sang,Singing
+form,5400,Musik og sang,Music and singing
+form,5900,Andet,Other
+form,6000,Sport,Sports
+form,6100,Nyhedsuds.,News programmes
+form,6200,Magasin,Magazine
+form,6300,Portræt,Portrait
+form,6400,Dokumentar,Documentary
+form,6500,Olympiske lege,Olympic games
+form,6600,International begivenhed/event,International events
+form,6700,National begivenhed,National events
+form,6800,Snakkeprogrammer,Talkshow
+form,6810,Interview,Interview
+form,6811,Værtspræget,Host-oriented
+form,6812,Uden særlig værtspræg,Not particularly host-oriented
+form,6820,Debat,Debate
+form,6821,Værtspræget,Host-oriented
+form,6822,Uden særlig værtspræg,Not particularly host-oriented
+form,6830,Andet,Other
+form,6900,Andet,Other
+form,7000,"Ikke  egentlige programmer (Præsentation, reklamer m.v.)","Non-programming (Introduction, commercials and the like)"
+form,8000,Uddannelse,Education
+form,9000,Blandet/Andet,Miscellaneous/other
+frequency,1000,Enkelt udsendelse,Single programme
+frequency,2000,Serie,Series
+frequency,2100,Dagligt (mere end 6 dage i træk),Daily (more than 6 days in a row)
+frequency,2200,Ugentligt,Weekly
+frequency,2210,1 gang ugentlig,Once a week
+frequency,2220,2-6 gange ugentligt,2 - 6 times weekly
+frequency,2300,Hver 14. dag,Every fortnight
+frequency,2400,1 gang pr. måned,Once a month
+frequency,2500,2-11 gange årligt,2-11 times a year
+frequency,2600,Årligt,Yearly
+frequency,2700,Anden frekvens,Other frequency
+frequency,2800,Tilbagevendende uden fast rytme,Returning without any continuance
+frequency,3000,"Hverken enkelt eller serie, f.eks. trailere, TV2s rek.blok.","Nor single or series, eg trailers"
+origin,1000,"Egenproduktion ( DR TV, TV 2/DANMARK, TV 2 Zulu eller TV3)","Own production ( DR TV, TV 2/DANMARK, TV 2 Zulu eller TV3)"
+origin,1100,"National prod. (DR TV, TV 2/DANMARK, TV 2 Zulu eller TV3)","National prod. (DR TV, TV 2/DANMARK, TV 2 Zulu eller TV3)"
+origin,1110,Samproduktion TV 2/DANMARK og region(er),Co-production TV 2/DANMARK and region(s)
+origin,1120,TV 2/News,TV 2/News
+origin,1130,Egenproduceret Nordvision,Own production Nordvision
+origin,1140,TV 2/DANMARK - Sporten,TV 2/DANMARK - Sport
+origin,1150,TV 2/DANMARK - Promotion,TV 2/DANMARK - Promotion
+origin,1160,TV 2/DANMARK - TV 2/Design,TV 2/DANMARK - TV 2/Design
+origin,1170,TV 2/DANMARK - Nyheder/Aktualitet,TV 2/DANMARK - News/Documentry
+origin,1180,TV 2/Networks,TV 2/Networks
+origin,1190,TV 2/Interaktiv,TV 2/Interaktiv
+origin,1200,Regional produktion(NB ikke entreprise),Regional production (NB not enterprise)
+origin,1210,TV 2/BORNHOLM,TV 2/BORNHOLM
+origin,1220,TV 2/FYN,TV 2/FYN
+origin,1230,TV/MIDT-VEST,TV/MIDT-VEST
+origin,1240,TV SYD,TV SYD
+origin,1250,TV 2 / ØSTJYLLAND,TV 2 / ØSTJYLLAND
+origin,1260,TV2 ØST,TV2 ØST
+origin,1270,TV2/NORD,TV2/NORD
+origin,1280,TV 2/ Lorry,TV 2/ Lorry
+origin,1290,Kombinationer af regioner,Combinations of regions
+origin,2000,Coproduktion,Co-production
+origin,2100,Copr. - intern produktion,Co-pr - internal production
+origin,2200,Copr. - ekstern produktion,Co-pr - external production
+origin,2300,Copr. - blandingsproduktion,Co-pr - mixed production
+origin,2400,Copr. Nordvisionsprogrammer,Co-pr Nordvision programmes
+origin,3000,Entreprise,Enterprise
+origin,3100,Program-entreprise,Programme enterprise
+origin,3200,Produktions-entreprise,Production enterprise
+origin,3300,Del-entreprise,Part enterprise
+origin,3400,Regional-entreprise,Regional enterprise
+origin,3410,TV 2/BORNHOLM,TV 2/BORNHOLM
+origin,3420,TV 2/FYN,TV 2/FYN
+origin,3430,TV/MIDT-VEST,TV/MIDT-VEST
+origin,3440,TV SYD,TV SYD
+origin,3450,TV 2 / ØSTJYLLAND,TV 2 / ØSTJYLLAND
+origin,3460,TV2 ØST,TV2 ØST
+origin,4000,Fremmedproduktion (specificeres i 4.1.-4.4),Foreign production (specificated in 41-44)
+origin,4100,En el. flere TV-stationers egenproduktion,Own production of one or more Television stations
+origin,4200,Coprod. mellem TV-stat. og uafh. prod.,Co-prod between Tv stations and independent productions
+origin,4300,Entreprise fra uafh. producent,Enterprise made by independent producer
+origin,4400,"Prod. af uafh. producent, fx. spillefilm","Production made by independent producer, eg feature films"
+origin,4500,Fremmedproduceret Nordvision,Foreign produced Nordvision
+origin,4600,Rettighedskøb af TV-signal,Purchase of broadcast rights
+sendstatus,1000,Førstegangsudsendelse,First-time broadcast
+sendstatus,2000,Genudsendelse,Genudsendelse
+sendstatus,2000,Genudsendelse,Repeat
+sendstatus,2100,1. Genudsendelse,1 Repeat
+sendstatus,2110,"DR 1, hvor 1. gangsudsendelsen var på DR 1.","DR 1, where  1.repeat was on DR 1."
+sendstatus,2120,"DR 1, hvor 1. gangsudsendelsen var på DR 2.","DR 1, where  1.repeat was on DR 2."
+sendstatus,2130,"DR 2, hvor 1. gangsudsendelsen var på DR 1.","DR 2, where  1.repeat was on DR 1."
+sendstatus,2140,"DR 2, hvor 1. gangsudsendelsen var på DR 2.","DR 2, where  1.repeat was on DR 2."
+sendstatus,2150,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where  1.repeat was on TV 2."
+sendstatus,2160,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where  1.repeat was on TV 2 Zulu."
+sendstatus,2170,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where  1.repeat was on TV 2."
+sendstatus,2180,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2 Zulu, where  1.repeat was on TV 2 Zulu."
+sendstatus,2190,Genudsendele på TV 2 Charlie,Genudsendele på TV 2 Charlie
+sendstatus,2191,"1. Genuds. på TV 2 Charlie, 1. gangsuds. var på TV 2 Charlie","1. Genuds. på TV 2 Charlie, 1. gangsuds. var på TV 2 Charlie"
+sendstatus,2192,"1. Genuds. på TV 2 Charlie, 1. gangsuds. var på TV 2","1. Genuds. på TV 2 Charlie, 1. gangsuds. var på TV 2"
+sendstatus,2193,"1. Genuds. på TV 2, 1. gangsuds. var på TV 2 Charlie","1. Genuds. på TV 2, 1. gangsuds. var på TV 2 Charlie"
+sendstatus,2200,2. Genudsendelse,2 Repeat
+sendstatus,2210,"DR 1, hvor 1. gangsudsendelsen var på DR 1.","DR 1, where  1.repeat was on DR 1."
+sendstatus,2220,"DR 1, hvor 1. gangsudsendelsen var på DR 2.","DR 1, where  1.repeat was on DR 2."
+sendstatus,2230,"DR 2, hvor 1. gangsudsendelsen var på DR 1.","DR 2, where  1.repeat was on DR 1."
+sendstatus,2240,"DR 2, hvor 1. gangsudsendelsen var på DR 2.","DR 2, where  1.repeat was on DR 2."
+sendstatus,2250,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where  1.repeat was on TV 2."
+sendstatus,2260,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where  1.repeat was on TV 2 Zulu."
+sendstatus,2270,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where  1.repeat was on TV 2."
+sendstatus,2280,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2 Zulu, where  1.repeat was on TV 2 Zulu."
+sendstatus,2300,3. Genudsendelse,3 Repeat
+sendstatus,2310,"DR 1, hvor 1. gangsudsendelsen var på DR 1.","DR 1, where  1.repeat was on DR 1."
+sendstatus,2320,"DR 1, hvor 1. gangsudsendelsen var på DR 2.","DR 1, where  1.repeat was on DR 2."
+sendstatus,2330,"DR 2, hvor 1. gangsudsendelsen var på DR 1.","DR 2, where  1.repeat was on DR 1."
+sendstatus,2340,"DR 2, hvor 1. gangsudsendelsen var på DR 2.","DR 2, where  1.repeat was on DR 2."
+sendstatus,2350,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where  1.repeat was on TV 2."
+sendstatus,2360,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where  1.repeat was on TV 2 Zulu."
+sendstatus,2370,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where  1.repeat was on TV 2."
+sendstatus,2380,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2 Zulu, where  1.repeat was on TV 2 Zulu."
+sendstatus,2400,4. Genudsendelse,4 Repeat
+sendstatus,2410,"DR 1, hvor 1. gangsudsendelsen var på DR 1.","DR 1, where  1.repeat was on DR 1."
+sendstatus,2420,"DR 1, hvor 1. gangsudsendelsen var på DR 2.","DR 1, where  1.repeat was on DR 2."
+sendstatus,2430,"DR 2, hvor 1. gangsudsendelsen var på DR 1.","DR 2, where  1.repeat was on DR 1."
+sendstatus,2440,"DR 2, hvor 1. gangsudsendelsen var på DR 2.","DR 2, where  1.repeat was on DR 2."
+sendstatus,2450,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where  1.repeat was on TV 2."
+sendstatus,2460,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where  1.repeat was on TV 2 Zulu."
+sendstatus,2470,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where  1.repeat was on TV 2."
+sendstatus,2480,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2 Zulu, where  1.repeat was on TV 2 Zulu."
+sendstatus,2500,5. Genudsendelse,5 Repeat
+sendstatus,2510,"DR 1, hvor 1. gangsudsendelsen var på DR 1.","DR 1, where  1.repeat was on DR 1."
+sendstatus,2520,"DR 1, hvor 1. gangsudsendelsen var på DR 2.","DR 1, where  1.repeat was on DR 2."
+sendstatus,2530,"DR 2, hvor 1. gangsudsendelsen var på DR 1.","DR 2, where  1.repeat was on DR 1."
+sendstatus,2540,"DR 2, hvor 1. gangsudsendelsen var på DR 2.","DR 2, where  1.repeat was on DR 2."
+sendstatus,2550,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where  1.repeat was on TV 2."
+sendstatus,2560,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where  1.repeat was on TV 2 Zulu."
+sendstatus,2570,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where  1.repeat was on TV 2."
+sendstatus,2580,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2 Zulu, where  1.repeat was on TV 2 Zulu."
+sendstatus,2600,6. Genudsendelse,6 Repeat
+sendstatus,2610,"DR 1, hvor 1. gangsudsendelsen var på DR 1.","DR 1, where  1.repeat was on DR 1."
+sendstatus,2620,"DR 1, hvor 1. gangsudsendelsen var på DR 2.","DR 1, where  1.repeat was on DR 2."
+sendstatus,2630,"DR 2, hvor 1. gangsudsendelsen var på DR 1.","DR 2, where  1.repeat was on DR 1."
+sendstatus,2640,"DR 2, hvor 1. gangsudsendelsen var på DR 2.","DR 2, where  1.repeat was on DR 2."
+sendstatus,2650,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where  1.repeat was on TV 2."
+sendstatus,2660,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where  1.repeat was on TV 2 Zulu."
+sendstatus,2670,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where  1.repeat was on TV 2."
+sendstatus,2680,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2 Zulu, where  1.repeat was on TV 2 Zulu."
+sendstatus,2700,7. Genudsendelse,7 Repeat
+sendstatus,2710,"DR 1, hvor 1. gangsudsendelsen var på DR 1.","DR 1, where  1.repeat was on DR 1."
+sendstatus,2720,"DR 1, hvor 1. gangsudsendelsen var på DR 2.","DR 1, where  1.repeat was on DR 2."
+sendstatus,2730,"DR 2, hvor 1. gangsudsendelsen var på DR 1.","DR 2, where  1.repeat was on DR 1."
+sendstatus,2740,"DR 2, hvor 1. gangsudsendelsen var på DR 2.","DR 2, where  1.repeat was on DR 2."
+sendstatus,2750,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where  1.repeat was on TV 2."
+sendstatus,2760,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where  1.repeat was on TV 2 Zulu."
+sendstatus,2770,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where  1.repeat was on TV 2."
+sendstatus,2780,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2 Zulu, where  1.repeat was on TV 2 Zulu."
+sendstatus,2800,8.+ Genudsendelse,8+ Repeat
+sendstatus,2810,"DR 1, hvor 1. gangsudsendelsen var på DR 1.","DR 1, where  1.repeat was on DR 1."
+sendstatus,2820,"DR 1, hvor 1. gangsudsendelsen var på DR 2.","DR 1, where  1.repeat was on DR 2."
+sendstatus,2830,"DR 2, hvor 1. gangsudsendelsen var på DR 1.","DR 2, where  1.repeat was on DR 1."
+sendstatus,2840,"DR 2, hvor 1. gangsudsendelsen var på DR 2.","DR 2, where  1.repeat was on DR 2."
+sendstatus,2850,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where  1.repeat was on TV 2."
+sendstatus,2860,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where  1.repeat was on TV 2 Zulu."
+sendstatus,2870,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where  1.repeat was on TV 2."
+sendstatus,2880,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2 Zulu, where  1.repeat was on TV 2 Zulu."
+sendstatus,2900,Snapreprise,Snap repeat
+sendstatus,2910,1. Snaprepris,1. Snaprepris
+sendstatus,2911,"DR 1, hvor 1. gangsudsendelsen var på DR 1","DR 1, where 1. repeat was on  DR 1"
+sendstatus,2912,"DR 1, hvor 1. gangsudsendelsen var på DR 2","DR 1, where 1. repeat was on  DR 2"
+sendstatus,2913,"DR 2, hvor 1. gangsudsendelsen var på DR 1","DR 2, where 1. repeat was on  DR 1"
+sendstatus,2914,"DR 2, hvor 1. gangsudsendelsen var på DR 2","DR 2, where 1. repeat was on  DR 2"
+sendstatus,2915,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where 1. repeat was on  TV 2"
+sendstatus,2916,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where 1. repeat was on  TV 2 Zulu"
+sendstatus,2917,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where 1. repeat was on  TV 2"
+sendstatus,2918,"TV 2 Zulu, hvor 1. gangsudsen. var på TV 2 Zulu","TV 2 Zulu, where 1. gangsudsen. var på TV 2 Zulu"
+sendstatus,2920,2. Snaprepris,2. Snaprepris
+sendstatus,2921,"DR 1, hvor 1. gangsudsendelsen var på DR 1","DR 1, where 1. repeat was on  DR 1"
+sendstatus,2922,"DR 1, hvor 1. gangsudsendelsen var på DR 2","DR 1, where 1. repeat was on  DR 2"
+sendstatus,2923,"DR 2, hvor 1. gangsudsendelsen var på DR 1","DR 2, where 1. repeat was on  DR 1"
+sendstatus,2924,"DR 2, hvor 1. gangsudsendelsen var på DR 2","DR 2, where 1. repeat was on  DR 2"
+sendstatus,2925,"TV 2, hvor 1. gangsudsendelsen var på TV 2","TV 2, where 1. repeat was on  TV 2"
+sendstatus,2926,"TV 2, hvor 1. gangsudsendelsen var på TV 2 Zulu","TV 2, where 1. repeat was on  TV 2 Zulu"
+sendstatus,2927,"TV 2 Zulu, hvor 1. gangsudsendelsen var på TV 2","TV 2 Zulu, where 1. repeat was on  TV 2"
+sendstatus,2928,"TV 2 Zulu, hvor 1. gangsudsen. var på TV 2 Zulu","TV 2 Zulu, where 1. gangsudsen. var på TV 2 Zulu"
+sendstatus,2990,Samsending,Simulcast
+sendstatus,2999,Samsending,Simulcast
+sendstatus,3000,"Ikke egentlige programmer (Præsentation, reklamer m.v.)","Ikke egentlige programmer (Præsentation, reklamer m.v.)"
+sendstatus,4000,Genkøb,Repurchase
+productionDepartment,1000,DR,DR
+productionDepartment,1100,DR NYHEDER,DR NYHEDER
+productionDepartment,1110,TV-A Nyhedsredaktion,TV-A Nyhedsredaktion
+productionDepartment,1120,TV-A Aktualitet,TV-A Aktualitet
+productionDepartment,1130,DR 2 Nyheder,DR 2 Nyheder
+productionDepartment,1200,TV-FAKTA,TV-FAKTA
+productionDepartment,1210,DR-Kultur,DR-Kultur
+productionDepartment,1220,DR-Dokumentar,DR-Dokumentar
+productionDepartment,1230,DR-Aktualitet og videnskab,DR-Aktualitet og videnskab
+productionDepartment,1240,Coproduktion - udgået pr. 010104.,Coproduktion - udgået pr. 010104.
+productionDepartment,1300,TV-DRAMA/TV-UHA - udgået pr. 010104,TV-DRAMA/TV-UHA - udgået pr. 010104
+productionDepartment,1310,TV-Drama,TV-Drama
+productionDepartment,1330,TV-UHA - er udgået pr. 010104,TV-UHA - er udgået pr. 010104
+productionDepartment,1340,Radio Klassisk,Radio Klassisk
+productionDepartment,1350,DR-Fyn,DR-Fyn
+productionDepartment,1360,Radio Underholdnings Orkestret,Radio Underholdnings Orkestret
+productionDepartment,1370,DR syd,DR syd
+productionDepartment,1380,Radio Symfoniorkestret,Radio Symfoniorkestret
+productionDepartment,1400,DR-B&U - udgået pr. 010104,DR-B&U - udgået pr. 010104
+productionDepartment,1410,DR B&U Små børn,DR B&U Små børn
+productionDepartment,1420,DR B&U Store børn,DR B&U Store børn
+productionDepartment,1430,Tweensredaktion - udgået pr. 010104,Tweensredaktion - udgået pr. 010104
+productionDepartment,1440,Fremmedfilmsredaktion - udgået pr. 010104,Fremmedfilmsredaktion - udgået pr. 010104
+productionDepartment,1500,TV-SPORTEN,TV-SPORTEN
+productionDepartment,1600,TV-PROVINSAFDELINGEN,TV-PROVINSAFDELINGEN
+productionDepartment,1610,DR Århus Fakta,DR Århus Fakta
+productionDepartment,1620,DR Livstil,DR Livstil
+productionDepartment,1630,DR Vejle,DR Vejle
+productionDepartment,1640,DR Bornholm,DR Bornholm
+productionDepartment,1650,DR Midt og Vest,DR Midt og Vest
+productionDepartment,1660,DR Nordjylland,DR Nordjylland
+productionDepartment,1670,DR Regionalen,DR Regionalen
+productionDepartment,1680,DR København,DR København
+productionDepartment,1700,DR-Ung,DR-Ung
+productionDepartment,1800,TV-INTERNATIONAL,TV-INTERNATIONAL
+productionDepartment,1900,TV-Direktøren,TV-Direktøren
+productionDepartment,1910,TV-CR,TV-CR
+productionDepartment,1911,Trailerredaktionen,Trailerredaktionen
+productionDepartment,1912,Præsentationsredaktionen,Præsentationsredaktionen
+productionDepartment,1913,TV-CR co-prod/entreprise/køb,TV-CR co-prod/entreprise/køb
+productionDepartment,1914,Udgået pr 010104,Expired 010104
+productionDepartment,1915,Radio Rytmisk,Radio Rytmisk
+productionDepartment,1916,DR Østjylland,DR Eastjutland
+productionDepartment,1920,DR journalistik og Underholdning,DR journalistik og Underholdning
+productionDepartment,1921,DR journalistik og Underholdning,DR journalistik og Underholdning
+productionDepartment,1930,DR Undervisning,DR Undervisning
+productionDepartment,1940,TV-Pressecenter - er udgået pr. 010104,TV-Pressecenter - er udgået pr. 010104
+productionDepartment,1950,DR Udvikling,DR Udvikling
+productionDepartment,1960,DR Musik og Medier,DR Musik og Medier
+productionDepartment,1970,TV-Markedsføring,TV-Markedsføring
+productionDepartment,2000,TV 2/DANMARK,TV 2/DANMARK
+productionDepartment,2100,Nyhedsafdeling - denne overkat. bruges ikke efter 19.9.2000,Nyhedsafdeling - denne overkat. bruges ikke efter 19.9.2000
+productionDepartment,2110,Nyhedsafdelingen,Nyhedsafdelingen
+productionDepartment,2120,Aktualitetsafdelingen,Aktualitetsafdelingen
+productionDepartment,2130,Sporten,Sporten
+productionDepartment,2200,Programafdeling,Programafdeling
+productionDepartment,2210,Fiktion - bruges ikke efter 1.4.2000,Fiktion - bruges ikke efter 1.4.2000
+productionDepartment,2220,Fakta - bruges ikke efter 1.4.2000,Fakta - bruges ikke efter 1.4.2000
+productionDepartment,2300,TV 2/Interaktiv,TV 2/Interaktiv
+productionDepartment,2400,Programpræsentation,Programpræsentation
+productionDepartment,2500,TV2 Reklame A/S,TV2 Reklame A/S
+productionDepartment,2600,Regionerne,Regionerne
+productionDepartment,2610,TV 2/BORNHOLM,TV 2/BORNHOLM
+productionDepartment,2620,TV 2/FYN,TV 2/FYN
+productionDepartment,2630,TV/MIDT-VEST,TV/MIDT-VEST
+productionDepartment,2640,TV SYD,TV SYD
+productionDepartment,2650,TV 2 / ØSTJYLLAND,TV 2 / ØSTJYLLAND
+productionDepartment,2660,TV2 ØST,TV2 ØST
+productionDepartment,2670,TV2/NORD,TV2/NORD
+productionDepartment,2680,TV 2/ Lorry,TV 2/ Lorry
+productionDepartment,2690,Kombinationer af regioner,Kombinationer af regioner
+productionDepartment,2700,TV 2 Sputnik,TV 2 Sputnik
+productionDepartment,3000,TV 2 Zulu,TV 2 Zulu
+productionDepartment,4000,TV 2 Charlie,TV 2 Charlie
+productionDepartment,5000,TV 2 Film,TV 2 Film
+productionDepartment,6000,TV 2 News,TV 2 News
+productionDepartment,7000,TV 2 Radio,TV 2 Radio
+itemCountry,1000,Danmark,Denmark
+itemCountry,2000,Europa,Europe
+itemCountry,2100,Norden,Scandinavia
+itemCountry,2110,Sverige,Sweden
+itemCountry,2120,Norge,Norway
+itemCountry,2130,Finland,Finland
+itemCountry,2140,Island,Iceland
+itemCountry,2150,Grønland,Greenland
+itemCountry,2160,Færøerne,The Faroe Islands
+itemCountry,2200,Vest-Europa,Western Europe
+itemCountry,2210,Vestlige Mellem-Europa,Central Western Europe
+itemCountry,2211,Storbritannien,Great Britain
+itemCountry,2212,Irland,Ireland
+itemCountry,2213,Tyskland,Germany
+itemCountry,2214,Holland,Holland
+itemCountry,2215,Belgien,Belgium
+itemCountry,2216,Frankrig,France
+itemCountry,2217,Schwei,Switzerland
+itemCountry,2218,Østrig,Austria
+itemCountry,2219,Luxemburg,Luxembourg
+itemCountry,2220,Sydlige-Europa,Southern Europe
+itemCountry,2221,Italien,Italy
+itemCountry,2222,Portugal,Portugal
+itemCountry,2223,Spanien,Spain
+itemCountry,2224,Grækenland,Greece
+itemCountry,2300,Østlige-Europa,Eastern Europe
+itemCountry,2310,De  Baltiske Lande,The Baltic countries
+itemCountry,2311,Estland,Estonia
+itemCountry,2312,Letland,Latvia
+itemCountry,2313,Litauen,Lithuania
+itemCountry,2320,Øst-Europa og Rusland,Eastern Europe and Russia
+itemCountry,2321,Rusland,Russia
+itemCountry,2322,Polen,Poland
+itemCountry,2323,Ungarn,Hungary
+itemCountry,2324,Tjekkiet,The Czech Republic
+itemCountry,2325,Slovakiet,Slovakia
+itemCountry,2326,Rumænien,Rumania
+itemCountry,2327,Hviderusland,White Russia
+itemCountry,2328,Ukraine,Ukraine
+itemCountry,2329,Moldava,Moldavia
+itemCountry,2330,Balkan,Balkans
+itemCountry,2331,Kroatien,Croatia
+itemCountry,2332,Slovenien,Slovenia
+itemCountry,2333,Bosnien-Herzegovina,Bosnia-Herzegovina
+itemCountry,2334,Makedonien,Macedonia
+itemCountry,2335,Rest Jugoslavien (Serbien og Mon-,Rump-Yugoslavia (Serbia and Montenegro)
+itemCountry,2336,Albanien,Albania
+itemCountry,2337,Bulgarien,Bulgaria
+itemCountry,3000,Amerika,America
+itemCountry,3100,USA,USA
+itemCountry,3200,Nordamerika uden USA,North America except the USA
+itemCountry,3210,Canada,Canada
+itemCountry,3220,Arktis,The Arctic regions
+itemCountry,3300,Caribien,The Caribbean Islands
+itemCountry,3310,"Antillerne, De hollandske & De små","The Antilles, The Dutch Islands & The Lesser Antilles"
+itemCountry,3320,Bahamaøerne,The Bahamas
+itemCountry,3330,Bermudaøerne,The Bermudas
+itemCountry,3340,Cuba,Cuba
+itemCountry,3350,"Dominikanske Republik, Den",The Dominican Republic
+itemCountry,3360,Haiti,Haiti
+itemCountry,3370,Jamaica,Jamaica
+itemCountry,3380,Trinidad og Tobago,Trinidad and Tobago
+itemCountry,3390,Grenada,Grenada
+itemCountry,3400,Mellem-Amerika,Central America
+itemCountry,3410,Mexico,Mexico
+itemCountry,3420,Nicaragua,Nicaragua
+itemCountry,3430,El  Salvador,El Salvador
+itemCountry,3440,Costa Rica,Costa Rica
+itemCountry,3450,Panama,Panama
+itemCountry,3460,Honduras,Honduras
+itemCountry,3470,Guatemala,Guatemala
+itemCountry,3500,Sydamerika,South America
+itemCountry,3510,Det Nordlige Sydamerika,Northern South America
+itemCountry,3511,Colombia,Colombia
+itemCountry,3512,Belize (Britisk Honduras),Belize (British Honduras)
+itemCountry,3513,Brasilien,Brazil
+itemCountry,3514,Equador,Ecuador
+itemCountry,3515,Guyana,Guyana
+itemCountry,3516,Venezuela,Venezuela
+itemCountry,3520,Det Sydlige Sydamerika,Southern South America
+itemCountry,3521,Argentina,Argentina
+itemCountry,3522,Bolivia,Bolivia
+itemCountry,3523,Chile,Chile
+itemCountry,3524,Paraguay,Paraguay
+itemCountry,3525,Peru,Peru
+itemCountry,3526,Uruguay,Uruguay
+itemCountry,4000,Afrika,Africa
+itemCountry,4100,Nord-Afrika,North Africa
+itemCountry,4110,Algeriet,Algeria
+itemCountry,4120,Libyen,Libya
+itemCountry,4130,Marokko,Morocco
+itemCountry,4140,Sudan,The Sudan
+itemCountry,4150,Tunesien,Tunisia
+itemCountry,4160,Ægypten,Egypt
+itemCountry,4200,Vest-Afrika,West Africa
+itemCountry,4210,Vest-Afrika A-M,West Africa A-M
+itemCountry,4211,Cameroun,Cameroon
+itemCountry,4212,Gabon,Gabon
+itemCountry,4213,Gambia,Gambia
+itemCountry,4214,Ghana,Ghana
+itemCountry,4215,Guinea,Guinea
+itemCountry,4216,Guinea-Bissaau,Guinea-Bissau
+itemCountry,4217,Kap Verde,Cape Verde
+itemCountry,4218,Liberia,Liberia
+itemCountry,4219,Mali,Mali
+itemCountry,4220,Vest-Afrika M-Å,West Africa M-Z
+itemCountry,4221,Maurethanien,Maurethania
+itemCountry,4222,Nigeria,Nigeria
+itemCountry,4223,Niger,Niger
+itemCountry,4224,Senegal,Senegal
+itemCountry,4225,Sierra Leone,Sierra Leone
+itemCountry,4226,Tchad,Tchad
+itemCountry,4227,Togo og Benin,Togo and Benin
+itemCountry,4228,Vestsahara,West Sahara
+itemCountry,4229,Øvre Volta - Burkino Faso,Upper Volta - Bourkino Faso
+itemCountry,4300,Øst-Afrika,East Africa
+itemCountry,4310,Djibouti,Djibouti
+itemCountry,4320,Etiopien,Ethiopia
+itemCountry,4330,Kenya,Kenya
+itemCountry,4340,Madagaskar,Madagascar
+itemCountry,4350,Malawi,Malawi
+itemCountry,4360,Somalia,Somalia
+itemCountry,4370,Tanzania,Tanzania
+itemCountry,4380,Uganda,Uganda
+itemCountry,4400,Syd-Afrika,South Africa
+itemCountry,4410,Angola,Angola
+itemCountry,4420,Lesotho,Lesotho
+itemCountry,4430,Mocambique,Mozambique
+itemCountry,4440,Namibia,Namibia
+itemCountry,4450,Swaziland,Swaziland
+itemCountry,4460,"Sydafrikanske Republik, Den",South Africa
+itemCountry,4470,Zambia,Zambia
+itemCountry,4480,Zimbabwe,Zimbabwe
+itemCountry,4500,Central-Afrika,Central Africa
+itemCountry,4510,Botswana,Botswana
+itemCountry,4520,Burundi,Burundi
+itemCountry,4530,Rwanda,Rwanda
+itemCountry,4540,"Centralafrikanske Kejserdømme, Det",Central African Republic
+itemCountry,4550,"Congo, Folkerepublikken",The Congo
+itemCountry,4560,"Congo, Den Demokratiske Republik","Congo, Te Democratic republic"
+itemCountry,5000,Asien,Asia
+itemCountry,5100,Mellemøsten,The Middle East
+itemCountry,5110,Mellemøsten A-K,The Middle East A-K
+itemCountry,5111,"Arabiske Emirater, De",The United Arab Emirates
+itemCountry,5112,Bahrain,Bahrain
+itemCountry,5113,Cypern,Cyprus
+itemCountry,5114,Irak,Iraq
+itemCountry,5115,Iran,Iran
+itemCountry,5116,Israel,Israel
+itemCountry,5117,Jordan,Jordan
+itemCountry,5118,Kuwait,Kuwait
+itemCountry,5120,Mellemøsten L-Å,The Middle East L-Z
+itemCountry,5121,Libanon,Lebanon
+itemCountry,5122,Oman,Oman
+itemCountry,5123,Qatar,Qatar
+itemCountry,5124,Saudi Arabien,Saudi Arabia
+itemCountry,5125,Syrien,Syria
+itemCountry,5126,Tyrkiet,Turkey
+itemCountry,5127,Yemen (Nordyemen),Yemen (Northern Yemen)
+itemCountry,5128,Yemen (Sydyemen),Yemen (Southern Yemen)
+itemCountry,5200,Central-Asien,Central Asia
+itemCountry,5210,Azerbaidjan,Azerbaidjan
+itemCountry,5220,Armenien,Armenia
+itemCountry,5230,Georgien,Georgia
+itemCountry,5240,Turkmenistan,Turkmenistan
+itemCountry,5250,Tadjikistan,Tadjikistan
+itemCountry,5260,Kazakhstan,Kazakhstan
+itemCountry,5270,Uzbekistan,Uzbekistan
+itemCountry,5280,Kirgisistan,Kirgisistan
+itemCountry,5300,Syd-Asien,South Asia
+itemCountry,5310,Afghanistan,Afghanistan
+itemCountry,5320,Bangla Desh,Bangladesh
+itemCountry,5330,Bhutan,Bhutan
+itemCountry,5340,Indien,India
+itemCountry,5350,Maldiverne,The Maldive Islands
+itemCountry,5360,Pakistan,Pakistan
+itemCountry,5400,Øst-Asien,East Asia
+itemCountry,5410,Hongkong,Hongkong
+itemCountry,5420,Japan,Japan
+itemCountry,5430,Kina,China
+itemCountry,5440,Korea (Nordkorea),Korea (North Korea)
+itemCountry,5450,Korea (Sydkorea),Korea (South Korea)
+itemCountry,5460,Macao,Macao
+itemCountry,5470,"Mongolske Folkerepublik, Den",The Mongolian People's Republic
+itemCountry,5480,Singapore,Singapore
+itemCountry,5490,Taiwan (Formosa),Taiwan (Formosa)
+itemCountry,5500,Sydøst-Asien,South East Asia
+itemCountry,5510,Sydøst-Asien A-M,South East Asia A-M
+itemCountry,5511,Burma,Burma
+itemCountry,5512,Indonesien,Indonesia
+itemCountry,5513,Kampuchea,Kampuchea
+itemCountry,5514,Laos,Laos
+itemCountry,5515,Malaysia,Malaysia
+itemCountry,5520,Sydøst-Asien N-Å,South East Asia N-Z
+itemCountry,5521,Nepal,Nepal
+itemCountry,5522,Philippinerne,The Philippines
+itemCountry,5523,Sri Lanka,Sri Lanka
+itemCountry,5524,Thailand,Thailand
+itemCountry,5525,Vietnam,Vietnam
+itemCountry,6000,Austalien & Oceanien,Australia & Oceania
+itemCountry,6100,Australien,Australia
+itemCountry,6200,Mikronesien,Micronesia
+itemCountry,6300,New Guinea,New Guinea
+itemCountry,6400,New Zealand,New Zealand
+itemCountry,6500,Polynesien,Polynesia
+itemCountry,6600,Antarktis,The Antarctic
+itemCountry,7000,Grupper af lande,Groups of countries
+itemCountry,7100,EU-lande,EU countries
+itemCountry,7200,SNG-lande,SNG countries
+itemCountry,7300,Industrialiserede-lande,Industrialized countries
+itemCountry,7400,Udviklings-lande,Developing countries
+itemCountry,8000,Ikke geografisk bestemt,No geographic location
+itemCountry,9000,Ikke placerbart på verdensdele,Not placable on continents
+productionCountry,1000,Danmark,Denmark
+productionCountry,2000,Europa,Europe
+productionCountry,2100,Norden,Scandinavia
+productionCountry,2110,Sverige,Sweden
+productionCountry,2120,Norge,Norway
+productionCountry,2130,Finland,Finland
+productionCountry,2140,Island,Iceland
+productionCountry,2150,Grønland,Greenland
+productionCountry,2160,Færøerne,The Faroe Islands
+productionCountry,2200,Vest-Europa,Western Europe
+productionCountry,2210,Vestlige Mellem-Europa,Central Western Europe
+productionCountry,2211,Storbritannien,Great Britain
+productionCountry,2212,Irland,Ireland
+productionCountry,2213,Tyskland,Germany
+productionCountry,2214,Holland,Holland
+productionCountry,2215,Belgien,Belgium
+productionCountry,2216,Frankrig,France
+productionCountry,2217,Schwei,Switzerland
+productionCountry,2218,Østrig,Austria
+productionCountry,2219,Luxemburg,Luxembourg
+productionCountry,2220,Sydlige-Europa,Southern Europe
+productionCountry,2221,Italien,Italy
+productionCountry,2222,Portugal,Portugal
+productionCountry,2223,Spanien,Spain
+productionCountry,2224,Grækenland,Greece
+productionCountry,2300,Østlige-Europa,Eastern Europe
+productionCountry,2310,De  Baltiske Lande,The Baltic countries
+productionCountry,2311,Estland,Estonia
+productionCountry,2312,Letland,Latvia
+productionCountry,2313,Litauen,Lithuania
+productionCountry,2320,Øst-Europa og Rusland,Eastern Europe and Russia
+productionCountry,2321,Rusland,Russia
+productionCountry,2322,Polen,Poland
+productionCountry,2323,Ungarn,Hungary
+productionCountry,2324,Tjekkiet,The Czech Republic
+productionCountry,2325,Slovakiet,Slovakia
+productionCountry,2326,Rumænien,Rumania
+productionCountry,2327,Hviderusland,White Russia
+productionCountry,2328,Ukraine,Ukraine
+productionCountry,2329,Moldava,Moldavia
+productionCountry,2330,Balkan,Balkans
+productionCountry,2331,Kroatien,Croatia
+productionCountry,2332,Slovenien,Slovenia
+productionCountry,2333,Bosnien-Herzegovina,Bosnia-Herzegovina
+productionCountry,2334,Makedonien,Macedonia
+productionCountry,2335,Rest Jugoslavien (Serbien og Mon-,Rump-Yugoslavia (Serbia and Montenegro)
+productionCountry,2336,Albanien,Albania
+productionCountry,2337,Bulgarien,Bulgaria
+productionCountry,3000,Amerika,America
+productionCountry,3100,USA,USA
+productionCountry,3200,Nordamerika uden USA,North America except the USA
+productionCountry,3210,Canada,Canada
+productionCountry,3220,Arktis,The Arctic regions
+productionCountry,3300,Caribien,The Caribbean Islands
+productionCountry,3310,"Antillerne, De hollandske & De små","The Antilles, The Dutch Islands & The Lesser Antilles"
+productionCountry,3320,Bahamaøerne,The Bahamas
+productionCountry,3330,Bermudaøerne,The Bermudas
+productionCountry,3340,Cuba,Cuba
+productionCountry,3350,"Dominikanske Republik, Den",The Dominican Republic
+productionCountry,3360,Haiti,Haiti
+productionCountry,3370,Jamaica,Jamaica
+productionCountry,3380,Trinidad og Tobago,Trinidad and Tobago
+productionCountry,3390,Grenada,Grenada
+productionCountry,3400,Mellem-Amerika,Central America
+productionCountry,3410,Mexico,Mexico
+productionCountry,3420,Nicaragua,Nicaragua
+productionCountry,3430,El  Salvador,El Salvador
+productionCountry,3440,Costa Rica,Costa Rica
+productionCountry,3450,Panama,Panama
+productionCountry,3460,Honduras,Honduras
+productionCountry,3470,Guatemala,Guatemala
+productionCountry,3500,Sydamerika,South America
+productionCountry,3510,Det Nordlige Sydamerika,Northern South America
+productionCountry,3511,Colombia,Colombia
+productionCountry,3512,Belize (Britisk Honduras),Belize (British Honduras)
+productionCountry,3513,Brasilien,Brazil
+productionCountry,3514,Equador,Ecuador
+productionCountry,3515,Guyana,Guyana
+productionCountry,3516,Venezuela,Venezuela
+productionCountry,3520,Det Sydlige Sydamerika,Southern South America
+productionCountry,3521,Argentina,Argentina
+productionCountry,3522,Bolivia,Bolivia
+productionCountry,3523,Chile,Chile
+productionCountry,3524,Paraguay,Paraguay
+productionCountry,3525,Peru,Peru
+productionCountry,3526,Uruguay,Uruguay
+productionCountry,4000,Afrika,Africa
+productionCountry,4100,Nord-Afrika,North Africa
+productionCountry,4110,Algeriet,Algeria
+productionCountry,4120,Libyen,Libya
+productionCountry,4130,Marokko,Morocco
+productionCountry,4140,Sudan,The Sudan
+productionCountry,4150,Tunesien,Tunisia
+productionCountry,4160,Ægypten,Egypt
+productionCountry,4200,Vest-Afrika,West Africa
+productionCountry,4210,Vest-Afrika A-M,West Africa A-M
+productionCountry,4211,Cameroun,Cameroon
+productionCountry,4212,Gabon,Gabon
+productionCountry,4213,Gambia,Gambia
+productionCountry,4214,Ghana,Ghana
+productionCountry,4215,Guinea,Guinea
+productionCountry,4216,Guinea-Bissaau,Guinea-Bissau
+productionCountry,4217,Kap Verde,Cape Verde
+productionCountry,4218,Liberia,Liberia
+productionCountry,4219,Mali,Mali
+productionCountry,4220,Vest-Afrika M-Å,West Africa M-Z
+productionCountry,4221,Maurethanien,Maurethania
+productionCountry,4222,Nigeria,Nigeria
+productionCountry,4223,Niger,Niger
+productionCountry,4224,Senegal,Senegal
+productionCountry,4225,Sierra Leone,Sierra Leone
+productionCountry,4226,Tchad,Tchad
+productionCountry,4227,Togo og Benin,Togo and Benin
+productionCountry,4228,Vestsahara,West Sahara
+productionCountry,4229,Øvre Volta - Burkino Faso,Upper Volta - Bourkino Faso
+productionCountry,4300,Øst-Afrika,East Africa
+productionCountry,4310,Djibouti,Djibouti
+productionCountry,4320,Etiopien,Ethiopia
+productionCountry,4330,Kenya,Kenya
+productionCountry,4340,Madagaskar,Madagascar
+productionCountry,4350,Malawi,Malawi
+productionCountry,4360,Somalia,Somalia
+productionCountry,4370,Tanzania,Tanzania
+productionCountry,4380,Uganda,Uganda
+productionCountry,4400,Syd-Afrika,South Africa
+productionCountry,4410,Angola,Angola
+productionCountry,4420,Lesotho,Lesotho
+productionCountry,4430,Mocambique,Mozambique
+productionCountry,4440,Namibia,Namibia
+productionCountry,4450,Swaziland,Swaziland
+productionCountry,4460,"Sydafrikanske Republik, Den",South Africa
+productionCountry,4470,Zambia,Zambia
+productionCountry,4480,Zimbabwe,Zimbabwe
+productionCountry,4500,Central-Afrika,Central Africa
+productionCountry,4510,Botswana,Botswana
+productionCountry,4520,Burundi,Burundi
+productionCountry,4530,Rwanda,Rwanda
+productionCountry,4540,"Centralafrikanske Kejserdømme, Det",Central African Republic
+productionCountry,4550,"Congo, Folkerepublikken",The Congo
+productionCountry,4560,Zaire,Zaïre
+productionCountry,5000,Asien,Asia
+productionCountry,5100,Mellemøsten,The Middle East
+productionCountry,5110,Mellemøsten A-K,The Middle East A-K
+productionCountry,5111,"Arabiske Emirater, De",The United Arab Emirates
+productionCountry,5112,Bahrain,Bahrain
+productionCountry,5113,Cypern,Cyprus
+productionCountry,5114,Irak,Iraq
+productionCountry,5115,Iran,Iran
+productionCountry,5116,Israel,Israel
+productionCountry,5117,Jordan,Jordan
+productionCountry,5118,Kuwait,Kuwait
+productionCountry,5120,Mellemøsten L-Å,The Middle East L-Z
+productionCountry,5121,Libanon,Lebanon
+productionCountry,5122,Oman,Oman
+productionCountry,5123,Qatar,Qatar
+productionCountry,5124,Saudi Arabien,Saudi Arabia
+productionCountry,5125,Syrien,Syria
+productionCountry,5126,Tyrkiet,Turkey
+productionCountry,5127,Yemen (Nordyemen),Yemen (Northern Yemen)
+productionCountry,5128,Yemen (Sydyemen),Yemen (Southern Yemen)
+productionCountry,5200,Central-Asien,Central Asia
+productionCountry,5210,Azerbaidjan,Azerbaidjan
+productionCountry,5220,Armenien,Armenia
+productionCountry,5230,Georgien,Georgia
+productionCountry,5240,Turkmenistan,Turkmenistan
+productionCountry,5250,Tadjikistan,Tadjikistan
+productionCountry,5260,Kazakhstan,Kazakhstan
+productionCountry,5270,Uzbekistan,Uzbekistan
+productionCountry,5280,Kirgisistan,Kirgisistan
+productionCountry,5300,Syd-Asien,South Asia
+productionCountry,5310,Afghanistan,Afghanistan
+productionCountry,5320,Bangla Desh,Bangladesh
+productionCountry,5330,Bhutan,Bhutan
+productionCountry,5340,Indien,India
+productionCountry,5350,Maldiverne,The Maldive Islands
+productionCountry,5360,Pakistan,Pakistan
+productionCountry,5400,Øst-Asien,East Asia
+productionCountry,5410,Hongkong,Hongkong
+productionCountry,5420,Japan,Japan
+productionCountry,5430,Kina,China
+productionCountry,5440,Korea (Nordkorea),Korea (North Korea)
+productionCountry,5450,Korea (Sydkorea),Korea (South Korea)
+productionCountry,5460,Macao,Macao
+productionCountry,5470,"Mongolske Folkerepublik, Den",The Mongolian People's Republic
+productionCountry,5480,Singapore,Singapore
+productionCountry,5490,Taiwan (Formosa),Taiwan (Formosa)
+productionCountry,5500,Sydøst-Asien,South East Asia
+productionCountry,5510,Sydøst-Asien A-M,South East Asia A-M
+productionCountry,5511,Burma,Burma
+productionCountry,5512,Indonesien,Indonesia
+productionCountry,5513,Kampuchea,Kampuchea
+productionCountry,5514,Laos,Laos
+productionCountry,5515,Malaysia,Malaysia
+productionCountry,5520,Sydøst-Asien N-Å,South East Asia N-Z
+productionCountry,5521,Nepal,Nepal
+productionCountry,5522,Philippinerne,The Philippines
+productionCountry,5523,Sri Lanka,Sri Lanka
+productionCountry,5524,Thailand,Thailand
+productionCountry,5525,Vietnam,Vietnam
+productionCountry,6000,Austalien & Oceanien,Australia & Oceania
+productionCountry,6100,Australien,Australia
+productionCountry,6200,Mikronesien,Micronesia
+productionCountry,6300,New Guinea,New Guinea
+productionCountry,6400,New Zealand,New Zealand
+productionCountry,6500,Polynesien,Polynesia
+productionCountry,6600,Antarktis,The Antarctic
+productionCountry,7000,Grupper af lande,Groups of countries
+productionCountry,7100,EU-lande,EU countries
+productionCountry,7200,SNG-lande,SNG countries
+productionCountry,7300,Industrialiserede-lande,Industrialized countries
+productionCountry,7400,Udviklings-lande,Developing countries
+productionCountry,8000,Ikke geografisk bestemt,No geographic location
+productionCountry,9000,Ikke placerbart på verdensdele,Not placable on continents
+intent,1000,.. er at informere,The purpose is to inform
+intent,2000,.. er at skabe debat,The purpose is to create debate
+intent,3000,.. er at underholde,The purpose is to entertain
+intent,4000,.. er at give oplevelser,The purpose is to provide experience(s)
+intent,5000,.. er at forkynde tro,The purpose is to preach faith
+intent,6000,.. er at undervise,The purpose is to educate
+intent,7000,Andet,Other
+productionTimeAndPlace,1000,Fra TV-studie m/publikum,From a Television studio with present audience
+productionTimeAndPlace,1100,Direkte,Live
+productionTimeAndPlace,1200,Forskudt/redigeret,Taped/edited
+productionTimeAndPlace,2000,Fra TV-studie u/publikum,From a Television studio without present audience
+productionTimeAndPlace,2100,Direkte,Live
+productionTimeAndPlace,2200,Forskudt/redigeret,Taped/edited
+productionTimeAndPlace,3000,Transmission udefra/OB,Non-studio broadcast
+productionTimeAndPlace,3100,Direkte,Live
+productionTimeAndPlace,3200,Forskudt,Taped
+productionTimeAndPlace,4000,Redigeret udsendelse udefra/ENG/EFP,Edited non-studio broadcast
+productionTimeAndPlace,5000,Ikke TV-produktion(spillefilm m.v.),Not Television production (feature film and the like)
+productionTimeAndPlace,6000,Blandet studie/EFP,Mixed studio/EFP
+targetGroupProductionYear,1000,1000,1000
+targetGroupProductionYear,1900,1900,1900
+targetGroupProductionYear,1901,1901,1901
+targetGroupProductionYear,1902,1902,1902
+targetGroupProductionYear,1903,1903,1903
+targetGroupProductionYear,1904,1904,1904
+targetGroupProductionYear,1905,1905,1905
+targetGroupProductionYear,1906,1906,1906
+targetGroupProductionYear,1907,1907,1907
+targetGroupProductionYear,1908,1908,1908
+targetGroupProductionYear,1909,1909,1909
+targetGroupProductionYear,1910,1910,1910
+targetGroupProductionYear,1911,1911,1911
+targetGroupProductionYear,1912,1912,1912
+targetGroupProductionYear,1913,1913,1913
+targetGroupProductionYear,1914,1914,1914
+targetGroupProductionYear,1915,1915,1915
+targetGroupProductionYear,1916,1916,1916
+targetGroupProductionYear,1917,1917,1917
+targetGroupProductionYear,1918,1918,1918
+targetGroupProductionYear,1919,1919,1919
+targetGroupProductionYear,1920,1920,1920
+targetGroupProductionYear,1921,1921,1921
+targetGroupProductionYear,1922,1922,1922
+targetGroupProductionYear,1923,1923,1923
+targetGroupProductionYear,1924,1924,1924
+targetGroupProductionYear,1925,1925,1925
+targetGroupProductionYear,1926,1926,1926
+targetGroupProductionYear,1927,1927,1927
+targetGroupProductionYear,1928,1928,1928
+targetGroupProductionYear,1929,1929,1929
+targetGroupProductionYear,1930,1930,1930
+targetGroupProductionYear,1931,1931,1931
+targetGroupProductionYear,1932,1932,1932
+targetGroupProductionYear,1933,1933,1933
+targetGroupProductionYear,1934,1934,1934
+targetGroupProductionYear,1935,1935,1935
+targetGroupProductionYear,1936,1936,1936
+targetGroupProductionYear,1937,1937,1937
+targetGroupProductionYear,1938,1938,1938
+targetGroupProductionYear,1939,1939,1939
+targetGroupProductionYear,1940,1940,1940
+targetGroupProductionYear,1941,1941,1941
+targetGroupProductionYear,1942,1942,1942
+targetGroupProductionYear,1943,1943,1943
+targetGroupProductionYear,1944,1944,1944
+targetGroupProductionYear,1945,1945,1945
+targetGroupProductionYear,1946,1946,1946
+targetGroupProductionYear,1947,1947,1947
+targetGroupProductionYear,1948,1948,1948
+targetGroupProductionYear,1949,1949,1949
+targetGroupProductionYear,1950,1950,1950
+targetGroupProductionYear,1951,1951,1951
+targetGroupProductionYear,1952,1952,1952
+targetGroupProductionYear,1953,1953,1953
+targetGroupProductionYear,1954,1954,1954
+targetGroupProductionYear,1955,1955,1955
+targetGroupProductionYear,1956,1956,1956
+targetGroupProductionYear,1957,1957,1957
+targetGroupProductionYear,1958,1958,1958
+targetGroupProductionYear,1959,1959,1959
+targetGroupProductionYear,1960,1960,1960
+targetGroupProductionYear,1961,1961,1961
+targetGroupProductionYear,1962,1962,1962
+targetGroupProductionYear,1963,1963,1963
+targetGroupProductionYear,1964,1964,1964
+targetGroupProductionYear,1965,1965,1965
+targetGroupProductionYear,1966,1966,1966
+targetGroupProductionYear,1967,1967,1967
+targetGroupProductionYear,1968,1968,1968
+targetGroupProductionYear,1969,1969,1969
+targetGroupProductionYear,1970,1970,1970
+targetGroupProductionYear,1971,1971,1971
+targetGroupProductionYear,1972,1972,1972
+targetGroupProductionYear,1973,1973,1973
+targetGroupProductionYear,1974,1974,1974
+targetGroupProductionYear,1975,1975,1975
+targetGroupProductionYear,1976,1976,1976
+targetGroupProductionYear,1977,1977,1977
+targetGroupProductionYear,1978,1978,1978
+targetGroupProductionYear,1979,1979,1979
+targetGroupProductionYear,1980,1980,1980
+targetGroupProductionYear,1981,1981,1981
+targetGroupProductionYear,1982,1982,1982
+targetGroupProductionYear,1983,1983,1983
+targetGroupProductionYear,1984,1984,1984
+targetGroupProductionYear,1985,1985,1985
+targetGroupProductionYear,1986,1986,1986
+targetGroupProductionYear,1987,1987,1987
+targetGroupProductionYear,1988,1988,1988
+targetGroupProductionYear,1989,1989,1989
+targetGroupProductionYear,1990,1990,1990
+targetGroupProductionYear,1991,1991,1991
+targetGroupProductionYear,1992,1992,1992
+targetGroupProductionYear,1993,1993,1993
+targetGroupProductionYear,1994,1994,1994
+targetGroupProductionYear,1995,1995,1995
+targetGroupProductionYear,1996,1996,1996
+targetGroupProductionYear,1997,1997,1997
+targetGroupProductionYear,1998,1998,1998
+targetGroupProductionYear,1999,1999,1999
+targetGroupProductionYear,2000,2000,2000
+targetGroupProductionYear,2001,2001,2001
+targetGroupProductionYear,2002,2002,2002
+targetGroupProductionYear,2003,2003,2003
+targetGroupProductionYear,2004,2004,2004
+targetGroupProductionYear,2005,2005,2005
+targetGroupProductionYear,2006,2006,2006
+targetGroupProductionYear,2007,2007,2007
+targetGroupProductionYear,2008,2008,2008
+targetGroupProductionYear,2009,2009,2009
+targetGroupProductionYear,2010,2010,2010
+targetGroupProductionYear,2011,2011,2011
