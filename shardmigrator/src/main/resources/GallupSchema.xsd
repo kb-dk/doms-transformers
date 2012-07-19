@@ -1,0 +1,50 @@
+
+<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="tvmeterProgram" type="tvmeterProgram"></xs:element>
+
+  <xs:complexType name="tvmeterProgram">
+    <xs:sequence>
+      <xs:element name="originalEntry" type="xs:string"></xs:element>
+      <xs:element name="sourceFileName" type="xs:string"></xs:element>
+      <xs:element name="logFormat" type="xs:string"></xs:element>
+      <xs:element name="stationID" type="xs:string"></xs:element>
+      <xs:element name="startDate" type="xs:string"></xs:element>
+      <xs:element name="endDate" type="xs:string"></xs:element>
+      <xs:element name="parsedProgramClassification" type="parsedProgramClassification"></xs:element>
+      <xs:element name="mainTitle" type="xs:string"></xs:element>
+      <xs:element name="subTitle" type="xs:string"></xs:element>
+      <xs:element name="originalTitle" type="xs:string"></xs:element>
+      <xs:element name="episodeNumber" type="xs:string"></xs:element>
+      <xs:element name="broadcastType" type="xs:string"></xs:element>
+      <xs:element name="overflowFlag" type="xs:string"></xs:element>
+      <xs:element name="regionFlags" type="xs:string"></xs:element>
+      <xs:element name="expectedGRP" type="xs:string"></xs:element>
+      <xs:element name="additionDeductionOnPrice" type="xs:string"></xs:element>
+      <xs:element name="commonCode" type="xs:string"></xs:element>
+      <xs:element name="price" type="xs:string"></xs:element>
+      <xs:element name="internalIDCode" type="xs:string"></xs:element>
+      <xs:element name="bid" type="xs:string"></xs:element>
+      <xs:element name="emmisionsLevel" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="parsedProgramClassification">
+    <xs:sequence>
+      <xs:element name="targetGroup" type="xs:string"></xs:element>
+      <xs:element name="contentsItem" type="xs:string"></xs:element>
+      <xs:element name="form" type="xs:string"></xs:element>
+      <xs:element name="frequency" type="xs:string"></xs:element>
+      <xs:element name="origin" type="xs:string"></xs:element>
+      <xs:element name="sendstatus" type="xs:string"></xs:element>
+      <xs:element name="productionDepartment" type="xs:string"></xs:element>
+      <xs:element name="itemCountry" type="xs:string"></xs:element>
+      <xs:element name="productionCountry" type="xs:string"></xs:element>
+      <xs:element name="intent" type="xs:string"></xs:element>
+      <xs:element name="productionTimeAndPlace" type="xs:string"></xs:element>
+      <xs:element name="targetGroupProductionYear" type="xs:string"></xs:element>
+      <xs:element name="targetGroupProposedPlacement" type="xs:string"></xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+</xs:schema>
