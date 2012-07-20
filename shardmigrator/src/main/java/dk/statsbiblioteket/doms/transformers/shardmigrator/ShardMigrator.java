@@ -30,6 +30,7 @@ public class ShardMigrator {
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
         ObjectHandler objectHandler = new DomsShardMigratorObjectHandler(config, webservice);
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
+        System.out.println("created all the preliminaries");
 
         List<String> uuids = uuidFileReader.readUuids(uuidfile);
         objectListHandler.transform(uuids);

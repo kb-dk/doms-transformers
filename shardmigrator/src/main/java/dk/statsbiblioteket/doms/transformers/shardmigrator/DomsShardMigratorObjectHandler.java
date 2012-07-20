@@ -59,7 +59,10 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
     @Override
     public void transform(String programUuid)
             throws Exception {
-       List<Relation> shardRelations = webservice.getNamedRelations(programUuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
+        System.out.println("started work on program "+programUuid);
+
+        int i = 0;
+        List<Relation> shardRelations = webservice.getNamedRelations(programUuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
         if (shardRelations.isEmpty()) {
             // nothing to do
             return;
@@ -71,25 +74,29 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
             String shardMetadata = webservice.getDatastreamContents(shardUuid, "SHARD_METADATA");
             List<Relation> fileRelations = webservice.getNamedRelations(shardUuid,
                     "http://doms.statsbiblioteket.dk/relations/default/0/1/#consistsOf");
-
+            System.out.println("not broken yet"+i++);
 
             //get pbcore
             String pbcoreOriginal = webservice.getDatastreamContents(programUuid, "PBCORE");
             //initialise the migrator
             PBCoreMigrator pbCoreMigrator = new PBCoreMigrator(new ByteArrayInputStream(pbcoreOriginal.getBytes()));
+            System.out.println("not broken yet"+i++);
 
             //get the tvmeter contents
             String tvmeterOriginal = webservice.getDatastreamContents(programUuid, "GALLUP_ORIGINAL");
+            System.out.println("not broken yet"+i++);
             //parse it
             TvmeterProgram tvmeterStructure = tvmeterReader.readTVMeterFile(tvmeterOriginal);
             //port the info to the pbcore
             pbCoreMigrator.addTVMeterStructure(tvmeterStructure);
+            System.out.println("not broken yet"+i++);
 
             //get the shardMetadataContents
             String shardMetadataContents = webservice.getDatastreamContents(shardUuid, "SHARD_METADATA");
             //parse it up
             ShardMetadata shardStructure = deserializeShardMetadata(shardMetadataContents);
             ProgramStructure programStructure = convertShardStructure(shardStructure);
+            System.out.println("not broken yet"+i++);
 
             //NOW START TO CHANGE THE OBJECT
 
@@ -99,38 +106,63 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
                 fileRelation.setSubject(programUuid);
                 webservice.addRelation(programUuid,fileRelation,"Updating radio/tv datamodel");
             }
+            System.out.println("not broken yet"+i++);
             webservice.modifyDatastream(programUuid,"PBCORE",pbCoreMigrator.toString(),"Updating radio/tv datamodel");
             webservice.modifyDatastream(programUuid,"PROGRAM_STRUCTURE",serializeObject(programStructure),"Updating radio/tv datamodel");
             webservice.modifyDatastream(programUuid,"GALLUP_ORIGINAL",serializeObject(tvmeterStructure),"Updating radio/tv datamodel");
-
+            System.out.println("not broken yet"+i++);
 
             webservice.markPublishedObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
+            System.out.println("not broken yet"+i++);
 
 
-
-        } finally {
-
+        } catch (Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
         }
 
+
     }
-    
-    public ShardMetadata deserializeShardMetadata(String shardMetadataString) throws JAXBException {      
+
+
+
+    public ShardMetadata deserializeShardMetadata(String shardMetadataString) throws JAXBException {
         JAXBElement<ShardMetadata> obj = (JAXBElement<ShardMetadata>) JAXBContext.newInstance(ShardMetadata.class.getPackage().getName()).createUnmarshaller().unmarshal(
-                new ByteArrayInputStream(shardMetadataString.getBytes())); 
-        return obj.getValue(); 
+                new ByteArrayInputStream(shardMetadataString.getBytes()));
+        return obj.getValue();
     }
-    
-    public String serializeObject(Object object) throws JAXBException {
+
+    public String serializeObject(TvmeterProgram object) throws JAXBException {
         ByteArrayOutputStream result = new ByteArrayOutputStream();
-        JAXBContext.newInstance(object.getClass()).createMarshaller().marshal(object, result);
+        QName _TvmeterProgram_QNAME = new QName("", "tvmeterProgram");
+        JAXBElement<TvmeterProgram> toSerialize = new JAXBElement<TvmeterProgram>(_TvmeterProgram_QNAME, TvmeterProgram.class, null,object);
+        JAXBContext.newInstance(object.getClass().getPackage().getName()).createMarshaller().marshal(toSerialize, result);
         return result.toString();
     }
 
-    public ProgramStructure convertShardStructure(ShardMetadata shardMetadata)   
+
+    public String serializeObject(ShardMetadata object) throws JAXBException {
+        ByteArrayOutputStream result = new ByteArrayOutputStream();
+        QName _ShardStructure_QNAME = new QName("", "shard_structure");
+        QName _ShardMetadata_QNAME = new QName("", "shard_metadata");
+        JAXBElement<ShardMetadata> toSerialize = new JAXBElement<ShardMetadata>(_ShardMetadata_QNAME, ShardMetadata.class, null, object);
+        JAXBContext.newInstance(object.getClass().getPackage().getName()).createMarshaller().marshal(toSerialize, result);
+        return result.toString();
+    }
+
+    public String serializeObject(ProgramStructure object) throws JAXBException {
+        ByteArrayOutputStream result = new ByteArrayOutputStream();
+        JAXBElement<ProgramStructure> toSerialize = new JAXBElement<ProgramStructure>(new QName("", "program_structure"), ProgramStructure.class, null, object);
+        JAXBContext.newInstance(object.getClass().getPackage().getName()).createMarshaller().marshal(toSerialize, result);
+        return result.toString();
+    }
+
+
+    public ProgramStructure convertShardStructure(ShardMetadata shardMetadata)
             throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
         ProgramStructure programStructure = new ProgramStructure();
         if(shardMetadata.getShardStructure() != null) {
-            ShardStructure shardStructure = shardMetadata.getShardStructure(); 
+            ShardStructure shardStructure = shardMetadata.getShardStructure();
             if(shardStructure.getMissingEnd() != null) {
                 MissingEnd missingEnd = new MissingEnd();
                 missingEnd.setMissingSeconds(shardStructure.getMissingEnd().getMissingSeconds());
@@ -144,7 +176,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
                 Iterator<Hole> it = shardStructure.getHoles().getHole().iterator();
                 while(it.hasNext()) {
                     Hole shardHole = it.next();
-                    dk.statsbiblioteket.doms.transformers.shardmigrator.programStructure.autogenerated.Hole programHole = 
+                    dk.statsbiblioteket.doms.transformers.shardmigrator.programStructure.autogenerated.Hole programHole =
                             new dk.statsbiblioteket.doms.transformers.shardmigrator.programStructure.autogenerated.Hole();
                     programHole.setHoleLength(shardHole.getHoleLength());
                     programHole.setFile1UUID(webservice.getFileObjectWithURL(shardHole.getFilePath1()));
@@ -152,13 +184,13 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
                     holes.getHole().add(programHole);
                 }
                 programStructure.setHoles(holes);
-            }       
+            }
             if(!shardStructure.getOverlaps().getOverlap().isEmpty()) {
                 Overlaps overlaps = new Overlaps();
                 Iterator<Overlap> it = shardStructure.getOverlaps().getOverlap().iterator();
                 while(it.hasNext()) {
                     Overlap shardOverlap = it.next();
-                    dk.statsbiblioteket.doms.transformers.shardmigrator.programStructure.autogenerated.Overlap programOverlap = 
+                    dk.statsbiblioteket.doms.transformers.shardmigrator.programStructure.autogenerated.Overlap programOverlap =
                             new dk.statsbiblioteket.doms.transformers.shardmigrator.programStructure.autogenerated.Overlap();
                     programOverlap.setOverlapLength(shardOverlap.getOverlapLength());
                     programOverlap.setOverlapType(shardOverlap.getOverlapType());
@@ -169,7 +201,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
                 programStructure.setOverlaps(overlaps);
             }
         }
-                
+
         return programStructure;
     }
 
