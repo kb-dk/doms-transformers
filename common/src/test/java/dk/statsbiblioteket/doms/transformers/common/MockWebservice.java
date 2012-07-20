@@ -76,9 +76,6 @@ public class MockWebservice implements CentralWebservice {
             if (object == null) {
                 throw new InvalidResourceException("sdf", "sdf");
             }
-            if (!object.writable) {
-                throw new InvalidCredentialsException("sdfdsf", "sdfdsf");
-            }
             object.writable = true;
         }
         //To change body of implemented methods use File | Settings | File Templates.
@@ -94,7 +91,7 @@ public class MockWebservice implements CentralWebservice {
         if (!object.writable) {
             throw new InvalidCredentialsException("sdfdsf", "sdfdsf");
         }
-        datastream = object.datastreams.get(datastream);
+
         object.datastreams.put(datastream, contents);
     }
 
@@ -103,9 +100,6 @@ public class MockWebservice implements CentralWebservice {
         MockObject object = objects.get(pid);
         if (object == null) {
             throw new InvalidResourceException("sdf", "sdf");
-        }
-        if (!object.writable) {
-            throw new InvalidCredentialsException("sdfdsf", "sdfdsf");
         }
         datastream = object.datastreams.get(datastream);
         if (datastream == null) {
@@ -154,7 +148,7 @@ public class MockWebservice implements CentralWebservice {
         copy.setSubject(relation.getSubject());
         copy.setLiteral(relation.isLiteral());
         copy.setObject(relation.getObject());
-        copy.setPredicate(relation.getObject());
+        copy.setPredicate(relation.getPredicate());
         relations.add(copy);
     }
 
@@ -171,7 +165,7 @@ public class MockWebservice implements CentralWebservice {
             copy.setSubject(relation.getSubject());
             copy.setLiteral(relation.isLiteral());
             copy.setObject(relation.getObject());
-            copy.setPredicate(relation.getObject());
+            copy.setPredicate(relation.getPredicate());
             output.add(copy);
         }
         return output;

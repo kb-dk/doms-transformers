@@ -58,7 +58,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
     @Override
     public void transform(String programUuid)
             throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
-        List<Relation> shardRelations = webservice.getNamedRelations(programUuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
+       List<Relation> shardRelations = webservice.getNamedRelations(programUuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
         if (shardRelations.isEmpty()) {
             // nothing to do
             return;
@@ -98,6 +98,14 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
                 fileRelation.setSubject(programUuid);
                 webservice.addRelation(programUuid,fileRelation,"Updating radio/tv datamodel");
             }
+            webservice.modifyDatastream(programUuid,"PBCORE",pbCoreMigrator.toString(),"Updating radio/tv datamodel");
+            webservice.modifyDatastream(programUuid,"PROGRAM_STRUCTURE",toXml(programStructure),"Updating radio/tv datamodel");
+            webservice.modifyDatastream(programUuid,"GALLUP_ORIGINAL",toXml(tvmeterStructure),"Updating radio/tv datamodel");
+
+
+            webservice.markPublishedObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
+
+
 
         } catch (JAXBException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
