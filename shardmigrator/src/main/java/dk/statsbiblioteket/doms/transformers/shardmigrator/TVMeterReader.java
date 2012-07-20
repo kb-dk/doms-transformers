@@ -95,17 +95,15 @@ public class TVMeterReader {
     /**
      * Read a TVMeter file and output a TvmeterProgram object
      *
-     * @param tvmeterFile The file to be parsed
+     * @param tvmeterContents The file to be parsed
      * @return TvmeterProgram
      * @throws Exception foo!!
      */
-    public TvmeterProgram readTVMeterFile(String tvmeterFile) throws FileNotFoundException, IOException,
+    public TvmeterProgram readTVMeterFile(String tvmeterContents) throws FileNotFoundException, IOException,
             NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
             InvocationTargetException {
         TvmeterProgram program = new TvmeterProgram();
         ParsedProgramClassification classification = new ParsedProgramClassification();
-        String tvmeterContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(tvmeterFile));
-
 
         String part1, part2, part3;
         String[] temp = tvmeterContents.split("parsedProgramClassification");
