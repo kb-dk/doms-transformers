@@ -51,4 +51,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
         // TODO Update file metadata (Consider: Should files be updated in separate workflow? What happens to unreferenced files. Eek. Also, we still need to register unregistered files anyway, so we need to run through all files anyway.)
         throw new UnsupportedOperationException("Not implemented yet");
     }
+    
+
+    
 }

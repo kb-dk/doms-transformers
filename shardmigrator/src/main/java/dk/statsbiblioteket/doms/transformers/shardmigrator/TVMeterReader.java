@@ -136,7 +136,7 @@ public class TVMeterReader {
                         value = decoded;
                     }
                 }
-                setElement(obj,key ,value );
+                setElement(obj, key, value);
             }
         }
     }
