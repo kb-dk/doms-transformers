@@ -26,6 +26,7 @@ import javax.xml.namespace.QName;
 import javax.xml.transform.TransformerException;
 import javax.xml.ws.BindingProvider;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -99,8 +100,8 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
                 webservice.addRelation(programUuid,fileRelation,"Updating radio/tv datamodel");
             }
             webservice.modifyDatastream(programUuid,"PBCORE",pbCoreMigrator.toString(),"Updating radio/tv datamodel");
-            webservice.modifyDatastream(programUuid,"PROGRAM_STRUCTURE",toXml(programStructure),"Updating radio/tv datamodel");
-            webservice.modifyDatastream(programUuid,"GALLUP_ORIGINAL",toXml(tvmeterStructure),"Updating radio/tv datamodel");
+            webservice.modifyDatastream(programUuid,"PROGRAM_STRUCTURE",serializeObject(programStructure),"Updating radio/tv datamodel");
+            webservice.modifyDatastream(programUuid,"GALLUP_ORIGINAL",serializeObject(tvmeterStructure),"Updating radio/tv datamodel");
 
 
             webservice.markPublishedObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
@@ -125,11 +126,16 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
 
     }
     
-    public ShardMetadata deserializeShardMetadata(String shardMetadataString) throws JAXBException {
-        
+    public ShardMetadata deserializeShardMetadata(String shardMetadataString) throws JAXBException {      
         JAXBElement<ShardMetadata> obj = (JAXBElement<ShardMetadata>) JAXBContext.newInstance(ShardMetadata.class.getPackage().getName()).createUnmarshaller().unmarshal(
                 new ByteArrayInputStream(shardMetadataString.getBytes())); 
         return obj.getValue(); 
+    }
+    
+    public String serializeObject(Object object) throws JAXBException {
+        ByteArrayOutputStream result = new ByteArrayOutputStream();
+        JAXBContext.newInstance(object.getClass()).createMarshaller().marshal(object, result);
+        return result.toString();
     }
 
     public ProgramStructure convertShardStructure(ShardMetadata shardMetadata)   
