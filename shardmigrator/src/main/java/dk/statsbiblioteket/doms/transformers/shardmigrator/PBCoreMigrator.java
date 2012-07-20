@@ -84,10 +84,6 @@ public class PBCoreMigrator {
 
     }
 
-    public void addRitzauStructure(Ritzau ritzau) {
-
-    }
-
     public String toString() {
         return pbcore.toString();
 
