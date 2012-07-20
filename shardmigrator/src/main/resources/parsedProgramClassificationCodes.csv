@@ -574,7 +574,7 @@ origin,3430,TV/MIDT-VEST,TV/MIDT-VEST
 origin,3440,TV SYD,TV SYD
 origin,3450,TV 2 / ØSTJYLLAND,TV 2 / ØSTJYLLAND
 origin,3460,TV2 ØST,TV2 ØST
-origin,4000,Fremmedproduktion (specificeres i 4.1.-4.4),Foreign production (specificated in 41-44)
+origin,4000,Fremmedproduktion,Foreign production
 origin,4100,En el. flere TV-stationers egenproduktion,Own production of one or more Television stations
 origin,4200,Coprod. mellem TV-stat. og uafh. prod.,Co-prod between Tv stations and independent productions
 origin,4300,Entreprise fra uafh. producent,Enterprise made by independent producer
