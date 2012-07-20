@@ -73,6 +73,7 @@
                 <executions>
                     <execution>
                         <id>tvmeter</id>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -81,10 +82,14 @@
                             <schemaIncludes>
                                 <schemaInclude>TVMeterSchema.xsd</schemaInclude>
                             </schemaIncludes>
+                            <forceRegenerate>true</forceRegenerate>
+
                         </configuration>
                     </execution>
                     <execution>
                         <id>shardmetadata</id>
+                        <phase>generate-sources</phase>
+
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -93,11 +98,13 @@
                             <schemaIncludes>
                                 <schemaInclude>ShardMetadata.xsd</schemaInclude>
                             </schemaIncludes>
+                            <forceRegenerate>true</forceRegenerate>
                         </configuration>
                     </execution>
 
                     <execution>
                         <id>programstructure</id>
+                        <phase>generate-sources</phase>
                         <goals>
                             <goal>generate</goal>
                         </goals>
@@ -106,6 +113,7 @@
                             <schemaIncludes>
                                 <schemaInclude>ProgramStructure.xsd</schemaInclude>
                             </schemaIncludes>
+                            <forceRegenerate>true</forceRegenerate>
                         </configuration>
                     </execution>
 
