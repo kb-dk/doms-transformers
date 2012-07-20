@@ -1,0 +1,617 @@
+<foxml:digitalObject xmlns:foxml="info:fedora/fedora-system:def/foxml#"
+                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                     PID="uuid:9a61e791-9439-4c3e-b061-1ef38bd72d98" VERSION="1.1"
+                     xsi:schemaLocation="info:fedora/fedora-system:def/foxml# http://www.fedora.info/definitions/1/0/foxml1-1.xsd">
+    <foxml:objectProperties>
+        <foxml:property NAME="info:fedora/fedora-system:def/model#state" VALUE="Active"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/model#label" VALUE="Venner"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/model#ownerId" VALUE=""/>
+        <foxml:property NAME="info:fedora/fedora-system:def/model#createdDate" VALUE="2011-03-10T13:59:14.749Z"/>
+        <foxml:property NAME="info:fedora/fedora-system:def/view#lastModifiedDate" VALUE="2012-03-27T18:57:45.705Z"/>
+    </foxml:objectProperties>
+    <foxml:datastream CONTROL_GROUP="X" ID="AUDIT" STATE="A" VERSIONABLE="false">
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:14.749Z"
+                                 FORMAT_URI="info:fedora/fedora-system:format/xml.fedora.audit" ID="AUDIT.0"
+                                 LABEL="Audit Trail for this object" MIMETYPE="text/xml">
+            <foxml:xmlContent>
+                <audit:auditTrail xmlns:audit="info:fedora/fedora-system:def/audit#">
+                    <audit:record ID="AUDREC1">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>ingest</audit:action>
+                        <audit:componentID/>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-03-10T13:59:14.749Z</audit:date>
+                        <audit:justification>Cloned from template 'doms:Template_Program' by user 'fedoraAdmin'
+                        </audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC2">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>PBCORE</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-03-10T13:59:14.818Z</audit:date>
+                        <audit:justification/>
+                    </audit:record>
+                    <audit:record ID="AUDREC3">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyObject</audit:action>
+                        <audit:componentID/>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-03-10T13:59:14.928Z</audit:date>
+                        <audit:justification/>
+                    </audit:record>
+                    <audit:record ID="AUDREC4">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>RITZAU_ORIGINAL</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-03-10T13:59:14.981Z</audit:date>
+                        <audit:justification/>
+                    </audit:record>
+                    <audit:record ID="AUDREC5">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>GALLUP_ORIGINAL</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-03-10T13:59:15.059Z</audit:date>
+                        <audit:justification/>
+                    </audit:record>
+                    <audit:record ID="AUDREC6">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyObject</audit:action>
+                        <audit:componentID/>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-03-10T13:59:15.581Z</audit:date>
+                        <audit:justification/>
+                    </audit:record>
+                    <audit:record ID="AUDREC7">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyObject</audit:action>
+                        <audit:componentID/>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-07-13T10:34:39.803Z</audit:date>
+                        <audit:justification>Ingest of Radio/TV data</audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC8">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>PBCORE</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-07-13T10:34:39.888Z</audit:date>
+                        <audit:justification>Ingest of Radio/TV data</audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC9">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyObject</audit:action>
+                        <audit:componentID/>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-07-13T10:34:40.049Z</audit:date>
+                        <audit:justification>Ingest of Radio/TV data</audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC10">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>RITZAU_ORIGINAL</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-07-13T10:34:40.144Z</audit:date>
+                        <audit:justification>Ingest of Radio/TV data</audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC11">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>GALLUP_ORIGINAL</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-07-13T10:34:40.311Z</audit:date>
+                        <audit:justification>Ingest of Radio/TV data</audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC12">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyObject</audit:action>
+                        <audit:componentID/>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2011-07-13T10:34:40.912Z</audit:date>
+                        <audit:justification>Ingest of Radio/TV data</audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC13">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyObject</audit:action>
+                        <audit:componentID/>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2012-03-27T18:57:45.495Z</audit:date>
+                        <audit:justification>Prepare to add handle PID</audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC14">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyDatastreamByValue</audit:action>
+                        <audit:componentID>DC</audit:componentID>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2012-03-27T18:57:45.578Z</audit:date>
+                        <audit:justification>Added handle PID</audit:justification>
+                    </audit:record>
+                    <audit:record ID="AUDREC15">
+                        <audit:process type="Fedora API-M"/>
+                        <audit:action>modifyObject</audit:action>
+                        <audit:componentID/>
+                        <audit:responsibility>fedoraAdmin</audit:responsibility>
+                        <audit:date>2012-03-27T18:57:45.705Z</audit:date>
+                        <audit:justification>Prepare to add handle PID</audit:justification>
+                    </audit:record>
+                </audit:auditTrail>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+    <foxml:datastream CONTROL_GROUP="X" ID="RELS-EXT" STATE="A" VERSIONABLE="true">
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:14.764Z"
+                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" ID="RELS-EXT.1"
+                                 LABEL="Relationships" MIMETYPE="application/rdf+xml" SIZE="913">
+            <foxml:xmlContent>
+                <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                         xmlns:ecm="http://ecm.sourceforge.net/relations/0/2/#"
+                         xmlns:doms="http://doms.statsbiblioteket.dk/relations/default/0/1/#">
+                    <rdf:Description rdf:about="info:fedora/uuid:9a61e791-9439-4c3e-b061-1ef38bd72d98">
+                        <hasModel xmlns="info:fedora/fedora-system:def/model#"
+                                  rdf:resource="info:fedora/doms:ContentModel_Program"/>
+                        <hasModel xmlns="info:fedora/fedora-system:def/model#"
+                                  rdf:resource="info:fedora/doms:ContentModel_DOMS"/>
+                        <doms:isPartOfCollection rdf:resource="info:fedora/doms:RadioTV_Collection"/>
+                        <doms:hasLicense rdf:resource="info:fedora/doms:RadioTV_InhouseLicense"/>
+
+                    </rdf:Description>
+                </rdf:RDF>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:15.127Z"
+                                 FORMAT_URI="info:fedora/fedora-system:FedoraRELSExt-1.0" ID="RELS-EXT.2"
+                                 LABEL="Relationships" MIMETYPE="application/rdf+xml" SIZE="882">
+            <foxml:xmlContent>
+                <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+                    <rdf:Description rdf:about="info:fedora/uuid:9a61e791-9439-4c3e-b061-1ef38bd72d98">
+                        <hasModel xmlns="info:fedora/fedora-system:def/model#"
+                                  rdf:resource="info:fedora/doms:ContentModel_Program"/>
+                        <hasModel xmlns="info:fedora/fedora-system:def/model#"
+                                  rdf:resource="info:fedora/doms:ContentModel_DOMS"/>
+                        <isPartOfCollection xmlns="http://doms.statsbiblioteket.dk/relations/default/0/1/#"
+                                            rdf:resource="info:fedora/doms:RadioTV_Collection"/>
+                        <hasLicense xmlns="http://doms.statsbiblioteket.dk/relations/default/0/1/#"
+                                    rdf:resource="info:fedora/doms:RadioTV_InhouseLicense"/>
+                        <hasShard xmlns="http://doms.statsbiblioteket.dk/relations/default/0/1/#"
+                                  rdf:resource="info:fedora/uuid:99684dd7-f831-444e-b5e2-30c075bca15b"/>
+                    </rdf:Description>
+
+                </rdf:RDF>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+    <foxml:datastream CONTROL_GROUP="X" ID="PBCORE" STATE="A" VERSIONABLE="true">
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:14.764Z" ID="PBCORE.0" LABEL="PBCore" MIMETYPE="text/xml"
+                                 SIZE="115">
+            <foxml:xmlContent>
+                <PBCoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html"/>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:14.818Z" ID="PBCORE.1" LABEL="PBCore" MIMETYPE="text/xml"
+                                 SIZE="5252">
+            <foxml:xmlContent>
+                <PBCoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+                    <pbcoreIdentifier>
+                        <identifier>4668333RitzauProgram</identifier>
+                        <identifierSource>id</identifierSource>
+                    </pbcoreIdentifier>
+                    <pbcoreTitle>
+                        <title>Venner</title>
+                        <titleType>titel</titleType>
+                    </pbcoreTitle>
+                    <pbcoreTitle>
+                        <title>Friends</title>
+                        <titleType>originaltitel</titleType>
+                    </pbcoreTitle>
+                    <pbcoreTitle>
+                        <title/>
+                        <titleType>episodetitel</titleType>
+                    </pbcoreTitle>
+                    <pbcoreDescription>
+                        <description>Ross har meget svært ved at acceptere en mand som babysitter, og da den nye
+                            babysitter Sandy begynder at spille blokfløjte og læse digte for Rachel og Emma, får han
+                            nok. Chandler flipper ud, da Monica fortæller, at en af hendes nye kolleger er "den sjoveste
+                            fyr, hun nogensinde har mødt".
+                        </description>
+                        <descriptionType>langomtale1</descriptionType>
+                    </pbcoreDescription>
+                    <pbcoreDescription>
+                        <description>Han går straks i gang med at bevise, at det selvfølgelig er ham, der er den
+                            sjoveste. Phoebe og Mikes kærlighed bliver sat på en prøve, da Phoebe får besøg af sin gamle
+                            flamme David.
+                        </description>
+                        <descriptionType>langomtale2</descriptionType>
+                    </pbcoreDescription>
+                    <pbcoreDescription>
+                        <description>Amerikansk komedieserie.</description>
+                        <descriptionType>kortomtale</descriptionType>
+                    </pbcoreDescription>
+                    <pbcoreGenre>
+                        <genre>hovedgenre: Serier</genre>
+                    </pbcoreGenre>
+                    <pbcoreGenre>
+                        <genre>undergenre: Komedieserie</genre>
+                    </pbcoreGenre>
+                    <pbcoreCreator>
+                        <creator/>
+                        <creatorRole>forfatter</creatorRole>
+                    </pbcoreCreator>
+                    <pbcoreContributor>
+                        <contributor>Ross: David Schwimmer</contributor>
+                        <contributorRole>medvirkende</contributorRole>
+                    </pbcoreContributor>
+                    <pbcoreContributor>
+                        <contributor>Rachel: Jennifer Aniston</contributor>
+                        <contributorRole>medvirkende</contributorRole>
+                    </pbcoreContributor>
+                    <pbcoreContributor>
+                        <contributor>Monica: Courteney Cox</contributor>
+                        <contributorRole>medvirkende</contributorRole>
+                    </pbcoreContributor>
+                    <pbcoreContributor>
+                        <contributor/>
+                        <contributorRole>instruktion</contributorRole>
+                    </pbcoreContributor>
+                    <pbcorePublisher>
+                        <publisher>tv2z</publisher>
+                        <publisherRole>channel_name</publisherRole>
+                    </pbcorePublisher>
+                    <pbcorePublisher>
+                        <publisher>TV 2 Zulu</publisher>
+                        <publisherRole>kanalnavn</publisherRole>
+                    </pbcorePublisher>
+                    <pbcoreInstantiation>
+                        <dateCreated>2002</dateCreated>
+                        <dateIssued/>
+                        <formatLocation/>
+                        <formatMediaType>Moving Image</formatMediaType>
+                        <formatStandard>ikke hd</formatStandard>
+                        <formatDuration>0</formatDuration>
+                        <formatAspectRatio>,</formatAspectRatio>
+                        <formatColors>farve</formatColors>
+                        <formatChannelConfiguration>ikke surround</formatChannelConfiguration>
+                        <pbcoreDateAvailable>
+                            <dateAvailableStart>2010-12-24T18:55:00+0100</dateAvailableStart>
+                            <dateAvailableEnd>2010-12-24T19:35:00+0100</dateAvailableEnd>
+                        </pbcoreDateAvailable>
+                        <pbcoreFormatID>
+                            <formatIdentifier>[INSERT_PBC_FORMAT_ID]</formatIdentifier>
+                            <formatIdentifierSource>[INSERT_PBC_FORMAT_ID_SOURCE]</formatIdentifierSource>
+                        </pbcoreFormatID>
+                        <pbcoreAnnotation>
+                            <annotation/>
+                        </pbcoreAnnotation>
+                    </pbcoreInstantiation>
+                    <pbcoreExtension>
+                        <extension>antalepisoder:0</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>episodenr:200</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>premiere:ikke premiere</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>genudsendelse:genudsendelse</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>hovedgenre_id:4</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>kanalid:7</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>live:ikke live</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>lydlink:</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>produktionsland:Amerikansk</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>produktionsland_id:3</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>program_id:14878330</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>program_ophold:ikke program ophold</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>undergenre_id:691</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>urllink:</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>afsnit_id:12949</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>saeson_id:138</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>serie_id:86</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>tekstet:ikke tekstet</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>th:ikke tekstet for hørehæmmede</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>ttv:ikke tekst-tv</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>showviewcode:47053569</extension>
+                    </pbcoreExtension>
+                </PBCoreDescriptionDocument>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion CREATED="2011-07-13T10:34:39.888Z" ID="PBCORE.2" LABEL="PBCore" MIMETYPE="text/xml"
+                                 SIZE="5348">
+            <foxml:xmlContent>
+                <PBCoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+                    <pbcoreIdentifier>
+                        <identifier>4668333RitzauProgram</identifier>
+                        <identifierSource>id</identifierSource>
+                    </pbcoreIdentifier>
+                    <pbcoreTitle>
+                        <title>Venner</title>
+                        <titleType>titel</titleType>
+                    </pbcoreTitle>
+                    <pbcoreTitle>
+                        <title>Friends</title>
+                        <titleType>originaltitel</titleType>
+                    </pbcoreTitle>
+                    <pbcoreTitle>
+                        <title/>
+                        <titleType>episodetitel</titleType>
+                    </pbcoreTitle>
+                    <pbcoreDescription>
+                        <description>Ross har meget svært ved at acceptere en mand som babysitter, og da den nye
+                            babysitter Sandy begynder at spille blokfløjte og læse digte for Rachel og Emma, får han
+                            nok. Chandler flipper ud, da Monica fortæller, at en af hendes nye kolleger er "den sjoveste
+                            fyr, hun nogensinde har mødt".
+                        </description>
+                        <descriptionType>langomtale1</descriptionType>
+                    </pbcoreDescription>
+                    <pbcoreDescription>
+                        <description>Han går straks i gang med at bevise, at det selvfølgelig er ham, der er den
+                            sjoveste. Phoebe og Mikes kærlighed bliver sat på en prøve, da Phoebe får besøg af sin gamle
+                            flamme David.
+                        </description>
+                        <descriptionType>langomtale2</descriptionType>
+                    </pbcoreDescription>
+                    <pbcoreDescription>
+                        <description>Amerikansk komedieserie.</description>
+                        <descriptionType>kortomtale</descriptionType>
+                    </pbcoreDescription>
+                    <pbcoreGenre>
+                        <genre>hovedgenre: Serier</genre>
+                    </pbcoreGenre>
+                    <pbcoreGenre>
+                        <genre>undergenre: Komedieserie</genre>
+                    </pbcoreGenre>
+                    <pbcoreGenre>
+                        <genre>indhold_emne: Comedy/Situation Comedy</genre>
+                    </pbcoreGenre>
+                    <pbcoreCreator>
+                        <creator/>
+                        <creatorRole>forfatter</creatorRole>
+                    </pbcoreCreator>
+                    <pbcoreContributor>
+                        <contributor>Ross: David Schwimmer</contributor>
+                        <contributorRole>medvirkende</contributorRole>
+                    </pbcoreContributor>
+                    <pbcoreContributor>
+                        <contributor>Rachel: Jennifer Aniston</contributor>
+                        <contributorRole>medvirkende</contributorRole>
+                    </pbcoreContributor>
+                    <pbcoreContributor>
+                        <contributor>Monica: Courteney Cox</contributor>
+                        <contributorRole>medvirkende</contributorRole>
+                    </pbcoreContributor>
+                    <pbcoreContributor>
+                        <contributor/>
+                        <contributorRole>instruktion</contributorRole>
+                    </pbcoreContributor>
+                    <pbcorePublisher>
+                        <publisher>tv2z</publisher>
+                        <publisherRole>channel_name</publisherRole>
+                    </pbcorePublisher>
+                    <pbcorePublisher>
+                        <publisher>TV 2 Zulu</publisher>
+                        <publisherRole>kanalnavn</publisherRole>
+                    </pbcorePublisher>
+                    <pbcoreInstantiation>
+                        <dateCreated>2002</dateCreated>
+                        <dateIssued/>
+                        <formatLocation/>
+                        <formatMediaType>Moving Image</formatMediaType>
+                        <formatStandard>ikke hd</formatStandard>
+                        <formatDuration>1832000</formatDuration>
+                        <formatAspectRatio>,</formatAspectRatio>
+                        <formatColors>farve</formatColors>
+                        <formatChannelConfiguration>ikke surround</formatChannelConfiguration>
+                        <pbcoreDateAvailable>
+                            <dateAvailableStart>2010-12-24T18:55:00+0100</dateAvailableStart>
+                            <dateAvailableEnd>2010-12-24T19:35:00+0100</dateAvailableEnd>
+                        </pbcoreDateAvailable>
+                        <pbcoreFormatID>
+                            <formatIdentifier>[INSERT_PBC_FORMAT_ID]</formatIdentifier>
+                            <formatIdentifierSource>[INSERT_PBC_FORMAT_ID_SOURCE]</formatIdentifierSource>
+                        </pbcoreFormatID>
+                        <pbcoreAnnotation>
+                            <annotation/>
+                        </pbcoreAnnotation>
+                    </pbcoreInstantiation>
+                    <pbcoreExtension>
+                        <extension>antalepisoder:0</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>episodenr:200</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>premiere:ikke premiere</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>genudsendelse:genudsendelse</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>hovedgenre_id:4</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>kanalid:7</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>live:ikke live</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>lydlink:</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>produktionsland:Amerikansk</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>produktionsland_id:3</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>program_id:14878330</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>program_ophold:ikke program ophold</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>undergenre_id:691</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>urllink:</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>afsnit_id:12949</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>saeson_id:138</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>serie_id:86</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>tekstet:ikke tekstet</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>th:ikke tekstet for hørehæmmede</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>ttv:ikke tekst-tv</extension>
+                    </pbcoreExtension>
+                    <pbcoreExtension>
+                        <extension>showviewcode:47053569</extension>
+                    </pbcoreExtension>
+                </PBCoreDescriptionDocument>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+    <foxml:datastream CONTROL_GROUP="X" ID="RITZAU_ORIGINAL" STATE="A" VERSIONABLE="true">
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:14.764Z" ID="RITZAU_ORIGINAL.0" LABEL="Ritzau original"
+                                 MIMETYPE="text/xml" SIZE="170">
+            <foxml:xmlContent>
+                <ritzau_original xmlns="http://doms.statsbiblioteket.dk/types/ritzau_original/0/1/#">
+                    INSERT_RITZAU_ORIGINAL_DUMP
+                </ritzau_original>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:14.981Z" ID="RITZAU_ORIGINAL.1" LABEL="Ritzau original"
+                                 MIMETYPE="text/xml" SIZE="1717">
+            <foxml:xmlContent>
+                <ritzau_original xmlns="http://doms.statsbiblioteket.dk/types/ritzau_original/0/1/#">
+                    RitzauProgram{Id=4668333, channel_name='tv2z', kanalId=7, starttid=2010-12-24 18:55:00.0,
+                    sluttid=2010-12-24 19:35:00.0, annotation='null', originaltitel='Friends', kanalnavn='TV 2 Zulu',
+                    titel='Venner', hovedgenre='Serier', undergenre='Komedieserie', kortomtale='Amerikansk
+                    komedieserie.', langomtale1='Ross har meget svært ved at acceptere en mand som babysitter, og da den
+                    nye babysitter Sandy begynder at spille blokfløjte og læse digte for Rachel og Emma, får han nok.
+                    Chandler flipper ud, da Monica fortæller, at en af hendes nye kolleger er "den sjoveste fyr, hun
+                    nogensinde har mødt".', langomtale2='Han går straks i gang med at bevise, at det selvfølgelig er
+                    ham, der er den sjoveste. Phoebe og Mikes kærlighed bliver sat på en prøve, da Phoebe får besøg af
+                    sin gamle flamme David.', urllink='null', lydlink='null', episodetitel='null', instruktion='null',
+                    forfatter='null', produktionsland='Amerikansk', medvirkende='Monica: Courteney Cox, Rachel: Jennifer
+                    Aniston og Ross: David Schwimmer.', programlaengde=0, produktionsaar=2002, episodenr=200,
+                    antalepisoder=0, showviewcode=47053569, surround=false, genudsendelse=true, ttv=false, sh=false,
+                    tekstet=false, sekstenni=false, bredformat=false, premiere=false, th=false, program_id=14878330,
+                    hovedgenre_id=4, undergenre_id=691, program_ophold=false, produktionsland_id=3, live=false,
+                    hd=false, afsnit_id=12949, saeson_id=138, serie_id=86}
+                </ritzau_original>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion CREATED="2011-07-13T10:34:40.144Z" ID="RITZAU_ORIGINAL.2" LABEL="Ritzau original"
+                                 MIMETYPE="text/xml" SIZE="1717">
+            <foxml:xmlContent>
+                <ritzau_original xmlns="http://doms.statsbiblioteket.dk/types/ritzau_original/0/1/#">
+                    RitzauProgram{Id=4668333, channel_name='tv2z', kanalId=7, starttid=2010-12-24 18:55:00.0,
+                    sluttid=2010-12-24 19:35:00.0, annotation='null', originaltitel='Friends', kanalnavn='TV 2 Zulu',
+                    titel='Venner', hovedgenre='Serier', undergenre='Komedieserie', kortomtale='Amerikansk
+                    komedieserie.', langomtale1='Ross har meget svært ved at acceptere en mand som babysitter, og da den
+                    nye babysitter Sandy begynder at spille blokfløjte og læse digte for Rachel og Emma, får han nok.
+                    Chandler flipper ud, da Monica fortæller, at en af hendes nye kolleger er "den sjoveste fyr, hun
+                    nogensinde har mødt".', langomtale2='Han går straks i gang med at bevise, at det selvfølgelig er
+                    ham, der er den sjoveste. Phoebe og Mikes kærlighed bliver sat på en prøve, da Phoebe får besøg af
+                    sin gamle flamme David.', urllink='null', lydlink='null', episodetitel='null', instruktion='null',
+                    forfatter='null', produktionsland='Amerikansk', medvirkende='Monica: Courteney Cox, Rachel: Jennifer
+                    Aniston og Ross: David Schwimmer.', programlaengde=0, produktionsaar=2002, episodenr=200,
+                    antalepisoder=0, showviewcode=47053569, surround=false, genudsendelse=true, ttv=false, sh=false,
+                    tekstet=false, sekstenni=false, bredformat=false, premiere=false, th=false, program_id=14878330,
+                    hovedgenre_id=4, undergenre_id=691, program_ophold=false, produktionsland_id=3, live=false,
+                    hd=false, afsnit_id=12949, saeson_id=138, serie_id=86}
+                </ritzau_original>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+    <foxml:datastream CONTROL_GROUP="X" ID="GALLUP_ORIGINAL" STATE="A" VERSIONABLE="true">
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:14.764Z" ID="GALLUP_ORIGINAL.0" LABEL="Gallup original"
+                                 MIMETYPE="text/xml" SIZE="170">
+            <foxml:xmlContent>
+                <gallup_original xmlns="http://doms.statsbiblioteket.dk/types/gallup_original/0/1/#">
+                    INSERT_RITZAU_ORIGINAL_DUMP
+                </gallup_original>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:15.059Z" ID="GALLUP_ORIGINAL.1" LABEL="Gallup original"
+                                 MIMETYPE="text/xml" SIZE="105">
+            <foxml:xmlContent>
+                <gallup_original xmlns="http://doms.statsbiblioteket.dk/types/gallup_original/0/1/#"/>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+        <foxml:datastreamVersion CREATED="2011-07-13T10:34:40.311Z" ID="GALLUP_ORIGINAL.2" LABEL="Gallup original"
+                                 MIMETYPE="text/xml" SIZE="1809">
+            <foxml:xmlContent>
+                <gallup_original xmlns="http://doms.statsbiblioteket.dk/types/gallup_original/0/1/#">
+                    TvmeterProgram{originalEntry='00511012241858221012241928542300314244112000400029272200310031000000000020020000Venner
+                    Friends - år 9 Venner 6 Rerun 010000000 00000000000 1720 P20088991294813 1',
+                    sourceFileName='de101224.std', logFormat=FORMAT_2, stationID='51', startDate=2010-12-24 18:58:22.0,
+                    endDate=2010-12-24 19:28:54.0,
+                    parsedProgramClassification=ParsedProgramClassification{targetGroup='2300', contentsItem='3142',
+                    form='4411', frequency='2000', origin='4000', sendstatus='2927', productionDepartment='2200',
+                    itemCountry='3100', productionCountry='3100', intent='0000', productionTimeAndPlace='0000',
+                    targetGroupProductionYear='2002', targetGroupProposedPlacement='0000'}, mainTitle='Venner ',
+                    subTitle='Friends - år 9 ', originalTitle='Venner ', episodeNumber='6 ', broadcastType='Rerun ',
+                    overflowFlag='0', regionFlags='10000000 00000000000', expectedGRP=' ', additionDeductionOnPrice=' ',
+                    commonCode='1720', price=' ', internalIDCode='P20088991294813 ', bid=' ', emmisionsLevel='1'}
+                </gallup_original>
+            </foxml:xmlContent>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+    <foxml:datastream CONTROL_GROUP="E" ID="POLICY" STATE="A" VERSIONABLE="true">
+        <foxml:datastreamVersion CREATED="2011-03-10T13:59:14.764Z" ID="POLICY.0" LABEL="License for this object"
+                                 MIMETYPE="application/rdf+xml" SIZE="4273">
+            <foxml:contentLocation
+                    REF="http://local.fedora.server/fedora/objects/doms:RadioTV_InhouseLicense/datastreams/LICENSE/content"
+                    TYPE="URL"/>
+        </foxml:datastreamVersion>
+    </foxml:datastream>
+</foxml:digitalObject>
+
+

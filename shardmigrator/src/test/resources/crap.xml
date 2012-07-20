@@ -1,0 +1,31 @@
+<foxml:datastream CONTROL_GROUP="X" ID="DC" STATE="A" VERSIONABLE="true">
+    <foxml:datastreamVersion CREATED="2011-03-10T13:59:14.764Z"
+                             FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" ID="DC1.0"
+                             LABEL="Dublin Core Metadata" MIMETYPE="text/xml" SIZE="464">
+        <foxml:xmlContent>
+            <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+                       xmlns:dc="http://purl.org/dc/elements/1.1/"
+                       >
+                <dc:title>Radio/TV Program</dc:title>
+                <dc:identifier>4668333RitzauProgram</dc:identifier>
+                <dc:identifier>uuid:9a61e791-9439-4c3e-b061-1ef38bd72d98</dc:identifier>
+            </oai_dc:dc>
+        </foxml:xmlContent>
+    </foxml:datastreamVersion>
+    <foxml:datastreamVersion CREATED="2012-03-27T18:57:45.578Z"
+                             FORMAT_URI="http://www.openarchives.org/OAI/2.0/oai_dc/" ID="DC.1"
+                             LABEL="Dublin Core Metadata" MIMETYPE="text/xml" SIZE="586">
+        <foxml:xmlContent>
+            <oai_dc:dc xmlns:oai_dc="http://www.openarchives.org/OAI/2.0/oai_dc/"
+                       xmlns:dc="http://purl.org/dc/elements/1.1/"
+                       xsi:schemaLocation="http://www.openarchives.org/OAI/2.0/oai_dc/ http://www.openarchives.org/OAI/2.0/oai_dc.xsd">
+                <dc:title>Radio/TV Program</dc:title>
+                <dc:identifier>4668333RitzauProgram</dc:identifier>
+                <dc:identifier>uuid:9a61e791-9439-4c3e-b061-1ef38bd72d98</dc:identifier>
+                <identifier xmlns="http://purl.org/dc/elements/1.1/">
+                    hdl:109.3.1/uuid:9a61e791-9439-4c3e-b061-1ef38bd72d98
+                </identifier>
+            </oai_dc:dc>
+        </foxml:xmlContent>
+    </foxml:datastreamVersion>
+</foxml:datastream>
