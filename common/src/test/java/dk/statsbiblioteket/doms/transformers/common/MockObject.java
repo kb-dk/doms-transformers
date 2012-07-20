@@ -1,5 +1,7 @@
 package dk.statsbiblioteket.doms.transformers.common;
 
+import dk.statsbiblioteket.doms.central.Relation;
+
 import java.util.*;
 
 /**
@@ -16,5 +18,7 @@ public class MockObject {
     Map<String,String> datastreams = new HashMap<String, String> ();
 
     boolean writable = true;
+
+    Set<Relation> relations = new HashSet<Relation>();
 
 }
