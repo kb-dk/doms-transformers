@@ -124,7 +124,7 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         String stopUnixTime = filename.split("_")[1].split("-")[0];
         String recorder = filename.split("_")[2].split("\\.")[0];
         String muxName = filename.split("\\.")[0];
-        int muxID = Integer.parseInt(muxName.split("mux")[0]);
+        int muxID = Integer.parseInt(muxName.split("mux")[1]);
 
         ChannelIDsType channels = new ChannelIDsType();
         channels.getChannel().addAll(muxChannelCalculator.getChannelIDsForMux(muxID, CalendarUtils.getDate(startUnixTime)));
