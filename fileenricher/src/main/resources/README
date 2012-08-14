@@ -16,7 +16,12 @@ README file detailing the use of FileEnricher
  First a list of files should be build, second the list of files should be processed by the file enricher. 
  
  ++++ Generating the list of files ++++
+ To generate the list of UUID's run the 'uuidExtractor.sh' script. 
+ ./bin/uuidExtractor.sh <uuidfile> 
  
+ The parameter 'uuidfile' will be written to the distributions resource directory. The script assumes that the example
+ configuration file is present in the distributions 'conf' directory under the name 'fileenricher.properties' and uses the 
+ domshost, user and pass to connect to the webservice and obtain the list of uuid's. 
  
  ++++ Running the file enricher ++++
  The script 'fileenricher.sh' placed in the bin directory should be executed with two parameters. 
