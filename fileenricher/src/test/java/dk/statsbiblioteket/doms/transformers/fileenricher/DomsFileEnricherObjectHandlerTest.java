@@ -72,6 +72,9 @@ public class DomsFileEnricherObjectHandlerTest {
         String testMuxStartTime = "1287514800";
         String testMuxStopTime = "1287518400";
         String testMuxRecorder = "dvb1-1";
+        String muxName = testMuxFileName.split("\\.")[0];
+        Integer muxID = Integer.parseInt(muxName.split("mux")[0]);
+        assertThat(muxID, is(1));
         
         BroadcastFileDescriptiveMetadataType metadata = handler.decodeFilename(testMuxFileName);
         assertThat(metadata.getRecorder(), is(testMuxRecorder));

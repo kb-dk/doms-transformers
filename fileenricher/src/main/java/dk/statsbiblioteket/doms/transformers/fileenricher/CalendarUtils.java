@@ -14,11 +14,10 @@ public class CalendarUtils {
     private CalendarUtils() {}
     
     /**
-     * Turns a string representation of unix time into a XMLGregorianCalendar.
-     * @param unixTime The unixtime. If the argument is null, then epoch is returned.
-     * @return The XMLGregorianCalendar.
+     * Creates a Date object from the string representation of unixtime in seconds. 
+     * @param unixTime the unixtime. If the argument is null, then epoch is returned. 
      */
-    public static XMLGregorianCalendar getXmlGregorianCalendar(String unixTime) {
+    public static Date getDate(String unixTime) {
         Date date;
         
         if(unixTime == null) {
@@ -26,7 +25,16 @@ public class CalendarUtils {
         } else {
             date = new Date(Long.parseLong(unixTime)*1000);
         }
-        return getXmlGregorianCalendar(date);
+        return date;
+    }
+    
+    /**
+     * Turns a string representation of unix time into a XMLGregorianCalendar.
+     * @param unixTime The unixtime. If the argument is null, then epoch is returned.
+     * @return The XMLGregorianCalendar.
+     */
+    public static XMLGregorianCalendar getXmlGregorianCalendar(String unixTime) {
+        return getXmlGregorianCalendar(getDate(unixTime));
     }
     
     /**
