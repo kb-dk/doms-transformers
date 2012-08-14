@@ -14,14 +14,27 @@
         <fileSet>
             <outputDirectory>resources</outputDirectory>
             <directory>src/main/resources</directory>
+            <excludes>
+              <exclude>README</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <outputDirectory></outputDirectory>
+            <directory>src/main/resources</directory>
+            <includes>
+              <include>README</include>
+            </includes>
         </fileSet>
         <fileSet>
             <outputDirectory>bin</outputDirectory>
             <directory>src/main/scripts</directory>
             <fileMode>0755</fileMode>
         </fileSet>
+        <fileSet>
+            <outputDirectory>conf</outputDirectory>
+            <directory>conf</directory>
+        </fileSet>
     </fileSets>
-
 
 </assembly>
 
