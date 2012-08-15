@@ -107,15 +107,17 @@ public class TVMeterReader {
 
         String part1, part2, part3;
         String[] temp = tvmeterContents.split("parsedProgramClassification");
-        part1 = temp[0].split("\\{")[1];
-        temp = temp[1].split("\\{")[1].split("\\}");
-        part2 = temp[0];
-        part3 = temp[1];
-        handlePart(program, part1);
-        handlePart(classification, part2);
-        handlePart(program, part3);
-
-        program.setParsedProgramClassification(classification);
+        if(temp.length == 2) {
+            part1 = temp[0].split("\\{")[1];
+            temp = temp[1].split("\\{")[1].split("\\}");
+            part2 = temp[0];
+            part3 = temp[1];
+            handlePart(program, part1);
+            handlePart(classification, part2);
+            handlePart(program, part3);
+    
+            program.setParsedProgramClassification(classification);
+        }
         return program;
     }
 
