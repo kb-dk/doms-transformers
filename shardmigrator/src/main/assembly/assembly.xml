@@ -20,6 +20,10 @@
             <directory>src/main/scripts</directory>
             <fileMode>0755</fileMode>
         </fileSet>
+        <fileSet>
+            <outputDirectory>conf</outputDirectory>
+            <directory>conf</directory>
+        </fileSet>
     </fileSets>
 
 

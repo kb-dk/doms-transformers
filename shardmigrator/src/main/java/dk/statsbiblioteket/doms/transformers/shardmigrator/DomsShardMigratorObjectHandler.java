@@ -108,7 +108,8 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
             ShardMetadata shardStructure = deserializeShardMetadata(shardMetadataContents);
             ProgramStructure programStructure = convertShardStructure(shardStructure);
             System.out.println("not broken yet"+i++);
-
+            ProgramBroadcast programBroardcast = makeProgramBroadcast(tvmeterStructure, pbcoreOriginal);
+            
             //NOW START TO CHANGE THE OBJECT
 
             webservice.markInProgressObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
@@ -120,6 +121,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
             System.out.println("not broken yet"+i++);
 
             //webservice.modifyDatastream(programUuid,"PBCORE",pbCoreMigrator.toString(),"Updating radio/tv datamodel");
+            webservice.modifyDatastream(programUuid, "PROGRAM_BROADCAST", serializeObject(programBroardcast), "Updating radio/tv datamodel");
             webservice.modifyDatastream(programUuid,"PROGRAM_STRUCTURE",serializeObject(programStructure),"Updating radio/tv datamodel");
             webservice.modifyDatastream(programUuid,"GALLUP_ORIGINAL",serializeObject(tvmeterStructure),"Updating radio/tv datamodel");
             System.out.println("not broken yet"+i++);
@@ -165,6 +167,13 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
     public String serializeObject(ProgramStructure object) throws JAXBException {
         ByteArrayOutputStream result = new ByteArrayOutputStream();
         JAXBElement<ProgramStructure> toSerialize = new JAXBElement<ProgramStructure>(new QName("", "program_structure"), ProgramStructure.class, null, object);
+        JAXBContext.newInstance(object.getClass().getPackage().getName()).createMarshaller().marshal(toSerialize, result);
+        return result.toString();
+    }
+    
+    public String serializeObject(ProgramBroadcast object) throws JAXBException {
+        ByteArrayOutputStream result = new ByteArrayOutputStream();
+        JAXBElement<ProgramBroadcast> toSerialize = new JAXBElement<ProgramBroadcast>(new QName("", "programBroadcast"), ProgramBroadcast.class, null, object);
         JAXBContext.newInstance(object.getClass().getPackage().getName()).createMarshaller().marshal(toSerialize, result);
         return result.toString();
     }

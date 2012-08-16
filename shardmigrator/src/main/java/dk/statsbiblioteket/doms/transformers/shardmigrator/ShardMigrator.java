@@ -11,6 +11,7 @@ import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -20,10 +21,10 @@ import java.util.List;
  * See the ShardRemover tool for removing shards once transformation of tools is complete.
  */
 public class ShardMigrator {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException {
         //TODO: Setup apache CLI
-        File uuidfile = new File(args[0]);
-        File configfile = new File(args[1]);
+        File uuidfile = new File(Thread.currentThread().getContextClassLoader().getResource(args[0]).toURI());
+        File configfile = new File(Thread.currentThread().getContextClassLoader().getResource(args[1]).toURI());
 
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
         PropertyBasedDomsConfig config = new PropertyBasedDomsConfig(configfile);
