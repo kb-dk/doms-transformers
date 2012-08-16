@@ -17,7 +17,9 @@ public class TrivialUuidFileReader implements UuidFileReader {
         BufferedReader reader = new BufferedReader(new FileReader(file));
         String line;
         while ((line = reader.readLine()) != null) {
-            uuids.add(line);
+            if( !line.isEmpty()) {
+                uuids.add(line);                
+            }
         }
         return uuids;
     }

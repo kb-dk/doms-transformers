@@ -13,9 +13,9 @@ public class PropertyBasedDomsConfig extends PropertyBasedConfig implements Doms
     public static final String DOMS_WEBSERVICE_URL_PROPERTY
             = "dk.statsbiblioteket.doms.transformers.domsurl";
     /** Property for DOMS Username. */
-    public static final String DOMS_USERNAME_PROPERTY = "dk.statsbiblioteket.doms.transformers.domspass";
+    public static final String DOMS_USERNAME_PROPERTY = "dk.statsbiblioteket.doms.transformers.domsuser";
     /** Property for DOMS Password. */
-    public static final String DOMS_PASSWORD_PROPERTY = "dk.statsbiblioteket.doms.transformers.domsuser";
+    public static final String DOMS_PASSWORD_PROPERTY = "dk.statsbiblioteket.doms.transformers.domspass";
 
     public PropertyBasedDomsConfig() {
         super();

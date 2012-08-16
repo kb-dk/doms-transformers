@@ -35,9 +35,13 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
     public void transform(List<String> uuids) {
         for (String uuid : uuids) {
             try {
+                System.out.println("trying to transform... " + uuid);
                 objectHandler.transform(uuid);
+                System.out.println("transformed... " + uuid);
                 recordSuccess(uuid);
             } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println(e.getMessage());
                 log.error("Error processing uuid '{}'", uuid, e);
                 recordFailure(uuid);
             }
