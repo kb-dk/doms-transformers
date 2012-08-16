@@ -73,11 +73,13 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
         System.out.println("started work on program "+programUuid);
 
         int i = 0;
+
         List<Relation> shardRelations = webservice.getNamedRelations(programUuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
         if (shardRelations.isEmpty()) {
-            // nothing to do
+            System.out.println("nothing to do");
             return;
         }
+        
 
         try {
 
@@ -141,8 +143,9 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
 
 
     public ShardMetadata deserializeShardMetadata(String shardMetadataString) throws JAXBException {
+        Document document = DOM.stringToDOM(shardMetadataString, false);
         JAXBElement<ShardMetadata> obj = (JAXBElement<ShardMetadata>) JAXBContext.newInstance(ShardMetadata.class.getPackage().getName()).createUnmarshaller().unmarshal(
-                new ByteArrayInputStream(shardMetadataString.getBytes()));
+                document);
         return obj.getValue();
     }
 
@@ -194,7 +197,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
             startDate = fmt.parse(tvmeter.getStartDate());
             endDate = fmt.parse(tvmeter.getEndDate());
         } else {
-            DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ");
+            DateFormat fmt = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
             String startTime = xpath.selectString(dom, "//pb:dateAvailableStart");
             String stopTime =  xpath.selectString(dom, "//pb:dateAvailableEnd");    
             startDate = fmt.parse(startTime);
