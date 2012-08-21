@@ -1,8 +1,20 @@
 package dk.statsbiblioteket.doms.transformers.shardremover;
 
-import dk.statsbiblioteket.doms.central.*;
-import dk.statsbiblioteket.doms.transformers.common.CalendarUtils;
-import dk.statsbiblioteket.doms.transformers.common.MockWebservice;
+import java.io.ByteArrayInputStream;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.OutputKeys;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+import org.apache.commons.io.IOUtils;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,36 +23,17 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBElement;
-import javax.xml.bind.JAXBException;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.OutputKeys;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
-
-import java.io.ByteArrayInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.StringWriter;
-import java.lang.String;
-import java.net.URISyntaxException;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Date;
+import dk.statsbiblioteket.doms.central.CentralWebservice;
+import dk.statsbiblioteket.doms.central.ObjectProfile;
+import dk.statsbiblioteket.doms.central.Relation;
+import dk.statsbiblioteket.doms.transformers.common.CalendarUtils;
+import dk.statsbiblioteket.doms.transformers.common.MockWebservice;
 
 import junit.framework.Assert;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
-
-import org.apache.tuscany.sdo.codegen.BytecodeInterfaceGenerator;
 import org.hamcrest.CoreMatchers;
-
-
 
 /**
  * Created by IntelliJ IDEA.
@@ -64,7 +57,7 @@ public class DomsShardRemoverObjectHandlerTest {
 
     @Before
     public void setUp() throws Exception {
-        /*String testMuxFileName = "mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts";
+        String testMuxFileName = "mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts";
 
         webservice = new MockWebservice();
 
@@ -78,15 +71,28 @@ public class DomsShardRemoverObjectHandlerTest {
         webservice.modifyDatastream(programObjectPid,"PBCORE",
                 IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("objects/27026d8e-bbb6-499f-b304-8511426ebfdb_pbcore.xml")
                 ),"comment");
-
+        
         webservice.modifyDatastream(programObjectPid,"GALLUP_ORIGINAL",
                 IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("objects/27026d8e-bbb6-499f-b304-8511426ebfdb_gallup.xml")
                 ),"comment");
-
-
+        
+        DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance(); 
+        domFactory.setIgnoringComments(true);
+        DocumentBuilder builder = domFactory.newDocumentBuilder(); 
+        Document doc = builder.parse(new ByteArrayInputStream(IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("objects/27026d8e-bbb6-499f-b304-8511426ebfdb_dc.xml")).getBytes()));
+        NodeList nodes = doc.getElementsByTagName("dc:identifier");
+        nodes.item(1).setTextContent(programObjectPid);
+        Transformer transformer = TransformerFactory.newInstance().newTransformer();
+        transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+        StreamResult result = new StreamResult(new StringWriter());
+        DOMSource source = new DOMSource(doc);
+        transformer.transform(source, result);
+        webservice.modifyDatastream(programObjectPid,"DC", result.getWriter().toString(), "comment");
+        
         webservice.modifyDatastream(programObjectPid,"RITZAU_ORIGINAL",
                 IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("objects/27026d8e-bbb6-499f-b304-8511426ebfdb_ritzau.xml")
                 ),"comment");
+        
         Relation shardRelation = new Relation();
         shardRelation.setObject(shardObjectPid);
         shardRelation.setSubject(programObjectPid);
@@ -104,16 +110,67 @@ public class DomsShardRemoverObjectHandlerTest {
         fileRelation.setPredicate("http://doms.statsbiblioteket.dk/relations/default/0/1/#consistsOf");
         fileRelation.setLiteral(false);
         webservice.addRelation(shardObjectPid, fileRelation, "comment");
-        webservice.markPublishedObject(Arrays.asList(shardObjectPid),"comment");*/
+        webservice.markPublishedObject(Arrays.asList(shardObjectPid),"comment");
     }
 
     @After
     public void tearDown() throws Exception {
 
     }
-
+    
+    /**
+     * - Test that the programObjectPid prior to running the transformation has a shard relation, 
+     *   and that it is gone after the transformation
+     * - Test that the old shard objects pid is to be found in the DC datastream of the program object. 
+     *  
+     */
     @Test
     public void testTransform() throws Exception {
+        List<String> originalPids = new ArrayList<String>();
+        List<String> newPids = new ArrayList<String>();
+        
+        List<Relation> shardRelations = webservice.getNamedRelations(programObjectPid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
+        assertThat(shardRelations.isEmpty(), is(false));
+
+        String originalDC = webservice.getDatastreamContents(programObjectPid, "DC");
+        DomsShardRemoverObjectHandler handler = new DomsShardRemoverObjectHandler(null, webservice);
+        handler.transform(programObjectPid);
+        String newDC = webservice.getDatastreamContents(programObjectPid, "DC");
+        assertThat(newDC, not(is(originalDC)));
+
+        DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance(); 
+        domFactory.setIgnoringComments(true);
+        DocumentBuilder builder = domFactory.newDocumentBuilder(); 
+        Document doc = builder.parse(new ByteArrayInputStream(originalDC.getBytes()));
+
+        NodeList nodes = doc.getElementsByTagName("dc:identifier");
+        for(int i=0; i<nodes.getLength(); i++) {
+            System.out.println("Old ids (" + i + "): " + nodes.item(i).getTextContent());
+            originalPids.add(nodes.item(i).getTextContent());
+        }
+
+        doc = builder.parse(new ByteArrayInputStream(newDC.getBytes()));
+        
+        nodes = doc.getElementsByTagName("dc:identifier");
+        for(int i=0; i<nodes.getLength(); i++) {
+            System.out.println("New ids(" + i + "): " + nodes.item(i).getTextContent());
+            newPids.add(nodes.item(i).getTextContent());
+        }
+        
+        System.out.println("programObjectPid: " + programObjectPid + ", shardObjectPid: " + shardObjectPid);
+
+        assertThat(originalPids.contains(programObjectPid), is(true));
+        assertThat(originalPids.contains(shardObjectPid), is(false));
+        assertThat(newPids.contains(programObjectPid), is(true));
+        assertThat(newPids.contains(shardObjectPid), is(true));
+        
+        shardRelations = webservice.getNamedRelations(programObjectPid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
+        assertThat(shardRelations.isEmpty(), is(true));
+
+    }
+
+    @Test
+    public void dummyTest() throws Exception {
         DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance(); 
         domFactory.setIgnoringComments(true);
         DocumentBuilder builder = domFactory.newDocumentBuilder(); 

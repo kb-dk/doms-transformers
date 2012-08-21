@@ -1,0 +1,146 @@
+
+
+<PBCoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <pbcoreIdentifier>
+    <identifier>3745932RitzauProgram</identifier>
+    <identifierSource>id</identifierSource>
+  </pbcoreIdentifier>
+  <pbcoreTitle>
+    <title>Backstage Special med Sys Bjerre</title>
+    <titleType>titel</titleType>
+  </pbcoreTitle>
+  <pbcoreTitle>
+    <title></title>
+    <titleType>originaltitel</titleType>
+  </pbcoreTitle>
+  <pbcoreTitle>
+    <title></title>
+    <titleType>episodetitel</titleType>
+  </pbcoreTitle>
+  <pbcoreDescription>
+    <description>Når man taler dansk populærmusik 2009, er det svært at komme uden om Sys Bjerre. Med mere end 82.000 solgte albums er der tale om alt andet end et one-hit-wonder. Vejen til succesen var lang, og da den endelig kom, var prisen langt højere, end Sys nogensinde havde forestillet sig. Se Sys Bjerre i et ærligt og åbenhjertigt interview med Camilla Jane Lea.</description>
+    <descriptionType>langomtale1</descriptionType>
+  </pbcoreDescription>
+  <pbcoreDescription>
+    <description></description>
+    <descriptionType>langomtale2</descriptionType>
+  </pbcoreDescription>
+  <pbcoreDescription>
+    <description></description>
+    <descriptionType>kortomtale</descriptionType>
+  </pbcoreDescription>
+  <pbcoreGenre>
+    <genre>hovedgenre: Musik</genre>
+  </pbcoreGenre>
+  <pbcoreGenre>
+    <genre>undergenre: Pop &amp; Rock m.m.</genre>
+  </pbcoreGenre>
+  <pbcoreGenre>
+    <genre>indhold_emne: Rytmisk musik</genre>
+  </pbcoreGenre>
+  <pbcoreCreator>
+    <creator></creator>
+    <creatorRole>forfatter</creatorRole>
+  </pbcoreCreator>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole>medvirkende</contributorRole>
+  </pbcoreContributor>
+  <pbcoreContributor>
+    <contributor></contributor>
+    <contributorRole>instruktion</contributorRole>
+  </pbcoreContributor>
+  <pbcorePublisher>
+    <publisher>dr1</publisher>
+    <publisherRole>channel_name</publisherRole>
+  </pbcorePublisher>
+  <pbcorePublisher>
+    <publisher>DR1</publisher>
+    <publisherRole>kanalnavn</publisherRole>
+  </pbcorePublisher>
+  <pbcoreInstantiation>
+    <dateCreated>0</dateCreated>
+    <dateIssued></dateIssued>
+    <formatLocation></formatLocation>
+    <formatMediaType>Moving Image</formatMediaType>
+    <formatStandard>ikke hd</formatStandard>
+    <formatDuration>1713000</formatDuration>
+    <formatAspectRatio>16:9, </formatAspectRatio>
+    <formatColors>farve</formatColors>
+    <formatChannelConfiguration>ikke surround</formatChannelConfiguration>
+    <pbcoreDateAvailable>
+      <dateAvailableStart>2009-06-18T23:30:00+0200</dateAvailableStart>
+      <dateAvailableEnd>2009-06-19T00:00:00+0200</dateAvailableEnd>
+    </pbcoreDateAvailable>
+    <pbcoreFormatID>
+      <formatIdentifier>[INSERT_PBC_FORMAT_ID]</formatIdentifier>
+      <formatIdentifierSource>[INSERT_PBC_FORMAT_ID_SOURCE]</formatIdentifierSource>
+    </pbcoreFormatID>
+    <pbcoreAnnotation>
+      <annotation></annotation>
+    </pbcoreAnnotation>
+  </pbcoreInstantiation>
+  <pbcoreExtension>
+    <extension>antalepisoder:0</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>episodenr:0</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>premiere:ikke premiere</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>genudsendelse:ikke genudsendelse</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>hovedgenre_id:11</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>kanalid:3</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>live:ikke live</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>lydlink:</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>produktionsland:</extension>
+  </pbcoreExtension>
+<pbcoreExtension>
+    <extension>produktionsland_id:0</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>program_id:11953743</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>program_ophold:ikke program ophold</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>undergenre_id:654</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>urllink:</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>afsnit_id:0</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>saeson_id:0</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>serie_id:0</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>tekstet:ikke tekstet</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>th:ikke tekstet for hørehæmmede</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>ttv:tekst-tv</extension>
+  </pbcoreExtension>
+  <pbcoreExtension>
+    <extension>showviewcode:1708</extension>
+  </pbcoreExtension>
+</PBCoreDescriptionDocument>

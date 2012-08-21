@@ -1,0 +1,148 @@
+<PBCoreDescriptionDocument xmlns="http://www.pbcore.org/PBCore/PBCoreNamespace.html"
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           xsi:schemaLocation="http://www.pbcore.org/PBCore/PBCoreNamespace.html pbcore1.1.1.xsd">
+    <pbcoreIdentifier>
+        <identifier>3743294RitzauProgram</identifier>
+        <identifierSource>id</identifierSource>
+    </pbcoreIdentifier>
+    <pbcoreTitle>
+        <title>Konstanse</title>
+        <titleType>titel</titleType>
+    </pbcoreTitle>
+    <pbcoreTitle>
+        <title></title>
+        <titleType>originaltitel</titleType>
+    </pbcoreTitle>
+    <pbcoreTitle>
+        <title></title>
+        <titleType>episodetitel</titleType>
+    </pbcoreTitle>
+    <pbcoreDescription>
+        <description>Konstanse på fem år og hendes store famile bor på en lille ø i skærgården. Her er der nok at gøre
+            med at arbejde i haven og pasning af alle dyrene.
+        </description>
+        <descriptionType>langomtale1</descriptionType>
+    </pbcoreDescription>
+    <pbcoreDescription>
+        <description></description>
+        <descriptionType>langomtale2</descriptionType>
+    </pbcoreDescription>
+    <pbcoreDescription>
+        <description>Katteliv.</description>
+        <descriptionType>kortomtale</descriptionType>
+    </pbcoreDescription>
+    <pbcoreGenre>
+        <genre>hovedgenre: Børn &amp; Ungdom</genre>
+    </pbcoreGenre>
+    <pbcoreGenre>
+        <genre>undergenre: Ungdom</genre>
+    </pbcoreGenre>
+    <pbcoreGenre>
+        <genre>indhold_emne: Psykologisk drama</genre>
+    </pbcoreGenre>
+    <pbcoreCreator>
+        <creator></creator>
+        <creatorRole>forfatter</creatorRole>
+    </pbcoreCreator>
+    <pbcoreContributor>
+        <contributor></contributor>
+        <contributorRole>medvirkende</contributorRole>
+    </pbcoreContributor>
+    <pbcoreContributor>
+        <contributor></contributor>
+        <contributorRole>instruktion</contributorRole>
+    </pbcoreContributor>
+    <pbcorePublisher>
+        <publisher>dr1</publisher>
+        <publisherRole>channel_name</publisherRole>
+    </pbcorePublisher>
+    <pbcorePublisher>
+        <publisher>DR1</publisher>
+        <publisherRole>kanalnavn</publisherRole>
+    </pbcorePublisher>
+    <pbcoreInstantiation>
+        <dateCreated>0</dateCreated>
+        <dateIssued></dateIssued>
+        <formatLocation></formatLocation>
+        <formatMediaType>Moving Image</formatMediaType>
+        <formatStandard>ikke hd</formatStandard>
+        <formatDuration>366000</formatDuration>
+        <formatAspectRatio>,</formatAspectRatio>
+        <formatColors>farve</formatColors>
+        <formatChannelConfiguration>ikke surround</formatChannelConfiguration>
+        <pbcoreDateAvailable>
+            <dateAvailableStart>2009-06-18T06:35:00+0200</dateAvailableStart>
+            <dateAvailableEnd>2009-06-18T06:40:00+0200</dateAvailableEnd>
+        </pbcoreDateAvailable>
+        <pbcoreFormatID>
+            <formatIdentifier>[INSERT_PBC_FORMAT_ID]</formatIdentifier>
+            <formatIdentifierSource>[INSERT_PBC_FORMAT_ID_SOURCE]</formatIdentifierSource>
+        </pbcoreFormatID>
+        <pbcoreAnnotation>
+            <annotation></annotation>
+        </pbcoreAnnotation>
+    </pbcoreInstantiation>
+    <pbcoreExtension>
+        <extension>antalepisoder:0</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>episodenr:0</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>premiere:ikke premiere</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>genudsendelse:ikke genudsendelse</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>hovedgenre_id:16</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>kanalid:3</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>live:ikke live</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>lydlink:</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>produktionsland:</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>produktionsland_id:0</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>program_id:11953701</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>program_ophold:ikke program ophold</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>undergenre_id:756</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>urllink:</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>afsnit_id:0</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>saeson_id:0</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>serie_id:0</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>tekstet:ikke tekstet</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>th:ikke tekstet for hørehæmmede</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>ttv:ikke tekst-tv</extension>
+    </pbcoreExtension>
+    <pbcoreExtension>
+        <extension>showviewcode:80993692</extension>
+    </pbcoreExtension>
+</PBCoreDescriptionDocument>

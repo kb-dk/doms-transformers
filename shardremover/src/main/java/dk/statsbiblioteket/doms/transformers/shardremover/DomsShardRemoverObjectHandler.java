@@ -58,14 +58,14 @@ public class DomsShardRemoverObjectHandler implements ObjectHandler {
         String shardUuid = shardRelations.get(0).getObject();
         
         webservice.markInProgressObject(Arrays.asList(uuid), "Updating radio/tv object");
-        //TODO Add UUID to program object as extra ID (add as Identifier element in DC datastream)        
+        // Add UUID to program object as extra ID (add as Identifier element in DC datastream)        
         String originalDC = webservice.getDatastreamContents(uuid, "DC");
         String newDC = addIdentifierToDC(originalDC, shardUuid);
         webservice.modifyDatastream(uuid, "DC", newDC, "Adding old shard ID to DC");
-        //TODO Remove relation to shard
+        // Remove relation to shard
         webservice.deleteRelation(uuid, shardRelations.get(0), 
                 "Removing shard relation from program object as part of migration");
-        //TODO Remove shard object
+        // Remove shard object
         webservice.deleteObject(Arrays.asList(shardUuid), "Marking shard object as deleted");
         
         webservice.markPublishedObject(Arrays.asList(uuid),"Done updating radio/tv object");

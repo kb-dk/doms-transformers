@@ -1,0 +1,18 @@
+<shard_metadata xmlns="*.xsd">
+    <file>
+        <file_url>
+            http://bitfinder.statsbiblioteket.dk/bart/dk4_399.250_S33-DK4_mpeg1_20110730055601_20110731001601_encoder2-2.mpeg
+        </file_url>
+        <program_start_offset>0</program_start_offset>
+        <program_clip_length>239</program_clip_length>
+        <file_name>dk4_399.250_S33-DK4_mpeg1_20110730055601_20110731001601_encoder2-2.mpeg</file_name>
+        <format_uri>info:pronom/x-fmt/385</format_uri>
+    </file>
+    <shardStructure>
+        <holes></holes>
+        <missingStart>
+            <missingSeconds>1560</missingSeconds>
+        </missingStart>
+        <overlaps></overlaps>
+    </shardStructure>
+</shard_metadata>
