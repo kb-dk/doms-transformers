@@ -14,10 +14,9 @@
     <packaging>pom</packaging>
 
     <scm>
-        <connection>scm:svn:https://doms.svn.sourceforge.net/svnroot/doms/examples/transformers/trunk</connection>
-        <developerConnection>scm:svn:https://doms.svn.sourceforge.net/svnroot/doms/examples/transformers/trunk
-        </developerConnection>
-        <url>http://doms.svn.sourceforge.net/viewvc/doms/examples/transformers/trunk</url>
+        <connection>scm:git:git://github.com/statsbiblioteket/doms-transformers.git</connection>
+        <developerConnection>scm:git:git@github.com:statsbiblioteket/doms-transformers.git</developerConnection>
+        <url>https://github.com/statsbiblioteket/doms-transformers</url>
     </scm>
 
 
