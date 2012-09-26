@@ -1,4 +1,4 @@
-package dk.statsbiblioteket.doms.transformers.fileenricher;
+package dk.statsbiblioteket.doms.transformers.common;
 
 import java.util.ArrayList;
 import java.util.List;
