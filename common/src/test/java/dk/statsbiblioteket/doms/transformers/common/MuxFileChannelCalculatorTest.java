@@ -1,10 +1,11 @@
-package dk.statsbiblioteket.doms.transformers.fileenricher;
+package dk.statsbiblioteket.doms.transformers.common;
 
-import dk.statsbiblioteket.doms.transformers.fileenricher.muxchannels.MuxFileChannelCalculator;
+import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.InputStream;
 import java.util.Date;
 import java.util.List;
 
@@ -28,8 +29,8 @@ public class MuxFileChannelCalculatorTest {
 
     @Test
     public void testGetChannelIDsForMux() throws Exception {
-        File csv = new File(Thread.currentThread().getContextClassLoader().getResource("muxChannels.csv").toURI());
-        MuxFileChannelCalculator calc = new MuxFileChannelCalculator(csv);
+        InputStream channelStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv");
+        MuxFileChannelCalculator calc = new MuxFileChannelCalculator(channelStream);
         List<String> channelIDs1 = calc.getChannelIDsForMux(1, new Date());
         assertThat(channelIDs1.size(), is(5));
         assertTrue(channelIDs1.contains("dr1"));

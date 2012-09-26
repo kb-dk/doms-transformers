@@ -1,4 +1,4 @@
-package dk.statsbiblioteket.doms.transformers.fileenricher.muxchannels;
+package dk.statsbiblioteket.doms.transformers.common.muxchannels;
 
 import java.util.Date;
 

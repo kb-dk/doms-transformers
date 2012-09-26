@@ -1,4 +1,4 @@
-package dk.statsbiblioteket.doms.transformers.fileenricher.muxchannels;
+package dk.statsbiblioteket.doms.transformers.common.muxchannels;
 
 import java.io.*;
 import java.text.DateFormat;
@@ -17,8 +17,8 @@ public class MuxFileChannelCalculator {
 
     Set<MuxChannel> muxChannels = new HashSet<MuxChannel>();
 
-    public MuxFileChannelCalculator(File muxChannelsFile) throws IOException, ParseException {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(muxChannelsFile)));
+    public MuxFileChannelCalculator(InputStream muxChannelsStream) throws IOException, ParseException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(muxChannelsStream));
         String line;
         //2009-10-30 10:50:00.0
         DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.S");
