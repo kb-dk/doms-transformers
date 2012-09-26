@@ -2,8 +2,10 @@ package dk.statsbiblioteket.doms.transformers.fileenricher;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.transformers.common.CalendarUtils;
+import dk.statsbiblioteket.doms.transformers.common.FileNameParser;
 import dk.statsbiblioteket.doms.transformers.common.MockWebservice;
 import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
+import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -28,10 +30,11 @@ import static org.junit.Assert.assertThat;
 public class DomsFileEnricherObjectHandlerTest {
 
     String testObjectPid;
-    
+
     DomsFileEnricherObjectHandler handler;
     ChecksumParser checksums;
-    
+    MuxFileChannelCalculator muxFileChannelCalculator;
+
     @Before
     public void setUp() throws Exception {
         String testMuxFileName = "mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts";
@@ -41,6 +44,8 @@ public class DomsFileEnricherObjectHandlerTest {
         webservice.addFileFromPermanentURL(testObjectPid,null,null,"http://bitfinder.statsbiblioteket.dk/bart/"+testMuxFileName,null,null);
 
         checksums = new ChecksumParser(new File(Thread.currentThread().getContextClassLoader().getResource("md5s.zip").toURI()));
+        muxFileChannelCalculator = new MuxFileChannelCalculator(
+                Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
         handler = new DomsFileEnricherObjectHandler(null, webservice, checksums, null);
     }
@@ -59,7 +64,8 @@ public class DomsFileEnricherObjectHandlerTest {
     public void testAllFilenames() throws ParseException {
         Set<String> filenames = checksums.getNameChecksumsMap().keySet();
         for (String filename : filenames) {
-            BroadcastFileDescriptiveMetadataType metadata = handler.decodeFilename(filename);
+            BroadcastFileDescriptiveMetadataType metadata =
+                    FileNameParser.decodeFilename(filename, checksums.getNameChecksumsMap(), muxFileChannelCalculator);
             if (metadata == null){
                 System.out.println("failed to parse file '"+filename+"'");
 
@@ -76,8 +82,9 @@ public class DomsFileEnricherObjectHandlerTest {
         String muxName = testMuxFileName.split("\\.")[0];
         int muxID = Integer.parseInt(muxName.split("mux")[1]);
         assertThat(muxID, is(Integer.parseInt("1")));
-        
-        BroadcastFileDescriptiveMetadataType metadata = handler.decodeFilename(testMuxFileName);
+
+        BroadcastFileDescriptiveMetadataType metadata =
+                FileNameParser.decodeFilename(testMuxFileName, checksums.getNameChecksumsMap(), muxFileChannelCalculator);
         assertThat(metadata.getRecorder(), is(testMuxRecorder));
         assertThat(metadata.getStartTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testMuxStartTime)));
         assertThat(metadata.getEndTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testMuxStopTime)));
@@ -92,8 +99,9 @@ public class DomsFileEnricherObjectHandlerTest {
       String testRadioStartTime = "1210301762";
       String testRadioStopTime = "1210388101";
       String testRadioFormatUri = "info:pronom/fmt/6";
-      
-      BroadcastFileDescriptiveMetadataType metadata = handler.decodeFilename(testRadioFileName);
+
+      BroadcastFileDescriptiveMetadataType metadata =
+              FileNameParser.decodeFilename(testRadioFileName, checksums.getNameChecksumsMap(), muxFileChannelCalculator);
       assertThat(metadata.getRecorder(), is(testRadioRecorder));
       assertThat(metadata.getStartTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStartTime)));
       assertThat(metadata.getEndTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStopTime)));
@@ -111,8 +119,9 @@ public class DomsFileEnricherObjectHandlerTest {
         String testMPEGStartTime = "1209809401";
         String testMPEGStopTime = "1209863161";
         String testMPEGFormatUri = "info:pronom/x-fmt/385";
-        
-        BroadcastFileDescriptiveMetadataType metadata = handler.decodeFilename(testMPEGFileName);
+
+        BroadcastFileDescriptiveMetadataType metadata =
+                FileNameParser.decodeFilename(testMPEGFileName, checksums.getNameChecksumsMap(), muxFileChannelCalculator);
         assertThat(metadata.getRecorder(), is(testMPEGRecorder));
         assertThat(metadata.getStartTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testMPEGStartTime)));
         assertThat(metadata.getEndTimeDate(), is(CalendarUtils.getXmlGregorianCalendar(testMPEGStopTime)));
