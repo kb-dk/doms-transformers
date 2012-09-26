@@ -1,0 +1,29 @@
+<assembly>
+    <id>transformer</id>
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>lib</outputDirectory>
+        </dependencySet>
+    </dependencySets>
+
+    <fileSets>
+        <fileSet>
+            <outputDirectory>resources</outputDirectory>
+            <directory>src/main/resources</directory>
+            <excludes>
+                <exclude>README</exclude>
+            </excludes>
+        </fileSet>
+        <fileSet>
+            <outputDirectory></outputDirectory>
+            <directory>src/main/resources</directory>
+            <includes>
+                <include>README</include>
+            </includes>
+        </fileSet>
+    </fileSets>
+</assembly>
