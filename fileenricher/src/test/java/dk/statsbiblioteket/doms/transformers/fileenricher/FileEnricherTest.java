@@ -54,7 +54,7 @@ public class FileEnricherTest {
     @Test
     public void testMain() throws Exception {
         DomsFFProbeFileEnricherObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
-        ChecksumParser checksums = new ChecksumParser(new File(Thread.currentThread().getContextClassLoader().getResource("md5s.zip").toURI()));
+        ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
         ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums, delegate);
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);

@@ -31,7 +31,7 @@ public class FileEnricher {
         FileEnricherConfig config = new FFProbeLocationPropertyBasedDomsConfig(configfile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
 
-        ChecksumParser checksums = new ChecksumParser(new File(Thread.currentThread().getContextClassLoader().getResource("md5s.zip").toURI()));
+        ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
 
         ObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
         ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,checksums,delegate);

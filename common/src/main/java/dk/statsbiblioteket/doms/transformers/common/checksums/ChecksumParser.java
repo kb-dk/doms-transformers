@@ -1,11 +1,13 @@
 package dk.statsbiblioteket.doms.transformers.common.checksums;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
+import java.util.zip.ZipInputStream;
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,15 +18,14 @@ import java.util.zip.ZipFile;
  */
 public class ChecksumParser {
 
-
     private Map<String,String> nameChecksumsMap = new HashMap<String, String>();
 
+    public ChecksumParser(InputStream checksumsZipStream) throws IOException {
+        ZipInputStream zipInputStream = new ZipInputStream(checksumsZipStream);
+        // This probably only works when the zip-file only contain
+        zipInputStream.getNextEntry();
 
-    public ChecksumParser(File checksumsZip) throws IOException {
-        ZipFile zipfile = new ZipFile(checksumsZip);
-        ZipEntry entry = zipfile.getEntry("md5s");
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(zipfile.getInputStream(entry)));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(zipInputStream));
         String line;
         while ((line = reader.readLine()) != null){
             String[] splits = line.split(" ");

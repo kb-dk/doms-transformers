@@ -1,11 +1,10 @@
-package dk.statsbiblioteket.doms.transformers.fileenricher;
+package dk.statsbiblioteket.doms.transformers.common;
 
 import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
@@ -32,7 +31,7 @@ public class ChecksumParserTest {
 
     @Test
     public void parseFile() throws URISyntaxException, IOException {
-        ChecksumParser checksums = new ChecksumParser(new File(Thread.currentThread().getContextClassLoader().getResource("md5s.zip").toURI()));
+        ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
         assertThat(checksums.getNameChecksumsMap().size(), is(135673));
 
     }
