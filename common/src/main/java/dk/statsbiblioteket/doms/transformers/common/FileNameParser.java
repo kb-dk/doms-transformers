@@ -13,22 +13,19 @@ import java.util.Map;
 public class FileNameParser {
     public static BroadcastFileDescriptiveMetadataType decodeFilename(String filename, Map<String, String> checksums, MuxFileChannelCalculator muxChannelCalculator) throws ParseException {
         BroadcastFileDescriptiveMetadataType result = null;
+
         if (filename.endsWith(".ts")) {
             result = decodeMuxFilename(filename, muxChannelCalculator);
         } else if (filename.endsWith(".wav")) {
             result = decodeRadioFilename(filename);
-        } else if (filename.endsWith(".mpeg")) {
+        } else if (filename.endsWith(".mpeg") || filename.endsWith(".wmv") || filename.endsWith(".mp4")) {
             result = decodeAnalogTVFilename(filename);
-        } else if (filename.endsWith(".wmv")) {
-            result = decodeAnalogTVFilename(filename);
-        } else if (filename.endsWith(".mp4")) {
-            result = decodeAnalogTVFilename(filename);
-        } else {
-            result = null;
         }
+
         if (result != null) {
             result.setChecksum(checksums.get(filename));
         }
+
         return result;
     }
 
