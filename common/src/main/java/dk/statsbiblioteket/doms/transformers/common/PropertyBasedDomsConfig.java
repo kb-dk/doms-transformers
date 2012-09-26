@@ -21,6 +21,16 @@ public class PropertyBasedDomsConfig extends PropertyBasedConfig implements Doms
         super();
     }
 
+    public String toString() {
+        return String.format(
+                "%s  <DOMS_WEBSERVICE_URL:%s, DOMS_USERNAME:%s, DOMS_PASSWORD:%s>",
+                getClass().getName(),
+                getDomsWebserviceUrl(),
+                getDomsUsername(),
+                getDomsPassword()
+        );
+    }
+
     public PropertyBasedDomsConfig(File configfile) throws IOException {
         super(configfile);
     }
