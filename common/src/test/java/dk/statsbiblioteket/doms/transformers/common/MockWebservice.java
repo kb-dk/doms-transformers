@@ -256,4 +256,32 @@ public class MockWebservice implements CentralWebservice {
     public List<String> getObjectsInCollection(@WebParam(name = "collectionPid", targetNamespace = "") String collectionPid, @WebParam(name = "contentModelPid", targetNamespace = "") String contentModelPid) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
         throw new IllegalAccessError();
     }
+
+    @Override
+    public List<Method> getMethods(@WebParam(name = "pid", targetNamespace = "") String pid)
+            throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+
+        throw new IllegalAccessError();
+    }
+
+    @Override
+    public String invokeMethod(@WebParam(name = "cmpid", targetNamespace = "") String cmpid,
+                               @WebParam(name = "methodName", targetNamespace = "") String methodName,
+                               @WebParam(name = "parameters", targetNamespace = "") List<Pair> parameters)
+            throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+
+        throw new IllegalAccessError();
+    }
+
+    @Override
+    public String createFileObject(@WebParam(name = "templatePid", targetNamespace = "") String templatePid,
+                                   @WebParam(name = "filename", targetNamespace = "") String filename,
+                                   @WebParam(name = "md5sum", targetNamespace = "") String md5Sum,
+                                   @WebParam(name = "permanentURL", targetNamespace = "") String permanentURL,
+                                   @WebParam(name = "formatURI", targetNamespace = "") String formatURI,
+                                   @WebParam(name = "comment", targetNamespace = "") String comment)
+            throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+
+        throw new IllegalAccessError();
+    }
 }
