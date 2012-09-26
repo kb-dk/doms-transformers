@@ -1,7 +1,7 @@
 package dk.statsbiblioteket.doms.transformers.fileenricher;
 
-import dk.statsbiblioteket.doms.transformers.fileenricher.checksums.ChecksumParser;
 import org.hamcrest.CoreMatchers;
+import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

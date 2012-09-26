@@ -1,4 +1,4 @@
-package dk.statsbiblioteket.doms.transformers.fileenricher.checksums;
+package dk.statsbiblioteket.doms.transformers.common.checksums;
 
 import java.io.*;
 import java.util.Collections;
@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
 
 /**
  * Created by IntelliJ IDEA.

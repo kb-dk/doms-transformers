@@ -15,7 +15,7 @@ import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
-import dk.statsbiblioteket.doms.transformers.fileenricher.checksums.ChecksumParser;
+import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
 
 /**
  * Tool for enriching Radio/TV file metadata.

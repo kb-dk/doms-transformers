@@ -2,7 +2,7 @@ package dk.statsbiblioteket.doms.transformers.fileenricher;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.transformers.common.*;
-import dk.statsbiblioteket.doms.transformers.fileenricher.checksums.ChecksumParser;
+import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
