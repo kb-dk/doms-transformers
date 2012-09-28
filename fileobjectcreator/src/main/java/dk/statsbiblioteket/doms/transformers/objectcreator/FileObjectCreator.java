@@ -33,7 +33,7 @@ public class FileObjectCreator {
             System.out.println("Input file: " + args[0]);
 
             File configFile = new File(args[1]);
-            DomsConfig config = new PropertyBasedDomsConfig(configFile);
+            PropertyBasedDomsConfig config = new PropertyBasedDomsConfig(configFile);
             System.out.println(config);
 
             File successLog = new File("fileobjectcreator_successful-uuids");
@@ -52,6 +52,8 @@ public class FileObjectCreator {
             } else {
                 failureWriter = new BufferedWriter(new FileWriter(failureLog));
             }
+
+            DomsObject.setBaseUrl(config.getProperty("dk.statsbiblioteket.doms.transformers.baseurl", ""));
 
             new FileObjectCreator(config, uuidFileReader);
 
