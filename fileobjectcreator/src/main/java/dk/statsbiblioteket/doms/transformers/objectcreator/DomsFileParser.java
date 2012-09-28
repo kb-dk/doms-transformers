@@ -10,22 +10,19 @@ import java.util.Map;
 
 public class DomsFileParser implements Iterable<DomsObject> {
     private BufferedReader reader;
-    private Map<String, String> checksums;
     MuxFileChannelCalculator muxFileChannelCalculator;
 
     public DomsFileParser(BufferedReader reader,
-                          Map<String,String> checksums,
                           MuxFileChannelCalculator muxFileChannelCalculator) {
 
         this.reader = reader;
-        this.checksums = checksums;
         this.muxFileChannelCalculator = muxFileChannelCalculator;
     }
 
     @Override
     public Iterator<DomsObject> iterator() {
         try {
-            return new DomsFileParserIterator(reader, checksums, muxFileChannelCalculator);
+            return new DomsFileParserIterator(reader, muxFileChannelCalculator);
         } catch (FileNotFoundException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             return null;

@@ -1,13 +1,9 @@
 package dk.statsbiblioteket.doms.transformers.objectcreator;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
-import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
-import dk.statsbiblioteket.doms.central.InvalidResourceException;
-import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
 import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
-import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 
 import java.io.BufferedReader;
@@ -17,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
+import java.util.concurrent.ForkJoinPool;
 
 public class FileObjectCreator {
     public static void main(String[] args) {
@@ -27,6 +24,8 @@ public class FileObjectCreator {
             } else {
                 uuidFileReader = new BufferedReader(new FileReader(new File(args[0])));
             }
+
+            System.out.println("Input file: " + args[0]);
 
             File configFile = new File(args[1]);
             DomsConfig config = new PropertyBasedDomsConfig(configFile);
@@ -51,33 +50,20 @@ public class FileObjectCreator {
             MuxFileChannelCalculator muxChannelCalculator = new MuxFileChannelCalculator(
                     Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
-            ChecksumParser checksumParser = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
+            DomsFileParser domsFileParser = new DomsFileParser(reader, muxChannelCalculator);
 
-            DomsFileParser domsFileParser = new DomsFileParser(reader, checksumParser.getNameChecksumsMap(), muxChannelCalculator);
+            FileObjectCreaterWorker fileObjectCreaterWorker =
+                    new FileObjectCreaterWorker((DomsFileParserIterator) domsFileParser.iterator(), webservice);
 
-            for (DomsObject domsObject : domsFileParser) {
-                System.out.println(domsObject);
+            ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors()*16);
 
-                try {
-                    String response = webservice.createFileObject(
-                            "doms:Template_RadioTVFile",
-                            domsObject.getFileName(),
-                            domsObject.getChecksum(),
-                            domsObject.getPermanentUrl(),
-                            domsObject.getFormat(),
-                            "Batch-created by " + this.getClass().getName() // FIXME
-                    );
-                    System.out.println(response);
+            Long start = System.currentTimeMillis();
 
-                } catch (InvalidCredentialsException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                } catch (InvalidResourceException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                } catch (MethodFailedException e) {
-                    e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-                }
-            }
+            forkJoinPool.invoke(fileObjectCreaterWorker);
 
+            Long end = System.currentTimeMillis();
+
+            System.out.println("Time taken: " + (end-start));
 
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.

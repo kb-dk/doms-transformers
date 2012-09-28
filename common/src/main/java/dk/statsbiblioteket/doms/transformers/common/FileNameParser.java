@@ -11,7 +11,24 @@ import java.util.Date;
 import java.util.Map;
 
 public class FileNameParser {
-    public static BroadcastFileDescriptiveMetadataType decodeFilename(String filename, Map<String, String> checksums, MuxFileChannelCalculator muxChannelCalculator) throws ParseException {
+
+    public static BroadcastFileDescriptiveMetadataType decodeFilename(String filename,
+                                                                      Map<String, String> checksums,
+                                                                      MuxFileChannelCalculator muxChannelCalculator)
+            throws ParseException {
+
+        if (checksums.containsKey(filename)) {
+            return decodeFilename(filename, checksums.get(filename), muxChannelCalculator);
+        } else {
+            return null;
+        }
+    }
+
+    public static BroadcastFileDescriptiveMetadataType decodeFilename(String filename,
+                                                                      String checksum,
+                                                                      MuxFileChannelCalculator muxChannelCalculator)
+            throws ParseException {
+
         BroadcastFileDescriptiveMetadataType result = null;
 
         if (filename.endsWith(".ts")) {
@@ -23,7 +40,7 @@ public class FileNameParser {
         }
 
         if (result != null) {
-            result.setChecksum(checksums.get(filename));
+            result.setChecksum(checksum);
         }
 
         return result;

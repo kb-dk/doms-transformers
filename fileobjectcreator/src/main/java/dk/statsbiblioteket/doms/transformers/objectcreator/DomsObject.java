@@ -16,13 +16,12 @@ public class DomsObject {
 
     public DomsObject(String fileName,
                       String checksum,
-                      Map<String, String> checksums,
                       MuxFileChannelCalculator muxFileChannelCalculator)
             throws ParseException {
 
         this.fileName = fileName;
         this.checksum = checksum;
-        metadata = FileNameParser.decodeFilename(this.fileName, checksums, muxFileChannelCalculator);
+        metadata = FileNameParser.decodeFilename(this.fileName, checksum, muxFileChannelCalculator);
     }
 
     public String toString() {

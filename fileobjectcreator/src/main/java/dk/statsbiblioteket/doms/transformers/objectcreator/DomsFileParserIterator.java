@@ -10,38 +10,36 @@ import java.util.Map;
 
 public class DomsFileParserIterator implements Iterator<DomsObject> {
     private BufferedReader reader;
-    private Map<String, String> checksums;
     private MuxFileChannelCalculator muxFileChannelCalculator;
     private DomsObject next = null;
 
     public DomsFileParserIterator(BufferedReader reader,
-                                  Map<String, String> checksums,
                                   MuxFileChannelCalculator muxFileChannelCalculator)
             throws FileNotFoundException {
 
         this.reader = reader;
-        this.checksums = checksums;
         this.muxFileChannelCalculator = muxFileChannelCalculator;
     }
 
-    private DomsObject fetchNext() {
+    private synchronized DomsObject fetchNext() {
         if (this.next == null) {
             try {
                 String line;
                 Boolean hit = false;
                 while (!hit && (line = reader.readLine()) != null) {
                     if (!line.isEmpty()) {
-                        String[] parts = line.split(" ", 2);
-                        if (parts.length == 2) {
+                        String[] parts = line.split(" ", 3);
+                        if (parts.length == 3) {
                             try {
-                                String fileName = parts[1];
+                                String fileName = parts[2];
                                 String checksum = parts[0];
+                                String fileSize = parts[1];
 
                                 if (fileName.endsWith(".log") || fileName.contains("_digivid_")) {
                                     continue;
                                 }
 
-                                this.next = new DomsObject(fileName, checksum, checksums, muxFileChannelCalculator);
+                                this.next = new DomsObject(fileName, checksum, muxFileChannelCalculator);
                                 hit = true;
                             } catch (ParseException e) {
                             }
@@ -62,8 +60,8 @@ public class DomsFileParserIterator implements Iterator<DomsObject> {
     }
 
     @Override
-    public DomsObject next() {
-        DomsObject domsObject = this.next;
+    public synchronized DomsObject next() {
+        DomsObject domsObject = fetchNext();
         this.next = null;
 
         return domsObject;
