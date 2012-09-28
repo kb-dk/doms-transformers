@@ -39,7 +39,7 @@ public class DomsFileParserIterator implements Iterator<DomsObject> {
                                     continue;
                                 }
 
-                                this.next = new DomsObject(fileName, checksum, muxFileChannelCalculator);
+                                this.next = new DomsObject(fileName, checksum, fileSize, muxFileChannelCalculator);
                                 hit = true;
                             } catch (ParseException e) {
                             }

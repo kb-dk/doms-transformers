@@ -7,15 +7,20 @@ import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.concurrent.ForkJoinPool;
 
 public class FileObjectCreator {
+    private static BufferedWriter successWriter;
+    private static BufferedWriter failureWriter;
+
     public static void main(String[] args) {
         try {
             BufferedReader uuidFileReader;
@@ -30,6 +35,23 @@ public class FileObjectCreator {
             File configFile = new File(args[1]);
             DomsConfig config = new PropertyBasedDomsConfig(configFile);
             System.out.println(config);
+
+            File successLog = new File("fileobjectcreator_successful-uuids");
+            File failureLog = new File("fileobjectcreator_failed-uuids");
+
+            if (successLog.exists()) {
+                System.out.println("File already exists: " + successLog);
+                System.exit(1);
+            } else {
+                successWriter = new BufferedWriter(new FileWriter(successLog));
+            }
+
+            if (failureLog.exists()) {
+                System.out.println("File already exists: " + failureLog);
+                System.exit(1);
+            } else {
+                failureWriter = new BufferedWriter(new FileWriter(failureLog));
+            }
 
             new FileObjectCreator(config, uuidFileReader);
 
@@ -69,6 +91,25 @@ public class FileObjectCreator {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         } catch (ParseException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
+    public static synchronized void logSuccess(String data) {
+        try {
+            successWriter.write(data + "\n");
+            successWriter.flush();
+        } catch (IOException e) {
+            System.out.println("OK: " + data);
+        }
+    }
+
+    public static synchronized void logFailure(String data) {
+        try {
+            failureWriter.write(data + "\n");
+            successWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.out.println("Failed: " + data);
         }
     }
 }

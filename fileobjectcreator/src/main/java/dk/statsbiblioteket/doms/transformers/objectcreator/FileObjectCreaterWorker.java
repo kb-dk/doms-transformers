@@ -35,8 +35,13 @@ public class FileObjectCreaterWorker extends RecursiveAction {
     }
 
     private void doWork(DomsObject domsObject) {
-        try {
-            if (validObject(domsObject)) {
+        if (validObject(domsObject)) {
+            String output =
+                    String.format("%s %s %s",
+                            domsObject.getChecksum(),
+                            domsObject.getSize(),
+                            domsObject.getFileName());
+            try {
                 System.out.println(domsObject);
                 String response = webservice.createFileObject(
                         "doms:Template_RadioTVFile",
@@ -47,14 +52,20 @@ public class FileObjectCreaterWorker extends RecursiveAction {
                         "Batch-created by " + this.getClass().getName() // FIXME
                 );
                 System.out.println(response);
-            }
+                FileObjectCreator.logSuccess(output);
 
-        } catch (InvalidCredentialsException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (InvalidResourceException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        } catch (MethodFailedException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            } catch (InvalidCredentialsException e) {
+                FileObjectCreator.logFailure(output);
+                e.printStackTrace();
+            } catch (InvalidResourceException e) {
+                FileObjectCreator.logFailure(output);
+                e.printStackTrace();
+            } catch (MethodFailedException e) {
+                FileObjectCreator.logFailure(output);
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Invalid object: " + domsObject);
         }
     }
 

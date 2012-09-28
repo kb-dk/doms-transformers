@@ -12,15 +12,18 @@ public class DomsObject {
 
     private String fileName;
     private String checksum;
+    private String size;
     private BroadcastFileDescriptiveMetadataType metadata;
 
     public DomsObject(String fileName,
                       String checksum,
+                      String size,
                       MuxFileChannelCalculator muxFileChannelCalculator)
             throws ParseException {
 
         this.fileName = fileName;
         this.checksum = checksum;
+        this.size = size;
         metadata = FileNameParser.decodeFilename(this.fileName, checksum, muxFileChannelCalculator);
     }
 
@@ -48,5 +51,9 @@ public class DomsObject {
 
     public String getFormat() {
         return metadata.getFormat();
+    }
+
+    public String getSize() {
+        return size;
     }
 }
