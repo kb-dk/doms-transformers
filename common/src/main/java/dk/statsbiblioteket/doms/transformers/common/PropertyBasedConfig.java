@@ -33,6 +33,14 @@ public class PropertyBasedConfig implements Config {
         properties.load(new FileInputStream(configfile));
     }
 
+    public String getProperty(String property) {
+        return properties.getProperty(property);
+    }
+
+    public String getProperty(String property, String defaultValue) {
+        return properties.getProperty(property, defaultValue);
+    }
+
     @Override
     public String getSuccessFile() {
         return properties.getProperty(SUCCESS_FILE_PROPERTY, "success_uuids.txt");
