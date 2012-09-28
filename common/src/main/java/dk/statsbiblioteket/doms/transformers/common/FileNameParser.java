@@ -66,6 +66,13 @@ public class FileNameParser {
             channels.getChannel().set(i, channelID);
         }
 
+        if (muxID == 1) {
+            // TODO: make sure this is the correct formatURI
+            metadata.setFormat("info:mime/video/MP2T;codecs=\"dvbsub,mp1,mp2,mpeg2video\"");
+        } else if (muxID == 2) {
+            // TODO: make sure this is the correct formatURI
+            metadata.setFormat("info:mime/video/MP2T;codecs=\"dvbsub,mp2,mpeg2video\"");
+        }
         metadata.setChannelIDs(channels);
         metadata.setStartTimeDate(CalendarUtils.getXmlGregorianCalendar(startUnixTime));
         metadata.setEndTimeDate(CalendarUtils.getXmlGregorianCalendar(stopUnixTime));
