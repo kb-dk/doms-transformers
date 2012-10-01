@@ -34,7 +34,11 @@ public class FileObjectCreaterWorker extends RecursiveAction {
         }
     }
 
-    private void doWork(DomsObject domsObject) {
+    public void doWork(DomsObject domsObject) {
+        doWork(domsObject, this.webservice, "Batch-created by " + this.getClass().getName());
+    }
+
+    public static void doWork(DomsObject domsObject, CentralWebservice webservice, String comment) {
         if (validObject(domsObject)) {
             String output =
                     String.format("%s %s %s",
@@ -49,7 +53,7 @@ public class FileObjectCreaterWorker extends RecursiveAction {
                         domsObject.getChecksum(),
                         domsObject.getPermanentUrl(),
                         domsObject.getFormat(),
-                        "Batch-created by " + this.getClass().getName() // FIXME
+                        comment
                 );
                 System.out.println(response);
                 FileObjectCreator.logSuccess(output);
@@ -69,7 +73,7 @@ public class FileObjectCreaterWorker extends RecursiveAction {
         }
     }
 
-    private boolean validObject(DomsObject domsObject) {
+    private static boolean validObject(DomsObject domsObject) {
         return domsObject != null && !anyNull(
                 domsObject.getFileName(),
                 domsObject.getChecksum(),
@@ -77,7 +81,7 @@ public class FileObjectCreaterWorker extends RecursiveAction {
                 domsObject.getPermanentUrl());
     }
 
-    private boolean anyNull(Object... list) {
+    private static boolean anyNull(Object... list) {
         for (Object o : list) {
             if (null == o) {
                 return true;
