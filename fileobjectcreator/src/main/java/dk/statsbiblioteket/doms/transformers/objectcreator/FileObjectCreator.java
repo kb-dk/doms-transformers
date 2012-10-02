@@ -103,8 +103,6 @@ public class FileObjectCreator {
             MuxFileChannelCalculator muxFileChannelCalculator = new MuxFileChannelCalculator(
                     Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
-            DomsFileParser domsFileParser = new DomsFileParser(reader, muxFileChannelCalculator);
-
             FileObjectCreatorWorker fileObjectCreatorWorker =
                     new FileObjectCreatorWorker(data, muxFileChannelCalculator);
 
@@ -149,7 +147,7 @@ public class FileObjectCreator {
             ignoreWriter.write(data + "\n");
             ignoreWriter.flush();
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
             System.out.println("Ignored: " + data);
         }
     }

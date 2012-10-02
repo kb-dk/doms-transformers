@@ -81,7 +81,6 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                     webservice.addFileFromPermanentURL(
                             uuid,
                             domsObject.getFileName(),
-                            //"DISABLED",
                             null,
                             domsObject.getPermanentUrl(),
                             domsObject.getFormat(),
