@@ -7,6 +7,7 @@ import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
@@ -57,16 +58,29 @@ public class FileObjectCreaterWorker extends RecursiveAction {
                             domsObject.getFileName());
             try {
                 System.out.println(domsObject);
-                String response = FileObjectCreator.newWebservice().createFileObject (
-                        "doms:Template_RadioTVFile",
-                        domsObject.getFileName(),
-                        domsObject.getChecksum(),
-                        domsObject.getPermanentUrl(),
-                        domsObject.getFormat(),
-                        comment
-                );
-                System.out.println(response);
-                FileObjectCreator.logSuccess(output);
+                CentralWebservice webservice = FileObjectCreator.newWebservice();
+                String fileObjectWithURL = webservice.getFileObjectWithURL(domsObject.getPermanentUrl());
+                if (fileObjectWithURL == null) {
+                    String uuid = webservice.newObject (
+                            "doms:Template_RadioTVFile",
+                            new ArrayList<String>(),
+                            comment
+                    );
+
+                    System.out.println(uuid);
+
+                    webservice.addFileFromPermanentURL(
+                            uuid,
+                            domsObject.getFileName(),
+                            //"DISABLED",
+                            null,
+                            domsObject.getPermanentUrl(),
+                            domsObject.getFormat(),
+                            comment
+                    );
+
+                    FileObjectCreator.logSuccess(output);
+                }
 
             } catch (InvalidCredentialsException e) {
                 FileObjectCreator.logFailure(output);
