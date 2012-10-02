@@ -27,6 +27,7 @@ public class FileObjectCreator {
     private static BufferedWriter failureWriter;
     private static BufferedWriter ignoreWriter;
     private static PropertyBasedDomsConfig config;
+    private static boolean shutdown = false;
 
     public static void main(String[] args) {
         try {
@@ -153,4 +154,12 @@ public class FileObjectCreator {
         }
     }
 
+    public static boolean permissionToRun() {
+        return !shutdown;
+    }
+
+    public static void requestShutdown() {
+        shutdown = true;
+        log.info("Shutdown requested.");
+    }
 }

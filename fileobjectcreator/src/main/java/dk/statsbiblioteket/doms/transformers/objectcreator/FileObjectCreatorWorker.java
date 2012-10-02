@@ -41,7 +41,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             } catch (ParseException e) {
                 log.info("Error while parsing: " + data.get(0));
             }
-        } else {
+        } else if (FileObjectCreator.permissionToRun()) {
             int center = data.size()/2;
             ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(data.subList(0, center),           muxFileChannelCalculator);
             ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(data.subList(center, data.size()), muxFileChannelCalculator);
@@ -54,6 +54,10 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     }
 
     public static void doWork(DomsObject domsObject, String comment) {
+        if (!FileObjectCreator.permissionToRun()) {
+            return;
+        }
+
         String uuid = null;
         if (validObject(domsObject)) {
             String output =
