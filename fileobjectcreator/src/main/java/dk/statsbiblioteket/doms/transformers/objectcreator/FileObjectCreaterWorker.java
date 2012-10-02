@@ -4,41 +4,51 @@ import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
+import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 
+import java.text.ParseException;
+import java.util.List;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
 
 
 public class FileObjectCreaterWorker extends RecursiveAction {
-    private DomsFileParserIterator domsFileParserIterator;
-    private CentralWebservice webservice;
+    private MuxFileChannelCalculator muxFileChannelCalculator;
+    private List<String> data;
 
-    public FileObjectCreaterWorker(DomsFileParserIterator domsFileParserIterator, CentralWebservice webservice) {
-        this.domsFileParserIterator = domsFileParserIterator;
-        this.webservice = webservice;
+    public FileObjectCreaterWorker(List<String> data,
+                                   MuxFileChannelCalculator muxFileChannelCalculator) {
+        this.data = data;
+        this.muxFileChannelCalculator = muxFileChannelCalculator;
     }
 
     @Override
     protected void compute() {
-        DomsObject domsObject = domsFileParserIterator.next();
-        ForkJoinTask<Void> worker = null;
 
-        if (domsObject != null) {
-            worker = new FileObjectCreaterWorker(domsFileParserIterator, webservice).fork();
-        }
-
-        doWork(domsObject);
-
-        if (worker != null) {
-            worker.join();
+        if (data.size() == 1) {
+            try {
+                DomsObject domsObject = DomsFileParser.parse(data.get(0), muxFileChannelCalculator);
+                if (domsObject != null) {
+                    doWork(domsObject);
+                } else {
+                    FileObjectCreator.logIgnored(data.get(0));
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            }
+        } else {
+            int center = data.size()/2;
+            ForkJoinTask<Void> workerA = new FileObjectCreaterWorker(data.subList(0, center),           muxFileChannelCalculator);
+            ForkJoinTask<Void> workerB = new FileObjectCreaterWorker(data.subList(center, data.size()), muxFileChannelCalculator);
+            invokeAll(workerA, workerB);
         }
     }
 
     public void doWork(DomsObject domsObject) {
-        doWork(domsObject, this.webservice, "Batch-created by " + this.getClass().getName());
+        doWork(domsObject, "Batch-created by " + this.getClass().getName());
     }
 
-    public static void doWork(DomsObject domsObject, CentralWebservice webservice, String comment) {
+    public static void doWork(DomsObject domsObject, String comment) {
         if (validObject(domsObject)) {
             String output =
                     String.format("%s %s %s",
@@ -47,7 +57,7 @@ public class FileObjectCreaterWorker extends RecursiveAction {
                             domsObject.getFileName());
             try {
                 System.out.println(domsObject);
-                String response = webservice.createFileObject(
+                String response = FileObjectCreator.newWebservice().createFileObject (
                         "doms:Template_RadioTVFile",
                         domsObject.getFileName(),
                         domsObject.getChecksum(),
@@ -68,8 +78,6 @@ public class FileObjectCreaterWorker extends RecursiveAction {
                 FileObjectCreator.logFailure(output);
                 e.printStackTrace();
             }
-        } else {
-            System.err.println("Invalid object: " + domsObject);
         }
     }
 

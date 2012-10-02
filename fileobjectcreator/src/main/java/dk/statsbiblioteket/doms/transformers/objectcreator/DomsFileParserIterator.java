@@ -3,10 +3,11 @@ package dk.statsbiblioteket.doms.transformers.objectcreator;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.Iterator;
-import java.util.Map;
 
 public class DomsFileParserIterator implements Iterator<DomsObject> {
     private BufferedReader reader;
@@ -28,21 +29,17 @@ public class DomsFileParserIterator implements Iterator<DomsObject> {
                 Boolean hit = false;
                 while (!hit && (line = reader.readLine()) != null) {
                     if (!line.isEmpty()) {
-                        String[] parts = line.split(" ", 3);
-                        if (parts.length == 3) {
-                            try {
-                                String fileName = parts[2];
-                                String checksum = parts[0];
-                                String fileSize = parts[1];
+                        try {
+                            DomsObject tmpDomsObject = DomsFileParser.parse(line, muxFileChannelCalculator);
 
-                                if (fileName.endsWith(".log") || fileName.contains("_digivid_")) {
-                                    continue;
-                                }
-
-                                this.next = new DomsObject(fileName, checksum, fileSize, muxFileChannelCalculator);
+                            if (tmpDomsObject != null) {
+                                this.next = tmpDomsObject;
                                 hit = true;
-                            } catch (ParseException e) {
+                            } else {
+                                FileObjectCreator.logIgnored(line);
                             }
+
+                        } catch (ParseException e) {
                         }
                     }
                 }

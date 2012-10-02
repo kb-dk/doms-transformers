@@ -15,11 +15,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 
 public class FileObjectCreator {
     private static BufferedWriter successWriter;
     private static BufferedWriter failureWriter;
+    private static BufferedWriter ignoreWriter;
+    private static PropertyBasedDomsConfig config;
 
     public static void main(String[] args) {
         try {
@@ -33,11 +37,12 @@ public class FileObjectCreator {
             System.out.println("Input file: " + args[0]);
 
             File configFile = new File(args[1]);
-            PropertyBasedDomsConfig config = new PropertyBasedDomsConfig(configFile);
+            config = new PropertyBasedDomsConfig(configFile);
             System.out.println(config);
 
             File successLog = new File("fileobjectcreator_successful-uuids");
             File failureLog = new File("fileobjectcreator_failed-uuids");
+            File ignoreLog = new File("fileobjectcreator_ignored-files");
 
             if (successLog.exists()) {
                 System.out.println("File already exists: " + successLog);
@@ -53,6 +58,14 @@ public class FileObjectCreator {
                 failureWriter = new BufferedWriter(new FileWriter(failureLog));
             }
 
+            if (ignoreLog.exists()) {
+                System.out.println("File already exists: " + ignoreLog);
+                System.exit(1);
+            } else {
+                ignoreWriter = new BufferedWriter(new FileWriter(ignoreLog));
+            }
+
+
             DomsObject.setBaseUrl(config.getProperty("dk.statsbiblioteket.doms.transformers.baseurl", ""));
 
             new FileObjectCreator(config, uuidFileReader);
@@ -67,17 +80,29 @@ public class FileObjectCreator {
         }
     }
 
+    public static CentralWebservice newWebservice() {
+        return new DomsWebserviceFactory(config).getWebservice();
+    }
+
     public FileObjectCreator(DomsConfig config, BufferedReader reader) {
-        CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
+        CentralWebservice webservice = newWebservice();
 
         try {
-            MuxFileChannelCalculator muxChannelCalculator = new MuxFileChannelCalculator(
+            List<String> data = new ArrayList<String>();
+
+            String line;
+
+            while((line = reader.readLine()) != null) {
+                data.add(line);
+            }
+
+            MuxFileChannelCalculator muxFileChannelCalculator = new MuxFileChannelCalculator(
                     Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
-            DomsFileParser domsFileParser = new DomsFileParser(reader, muxChannelCalculator);
+            DomsFileParser domsFileParser = new DomsFileParser(reader, muxFileChannelCalculator);
 
             FileObjectCreaterWorker fileObjectCreaterWorker =
-                    new FileObjectCreaterWorker((DomsFileParserIterator) domsFileParser.iterator(), webservice);
+                    new FileObjectCreaterWorker(data, muxFileChannelCalculator);
 
             ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors()*16);
 
@@ -108,10 +133,21 @@ public class FileObjectCreator {
     public static synchronized void logFailure(String data) {
         try {
             failureWriter.write(data + "\n");
-            successWriter.flush();
+            failureWriter.flush();
         } catch (IOException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
             System.out.println("Failed: " + data);
         }
     }
+
+    public static synchronized void logIgnored(String data) {
+        try {
+            ignoreWriter.write(data + "\n");
+            ignoreWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            System.out.println("Ignored: " + data);
+        }
+    }
+
 }
