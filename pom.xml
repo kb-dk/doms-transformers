@@ -39,7 +39,7 @@
             <dependency>
               <groupId>dk.statsbiblioteket.doms.ingestClient</groupId>
               <artifactId>ingestClientImpl</artifactId>
-              <version>0.0.15-SNAPSHOT</version>
+              <version>0.0.13</version>
             </dependency>
             <dependency>
                 <groupId>dk.statsbiblioteket.sbutil</groupId>
