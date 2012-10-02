@@ -101,14 +101,14 @@ public class FileObjectCreator {
 
             DomsFileParser domsFileParser = new DomsFileParser(reader, muxFileChannelCalculator);
 
-            FileObjectCreaterWorker fileObjectCreaterWorker =
-                    new FileObjectCreaterWorker(data, muxFileChannelCalculator);
+            FileObjectCreatorWorker fileObjectCreatorWorker =
+                    new FileObjectCreatorWorker(data, muxFileChannelCalculator);
 
             ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors()*16);
 
             Long start = System.currentTimeMillis();
 
-            forkJoinPool.invoke(fileObjectCreaterWorker);
+            forkJoinPool.invoke(fileObjectCreatorWorker);
 
             Long end = System.currentTimeMillis();
 

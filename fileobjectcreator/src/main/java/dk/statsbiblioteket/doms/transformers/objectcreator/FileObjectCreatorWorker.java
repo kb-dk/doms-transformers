@@ -13,11 +13,11 @@ import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
 
 
-public class FileObjectCreaterWorker extends RecursiveAction {
+public class FileObjectCreatorWorker extends RecursiveAction {
     private MuxFileChannelCalculator muxFileChannelCalculator;
     private List<String> data;
 
-    public FileObjectCreaterWorker(List<String> data,
+    public FileObjectCreatorWorker(List<String> data,
                                    MuxFileChannelCalculator muxFileChannelCalculator) {
         this.data = data;
         this.muxFileChannelCalculator = muxFileChannelCalculator;
@@ -39,8 +39,8 @@ public class FileObjectCreaterWorker extends RecursiveAction {
             }
         } else {
             int center = data.size()/2;
-            ForkJoinTask<Void> workerA = new FileObjectCreaterWorker(data.subList(0, center),           muxFileChannelCalculator);
-            ForkJoinTask<Void> workerB = new FileObjectCreaterWorker(data.subList(center, data.size()), muxFileChannelCalculator);
+            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(data.subList(0, center),           muxFileChannelCalculator);
+            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(data.subList(center, data.size()), muxFileChannelCalculator);
             invokeAll(workerA, workerB);
         }
     }

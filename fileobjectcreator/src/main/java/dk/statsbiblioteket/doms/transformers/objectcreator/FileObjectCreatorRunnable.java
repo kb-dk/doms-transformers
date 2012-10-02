@@ -11,6 +11,6 @@ public class FileObjectCreatorRunnable implements Runnable {
 
     @Override
     public void run() {
-        FileObjectCreaterWorker.doWork(domsObject, "Batch-created by " + getClass().getSimpleName());
+        FileObjectCreatorWorker.doWork(domsObject, "Batch-created by " + getClass().getSimpleName());
     }
 }
