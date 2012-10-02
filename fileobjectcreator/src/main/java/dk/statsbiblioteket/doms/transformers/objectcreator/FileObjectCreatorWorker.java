@@ -66,7 +66,6 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                             domsObject.getSize(),
                             domsObject.getFileName());
             try {
-                System.out.println(domsObject);
                 CentralWebservice webservice = FileObjectCreator.newWebservice();
                 String fileObjectWithURL = webservice.getFileObjectWithURL(domsObject.getPermanentUrl());
                 if (fileObjectWithURL == null) {
@@ -75,8 +74,6 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                             new ArrayList<String>(),
                             comment
                     );
-
-                    System.out.println(uuid);
 
                     webservice.addFileFromPermanentURL(
                             uuid,
@@ -111,7 +108,6 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             } catch (MethodFailedException e) {
                 FileObjectCreator.logFailure(output);
                 log.warn("Ingest of the following object failed: " + domsObject + "(uuid=\"" + uuid + "\")", e);
-                e.printStackTrace();
             }
         }
     }

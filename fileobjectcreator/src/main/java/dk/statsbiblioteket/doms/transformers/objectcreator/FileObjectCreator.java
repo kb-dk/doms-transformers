@@ -27,6 +27,11 @@ public class FileObjectCreator {
     private static BufferedWriter failureWriter;
     private static BufferedWriter ignoreWriter;
     private static PropertyBasedDomsConfig config;
+    private static final int STATUS_CHAR_PR_LINE = 100;
+    private static final char SUCCESS_CHAR = '+';
+    private static final char FAILURE_CHAR = '#';
+    private static final char IGNORE_CHAR = '.';
+    private static int logCounter = 0;
     private static boolean shutdown = false;
 
     public static void main(String[] args) {
@@ -100,6 +105,14 @@ public class FileObjectCreator {
                 data.add(line);
             }
 
+            System.out.println(
+                    String.format(
+                            "'%c': added file, '%c': ignored file, '%c': failed file, %d files/line.",
+                            SUCCESS_CHAR,
+                            IGNORE_CHAR,
+                            FAILURE_CHAR,
+                            STATUS_CHAR_PR_LINE));
+
             MuxFileChannelCalculator muxFileChannelCalculator = new MuxFileChannelCalculator(
                     Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
@@ -127,6 +140,7 @@ public class FileObjectCreator {
         try {
             successWriter.write(data + "\n");
             successWriter.flush();
+            logChar(SUCCESS_CHAR);
         } catch (IOException e) {
             System.out.println("OK: " + data);
         }
@@ -136,6 +150,7 @@ public class FileObjectCreator {
         try {
             failureWriter.write(data + "\n");
             failureWriter.flush();
+            logChar(FAILURE_CHAR);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Failed: " + data);
@@ -146,10 +161,25 @@ public class FileObjectCreator {
         try {
             ignoreWriter.write(data + "\n");
             ignoreWriter.flush();
+            logChar(IGNORE_CHAR);
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Ignored: " + data);
         }
+    }
+
+    private static synchronized void logChar(char c) {
+        System.out.print(c + incrementLogCounter());
+    }
+
+    private static synchronized String incrementLogCounter() {
+        logCounter += 1;
+
+        if (logCounter % 100 == 0) {
+            return " " + logCounter + System.lineSeparator();
+        }
+
+        return "";
     }
 
     public static boolean permissionToRun() {
