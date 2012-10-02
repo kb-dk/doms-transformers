@@ -1,7 +1,5 @@
 package dk.statsbiblioteket.doms.transformers.objectcreator;
 
-import dk.statsbiblioteket.doms.central.CentralWebservice;
-
 public class FileObjectCreatorRunnable implements Runnable {
     private final DomsObject domsObject;
 
