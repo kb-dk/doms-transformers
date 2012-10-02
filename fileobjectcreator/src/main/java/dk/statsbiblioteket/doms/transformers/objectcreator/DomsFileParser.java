@@ -1,6 +1,8 @@
 package dk.statsbiblioteket.doms.transformers.objectcreator;
 
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -8,6 +10,8 @@ import java.text.ParseException;
 import java.util.Iterator;
 
 public class DomsFileParser implements Iterable<DomsObject> {
+    private static Logger log = LoggerFactory.getLogger(DomsFileParser.class);
+
     private BufferedReader reader;
     MuxFileChannelCalculator muxFileChannelCalculator;
 
@@ -38,9 +42,13 @@ public class DomsFileParser implements Iterable<DomsObject> {
 
                 if (!fileName.endsWith(".log") && !fileName.contains("_digivid_")) {
                     return new DomsObject(fileName, checksum, fileSize, muxFileChannelCalculator);
+                } else {
+                    log.debug("Ignored file: " + fileName);
+                    return null;
                 }
             }
         }
+        log.info("Couldn't parse data: " + line);
         return null;
     }
 }

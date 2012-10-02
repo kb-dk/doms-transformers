@@ -5,6 +5,8 @@ import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -14,6 +16,8 @@ import java.util.concurrent.RecursiveAction;
 
 
 public class FileObjectCreatorWorker extends RecursiveAction {
+    private static Logger log = LoggerFactory.getLogger(FileObjectCreatorWorker.class);
+
     private MuxFileChannelCalculator muxFileChannelCalculator;
     private List<String> data;
 
@@ -35,7 +39,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                     FileObjectCreator.logIgnored(data.get(0));
                 }
             } catch (ParseException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+                log.info("Error while parsing: " + data.get(0));
             }
         } else {
             int center = data.size()/2;
@@ -50,6 +54,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     }
 
     public static void doWork(DomsObject domsObject, String comment) {
+        String uuid = null;
         if (validObject(domsObject)) {
             String output =
                     String.format("%s %s %s",
@@ -61,7 +66,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                 CentralWebservice webservice = FileObjectCreator.newWebservice();
                 String fileObjectWithURL = webservice.getFileObjectWithURL(domsObject.getPermanentUrl());
                 if (fileObjectWithURL == null) {
-                    String uuid = webservice.newObject (
+                    uuid = webservice.newObject (
                             "doms:Template_RadioTVFile",
                             new ArrayList<String>(),
                             comment
@@ -84,12 +89,25 @@ public class FileObjectCreatorWorker extends RecursiveAction {
 
             } catch (InvalidCredentialsException e) {
                 FileObjectCreator.logFailure(output);
+                log.error("Authentication-related error. Requesting shutdown..", e);
+                FileObjectCreator.requestShutdown();
                 e.printStackTrace();
             } catch (InvalidResourceException e) {
                 FileObjectCreator.logFailure(output);
+                if (uuid == null) {
+                    log.error("Inconsistent data, this really shouldn't happen: " +
+                            "The most likely reason for this is that the template, \"doms:Template_RadioTVFile\", does not exist." +
+                            "Requesting shutdown..");
+                } else {
+                    log.error("Inconsistent data, this really shouldn't happen: " +
+                            "The most likely reason for this is that the object with uuid = \"" + uuid + "\" cannot be found." +
+                            "Requesting shutdown..");
+                }
+                FileObjectCreator.requestShutdown();
                 e.printStackTrace();
             } catch (MethodFailedException e) {
                 FileObjectCreator.logFailure(output);
+                log.warn("Ingest of the following object failed: " + domsObject + "(uuid=\"" + uuid + "\")", e);
                 e.printStackTrace();
             }
         }

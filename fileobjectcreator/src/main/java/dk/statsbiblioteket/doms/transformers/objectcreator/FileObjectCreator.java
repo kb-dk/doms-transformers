@@ -5,6 +5,8 @@ import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
 import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -20,6 +22,7 @@ import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 
 public class FileObjectCreator {
+    private static Logger log = LoggerFactory.getLogger(FileObjectCreator.class);
     private static BufferedWriter successWriter;
     private static BufferedWriter failureWriter;
     private static BufferedWriter ignoreWriter;
@@ -115,9 +118,9 @@ public class FileObjectCreator {
             System.out.println("Time taken: " + (end-start));
 
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         } catch (ParseException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
     }
 
@@ -135,7 +138,7 @@ public class FileObjectCreator {
             failureWriter.write(data + "\n");
             failureWriter.flush();
         } catch (IOException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
             System.out.println("Failed: " + data);
         }
     }

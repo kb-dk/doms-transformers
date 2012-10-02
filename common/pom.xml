@@ -31,11 +31,6 @@
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-api</artifactId>
     </dependency>
-    <dependency>
-      <groupId>ch.qos.logback</groupId>
-      <artifactId>logback-core</artifactId>
-      <scope>runtime</scope>
-    </dependency>
   </dependencies>
   <build>
     <plugins>
