@@ -74,6 +74,8 @@ public class FileNameParser {
             // TODO: make sure this is the correct formatURI
             metadata.setFormat("info:mime/video/MP2T;codecs=\"dvbsub,mp2,mpeg2video\"");
         }
+
+        metadata.setFilename(filename);
         metadata.setChannels(channels);
         metadata.setStartTime(CalendarUtils.getXmlGregorianCalendar(startUnixTime));
         metadata.setStopTime(CalendarUtils.getXmlGregorianCalendar(stopUnixTime));
@@ -108,6 +110,7 @@ public class FileNameParser {
         channel.setChannelID(mappedChannelId);
 
         channels.getChannel().add(channel);
+        metadata.setFilename(filename);
         metadata.setChannels(channels);
         metadata.setFormat(format);
         metadata.setRecorder(recorder);
@@ -154,6 +157,7 @@ public class FileNameParser {
         Date timeStopDate = dateformat.parse(timeStop);
 
         channels.getChannel().add(ChannelIDToSBChannelIDMapper.getInstance().mapToSBChannel(channelID));
+        metadata.setFilename(filename);
         metadata.setChannels(channels);
         metadata.setFormat(formatUri);
         metadata.setRecorder(recorder);
