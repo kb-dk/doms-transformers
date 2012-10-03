@@ -13,7 +13,8 @@ import java.util.*;
 
 public class MuxFileChannelCalculator {
 
-    Set<Channel> muxChannels = new HashSet<Channel>();
+    Set<Channel> muxChannels1 = new HashSet<Channel>();
+    Set<Channel> muxChannels2 = new HashSet<Channel>();
 
     public MuxFileChannelCalculator(InputStream muxChannelsStream) throws IOException, ParseException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(muxChannelsStream));
@@ -42,10 +43,11 @@ public class MuxFileChannelCalculator {
 
                 Channel channel = new Channel();
                 channel.setChannelID(splits[1]);
-                channel.setMuxProgramNr(Integer.parseInt(splits[0]));
+                channel.setMuxProgramNr(Integer.parseInt(splits[2]));
                 channel.setStartTime(startGreg);
                 channel.setStopTime(stopGreg);
-                muxChannels.add(channel);
+
+                getMuxChannelsFromMuxNumber(Integer.parseInt(splits[0])).add(channel);
 
             } catch (DatatypeConfigurationException e) {
                 throw new IOException(e.getMessage(), e.getCause());
@@ -56,12 +58,13 @@ public class MuxFileChannelCalculator {
 
     public List<Channel> getChannelIDsForMux(int muxNumber, Date startDate){
         List<Channel> results = new ArrayList<Channel>();
-        for (Channel channel : muxChannels) {
-            if (channel.getMuxProgramNr() == muxNumber){
-                if (channel.getStartTime().toGregorianCalendar().getTime().before(startDate)
-                        && channel.getStopTime().toGregorianCalendar().getTime().after(startDate)) {
-                    results.add(channel);
-                }
+        for (Channel channel : getMuxChannelsFromMuxNumber(muxNumber)) {
+            if (channel.getStartTime().toGregorianCalendar().getTime().before(startDate)
+                    && channel.getStopTime().toGregorianCalendar().getTime().after(startDate)) {
+                Channel newChannel = new Channel();
+                newChannel.setChannelID(channel.getChannelID());
+                newChannel.setMuxProgramNr(channel.getMuxProgramNr());
+                results.add(newChannel);
             }
         }
         return results;
@@ -69,5 +72,16 @@ public class MuxFileChannelCalculator {
 
     public List<Channel> getChannelIDsForMux(int muxNumber, XMLGregorianCalendar xmlGregorianCalendar) {
         return getChannelIDsForMux(muxNumber, xmlGregorianCalendar.toGregorianCalendar().getTime());
+    }
+
+    private Set<Channel> getMuxChannelsFromMuxNumber(int muxNumber) {
+        switch (muxNumber) {
+            case 1:
+                return muxChannels1;
+            case 2:
+                return muxChannels2;
+            default:
+                return null;
+        }
     }
 }
