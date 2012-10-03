@@ -23,11 +23,10 @@ public class PropertyBasedDomsConfig extends PropertyBasedConfig implements Doms
 
     public String toString() {
         return String.format(
-                "%s  <DOMS_WEBSERVICE_URL:%s, DOMS_USERNAME:%s, DOMS_PASSWORD:%s>",
+                "%s  <DOMS_WEBSERVICE_URL:%s, DOMS_USERNAME:%s>",
                 getClass().getName(),
                 getDomsWebserviceUrl(),
-                getDomsUsername(),
-                getDomsPassword()
+                getDomsUsername()
         );
     }
 
