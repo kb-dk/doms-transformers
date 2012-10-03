@@ -13,8 +13,8 @@ import java.util.*;
 
 public class MuxFileChannelCalculator {
 
-    Set<Channel> muxChannels1 = new HashSet<Channel>();
-    Set<Channel> muxChannels2 = new HashSet<Channel>();
+    private final Set<Channel> muxChannels1 = new HashSet<Channel>();
+    private final Set<Channel> muxChannels2 = new HashSet<Channel>();
 
     public MuxFileChannelCalculator(InputStream muxChannelsStream) throws IOException, ParseException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(muxChannelsStream));
