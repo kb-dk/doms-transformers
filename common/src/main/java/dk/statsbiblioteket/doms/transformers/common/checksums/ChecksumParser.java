@@ -22,7 +22,7 @@ public class ChecksumParser {
 
     public ChecksumParser(InputStream checksumsZipStream) throws IOException {
         ZipInputStream zipInputStream = new ZipInputStream(checksumsZipStream);
-        // This probably only works when the zip-file only contain
+        // This probably only works when the zip-file contains exacly one (1) file
         zipInputStream.getNextEntry();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(zipInputStream));
