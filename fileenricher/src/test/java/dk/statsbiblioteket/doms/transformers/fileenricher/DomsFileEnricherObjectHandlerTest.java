@@ -45,7 +45,7 @@ public class DomsFileEnricherObjectHandlerTest {
         muxFileChannelCalculator = new MuxFileChannelCalculator(
                 Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
-        handler = new DomsFileEnricherObjectHandler(null, webservice, checksums, null);
+        handler = new DomsFileEnricherObjectHandler(null, webservice, checksums.getNameChecksumsMap(), null);
     }
 
     @After

@@ -33,8 +33,8 @@ public class FileEnricher {
 
         ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
 
-        ObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,checksums,delegate);
+        ObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config, webservice);
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,checksums.getNameChecksumsMap(), delegate);
 
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);

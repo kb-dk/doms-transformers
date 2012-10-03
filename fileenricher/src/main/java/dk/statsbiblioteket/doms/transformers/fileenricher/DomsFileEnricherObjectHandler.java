@@ -48,11 +48,11 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
      * @throws ParseException 
      * @throws IOException 
      */
-    public DomsFileEnricherObjectHandler(FileEnricherConfig config, CentralWebservice webservice, ChecksumParser checksums, ObjectHandler delegate) throws JAXBException, IOException, ParseException, URISyntaxException {
+    public DomsFileEnricherObjectHandler(FileEnricherConfig config, CentralWebservice webservice, Map<String, String> checksums, ObjectHandler delegate) throws JAXBException, IOException, ParseException, URISyntaxException {
         this.config = config;
         this.webservice = webservice;
         this.delegate = delegate;
-        this.checksums = checksums.getNameChecksumsMap();
+        this.checksums = checksums;
         this.muxChannelCalculator = new MuxFileChannelCalculator(
                 Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
         
