@@ -16,7 +16,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -38,24 +40,34 @@ public class FileObjectCreator {
     private static int logCounter = 0;
     private static boolean shutdown = false;
 
+    private static BufferedReader uuidFileReader = null;
+
     public static void main(String[] args) {
-        try {
-            BufferedReader uuidFileReader;
-            if (args[0].equals("-")) {
-                uuidFileReader = new BufferedReader(new InputStreamReader(System.in));
-            } else {
-                uuidFileReader = new BufferedReader(new FileReader(new File(args[0])));
-            }
-
+        if (args.length == 0) {
+            System.out.println("Reading data from stdin..");
+            uuidFileReader = new BufferedReader(new InputStreamReader(System.in));
+        } else {
             System.out.println("Input file: " + args[0]);
-
-            File configFile = null;
             try {
-                configFile = new File(Thread.currentThread().getContextClassLoader().getResource("fileobjectcreator.properties").toURI());
-            } catch (URISyntaxException e) {
-                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates
+                uuidFileReader = new BufferedReader(new FileReader(new File(args[0])));
+            } catch (FileNotFoundException e) {
+                System.err.println("File not found: " + args[0]);
                 System.exit(1);
             }
+        }
+
+        try {
+            File configFile = null;
+
+            try {
+                URL resource = Thread.currentThread().getContextClassLoader().getResource("fileobjectcreator.properties");
+                URI uri = resource.toURI();
+                configFile = new File(uri);
+            } catch (Exception e) {
+                System.err.println("fileobjectcreator.properties not found, try putting it in 'conf'.");
+                System.exit(1);
+            }
+
             config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
             System.out.println(config);
 
@@ -96,7 +108,7 @@ public class FileObjectCreator {
 
             DomsObject.setBaseUrl(config.getProperty("dk.statsbiblioteket.doms.transformers.baseurl", ""));
 
-            new FileObjectCreator(config, uuidFileReader);
+            new FileObjectCreator(uuidFileReader);
 
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + args[0]);
@@ -108,9 +120,7 @@ public class FileObjectCreator {
         }
     }
 
-    public FileObjectCreator(DomsConfig config, BufferedReader reader) {
-        CentralWebservice webservice = newWebservice();
-
+    public FileObjectCreator(BufferedReader reader) {
         try {
             List<String> data = new ArrayList<String>();
 
@@ -152,7 +162,14 @@ public class FileObjectCreator {
     }
 
     public static CentralWebservice newWebservice() {
-        return new DomsWebserviceFactory(config).getWebservice();
+        try {
+            CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
+            return webservice;
+        } catch (RuntimeException e) {
+            System.err.print("Error communication with DOMS. Config: " + config);
+            requestShutdown();
+        }
+        return null;
     }
 
     public static FFProbeLocationPropertyBasedDomsConfig getConfig() {

@@ -33,7 +33,6 @@ public class FileObjectCreatorWorker extends RecursiveAction {
 
     @Override
     protected void compute() {
-
         if (data.size() == 1) {
             try {
                 DomsObject domsObject = DomsFileParser.parse(data.get(0), muxFileChannelCalculator);
