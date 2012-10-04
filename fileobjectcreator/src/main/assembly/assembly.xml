@@ -12,18 +12,15 @@
 
     <fileSets>
         <fileSet>
-            <outputDirectory>resources</outputDirectory>
-            <directory>src/main/resources</directory>
+            <outputDirectory>conf</outputDirectory>
+            <directory>src/main/conf</directory>
             <excludes>
-                <exclude>README</exclude>
+                <exclude>fileobjectcreator.properties</exclude>
             </excludes>
         </fileSet>
         <fileSet>
-            <outputDirectory></outputDirectory>
-            <directory>src/main/resources</directory>
-            <includes>
-                <include>README</include>
-            </includes>
+            <outputDirectory>bin</outputDirectory>
+            <directory>src/main/scripts</directory>
         </fileSet>
     </fileSets>
 </assembly>

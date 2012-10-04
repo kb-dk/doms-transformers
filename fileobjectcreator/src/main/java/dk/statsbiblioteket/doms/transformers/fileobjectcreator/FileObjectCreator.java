@@ -16,6 +16,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -48,7 +49,13 @@ public class FileObjectCreator {
 
             System.out.println("Input file: " + args[0]);
 
-            File configFile = new File(args[1]);
+            File configFile = null;
+            try {
+                configFile = new File(Thread.currentThread().getContextClassLoader().getResource("fileobjectcreator.properties").toURI());
+            } catch (URISyntaxException e) {
+                e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates
+                System.exit(1);
+            }
             config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
             System.out.println(config);
 
