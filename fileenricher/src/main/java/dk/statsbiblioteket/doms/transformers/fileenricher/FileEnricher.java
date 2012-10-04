@@ -26,11 +26,21 @@ import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
 public class FileEnricher {
     public static void main(String[] args) throws IOException, JAXBException, URISyntaxException, ParseException {
         //TODO: Setup apache CLI
-        File uuidfile = new File(Thread.currentThread().getContextClassLoader().getResource(args[0]).toURI());
-        File configfile = new File(Thread.currentThread().getContextClassLoader().getResource(args[1]).toURI());
+        File uuidfile = new File(args[0]);
+
+        File configFile = null;
+
+        try {
+            URL resource = Thread.currentThread().getContextClassLoader().getResource("fileenricher.properties");
+            URI uri = resource.toURI();
+            configFile = new File(uri);
+        } catch (Exception e) {
+            System.err.println("fileenricher.properties not found, try putting it in 'conf'.");
+            System.exit(1);
+        }
 
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
-        FileEnricherConfig config = new FFProbeLocationPropertyBasedDomsConfig(configfile);
+        FileEnricherConfig config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
 
         ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
