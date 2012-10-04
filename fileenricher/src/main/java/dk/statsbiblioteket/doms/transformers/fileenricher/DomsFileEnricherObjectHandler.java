@@ -71,7 +71,9 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         String filename = getFilenameFromObject(uuid);
         BroadcastMetadata metadata
                 = FileNameParser.decodeFilename(filename, checksums, muxChannelCalculator);
-        storeMetadataInObject(uuid, metadata);
+        if (metadata != null) {
+            storeMetadataInObject(uuid, metadata);
+        }
         webservice.markPublishedObject(Arrays.asList(uuid), "Modifying object as part of datamodel upgrade");
     }
 
