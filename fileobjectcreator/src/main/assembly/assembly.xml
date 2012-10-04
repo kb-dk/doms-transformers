@@ -1,12 +1,14 @@
 <assembly>
     <id>transformer</id>
     <formats>
-        <format>zip</format>
+        <format>tar.gz</format>
     </formats>
 
     <dependencySets>
         <dependencySet>
             <outputDirectory>lib</outputDirectory>
+            <fileMode>0644</fileMode>
+            <directoryMode>0755</directoryMode>
         </dependencySet>
     </dependencySets>
 
@@ -17,10 +19,14 @@
             <excludes>
                 <exclude>fileobjectcreator.properties</exclude>
             </excludes>
+            <fileMode>0644</fileMode>
+            <directoryMode>0755</directoryMode>
         </fileSet>
         <fileSet>
             <outputDirectory>bin</outputDirectory>
             <directory>src/main/scripts</directory>
+            <fileMode>0755</fileMode>
+            <directoryMode>0755</directoryMode>
         </fileSet>
     </fileSets>
 </assembly>
