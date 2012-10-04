@@ -166,7 +166,7 @@ public class FileObjectCreator {
             CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
             return webservice;
         } catch (RuntimeException e) {
-            System.err.print("Error communication with DOMS. Config: " + config);
+            System.err.println("Error communication with DOMS. Config: " + config);
             requestShutdown();
         }
         return null;
