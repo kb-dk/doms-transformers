@@ -6,10 +6,12 @@ import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.client.exceptions.NotFoundException;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
+import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 /**
@@ -42,17 +44,31 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
 
     @Override
     public void transform(String uuid) throws Exception {
-        getFFProbeXml(uuid);
+        try {
+            getFFProbeXml(uuid);
+        } catch (FileNotFoundException e) {
+            FileRecordingObjectListHandler.recordFailure(uuid);
+        }
     }
 
     private  String getFFProbeXml(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException, IOException {
         String ffprobe;
+        String ffprobeErrors;
+        String baseFileName = getFFProbeBaseName(uuid);
         try {
             ffprobe = getFFProbeFromObject(uuid);
         } catch (NotFoundException e) {
-            ffprobe = getFFProbeXMLFromFile(uuid);
-            addFFProbeToObject(uuid,ffprobe);
+            ffprobe = getFFProbeXMLFromFile(baseFileName);
+            addFFProbeToObject(uuid, ffprobe);
         }
+
+        try {
+            ffprobeErrors = getFFProbeFromObject(uuid);
+        } catch (NotFoundException e) {
+            ffprobeErrors = getFFProbeXMLFromFile(baseFileName);
+            addFFProbeToObject(uuid, ffprobeErrors);
+        }
+
         return ffprobe;
     }
 
@@ -64,8 +80,30 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
 
     }
 
+    private  String getFFProbeXMLFromFile(File file) throws IOException {
+        File ffprobeFile = new File(file + ".stdout");
+        String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeFile));
+        ffprobeContents = ffprobeContents.substring(ffprobeContents.indexOf("<ffprobe"));
+        return ffprobeContents;
+
+    }
+
+    private  String getFFProbeErrorsXMLFromFile(File file) throws IOException {
+        File ffprobeErrorFile = new File(file + ".stderr");
+        String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeErrorFile));
+
+        return "<ffprobe:ffprobeStdErrorOutput \n" +
+                "xmlns:ffprobe='http://www.ffmpeg.org/schema/ffprobe'>\n" +
+                ffprobeContents +
+                "</ffprobe:ffprobeStdErrorOutput>";
+    }
+
     private void addFFProbeToObject(String uuid, String ffprobe) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
         webservice.modifyDatastream(uuid,"FFPROBE",ffprobe,"Adding ffprobe as part of the radio/tv datamodel upgrade");
+    }
+
+    private void addFFProbeErrorsToObject(String uuid, String ffprobe) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+        webservice.modifyDatastream(uuid,"FFPROBE_ERROR_LOG", ffprobe, "Adding ffprobe errors as part of the radio/tv datamodel upgrade");
     }
 
     private String getFFProbeFromObject(String uuid) throws NotFoundException, InvalidCredentialsException, MethodFailedException {
@@ -76,5 +114,25 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
             throw new NotFoundException("Failed to retrieve FFPROBE datastream ",e);
         }
 
+    }
+
+    private String getFFProbeErrorsFromObject(String uuid) throws NotFoundException, InvalidCredentialsException, MethodFailedException {
+        try {
+            String contents = webservice.getDatastreamContents(uuid, "FFPROBE_ERROR_LOG");
+            return contents;
+        } catch (InvalidResourceException e) {
+            throw new NotFoundException("Failed to retrieve FFPROBE_ERROR_LOG datastream ",e);
+        }
+
+    }
+
+    private String getFFProbeBaseName(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+        String url = webservice.getObjectProfile(uuid).getTitle();
+        if (url != null && url.contains(".")) {
+            String[] parts = url.split("/");
+            return ffprobeDir + parts[parts.length-1];
+        } else {
+            return null;
+        }
     }
 }
