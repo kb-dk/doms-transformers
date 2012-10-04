@@ -1,22 +1,19 @@
 package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
-import dk.statsbiblioteket.doms.central.CentralWebservice;
-import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
-import dk.statsbiblioteket.doms.central.InvalidResourceException;
-import dk.statsbiblioteket.doms.central.MethodFailedException;
-import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
-import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
-import dk.statsbiblioteket.doms.transformers.fileenricher.DomsFFProbeFileEnricherObjectHandler;
-import dk.statsbiblioteket.doms.transformers.fileenricher.DomsFileEnricherObjectHandler;
-import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import dk.statsbiblioteket.doms.central.CentralWebservice;
+import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
+import dk.statsbiblioteket.doms.central.InvalidResourceException;
+import dk.statsbiblioteket.doms.central.MethodFailedException;
+import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 
 
 public class FileObjectCreatorWorker extends RecursiveAction {
@@ -25,8 +22,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     private MuxFileChannelCalculator muxFileChannelCalculator;
     private List<String> data;
 
-    public FileObjectCreatorWorker(List<String> data,
-                                   MuxFileChannelCalculator muxFileChannelCalculator) {
+    public FileObjectCreatorWorker(List<String> data, MuxFileChannelCalculator muxFileChannelCalculator) {
         this.data = data;
         this.muxFileChannelCalculator = muxFileChannelCalculator;
     }
@@ -46,8 +42,10 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             }
         } else if (FileObjectCreator.permissionToRun()) {
             int center = data.size()/2;
-            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(data.subList(0, center),           muxFileChannelCalculator);
-            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(data.subList(center, data.size()), muxFileChannelCalculator);
+            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(data.subList(0, center),
+                        muxFileChannelCalculator);
+            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(data.subList(center, data.size()),
+                        muxFileChannelCalculator);
             invokeAll(workerA, workerB);
         }
     }
@@ -98,7 +96,6 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                 FileObjectCreator.logFailure(output);
                 log.error("Authentication-related error. Requesting shutdown..", e);
                 FileObjectCreator.requestShutdown();
-                e.printStackTrace();
             } catch (InvalidResourceException e) {
                 FileObjectCreator.logFailure(output);
                 if (uuid == null) {
@@ -111,7 +108,6 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                             "Requesting shutdown..");
                 }
                 FileObjectCreator.requestShutdown();
-                e.printStackTrace();
             } catch (MethodFailedException e) {
                 FileObjectCreator.logFailure(output);
                 log.warn("Ingest of the following object failed: " + domsObject + "(uuid=\"" + uuid + "\")", e);
