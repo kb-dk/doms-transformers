@@ -13,9 +13,9 @@ import java.util.List;
  * Run through list of UUIDs, call object handler, and report status in logging and files.
  */
 public class FileRecordingObjectListHandler implements ObjectListHandler {
-    private final Logger log = LoggerFactory.getLogger(getClass());
-    private final BufferedWriter successFileWriter;
-    private final BufferedWriter failureFileWriter;
+    private static final Logger log = LoggerFactory.getLogger("FileRecordingObjectListHandler");
+    private static BufferedWriter successFileWriter;
+    private static BufferedWriter failureFileWriter;
     private ObjectHandler objectHandler;
 
     /**
@@ -48,7 +48,7 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
         }
     }
 
-    private void recordSuccess(String uuid) {
+    public static void recordSuccess(String uuid) {
         try {
             successFileWriter.write(uuid);
             successFileWriter.newLine();
@@ -59,7 +59,7 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
         log.info("Successfully processed '{}'", uuid);
     }
 
-    private void recordFailure(String uuid) {
+    public static void recordFailure(String uuid) {
         try {
             failureFileWriter.write(uuid);
             failureFileWriter.newLine();
