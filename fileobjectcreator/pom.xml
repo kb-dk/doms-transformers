@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>dk.statsbiblioteket.doms.transformers</groupId>
-    <artifactId>objectcreator</artifactId>
+    <artifactId>fileobjectcreator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
@@ -76,7 +76,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>dk.statsbiblioteket.doms.transformers.shardmigrator.ShardMigrator</mainClass>
+                            <mainClass>dk.statsbiblioteket.doms.transformers.fileobjectcreator.FileObjectCreator</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

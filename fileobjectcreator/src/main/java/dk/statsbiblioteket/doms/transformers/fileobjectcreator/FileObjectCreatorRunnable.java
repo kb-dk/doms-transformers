@@ -1,4 +1,4 @@
-package dk.statsbiblioteket.doms.transformers.objectcreator;
+package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
 public class FileObjectCreatorRunnable implements Runnable {
     private final DomsObject domsObject;

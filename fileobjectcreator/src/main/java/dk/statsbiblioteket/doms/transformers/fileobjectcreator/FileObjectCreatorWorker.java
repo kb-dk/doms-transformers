@@ -1,10 +1,14 @@
-package dk.statsbiblioteket.doms.transformers.objectcreator;
+package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
+import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
+import dk.statsbiblioteket.doms.transformers.fileenricher.DomsFFProbeFileEnricherObjectHandler;
+import dk.statsbiblioteket.doms.transformers.fileenricher.DomsFileEnricherObjectHandler;
+import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,8 +71,8 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                             domsObject.getFileName());
             try {
                 CentralWebservice webservice = FileObjectCreator.newWebservice();
-                String fileObjectWithURL = webservice.getFileObjectWithURL(domsObject.getPermanentUrl());
-                if (fileObjectWithURL == null) {
+                uuid = webservice.getFileObjectWithURL(domsObject.getPermanentUrl());
+                if (uuid == null) {
                     uuid = webservice.newObject (
                             "doms:Template_RadioTVFile",
                             new ArrayList<String>(),
@@ -84,7 +88,11 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                             comment
                     );
 
-                    FileObjectCreator.logSuccess(output);
+                    FileObjectCreator.logSuccess(output + " (" + uuid + ")");
+                    log.info("Created (" + uuid + "): " + output);
+                    FileObjectCreator.logNewUuid(uuid);
+                } else {
+                    log.info("Already exists (" + uuid + "): " + output);
                 }
 
             } catch (InvalidCredentialsException e) {
@@ -108,6 +116,8 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             } catch (MethodFailedException e) {
                 FileObjectCreator.logFailure(output);
                 log.warn("Ingest of the following object failed: " + domsObject + "(uuid=\"" + uuid + "\")", e);
+            } catch (Exception e) {
+                log.error("Failed to enrich: " + uuid, e);
             }
         }
     }

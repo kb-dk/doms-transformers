@@ -1,4 +1,4 @@
-package dk.statsbiblioteket.doms.transformers.objectcreator;
+package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 import org.slf4j.Logger;

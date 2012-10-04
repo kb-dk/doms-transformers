@@ -1,10 +1,10 @@
-package dk.statsbiblioteket.doms.transformers.objectcreator;
+package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
-import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
+import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,15 +18,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
 
 public class FileObjectCreator {
     private static Logger log = LoggerFactory.getLogger(FileObjectCreator.class);
+    private static String baseName = "fileobjectcreator_";
+    private static BufferedWriter newUuidWriter;
     private static BufferedWriter successWriter;
     private static BufferedWriter failureWriter;
     private static BufferedWriter ignoreWriter;
-    private static PropertyBasedDomsConfig config;
+    private static FFProbeLocationPropertyBasedDomsConfig config;
     private static final int STATUS_CHAR_PR_LINE = 100;
     private static final char SUCCESS_CHAR = '+';
     private static final char FAILURE_CHAR = '#';
@@ -46,32 +49,41 @@ public class FileObjectCreator {
             System.out.println("Input file: " + args[0]);
 
             File configFile = new File(args[1]);
-            config = new PropertyBasedDomsConfig(configFile);
+            config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
             System.out.println(config);
 
-            File successLog = new File("fileobjectcreator_successful-uuids");
-            File failureLog = new File("fileobjectcreator_failed-uuids");
-            File ignoreLog = new File("fileobjectcreator_ignored-files");
+            File newUuidLog = new File(baseName + "new-uuids");
+            File successLog = new File(baseName + "successful-files");
+            File failureLog = new File(baseName + "failed-files");
+            File ignoreLog = new File(baseName + "ignored-files");
 
-            if (successLog.exists()) {
-                System.out.println("File already exists: " + successLog);
+            List<File> logFiles = new LinkedList<File>();
+            List<BufferedWriter> logWriters = new LinkedList<BufferedWriter>();
+            logFiles.add(newUuidLog);
+            logFiles.add(successLog);
+            logFiles.add(failureLog);
+            logFiles.add(ignoreLog);
+
+            boolean logsCleared = true;
+
+            for (File f : logFiles) {
+                if (f.exists()) {
+                    logsCleared = false;
+                    System.out.println("File already exists: " + f);
+                }
+            }
+
+            if (!logsCleared) {
                 System.exit(1);
             } else {
+                newUuidWriter = new BufferedWriter(new FileWriter(newUuidLog));
                 successWriter = new BufferedWriter(new FileWriter(successLog));
-            }
-
-            if (failureLog.exists()) {
-                System.out.println("File already exists: " + failureLog);
-                System.exit(1);
-            } else {
                 failureWriter = new BufferedWriter(new FileWriter(failureLog));
-            }
-
-            if (ignoreLog.exists()) {
-                System.out.println("File already exists: " + ignoreLog);
-                System.exit(1);
-            } else {
                 ignoreWriter = new BufferedWriter(new FileWriter(ignoreLog));
+                logWriters.add(newUuidWriter);
+                logWriters.add(successWriter);
+                logWriters.add(failureWriter);
+                logWriters.add(ignoreWriter);
             }
 
 
@@ -87,10 +99,6 @@ public class FileObjectCreator {
             e.printStackTrace();
             System.exit(1);
         }
-    }
-
-    public static CentralWebservice newWebservice() {
-        return new DomsWebserviceFactory(config).getWebservice();
     }
 
     public FileObjectCreator(DomsConfig config, BufferedReader reader) {
@@ -119,7 +127,7 @@ public class FileObjectCreator {
             FileObjectCreatorWorker fileObjectCreatorWorker =
                     new FileObjectCreatorWorker(data, muxFileChannelCalculator);
 
-            ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors()*16);
+            ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors()*2);
 
             Long start = System.currentTimeMillis();
 
@@ -134,6 +142,14 @@ public class FileObjectCreator {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    public static CentralWebservice newWebservice() {
+        return new DomsWebserviceFactory(config).getWebservice();
+    }
+
+    public static FFProbeLocationPropertyBasedDomsConfig getConfig() {
+        return config;
     }
 
     public static synchronized void logSuccess(String data) {
@@ -165,6 +181,16 @@ public class FileObjectCreator {
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Ignored: " + data);
+        }
+    }
+
+    public static synchronized void logNewUuid(String uuid) {
+        try {
+            newUuidWriter.write(uuid + "\n");
+            newUuidWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("New: " + uuid);
         }
     }
 
