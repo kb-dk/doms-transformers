@@ -40,10 +40,9 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
                 System.out.println("transformed... " + uuid);
                 recordSuccess(uuid);
             } catch (Exception e) {
-                e.printStackTrace();
                 System.out.println(e.getMessage());
                 log.error("Error processing uuid '{}'", uuid, e);
-                recordFailure(uuid);
+                recordFailure(uuid, e);
             }
         }
     }
@@ -59,7 +58,7 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
         log.info("Successfully processed '{}'", uuid);
     }
 
-    public static void recordFailure(String uuid) {
+    public static void recordFailure(String uuid, Throwable t) {
         try {
             failureFileWriter.write(uuid);
             failureFileWriter.newLine();
@@ -67,6 +66,17 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
         } catch (IOException e) {
             log.error("Unable to record failure of '{}'", uuid, e);
         }
-        log.info("Failure processing '{}'", uuid);
+        log.warn("Failure processing '{}'", uuid, t);
+    }
+
+    public static void recordIgnored(String uuid) {
+        try {
+            failureFileWriter.write(uuid);
+            failureFileWriter.newLine();
+            failureFileWriter.flush();
+        } catch (IOException e) {
+            log.error("Purposedly didn't enrich '{}'", uuid, e);
+        }
+        log.info("Purposedly didn't enrich '{}'", uuid);
     }
 }

@@ -13,6 +13,7 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
+import dk.statsbiblioteket.doms.central.DatastreamProfile;
 import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
@@ -64,6 +65,10 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
 
     @Override
     public void transform(String uuid) throws Exception {
+        if (!shouldEnrich(uuid)) {
+            return;
+        }
+
         webservice.markInProgressObject(Arrays.asList(uuid), "Modifying object as part of datamodel upgrade");
         if (delegate != null) {
             delegate.transform(uuid);
@@ -90,5 +95,17 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         String label = webservice.getObjectProfile(uuid).getTitle();
         String filename = label.substring(label.lastIndexOf("/") + 1);
         return filename;
+    }
+
+    public boolean shouldEnrich(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+        for (DatastreamProfile datastreamProfile : webservice.getObjectProfile(uuid).getDatastreams()) {
+            String type = datastreamProfile.getId();
+
+            if (type.equals("FFPROBE") || type.equals("FFPROBE_ERROR_LOG") || type.equals("BROADCAST_METADATA")) {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
