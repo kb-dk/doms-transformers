@@ -1,13 +1,5 @@
 package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
-import dk.statsbiblioteket.doms.central.CentralWebservice;
-import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
-import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
-import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
-import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,13 +9,20 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import dk.statsbiblioteket.doms.central.CentralWebservice;
+import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
+import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
+import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
 
 public class FileObjectCreator {
     private static Logger log = LoggerFactory.getLogger(FileObjectCreator.class);
