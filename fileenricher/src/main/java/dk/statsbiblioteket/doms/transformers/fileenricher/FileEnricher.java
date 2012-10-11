@@ -10,8 +10,10 @@ import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
 
 import javax.xml.bind.JAXBException;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -42,7 +44,7 @@ public class FileEnricher {
         FileEnricherConfig config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
 
-        ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
+        ChecksumParser checksums = new ChecksumParser(new BufferedReader(new InputStreamReader(System.in)));
 
         ObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config, webservice);
         ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,checksums.getNameChecksumsMap(), delegate);

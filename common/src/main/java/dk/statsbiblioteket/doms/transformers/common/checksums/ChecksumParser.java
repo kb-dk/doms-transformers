@@ -20,16 +20,11 @@ public class ChecksumParser {
 
     private Map<String,String> nameChecksumsMap = new HashMap<String, String>();
 
-    public ChecksumParser(InputStream checksumsZipStream) throws IOException {
-        ZipInputStream zipInputStream = new ZipInputStream(checksumsZipStream);
-        // This probably only works when the zip-file contains exacly one (1) file
-        zipInputStream.getNextEntry();
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(zipInputStream));
+    public ChecksumParser(BufferedReader reader) throws IOException {
         String line;
         while ((line = reader.readLine()) != null){
             String[] splits = line.split(" ");
-            String name = splits[1].trim();
+            String name = splits[2].trim();
             String checksum = splits[0].trim();
             if (name.endsWith(".log")){
                 continue;

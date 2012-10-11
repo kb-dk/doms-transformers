@@ -11,6 +11,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.Set;
 
@@ -41,7 +43,11 @@ public class DomsFileEnricherObjectHandlerTest {
         testObjectPid = webservice.newObject(null, null, null);
         webservice.addFileFromPermanentURL(testObjectPid,null,null,"http://bitfinder.statsbiblioteket.dk/bart/"+testMuxFileName,null,null);
 
-        checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
+        checksums = new ChecksumParser(
+                new BufferedReader(
+                        new InputStreamReader(
+                                Thread.currentThread().getContextClassLoader().getResourceAsStream("checksumTestFile"))));
+
         muxFileChannelCalculator = new MuxFileChannelCalculator(
                 Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 

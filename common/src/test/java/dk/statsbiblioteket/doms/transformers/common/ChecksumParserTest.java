@@ -5,7 +5,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -31,8 +33,11 @@ public class ChecksumParserTest {
 
     @Test
     public void parseFile() throws URISyntaxException, IOException {
-        ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
-        assertThat(checksums.getNameChecksumsMap().size(), is(135673));
-
+        ChecksumParser checksums =
+                new ChecksumParser(
+                    new BufferedReader(
+                            new InputStreamReader(
+                                    Thread.currentThread().getContextClassLoader().getResourceAsStream("checksumTestFile"))));
+        assertThat(checksums.getNameChecksumsMap().size(), is(3));
     }
 }

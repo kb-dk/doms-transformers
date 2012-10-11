@@ -13,7 +13,9 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,7 +61,10 @@ public class FileEnricherTest {
     @Test
     public void testMain() throws Exception {
         DomsFFProbeFileEnricherObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
-        ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
+        ChecksumParser checksums = new ChecksumParser(
+                new BufferedReader(
+                        new InputStreamReader(
+                                Thread.currentThread().getContextClassLoader().getResourceAsStream("checksumTestFile"))));
         ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap(), delegate);
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
@@ -85,7 +90,11 @@ public class FileEnricherTest {
         FileUtils.copyFile(ffprobeContents,ffprobeFile);
 
         DomsFFProbeFileEnricherObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
-        ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
+        ChecksumParser checksums = new ChecksumParser(
+                new BufferedReader(
+                        new InputStreamReader(
+                                Thread.currentThread().getContextClassLoader().getResourceAsStream("checksumTestFile"))));
+
         ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap(), delegate);
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
