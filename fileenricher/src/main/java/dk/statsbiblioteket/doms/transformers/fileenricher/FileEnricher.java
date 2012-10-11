@@ -41,14 +41,23 @@ public class FileEnricher {
             System.exit(1);
         }
 
+        ChecksumParser checksumParser;
+
+        if (args.length <= 1) {
+            checksumParser = new ChecksumParser(new BufferedReader(new InputStreamReader(System.in)));
+        } else {
+            checksumParser = new ChecksumParser(new BufferedReader(new FileReader(new File(args[1]))));
+        }
+
+
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
         FileEnricherConfig config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
 
-        ChecksumParser checksums = new ChecksumParser(new BufferedReader(new InputStreamReader(System.in)));
+
 
         ObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config, webservice);
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice,checksums.getNameChecksumsMap(), delegate);
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksumParser.getNameChecksumsMap(), delegate);
 
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
