@@ -42,6 +42,9 @@ public class FileNameParser {
 
         if (result != null) {
             result.setChecksum(checksum);
+            if (result.getRecorder() == null) {
+                result.setRecorder(""); // Horrible hack: very old files, like "dk4_807.250_K63-DK4_mpeg1_20050919075001_20050920074502.mpeg", has no recorder information, yet it is required in the xsd.
+            }
         }
 
         return result;
