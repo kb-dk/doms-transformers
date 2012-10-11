@@ -6,7 +6,6 @@ import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.client.exceptions.NotFoundException;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
-import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,12 +57,16 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
     private  String getFFProbeXml(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException, IOException {
         String ffprobe;
         String ffprobeErrors;
-        String baseFileName = getFFProbeBaseName(uuid);
+        String incompleteFilePath = getFFProbeBaseName(uuid);
+        String stdoutFilePath = incompleteFilePath + ".stdout";
+        String stderrFilePath = incompleteFilePath + ".stderr";
+
+
         try {
             ffprobe = getFFProbeFromObject(uuid);
             log.info(String.format("ffprobe data for %s already exists, not updating.", uuid));
         } catch (NotFoundException e) {
-            ffprobe = getFFProbeXMLFromFile(baseFileName);
+            ffprobe = getFFProbeXMLFromFileName(stdoutFilePath);
             addFFProbeToObject(uuid, ffprobe);
         }
 
@@ -72,7 +75,7 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
             //ffprobeErrors = getFFProbeErrorsFromObject(uuid);
             //log.info(String.format("ffprobe error data for %s already exists, not updating.", uuid));
         } catch (NotFoundException e) {
-            ffprobeErrors = getFFProbeErrorsXMLFromFile(baseFileName);
+            ffprobeErrors = getFFProbeErrorsXMLFromFileName(stderrFilePath);
             addFFProbeToObject(uuid, ffprobeErrors);
         }
 
@@ -84,25 +87,6 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
         String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeFile));
         ffprobeContents = ffprobeContents.substring(ffprobeContents.indexOf("<ffprobe"));
         return ffprobeContents;
-
-    }
-
-    private  String getFFProbeXMLFromFile(File file) throws IOException {
-        File ffprobeFile = new File(file + ".stdout");
-        String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeFile));
-        ffprobeContents = ffprobeContents.substring(ffprobeContents.indexOf("<ffprobe"));
-        return ffprobeContents;
-
-    }
-
-    private  String getFFProbeErrorsXMLFromFile(String file) throws IOException {
-        File ffprobeErrorFile = new File(file + ".stderr");
-        String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeErrorFile));
-
-        return "<ffprobe:ffprobeStdErrorOutput \n" +
-                "xmlns:ffprobe='http://www.ffmpeg.org/schema/ffprobe'><![CDATA[\n" +
-                ffprobeContents +
-                "]]></ffprobe:ffprobeStdErrorOutput>";
     }
 
     private void addFFProbeToObject(String uuid, String ffprobe) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
@@ -123,6 +107,14 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
 
     }
 
+    public static String getFFProbeXMLFromFileName(String fileName) throws IOException {
+        File ffprobeFile = new File(fileName);
+        String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeFile));
+        ffprobeContents = ffprobeContents.substring(ffprobeContents.indexOf("<ffprobe"));
+        return ffprobeContents;
+
+    }
+
     private String getFFProbeErrorsFromObject(String uuid) throws NotFoundException, InvalidCredentialsException, MethodFailedException {
         try {
             String contents = webservice.getDatastreamContents(uuid, "FFPROBE_ERROR_LOG");
@@ -133,11 +125,30 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
 
     }
 
+    public static String getFFProbeErrorsXMLFromFileName(String fileName) throws IOException {
+        File ffprobeErrorFile = new File(fileName);
+        String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeErrorFile));
+
+        return "<ffprobe:ffprobeStdErrorOutput \n" +
+                "xmlns:ffprobe='http://www.ffmpeg.org/schema/ffprobe'><![CDATA[\n" +
+                ffprobeContents +
+                "]]></ffprobe:ffprobeStdErrorOutput>";
+    }
+
     private String getFFProbeBaseName(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+        String fileName = getFileNameFromUuid(webservice, uuid);
+        if (fileName != null) {
+            return ffprobeDir + fileName;
+        } else {
+            return null;
+        }
+    }
+
+    public static String getFileNameFromUuid(CentralWebservice webservice, String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
         String url = webservice.getObjectProfile(uuid).getTitle();
         if (url != null && url.contains(".")) {
             String[] parts = url.split("/");
-            return ffprobeDir + parts[parts.length-1];
+            return parts[parts.length-1];
         } else {
             return null;
         }

@@ -96,7 +96,7 @@ public class DomsFileEnricherObjectHandlerTest {
       String testRadioChannel = "drp1";
       String testRadioStartTime = "1210301762";
       String testRadioStopTime = "1210388101";
-      String testRadioFormatUri = "info:pronom/fmt/6";
+      String testRadioFormatUri = "wav";
 
       BroadcastMetadata metadata =
               FileNameParser.decodeFilename(testRadioFileName, checksums.getNameChecksumsMap(), muxFileChannelCalculator);
@@ -116,7 +116,7 @@ public class DomsFileEnricherObjectHandlerTest {
         String testMPEGChannel = "tv2c";
         String testMPEGStartTime = "1209809401";
         String testMPEGStopTime = "1209863161";
-        String testMPEGFormatUri = "info:pronom/x-fmt/385";
+        String testMPEGFormatUri = "mpeg1";
 
         BroadcastMetadata metadata =
                 FileNameParser.decodeFilename(testMPEGFileName, checksums.getNameChecksumsMap(), muxFileChannelCalculator);

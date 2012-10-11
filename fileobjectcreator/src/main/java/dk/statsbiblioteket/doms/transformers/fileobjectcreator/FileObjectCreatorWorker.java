@@ -1,19 +1,20 @@
 package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
+import dk.statsbiblioteket.doms.central.CentralWebservice;
+import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
+import dk.statsbiblioteket.doms.central.InvalidResourceException;
+import dk.statsbiblioteket.doms.central.MethodFailedException;
+import dk.statsbiblioteket.doms.common.SimpleFFProbeParser;
+import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ForkJoinTask;
 import java.util.concurrent.RecursiveAction;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import dk.statsbiblioteket.doms.central.CentralWebservice;
-import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
-import dk.statsbiblioteket.doms.central.InvalidResourceException;
-import dk.statsbiblioteket.doms.central.MethodFailedException;
-import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 
 
 public class FileObjectCreatorWorker extends RecursiveAction {
@@ -61,15 +62,33 @@ public class FileObjectCreatorWorker extends RecursiveAction {
 
         String uuid = null;
         if (validObject(domsObject)) {
-            String output =
-                    String.format("%s %s %s",
-                            domsObject.getChecksum(),
-                            domsObject.getSize(),
-                            domsObject.getFileName());
+            String output = domsObject.formatAsInput();
+
             try {
                 CentralWebservice webservice = FileObjectCreator.newWebservice();
                 uuid = webservice.getFileObjectWithURL(domsObject.getPermanentUrl());
                 if (uuid == null) {
+                    String formatUri = null;
+                    try {
+                        File ffProbeFile = FileObjectCreator.getFFProbeFile(domsObject.getFileName() + ".stdout");
+                        formatUri = SimpleFFProbeParser.getFormatURIFromFile(ffProbeFile);
+                        log.info("Got formatURI from \"" + ffProbeFile + "\": " + formatUri);
+                    } catch (Exception e) {
+                        FileObjectCreator.logBadFFProbeData(domsObject);
+                        formatUri = domsObject.guessFormatUri();
+                        if (formatUri != null) {
+                            log.warn("Couldn't get formatURI from ffProbeFile, this should probably be investigated. "
+                                    + "Based on the filename the following formatURI will be used instead: " + formatUri);
+                        } else {
+                            String errorMsg = "Failed getting a formatURI for " + domsObject;
+                            log.error(errorMsg, e);
+                            FileObjectCreator.logFailure(errorMsg);
+                            /* Possibly problematic early return. Due to the shear number of ways this can fail,
+                               the entire function should probably be refactured instead.*/
+                            return;
+                        }
+                    }
+
                     uuid = webservice.newObject (
                             "doms:Template_RadioTVFile",
                             new ArrayList<String>(),
@@ -81,7 +100,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                             domsObject.getFileName(),
                             null,
                             domsObject.getPermanentUrl(),
-                            domsObject.getFormat(),
+                            formatUri,
                             comment
                     );
 
@@ -90,6 +109,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                     FileObjectCreator.logNewUuid(uuid);
                 } else {
                     log.info("Already exists (" + uuid + "): " + output);
+                    FileObjectCreator.logExisting(uuid);
                 }
 
             } catch (InvalidCredentialsException e) {
@@ -112,7 +132,13 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                 FileObjectCreator.logFailure(output);
                 log.warn("Ingest of the following object failed: " + domsObject + "(uuid=\"" + uuid + "\")", e);
             } catch (Exception e) {
-                log.error("Failed to enrich: " + uuid, e);
+                FileObjectCreator.logFailure(uuid);
+                if (uuid != null) {
+                    log.error("Failure getting ffprobe data for " + uuid, e);
+                    FileObjectCreator.logBadFFProbeData(domsObject);
+                } else {
+                    log.error(e.getMessage(), e);
+                }
             }
         }
     }

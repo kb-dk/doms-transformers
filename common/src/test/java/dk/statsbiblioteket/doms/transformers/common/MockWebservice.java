@@ -1,10 +1,23 @@
 package dk.statsbiblioteket.doms.transformers.common;
 
-import dk.statsbiblioteket.doms.central.*;
+import dk.statsbiblioteket.doms.central.CentralWebservice;
+import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
+import dk.statsbiblioteket.doms.central.InvalidResourceException;
+import dk.statsbiblioteket.doms.central.MethodFailedException;
+import dk.statsbiblioteket.doms.central.ObjectProfile;
+import dk.statsbiblioteket.doms.central.RecordDescription;
+import dk.statsbiblioteket.doms.central.Relation;
+import dk.statsbiblioteket.doms.central.SearchResult;
+import dk.statsbiblioteket.doms.central.User;
+import dk.statsbiblioteket.doms.central.ViewBundle;
 
 import javax.jws.WebParam;
-import java.lang.String;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Created by IntelliJ IDEA.

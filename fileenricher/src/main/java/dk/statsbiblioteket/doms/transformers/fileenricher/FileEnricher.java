@@ -1,15 +1,5 @@
 package dk.statsbiblioteket.doms.transformers.fileenricher;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.text.ParseException;
-import java.util.List;
-
-import javax.xml.bind.JAXBException;
-
 import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
 import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
@@ -18,6 +8,15 @@ import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
+
+import javax.xml.bind.JAXBException;
+import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.text.ParseException;
+import java.util.List;
 
 /**
  * Tool for enriching Radio/TV file metadata.

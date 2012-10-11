@@ -1,11 +1,16 @@
 package dk.statsbiblioteket.doms.transformers.fileenricher;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
-import dk.statsbiblioteket.doms.transformers.common.*;
+import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
+import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
+import dk.statsbiblioteket.doms.transformers.common.MockWebservice;
+import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
+import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -63,5 +68,32 @@ public class FileEnricherTest {
         uuids.add(testObjectPid);
 
         objectListHandler.transform(uuids);
+    }
+
+    @Test
+    @Ignore
+    public void testReal() throws Exception {
+
+        testObjectPid = "uuid:c267eb1d-987e-4da5-bc04-766ae8af0c7f";
+
+        config = new FFProbeLocationPropertyBasedDomsConfig(new File(Thread.currentThread().getContextClassLoader().getResource("fileenricher.properties").toURI()));
+        CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
+        File ffprobeFile;
+        ffprobeFile = new File(config.getFFprobeFilesLocation(), testObjectPid + ".stdout");
+        File ffprobeContents = new File(Thread.currentThread().getContextClassLoader().getResource("ffprobeContents.xml").toURI());
+        ffprobeFile.getParentFile().mkdirs();
+        FileUtils.copyFile(ffprobeContents,ffprobeFile);
+
+        DomsFFProbeFileEnricherObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
+        ChecksumParser checksums = new ChecksumParser(Thread.currentThread().getContextClassLoader().getResourceAsStream("md5s.zip"));
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap(), delegate);
+
+        ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
+
+        List<String> uuids = new ArrayList<String>();
+        uuids.add(testObjectPid);
+
+        objectListHandler.transform(uuids);
+
     }
 }

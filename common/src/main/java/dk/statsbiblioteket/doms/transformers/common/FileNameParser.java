@@ -9,10 +9,10 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 public class FileNameParser {
-
     public static BroadcastMetadata decodeFilename(String filename,
                                                    Map<String, String> checksums,
                                                    MuxFileChannelCalculator muxChannelCalculator)
@@ -32,7 +32,7 @@ public class FileNameParser {
 
         BroadcastMetadata result = null;
 
-        if (filename.endsWith(".ts")) {
+        if (filename.startsWith("mux") && filename.endsWith(".ts")) {
             result = decodeMuxFilename(filename, muxChannelCalculator);
         } else if (filename.endsWith(".wav")) {
             result = decodeRadioFilename(filename);
@@ -67,13 +67,7 @@ public class FileNameParser {
             channels.getChannel().set(i, channelID);
         }
 
-        if (muxID == 1) {
-            // TODO: make sure this is the correct formatURI
-            metadata.setFormat("info:mime/video/MP2T;codecs=\"dvbsub,mp1,mp2,mpeg2video\"");
-        } else if (muxID == 2) {
-            // TODO: make sure this is the correct formatURI
-            metadata.setFormat("info:mime/video/MP2T;codecs=\"dvbsub,mp2,mpeg2video\"");
-        }
+        metadata.setFormat("mpegts-multichannel-video");
 
         metadata.setFilename(filename);
         metadata.setChannels(channels);
@@ -92,7 +86,7 @@ public class FileNameParser {
 
         String[] tokens = filename.split("_");
         String channelID = tokens[0];
-        String format = "info:pronom/fmt/6"; // WAV pronom format uri
+        String formatName = "wav";
         String timeStart = tokens[4];
         String timeStop = tokens[5];
         String recorder = null;
@@ -112,7 +106,7 @@ public class FileNameParser {
         channels.getChannel().add(channel);
         metadata.setFilename(filename);
         metadata.setChannels(channels);
-        metadata.setFormat(format);
+        metadata.setFormat(formatName);
         metadata.setRecorder(recorder);
         metadata.setStartTime(CalendarUtils.getXmlGregorianCalendar(timeStartDate));
         metadata.setStopTime(CalendarUtils.getXmlGregorianCalendar(timeStopDate));
@@ -139,15 +133,15 @@ public class FileNameParser {
         if (tokens.length >= 7) {
             recorder = tokens[6].split("\\.")[0];
         }
-        String formatUri;
+        String formatName;
         if (format.equals("mpeg1")) {
-            formatUri = "info:pronom/x-fmt/385";
+            formatName = "mpeg1";
         } else if (format.equals("mpeg2")) {
-            formatUri = "info:pronom/x-fmt/386";
+            formatName = "mpeg2";
         } else if (format.equals("wmv")) {
-            formatUri = "info:pronom/fmt/133";
+            formatName = "asf";
         } else if (format.equals("mp4")) {
-            formatUri = "info:pronom/fmt/199";
+            formatName = "mp4";
         } else {
             throw new ParseException("Failed to parse format string '" + format + "'", 0);
         }
@@ -159,7 +153,7 @@ public class FileNameParser {
         channels.getChannel().add(ChannelIDToSBChannelIDMapper.getInstance().mapToSBChannel(channelID));
         metadata.setFilename(filename);
         metadata.setChannels(channels);
-        metadata.setFormat(formatUri);
+        metadata.setFormat(formatName);
         metadata.setRecorder(recorder);
         metadata.setStartTime(CalendarUtils.getXmlGregorianCalendar(timeStartDate));
         metadata.setStopTime(CalendarUtils.getXmlGregorianCalendar(timeStopDate));

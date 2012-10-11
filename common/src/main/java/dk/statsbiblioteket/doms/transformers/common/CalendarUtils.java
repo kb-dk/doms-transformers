@@ -1,10 +1,9 @@
 package dk.statsbiblioteket.doms.transformers.common;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import javax.xml.datatype.DatatypeFactory;
 import javax.xml.datatype.XMLGregorianCalendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class CalendarUtils {
 

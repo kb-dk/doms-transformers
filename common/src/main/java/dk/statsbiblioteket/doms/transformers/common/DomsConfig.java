@@ -1,7 +1,5 @@
 package dk.statsbiblioteket.doms.transformers.common;
 
-import dk.statsbiblioteket.doms.transformers.common.Config;
-
 /**
  * Configuration for shard migrator.
  */

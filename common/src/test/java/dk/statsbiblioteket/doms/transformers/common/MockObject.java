@@ -2,7 +2,10 @@ package dk.statsbiblioteket.doms.transformers.common;
 
 import dk.statsbiblioteket.doms.central.Relation;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by IntelliJ IDEA.

@@ -1,5 +1,5 @@
 <assembly>
-    <id>transformer</id>
+    <id>fileobjectcreator</id>
     <formats>
         <format>tar.gz</format>
     </formats>

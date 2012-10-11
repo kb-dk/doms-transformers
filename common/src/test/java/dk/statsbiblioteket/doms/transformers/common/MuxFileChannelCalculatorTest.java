@@ -5,12 +5,8 @@ import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCa
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
-import java.io.File;
 import java.io.InputStream;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
