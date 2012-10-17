@@ -102,7 +102,7 @@ public class DomsFileEnricherObjectHandlerTest {
       String testRadioChannel = "drp1";
       String testRadioStartTime = "1210301762";
       String testRadioStopTime = "1210388101";
-      String testRadioFormatUri = "wav";
+      String testRadioFormatName = "wav";
 
       BroadcastMetadata metadata =
               FileNameParser.decodeFilename(testRadioFileName, checksums.getNameChecksumsMap(), muxFileChannelCalculator);
@@ -110,7 +110,7 @@ public class DomsFileEnricherObjectHandlerTest {
       assertThat(metadata.getStartTime(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStartTime)));
       assertThat(metadata.getStopTime(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStopTime)));
       assertThat(metadata.getChannels().getChannel().get(0).getChannelID(), is(testRadioChannel));
-      assertThat(metadata.getFormat(), is(testRadioFormatUri));
+      assertThat(metadata.getFormat(), is(testRadioFormatName));
 
       
     }
@@ -122,7 +122,7 @@ public class DomsFileEnricherObjectHandlerTest {
         String testMPEGChannel = "tv2c";
         String testMPEGStartTime = "1209809401";
         String testMPEGStopTime = "1209863161";
-        String testMPEGFormatUri = "mpeg1";
+        String testMPEGFormatName = "mpeg1";
 
         BroadcastMetadata metadata =
                 FileNameParser.decodeFilename(testMPEGFileName, checksums.getNameChecksumsMap(), muxFileChannelCalculator);
@@ -130,7 +130,7 @@ public class DomsFileEnricherObjectHandlerTest {
         assertThat(metadata.getStartTime(), is(CalendarUtils.getXmlGregorianCalendar(testMPEGStartTime)));
         assertThat(metadata.getStopTime(), is(CalendarUtils.getXmlGregorianCalendar(testMPEGStopTime)));
         assertThat(metadata.getChannels().getChannel().get(0).getChannelID(), is(testMPEGChannel));
-        assertThat(metadata.getFormat(), is(testMPEGFormatUri));
+        assertThat(metadata.getFormat(), is(testMPEGFormatName));
         
     }
 }
