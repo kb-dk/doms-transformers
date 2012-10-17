@@ -71,9 +71,9 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
 
     public static void recordIgnored(String uuid) {
         try {
-            failureFileWriter.write(uuid);
-            failureFileWriter.newLine();
-            failureFileWriter.flush();
+            successFileWriter.write(uuid);
+            successFileWriter.newLine();
+            successFileWriter.flush();
         } catch (IOException e) {
             log.error("Purposely didn't enrich '{}'", uuid, e);
         }

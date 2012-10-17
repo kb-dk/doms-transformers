@@ -6,6 +6,7 @@ import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.client.exceptions.NotFoundException;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
+import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,9 +28,10 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
     private final DomsConfig config;
     private final CentralWebservice webservice;
 
-    private final File ffprobeDir;
+    private final String ffprobeDir;
 
-    private Logger log = LoggerFactory.getLogger("DomsFFProbeFileEnricherObjectHandler");
+    private static final Logger log = LoggerFactory.getLogger(DomsFFProbeFileEnricherObjectHandler.class);
+    private static final Logger ffProbeLog = LoggerFactory.getLogger("ffprobe");
 
 
     /**
@@ -40,7 +42,7 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
     public DomsFFProbeFileEnricherObjectHandler(FileEnricherConfig config, CentralWebservice webservice){
         this.config = config;
         this.webservice = webservice;
-        ffprobeDir = new File(config.getFFprobeFilesLocation());
+        ffprobeDir = config.getFFprobeFilesLocation();
     }
 
 
@@ -50,7 +52,8 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
         try {
             getFFProbeXml(uuid);
         } catch (FileNotFoundException e) {
-            // error is logged in the function call
+            FileRecordingObjectListHandler.recordFailure("Missing ffprobe data for " + uuid, e);
+            ffProbeLog.warn("Missing ffprobe data for " + uuid, e);
         }
     }
 
@@ -71,9 +74,8 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
         }
 
         try {
-            throw new NotFoundException("foo");
-            //ffprobeErrors = getFFProbeErrorsFromObject(uuid);
-            //log.info(String.format("ffprobe error data for %s already exists, not updating.", uuid));
+            ffprobeErrors = getFFProbeErrorsFromObject(uuid);
+            log.info(String.format("ffprobe error data for %s already exists, not updating.", uuid));
         } catch (NotFoundException e) {
             ffprobeErrors = getFFProbeErrorsXMLFromFileName(stderrFilePath);
             addFFProbeToObject(uuid, ffprobeErrors);
