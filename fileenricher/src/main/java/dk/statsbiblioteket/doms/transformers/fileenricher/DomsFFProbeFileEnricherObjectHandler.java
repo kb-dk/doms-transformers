@@ -131,10 +131,11 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
         File ffprobeErrorFile = new File(fileName);
         String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeErrorFile));
 
-        return "<ffprobe:ffprobeStdErrorOutput \n" +
-                "xmlns:ffprobe='http://www.ffmpeg.org/schema/ffprobe'><![CDATA[\n" +
+        String data = "<ffprobe:ffprobeStdErrorOutput xmlns:ffprobe=\"http://www.ffmpeg.org/schema/ffprobe/stderr\"><![CDATA[\n" +
                 ffprobeContents +
                 "]]></ffprobe:ffprobeStdErrorOutput>";
+
+        return data;
     }
 
     private String getFFProbeBaseName(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
