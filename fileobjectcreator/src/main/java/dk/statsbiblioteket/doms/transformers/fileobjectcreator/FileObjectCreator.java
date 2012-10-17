@@ -5,6 +5,7 @@ import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
+import jsr166y.ForkJoinPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +23,6 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.ForkJoinPool;
 
 public class FileObjectCreator {
     private static Logger log = LoggerFactory.getLogger(FileObjectCreator.class);
@@ -270,7 +270,7 @@ public class FileObjectCreator {
         logCounter += 1;
 
         if (logCounter % 100 == 0) {
-            return " " + logCounter + System.lineSeparator();
+            return " " + logCounter + System.getProperty("line.separator");
         }
 
         return "";
