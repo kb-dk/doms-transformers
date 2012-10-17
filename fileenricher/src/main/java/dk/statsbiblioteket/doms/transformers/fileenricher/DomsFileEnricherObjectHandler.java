@@ -102,7 +102,7 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         JAXBElement<BroadcastMetadata> blob = new ObjectFactory().createBroadcastMetadata(metadata);
         marshaller.marshal(blob, writer);
         String contents = writer.toString();
-        webservice.modifyDatastream(uuid, "BROADCAST_METADATA", contents, "Updating metadata as part of the radio/tv datamodel refactoring");
+        webservice.modifyDatastream(uuid, BROADCAST_METADATA_DATASTREAM_NAME, contents, "Updating metadata as part of the radio/tv datamodel refactoring");
     }
 
     public String getFilenameFromObject(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {

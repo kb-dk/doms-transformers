@@ -92,19 +92,19 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
     }
 
     private void addFFProbeToObject(String uuid, String ffprobe) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
-        webservice.modifyDatastream(uuid,"FFPROBE",ffprobe,"Adding ffprobe as part of the radio/tv datamodel upgrade");
+        webservice.modifyDatastream(uuid, DomsFileEnricherObjectHandler.FFPROBE_DATASTREAM_NAME, ffprobe, "Adding ffprobe as part of the radio/tv datamodel upgrade");
     }
 
-    private void addFFProbeErrorsToObject(String uuid, String ffprobe) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
-        webservice.modifyDatastream(uuid,"FFPROBE_ERROR_LOG", ffprobe, "Adding ffprobe errors as part of the radio/tv datamodel upgrade");
+    private void addFFProbeErrorsToObject(String uuid, String ffprobeErrors) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+        webservice.modifyDatastream(uuid, DomsFileEnricherObjectHandler.FFPROBE_ERRORS_DATASTREAM_NAME, ffprobeErrors, "Adding ffprobe errors as part of the radio/tv datamodel upgrade");
     }
 
     private String getFFProbeFromObject(String uuid) throws NotFoundException, InvalidCredentialsException, MethodFailedException {
         try {
-            String contents = webservice.getDatastreamContents(uuid, "FFPROBE");
+            String contents = webservice.getDatastreamContents(uuid, DomsFileEnricherObjectHandler.FFPROBE_DATASTREAM_NAME);
             return contents;
         } catch (InvalidResourceException e) {
-            throw new NotFoundException("Failed to retrieve FFPROBE datastream ",e);
+            throw new NotFoundException("Failed to retrieve " + DomsFileEnricherObjectHandler.FFPROBE_DATASTREAM_NAME + " datastream ",e);
         }
 
     }
@@ -119,10 +119,10 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
 
     private String getFFProbeErrorsFromObject(String uuid) throws NotFoundException, InvalidCredentialsException, MethodFailedException {
         try {
-            String contents = webservice.getDatastreamContents(uuid, "FFPROBE_ERROR_LOG");
+            String contents = webservice.getDatastreamContents(uuid, DomsFileEnricherObjectHandler.FFPROBE_ERRORS_DATASTREAM_NAME);
             return contents;
         } catch (InvalidResourceException e) {
-            throw new NotFoundException("Failed to retrieve FFPROBE_ERROR_LOG datastream ",e);
+            throw new NotFoundException("Failed to retrieve " + DomsFileEnricherObjectHandler.FFPROBE_ERRORS_DATASTREAM_NAME + " datastream ",e);
         }
 
     }
