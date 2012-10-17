@@ -104,6 +104,11 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                             comment
                     );
 
+                    LinkedList<String> pidsToMarkAsPublished = new LinkedList<String>();
+                    pidsToMarkAsPublished.add(uuid);
+
+                    webservice.markPublishedObject(pidsToMarkAsPublished, "Finalizing batch-creation of object.");
+
                     FileObjectCreator.logSuccess(output + " (" + uuid + ")");
                     log.info("Created (" + uuid + "): " + output);
                     FileObjectCreator.logNewUuid(uuid);
