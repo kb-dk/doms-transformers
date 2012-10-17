@@ -75,8 +75,8 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
             failureFileWriter.newLine();
             failureFileWriter.flush();
         } catch (IOException e) {
-            log.error("Purposedly didn't enrich '{}'", uuid, e);
+            log.error("Purposely didn't enrich '{}'", uuid, e);
         }
-        log.info("Purposedly didn't enrich '{}'", uuid);
+        log.info("Purposely didn't enrich '{}'", uuid);
     }
 }
