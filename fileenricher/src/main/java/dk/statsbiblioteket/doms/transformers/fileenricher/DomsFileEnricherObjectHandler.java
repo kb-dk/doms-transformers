@@ -74,22 +74,22 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
 
     @Override
     public void transform(String uuid) throws Exception {
-        if (!shouldEnrich(uuid)) {
-            return;
-        }
+        List<String> datastreamProfilesIDs = getDatastreamProfilesIDs(uuid);
 
         String filename = getFilenameFromObject(uuid);
 
-        if (filename != null) {
+        if (filename != null && shouldEnrich(uuid, datastreamProfilesIDs, BROADCAST_METADATA_DATASTREAM_NAME, FFPROBE_DATASTREAM_NAME, FFPROBE_ERRORS_DATASTREAM_NAME)) {
             webservice.markInProgressObject(Arrays.asList(uuid), "Modifying object as part of datamodel upgrade");
-            if (delegate != null) {
+            if (delegate != null && shouldEnrich(uuid, datastreamProfilesIDs, FFPROBE_DATASTREAM_NAME, FFPROBE_ERRORS_DATASTREAM_NAME)) {
                 delegate.transform(uuid);
             }
-            BroadcastMetadata metadata
-                    = FileNameParser.decodeFilename(filename, checksums, muxChannelCalculator);
-            if (metadata != null) {
-                System.out.println(String.format("metadata (format=%s, recorder=%s) for %s", metadata.getFormat(), metadata.getRecorder(), filename));
-                storeMetadataInObject(uuid, metadata);
+            if (shouldEnrich(uuid, datastreamProfilesIDs, BROADCAST_METADATA_DATASTREAM_NAME)) {
+                BroadcastMetadata metadata
+                        = FileNameParser.decodeFilename(filename, checksums, muxChannelCalculator);
+                if (metadata != null) {
+                    log.info(String.format("metadata (format=%s, recorder=%s) for %s", metadata.getFormat(), metadata.getRecorder(), filename));
+                    storeMetadataInObject(uuid, metadata);
+                }
             }
             webservice.markPublishedObject(Arrays.asList(uuid), "Modifying object as part of datamodel upgrade");
         } else {
@@ -115,15 +115,41 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         }
     }
 
-    public boolean shouldEnrich(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+    public List<String> getDatastreamProfilesIDs(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+        // Example types: "FFPROBE", "FFPROBE_ERROR_LOG", "BROADCAST_METADATA"
+        List<String> result = new LinkedList<String>();
         for (DatastreamProfile datastreamProfile : webservice.getObjectProfile(uuid).getDatastreams()) {
             String type = datastreamProfile.getId();
+            result.add(type);
+        }
 
-            if (type.equals("FFPROBE") || type.equals("FFPROBE_ERROR_LOG") || type.equals("BROADCAST_METADATA")) {
-                return false;
+        return result;
+    }
+
+    public boolean shouldEnrich(String uuid, String... types) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+        List<String> datastreamProfilesIDs = getDatastreamProfilesIDs(uuid);
+
+        return shouldEnrich(uuid, datastreamProfilesIDs, types);
+    }
+
+    public static boolean shouldEnrich(String uuid, List<String> datastreamProfilesIDs, String... types) {
+        log.debug("Datastreams for " + uuid + ": " + join(datastreamProfilesIDs, ", "));
+        boolean b = !datastreamProfilesIDs.containsAll(Arrays.asList(types));
+        return b;
+    }
+
+    private static String join(List<String> parts, String separator) {
+        boolean first = true;
+        String result = "";
+        for (String part : parts) {
+            if (first) {
+                first = false;
+                result += part;
+            } else {
+                result += separator + part;
             }
         }
 
-        return true;
+        return result;
     }
 }
