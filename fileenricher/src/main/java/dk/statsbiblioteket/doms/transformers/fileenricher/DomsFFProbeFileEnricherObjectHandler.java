@@ -78,7 +78,7 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
             log.info(String.format("ffprobe error data for %s already exists, not updating.", uuid));
         } catch (NotFoundException e) {
             ffprobeErrors = getFFProbeErrorsXMLFromFileName(stderrFilePath);
-            addFFProbeToObject(uuid, ffprobeErrors);
+            addFFProbeErrorsToObject(uuid, ffprobeErrors);
         }
 
         return ffprobe;
