@@ -1,50 +1,55 @@
+<xsd:schema version="1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://doms.statsbiblioteket.dk/types/gallup_original/0/1/#"
+            targetNamespace="http://doms.statsbiblioteket.dk/types/gallup_original/0/1/#"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
 
-<xs:schema version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="tvmeterProgram" type="tvmeterProgram"/>
 
-  <xs:element name="tvmeterProgram" type="tvmeterProgram"></xs:element>
+    <xsd:complexType name="tvmeterProgram">
+        <xsd:sequence>
+            <xsd:element name="originalEntry" type="xsd:string"/>
+            <xsd:element name="sourceFileName" type="xsd:string"/>
+            <xsd:element name="logFormat" type="xsd:string"/>
+            <xsd:element name="stationID" type="xsd:string"/>
+            <xsd:element name="startDate" type="xsd:string"/>
+            <xsd:element name="endDate" type="xsd:string"/>
+            <xsd:element name="parsedProgramClassification" type="parsedProgramClassification"/>
+            <xsd:element name="mainTitle" type="xsd:string"/>
+            <xsd:element name="subTitle" type="xsd:string"/>
+            <xsd:element name="originalTitle" type="xsd:string"/>
+            <xsd:element name="episodeNumber" type="xsd:string"/>
+            <xsd:element name="broadcastType" type="xsd:string"/>
+            <xsd:element name="overflowFlag" type="xsd:string"/>
+            <xsd:element name="regionFlags" type="xsd:string"/>
+            <xsd:element name="expectedGRP" type="xsd:string"/>
+            <xsd:element name="additionDeductionOnPrice" type="xsd:string"/>
+            <xsd:element name="commonCode" type="xsd:string"/>
+            <xsd:element name="price" type="xsd:string"/>
+            <xsd:element name="internalIDCode" type="xsd:string"/>
+            <xsd:element name="bid" type="xsd:string"/>
+            <xsd:element name="emmisionsLevel" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
 
-  <xs:complexType name="tvmeterProgram">
-    <xs:sequence>
-      <xs:element name="originalEntry" type="xs:string"></xs:element>
-      <xs:element name="sourceFileName" type="xs:string"></xs:element>
-      <xs:element name="logFormat" type="xs:string"></xs:element>
-      <xs:element name="stationID" type="xs:string"></xs:element>
-      <xs:element name="startDate" type="xs:string"></xs:element>
-      <xs:element name="endDate" type="xs:string"></xs:element>
-      <xs:element name="parsedProgramClassification" type="parsedProgramClassification"></xs:element>
-      <xs:element name="mainTitle" type="xs:string"></xs:element>
-      <xs:element name="subTitle" type="xs:string"></xs:element>
-      <xs:element name="originalTitle" type="xs:string"></xs:element>
-      <xs:element name="episodeNumber" type="xs:string"></xs:element>
-      <xs:element name="broadcastType" type="xs:string"></xs:element>
-      <xs:element name="overflowFlag" type="xs:string"></xs:element>
-      <xs:element name="regionFlags" type="xs:string"></xs:element>
-      <xs:element name="expectedGRP" type="xs:string"></xs:element>
-      <xs:element name="additionDeductionOnPrice" type="xs:string"></xs:element>
-      <xs:element name="commonCode" type="xs:string"></xs:element>
-      <xs:element name="price" type="xs:string"></xs:element>
-      <xs:element name="internalIDCode" type="xs:string"></xs:element>
-      <xs:element name="bid" type="xs:string"></xs:element>
-      <xs:element name="emmisionsLevel" type="xs:string"></xs:element>
-    </xs:sequence>
-  </xs:complexType>
+    <xsd:complexType name="parsedProgramClassification">
+        <xsd:sequence>
+            <xsd:element name="targetGroup" type="xsd:string"/>
+            <xsd:element name="contentsItem" type="xsd:string"/>
+            <xsd:element name="form" type="xsd:string"/>
+            <xsd:element name="frequency" type="xsd:string"/>
+            <xsd:element name="origin" type="xsd:string"/>
+            <xsd:element name="sendstatus" type="xsd:string"/>
+            <xsd:element name="productionDepartment" type="xsd:string"/>
+            <xsd:element name="itemCountry" type="xsd:string"/>
+            <xsd:element name="productionCountry" type="xsd:string"/>
+            <xsd:element name="intent" type="xsd:string"/>
+            <xsd:element name="productionTimeAndPlace" type="xsd:string"/>
+            <xsd:element name="targetGroupProductionYear" type="xsd:string"/>
+            <xsd:element name="targetGroupProposedPlacement" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
 
-  <xs:complexType name="parsedProgramClassification">
-    <xs:sequence>
-      <xs:element name="targetGroup" type="xs:string"></xs:element>
-      <xs:element name="contentsItem" type="xs:string"></xs:element>
-      <xs:element name="form" type="xs:string"></xs:element>
-      <xs:element name="frequency" type="xs:string"></xs:element>
-      <xs:element name="origin" type="xs:string"></xs:element>
-      <xs:element name="sendstatus" type="xs:string"></xs:element>
-      <xs:element name="productionDepartment" type="xs:string"></xs:element>
-      <xs:element name="itemCountry" type="xs:string"></xs:element>
-      <xs:element name="productionCountry" type="xs:string"></xs:element>
-      <xs:element name="intent" type="xs:string"></xs:element>
-      <xs:element name="productionTimeAndPlace" type="xs:string"></xs:element>
-      <xs:element name="targetGroupProductionYear" type="xs:string"></xs:element>
-      <xs:element name="targetGroupProposedPlacement" type="xs:string"></xs:element>
-    </xs:sequence>
-  </xs:complexType>
-
-</xs:schema>
+    <!-- Legacy format -->
+    <xsd:element name="gallup_original" type="xsd:string"/>
+</xsd:schema>
