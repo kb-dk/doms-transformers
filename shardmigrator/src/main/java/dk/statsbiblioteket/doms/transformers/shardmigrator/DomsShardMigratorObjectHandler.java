@@ -76,7 +76,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
         try {
 
             String shardUuid = shardRelations.get(0).getObject();
-            List<Relation> fileRelations = webservice.getNamedRelations(shardUuid,
+            List<Relation> consistsOfRelations = webservice.getNamedRelations(shardUuid,
                     "http://doms.statsbiblioteket.dk/relations/default/0/1/#consistsOf");
             System.out.println("not broken yet"+i++);
 
@@ -107,8 +107,11 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
 
             webservice.markInProgressObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
             //relations
-            for (Relation fileRelation : fileRelations) {
+            for (Relation consistsOfRelation : consistsOfRelations) {
+                Relation fileRelation = new Relation();
                 fileRelation.setSubject(programUuid);
+                fileRelation.setPredicate("http://doms.statsbiblioteket.dk/relations/default/0/1/#hasFile");
+                fileRelation.setObject(consistsOfRelation.getObject());
                 webservice.addRelation(programUuid,fileRelation,"Updating radio/tv datamodel");
             }
             System.out.println("not broken yet"+i++);
