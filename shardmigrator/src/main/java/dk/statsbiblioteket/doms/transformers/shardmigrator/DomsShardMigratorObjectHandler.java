@@ -60,78 +60,54 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
     }
 
     @Override
-    public void transform(String programUuid)
-            throws Exception {
-        System.out.println("started work on program "+programUuid);
-
-        int i = 0;
-
+    public void transform(String programUuid) throws Exception {
         List<Relation> shardRelations = webservice.getNamedRelations(programUuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
         if (shardRelations.isEmpty()) {
-            System.out.println("nothing to do");
+            // Nothing to do
             return;
         }
-        
 
-        try {
+        String shardUuid = shardRelations.get(0).getObject();
+        List<Relation> consistsOfRelations = webservice.getNamedRelations(shardUuid,
+                "http://doms.statsbiblioteket.dk/relations/default/0/1/#consistsOf");
 
-            String shardUuid = shardRelations.get(0).getObject();
-            List<Relation> consistsOfRelations = webservice.getNamedRelations(shardUuid,
-                    "http://doms.statsbiblioteket.dk/relations/default/0/1/#consistsOf");
-            System.out.println("not broken yet"+i++);
+        //get pbcore
+        String pbcoreOriginal = webservice.getDatastreamContents(programUuid, "PBCORE");
+        //initialise the migrator
+        //PBCoreMigrator pbCoreMigrator = new PBCoreMigrator(new ByteArrayInputStream(pbcoreOriginal.getBytes()));
 
-            //get pbcore
-            String pbcoreOriginal = webservice.getDatastreamContents(programUuid, "PBCORE");
-            //initialise the migrator
-            //PBCoreMigrator pbCoreMigrator = new PBCoreMigrator(new ByteArrayInputStream(pbcoreOriginal.getBytes()));
-            System.out.println("not broken yet"+i++);
+        //get the tvmeter contents
+        String tvmeterOriginal = webservice.getDatastreamContents(programUuid, "GALLUP_ORIGINAL");
+        //parse it
+        TvmeterProgram tvmeterStructure = tvmeterReader.readTVMeterFile(tvmeterOriginal);
+        //port the info to the pbcore
+        //pbCoreMigrator.addTVMeterStructure(tvmeterStructure);
 
-            //get the tvmeter contents
-            String tvmeterOriginal = webservice.getDatastreamContents(programUuid, "GALLUP_ORIGINAL");
-            System.out.println("not broken yet"+i++);
-            //parse it
-            TvmeterProgram tvmeterStructure = tvmeterReader.readTVMeterFile(tvmeterOriginal);
-            //port the info to the pbcore
-            //pbCoreMigrator.addTVMeterStructure(tvmeterStructure);
-            System.out.println("not broken yet"+i++);
+        //get the shardMetadataContents
+        String shardMetadataContents = webservice.getDatastreamContents(shardUuid, "SHARD_METADATA");
+        //parse it up
+        ShardMetadata shardStructure = deserializeShardMetadata(shardMetadataContents);
+        ProgramStructure programStructure = convertShardStructure(shardStructure);
+        ProgramBroadcast programBroadcast = makeProgramBroadcast(tvmeterStructure, pbcoreOriginal);
 
-            //get the shardMetadataContents
-            String shardMetadataContents = webservice.getDatastreamContents(shardUuid, "SHARD_METADATA");
-            //parse it up
-            ShardMetadata shardStructure = deserializeShardMetadata(shardMetadataContents);
-            ProgramStructure programStructure = convertShardStructure(shardStructure);
-            System.out.println("not broken yet"+i++);
-            ProgramBroadcast programBroadcast = makeProgramBroadcast(tvmeterStructure, pbcoreOriginal);
-            
-            //NOW START TO CHANGE THE OBJECT
+        //NOW START TO CHANGE THE OBJECT
 
-            webservice.markInProgressObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
-            //relations
-            for (Relation consistsOfRelation : consistsOfRelations) {
-                Relation fileRelation = new Relation();
-                fileRelation.setSubject(programUuid);
-                fileRelation.setPredicate("http://doms.statsbiblioteket.dk/relations/default/0/1/#hasFile");
-                fileRelation.setObject(consistsOfRelation.getObject());
-                webservice.addRelation(programUuid,fileRelation,"Updating radio/tv datamodel");
-            }
-            System.out.println("not broken yet"+i++);
-
-            //webservice.modifyDatastream(programUuid,"PBCORE",pbCoreMigrator.toString(),"Updating radio/tv datamodel");
-            webservice.modifyDatastream(programUuid, "PROGRAM_BROADCAST", serializeObject(programBroadcast), "Updating radio/tv datamodel");
-            webservice.modifyDatastream(programUuid,"PROGRAM_STRUCTURE",serializeObject(programStructure),"Updating radio/tv datamodel");
-            webservice.modifyDatastream(programUuid,"GALLUP_ORIGINAL",serializeObject(tvmeterStructure),"Updating radio/tv datamodel");
-            System.out.println("not broken yet"+i++);
-
-            webservice.markPublishedObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
-            System.out.println("not broken yet"+i++);
-
-
-        } catch (Exception e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
+        webservice.markInProgressObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
+        //relations
+        for (Relation consistsOfRelation : consistsOfRelations) {
+            Relation fileRelation = new Relation();
+            fileRelation.setSubject(programUuid);
+            fileRelation.setPredicate("http://doms.statsbiblioteket.dk/relations/default/0/1/#hasFile");
+            fileRelation.setObject(consistsOfRelation.getObject());
+            webservice.addRelation(programUuid,fileRelation,"Updating radio/tv datamodel");
         }
 
+        //webservice.modifyDatastream(programUuid,"PBCORE",pbCoreMigrator.toString(),"Updating radio/tv datamodel");
+        webservice.modifyDatastream(programUuid, "PROGRAM_BROADCAST", serializeObject(programBroadcast), "Updating radio/tv datamodel");
+        webservice.modifyDatastream(programUuid,"PROGRAM_STRUCTURE",serializeObject(programStructure),"Updating radio/tv datamodel");
+        webservice.modifyDatastream(programUuid,"GALLUP_ORIGINAL",serializeObject(tvmeterStructure),"Updating radio/tv datamodel");
 
+        webservice.markPublishedObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
     }
 
 
