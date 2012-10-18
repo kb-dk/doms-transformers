@@ -13,7 +13,7 @@ import java.util.List;
 public class TrivialUuidFileReaderTest extends TestCase {
     @Test
     public void testReadUuids() throws IOException {
-        List<String> uuids = new TrivialUuidFileReader().readUuids(new File("src/test/resources/uuids.txt"));
+        List<String> uuids = new TrivialUuidFileReader().readUuids(new File(getClass().getClassLoader().getResource("uuids.txt").getPath()));
         assertEquals(2, uuids.size());
         assertEquals("uuid:cb8da856-fae8-473f-9070-8d24b5a84cfc", uuids.get(0));
         assertEquals("uuid:99c1b516-3ea9-49ce-bfbc-ae1ea8faf0e3", uuids.get(1));
