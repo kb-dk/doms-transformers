@@ -16,13 +16,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-/**
- * Created by IntelliJ IDEA.
- * User: abr
- * Date: 7/17/12
- * Time: 11:36 AM
- * To change this template use File | Settings | File Templates.
- */
 public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
 
     private final DomsConfig config;
