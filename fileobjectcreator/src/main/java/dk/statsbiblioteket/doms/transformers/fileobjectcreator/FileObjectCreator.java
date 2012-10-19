@@ -207,8 +207,8 @@ public class FileObjectCreator {
             successWriter.write(data + "\n");
             successWriter.flush();
             logChar(SUCCESS_CHAR);
-        } catch (IOException e) {
-            System.out.println("OK: " + data);
+        } catch (Exception e) {
+            requestShutdown(e);
         }
     }
 
@@ -217,9 +217,8 @@ public class FileObjectCreator {
             failureWriter.write(data + "\n");
             failureWriter.flush();
             logChar(FAILURE_CHAR);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Failed: " + data);
+        } catch (Exception e) {
+            requestShutdown(e);
         }
     }
 
@@ -227,9 +226,8 @@ public class FileObjectCreator {
         try {
             badFFProbeWriter.write(domsObject.formatAsInput() + "\n");
             badFFProbeWriter.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Incomplete ffprobe data for: " + domsObject);
+        } catch (Exception e) {
+            requestShutdown(e);
         }
     }
 
@@ -238,9 +236,8 @@ public class FileObjectCreator {
             ignoreWriter.write(data + "\n");
             ignoreWriter.flush();
             logChar(IGNORE_CHAR);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Ignored: " + data);
+        } catch (Exception e) {
+            requestShutdown(e);
         }
     }
 
@@ -249,9 +246,8 @@ public class FileObjectCreator {
             existingUuidWriter.write(data + "\n");
             existingUuidWriter.flush();
             logChar(EXISTING_CHAR);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Already exists: " + data);
+        } catch (Exception e) {
+            requestShutdown(e);
         }
     }
 
@@ -259,9 +255,8 @@ public class FileObjectCreator {
         try {
             newUuidWriter.write(uuid + "\n");
             newUuidWriter.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("New: " + uuid);
+        } catch (Exception e) {
+            requestShutdown(e);
         }
     }
 
@@ -281,6 +276,12 @@ public class FileObjectCreator {
 
     public static boolean permissionToRun() {
         return !shutdown;
+    }
+
+    public static void requestShutdown(Throwable throwable) {
+        requestShutdown();
+        throwable.printStackTrace();
+        System.err.println(String.format("Could not write to logfile, shutting down.."));
     }
 
     public static void requestShutdown() {
