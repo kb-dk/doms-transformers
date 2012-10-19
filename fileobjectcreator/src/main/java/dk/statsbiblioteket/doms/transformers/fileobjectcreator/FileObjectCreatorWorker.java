@@ -22,9 +22,11 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     private static Logger log = LoggerFactory.getLogger(FileObjectCreatorWorker.class);
 
     private MuxFileChannelCalculator muxFileChannelCalculator;
+    private String baseUrl;
     private List<String> data;
 
-    public FileObjectCreatorWorker(List<String> data, MuxFileChannelCalculator muxFileChannelCalculator) {
+    public FileObjectCreatorWorker(String baseUrl, List<String> data, MuxFileChannelCalculator muxFileChannelCalculator) {
+        this.baseUrl = baseUrl;
         this.data = data;
         this.muxFileChannelCalculator = muxFileChannelCalculator;
     }
@@ -33,7 +35,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     protected void compute() {
         if (data.size() == 1) {
             try {
-                DomsObject domsObject = DomsFileParser.parse(data.get(0), muxFileChannelCalculator);
+                DomsObject domsObject = DomsFileParser.parse(baseUrl, data.get(0), muxFileChannelCalculator);
                 if (domsObject != null) {
                     doWork(domsObject);
                 } else {
@@ -44,9 +46,9 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             }
         } else if (FileObjectCreator.permissionToRun()) {
             int center = data.size()/2;
-            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(data.subList(0, center),
+            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(baseUrl, data.subList(0, center),
                         muxFileChannelCalculator);
-            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(data.subList(center, data.size()),
+            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(baseUrl, data.subList(center, data.size()),
                         muxFileChannelCalculator);
             invokeAll(workerA, workerB);
         }

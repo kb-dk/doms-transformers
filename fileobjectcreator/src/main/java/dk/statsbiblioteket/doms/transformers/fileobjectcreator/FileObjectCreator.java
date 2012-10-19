@@ -115,9 +115,6 @@ public class FileObjectCreator {
                 logWriters.add(ignoreWriter);
             }
 
-
-            DomsObject.setBaseUrl(config.getProperty("dk.statsbiblioteket.doms.transformers.baseurl", ""));
-
             new FileObjectCreator(uuidFileReader);
 
         } catch (FileNotFoundException e) {
@@ -152,8 +149,14 @@ public class FileObjectCreator {
             MuxFileChannelCalculator muxFileChannelCalculator = new MuxFileChannelCalculator(
                     Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
+
+            String baseUrl = config.getProperty("dk.statsbiblioteket.doms.transformers.baseurl", "");
+            if (baseUrl.isEmpty()) {
+                log.warn("Empty base URL.");
+            }
+
             FileObjectCreatorWorker fileObjectCreatorWorker =
-                    new FileObjectCreatorWorker(data, muxFileChannelCalculator);
+                    new FileObjectCreatorWorker(baseUrl, data, muxFileChannelCalculator);
 
             ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors()*2);
 
