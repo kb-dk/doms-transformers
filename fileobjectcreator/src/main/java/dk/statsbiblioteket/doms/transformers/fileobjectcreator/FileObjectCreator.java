@@ -177,7 +177,7 @@ public class FileObjectCreator {
 
     public static CentralWebservice newWebservice() {
         try {
-            CentralWebservice webservice = new DomsWebserviceFactory((DomsConfig) config).getWebservice();
+            CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
             return webservice;
         } catch (RuntimeException e) {
             System.err.println("Error communication with DOMS. Config: " + config);
