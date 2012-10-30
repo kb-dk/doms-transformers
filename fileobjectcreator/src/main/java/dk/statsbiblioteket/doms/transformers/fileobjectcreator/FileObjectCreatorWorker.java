@@ -4,7 +4,7 @@ import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
-import dk.statsbiblioteket.doms.common.SimpleFFProbeParser;
+import dk.statsbiblioteket.doms.transformers.common.SimpleFFProbeParser;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 import jsr166y.ForkJoinTask;
 import jsr166y.RecursiveAction;

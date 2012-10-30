@@ -28,10 +28,6 @@
       <artifactId>ingestClientImpl</artifactId>
     </dependency>
       <dependency>
-          <groupId>dk.statsbiblioteket.medieplatform</groupId>
-          <artifactId>doms-ingester-utils</artifactId>
-      </dependency>
-      <dependency>
           <groupId>commons-io</groupId>
           <artifactId>commons-io</artifactId>
       </dependency>
