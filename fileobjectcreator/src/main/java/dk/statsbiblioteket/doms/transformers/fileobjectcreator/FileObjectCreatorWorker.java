@@ -55,16 +55,14 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     }
 
     public void doWork(DomsObject domsObject) {
-        doWork(domsObject, "Batch-created by " + this.getClass().getName());
-    }
+        String comment = "Batch-created by " + this.getClass().getName();
 
-    public static void doWork(DomsObject domsObject, String comment) {
         if (!FileObjectCreator.permissionToRun()) {
             return;
         }
 
         String uuid = null;
-        if (validObject(domsObject)) {
+        if (domsObject != null && domsObject.isValid()) {
             String output = domsObject.formatAsInput();
 
             try {
@@ -149,23 +147,5 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                 }
             }
         }
-    }
-
-    private static boolean validObject(DomsObject domsObject) {
-        return domsObject != null && !anyNull(
-                domsObject.getFileName(),
-                domsObject.getChecksum(),
-                domsObject.getFormat(),
-                domsObject.getPermanentUrl());
-    }
-
-    private static boolean anyNull(Object... list) {
-        for (Object o : list) {
-            if (null == o) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

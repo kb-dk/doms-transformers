@@ -114,4 +114,22 @@ public class DomsObject {
         }
         return formatUri;
     }
+
+    public boolean isValid() {
+        return !anyNull(
+                getFileName(),
+                getChecksum(),
+                getFormat(),
+                getPermanentUrl());
+
+    }
+
+    private boolean anyNull(Object... list) {
+        for (Object o : list) {
+            if (null == o) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
