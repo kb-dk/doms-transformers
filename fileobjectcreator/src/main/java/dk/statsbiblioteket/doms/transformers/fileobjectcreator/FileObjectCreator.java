@@ -26,7 +26,7 @@ import java.util.List;
 
 public class FileObjectCreator {
     private static Logger log = LoggerFactory.getLogger(FileObjectCreator.class);
-    private static String baseName = "fileobjectcreator_";
+    private static final String baseName = "fileobjectcreator_";
     private static BufferedWriter newUuidWriter;
     private static BufferedWriter existingUuidWriter;
     private static BufferedWriter successWriter;
