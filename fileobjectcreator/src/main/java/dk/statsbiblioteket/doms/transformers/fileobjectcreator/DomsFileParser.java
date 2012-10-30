@@ -9,7 +9,7 @@ import java.text.ParseException;
 public class DomsFileParser {
     private static Logger log = LoggerFactory.getLogger(DomsFileParser.class);
 
-    public static DomsObject parse(String baseName, String line, MuxFileChannelCalculator muxFileChannelCalculator) throws ParseException {
+    public static DomsObject parse(String baseName, String line, MuxFileChannelCalculator muxFileChannelCalculator) throws ParseException, FileIgnoredException {
         String[] parts = line.split(" ", 3);
         if (line != null && !line.isEmpty()) {
             if (parts.length == 3) {
@@ -20,12 +20,10 @@ public class DomsFileParser {
                 if (!fileName.endsWith(".log") && !fileName.contains("_digivid_")) {
                     return new DomsObject(baseName, fileName, checksum, fileSize, muxFileChannelCalculator);
                 } else {
-                    log.debug("Ignored file: " + fileName);
-                    return null;
+                    throw new FileIgnoredException(fileName);
                 }
             }
         }
-        log.info("Couldn't parse data: " + line);
-        return null;
+        throw new ParseException("Couldn't parse data: " + line, 0);
     }
 }

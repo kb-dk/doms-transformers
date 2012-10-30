@@ -27,8 +27,6 @@ import java.util.Set;
 
 
 public class SimpleFFProbeParser {
-    private final Logger log = LoggerFactory.getLogger(getClass());
-
     public static String getFormatURIFromFile(File ffProbeFile)
             throws XPathExpressionException, ParserConfigurationException,
             IOException, SAXException {
