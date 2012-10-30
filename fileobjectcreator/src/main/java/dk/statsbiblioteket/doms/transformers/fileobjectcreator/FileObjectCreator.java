@@ -1,7 +1,6 @@
 package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
-import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
@@ -42,16 +41,16 @@ public class FileObjectCreator {
     private static int logCounter = 0;
     private static boolean shutdown = false;
 
-    private static BufferedReader uuidFileReader = null;
+    private static BufferedReader fileListReader = null;
 
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Reading data from stdin..");
-            uuidFileReader = new BufferedReader(new InputStreamReader(System.in));
+            fileListReader = new BufferedReader(new InputStreamReader(System.in));
         } else {
             System.out.println("Input file: " + args[0]);
             try {
-                uuidFileReader = new BufferedReader(new FileReader(new File(args[0])));
+                fileListReader = new BufferedReader(new FileReader(new File(args[0])));
             } catch (FileNotFoundException e) {
                 System.err.println("File not found: " + args[0]);
                 System.exit(1);
@@ -115,7 +114,7 @@ public class FileObjectCreator {
                 logWriters.add(ignoreWriter);
             }
 
-            new FileObjectCreator(uuidFileReader);
+            new FileObjectCreator(fileListReader);
 
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + args[0]);
