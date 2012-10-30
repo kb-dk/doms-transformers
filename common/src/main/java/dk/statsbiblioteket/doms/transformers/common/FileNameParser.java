@@ -12,7 +12,21 @@ import java.util.Date;
 import java.util.Map;
 
 public class FileNameParser {
-    public static BroadcastMetadata decodeFilename(String filename,
+    private final String filename;
+    private final String checksum;
+    private final MuxFileChannelCalculator muxChannelCalculator;
+
+    public FileNameParser(String filename, String checksum, MuxFileChannelCalculator muxChannelCalculator) {
+        this.filename = filename;
+        this.checksum = checksum;
+        this.muxChannelCalculator = muxChannelCalculator;
+    }
+
+    public BroadcastMetadata getBroadCastMetadata() throws ParseException {
+        return decodeFilename(filename, checksum, muxChannelCalculator);
+    }
+
+    private BroadcastMetadata decodeFilename(String filename,
                                                    Map<String, String> checksums,
                                                    MuxFileChannelCalculator muxChannelCalculator)
             throws ParseException {
@@ -24,7 +38,7 @@ public class FileNameParser {
         }
     }
 
-    public static BroadcastMetadata decodeFilename(String filename,
+    private BroadcastMetadata decodeFilename(String filename,
                                                    String checksum,
                                                    MuxFileChannelCalculator muxChannelCalculator)
             throws ParseException {
@@ -49,7 +63,7 @@ public class FileNameParser {
         return result;
     }
 
-    private static BroadcastMetadata decodeMuxFilename(String filename, MuxFileChannelCalculator muxChannelCalculator) {
+    private BroadcastMetadata decodeMuxFilename(String filename, MuxFileChannelCalculator muxChannelCalculator) {
         //mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts
         //(type).(timestart)-(timestart)_(timeend)-(timeEnd)_(recorder).ts
         BroadcastMetadata metadata = new BroadcastMetadata();
@@ -80,7 +94,7 @@ public class FileNameParser {
         return metadata;
     }
 
-    private static BroadcastMetadata decodeRadioFilename(String filename) throws ParseException {
+    private BroadcastMetadata decodeRadioFilename(String filename) throws ParseException {
         //drp1_88.100_DR-P1_pcm_20080509045602_20080510045501_encoder5-2.wav
         //(channelID)_(frequency)_(CHANNELID)_(format)_(timeStart)_(timeEnd)_(recorder).wav
         BroadcastMetadata metadata = new BroadcastMetadata();
@@ -117,7 +131,7 @@ public class FileNameParser {
 
     }
 
-    private static BroadcastMetadata decodeAnalogTVFilename(String filename) throws ParseException {
+    private BroadcastMetadata decodeAnalogTVFilename(String filename) throws ParseException {
         //tv2c_623.250_K40-TV2-Charlie_mpeg1_20080503121001_20080504030601_encoder3-2.mpeg
         //kanal4_359.250_K42-Kanal4_mpeg1_20101023195601_20101023231601_encoder7-2.mpeg
         //tv3_161.250_S09-TV3_mpeg1_20101021175601_20101022010602_encoder6-2.mpeg

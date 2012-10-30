@@ -74,11 +74,16 @@ public class BroadcastMetadataEnricher {
     }
 
     public void transform(String uuid) throws Exception {
-        BroadcastMetadata metadata
-                = FileNameParser.decodeFilename(filename, checksums, muxChannelCalculator);
-        if (metadata != null) {
-            log.info(String.format("metadata (format=%s, recorder=%s) for %s", metadata.getFormat(), metadata.getRecorder(), filename));
-            storeMetadataInObject(uuid, metadata);
+        if (checksums.containsKey(filename)) {
+            String checksum = checksums.get(filename);
+            BroadcastMetadata metadata
+                    = new FileNameParser(filename, checksum, muxChannelCalculator).getBroadCastMetadata();
+            if (metadata != null) {
+                log.info(String.format("metadata (format=%s, recorder=%s) for %s", metadata.getFormat(), metadata.getRecorder(), filename));
+                storeMetadataInObject(uuid, metadata);
+            }
+        } else {
+            throw new MissingChecksumException(filename);
         }
     }
 

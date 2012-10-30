@@ -29,7 +29,7 @@ public class DomsObject {
         this.fileName = fileName;
         this.checksum = checksum;
         this.size = size;
-        metadata = FileNameParser.decodeFilename(this.fileName, checksum, muxFileChannelCalculator);
+        metadata = new FileNameParser(this.fileName, this.checksum, muxFileChannelCalculator).getBroadCastMetadata();
     }
 
     public String toString() {
