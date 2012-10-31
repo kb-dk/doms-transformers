@@ -135,9 +135,7 @@ public class FileObjectCreator {
     public FileObjectCreator(BufferedReader reader) {
         try {
             List<String> data = new ArrayList<String>();
-
             String line;
-
             while((line = reader.readLine()) != null) {
                 data.add(line);
             }
@@ -154,7 +152,6 @@ public class FileObjectCreator {
             MuxFileChannelCalculator muxFileChannelCalculator = new MuxFileChannelCalculator(
                     Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
-
             String baseUrl = config.getProperty("dk.statsbiblioteket.doms.transformers.baseurl", "");
             if (baseUrl.isEmpty()) {
                 log.warn("Empty base URL.");
@@ -164,13 +161,9 @@ public class FileObjectCreator {
                     new FileObjectCreatorWorker(baseUrl, data, muxFileChannelCalculator);
 
             ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors()*2);
-
             Long start = System.currentTimeMillis();
-
             forkJoinPool.invoke(fileObjectCreatorWorker);
-
             Long end = System.currentTimeMillis();
-
             System.out.println("Time taken: " + (end-start));
 
         } catch (IOException e) {
