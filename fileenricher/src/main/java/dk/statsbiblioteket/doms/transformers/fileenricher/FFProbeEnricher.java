@@ -47,13 +47,12 @@ public class FFProbeEnricher {
         }
     }
 
-    private  String getFFProbeXml(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException, IOException {
+    private String getFFProbeXml(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException, IOException {
         String ffprobe;
         String ffprobeErrors;
         String incompleteFilePath = getFFProbeBaseName(uuid);
         String stdoutFilePath = incompleteFilePath + ".stdout";
         String stderrFilePath = incompleteFilePath + ".stderr";
-
 
         try {
             ffprobe = getFFProbeFromObject(uuid);
@@ -74,7 +73,7 @@ public class FFProbeEnricher {
         return ffprobe;
     }
 
-    private  String getFFProbeXMLFromFile(String uuid) throws IOException {
+    private String getFFProbeXMLFromFile(String uuid) throws IOException {
         File ffprobeFile = new File(ffprobeDir, uuid + ".stdout");
         String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeFile));
         ffprobeContents = ffprobeContents.substring(ffprobeContents.indexOf("<ffprobe"));
@@ -99,7 +98,7 @@ public class FFProbeEnricher {
 
     }
 
-    public static String getFFProbeXMLFromFileName(String fileName) throws IOException {
+    private String getFFProbeXMLFromFileName(String fileName) throws IOException {
         File ffprobeFile = new File(fileName);
         String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeFile));
         ffprobeContents = ffprobeContents.substring(ffprobeContents.indexOf("<ffprobe"));
@@ -117,7 +116,7 @@ public class FFProbeEnricher {
 
     }
 
-    public static String getFFProbeErrorsXMLFromFileName(String fileName) throws IOException {
+    private String getFFProbeErrorsXMLFromFileName(String fileName) throws IOException {
         File ffprobeErrorFile = new File(fileName);
         String ffprobeContents = org.apache.commons.io.IOUtils.toString(new FileInputStream(ffprobeErrorFile));
 
@@ -137,7 +136,7 @@ public class FFProbeEnricher {
         }
     }
 
-    public static String getFileNameFromUuid(CentralWebservice webservice, String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
+    private String getFileNameFromUuid(CentralWebservice webservice, String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
         String url = webservice.getObjectProfile(uuid).getTitle();
         if (url != null && url.contains(".")) {
             String[] parts = url.split("/");

@@ -92,13 +92,13 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         return shouldEnrich(uuid, datastreamProfilesIDs, types);
     }
 
-    public static boolean shouldEnrich(String uuid, List<String> datastreamProfilesIDs, String... types) {
+    public boolean shouldEnrich(String uuid, List<String> datastreamProfilesIDs, String... types) {
         log.debug("Datastreams for " + uuid + ": " + join(datastreamProfilesIDs, ", "));
         boolean b = !datastreamProfilesIDs.containsAll(Arrays.asList(types));
         return b;
     }
 
-    private static String join(List<String> parts, String separator) {
+    private String join(List<String> parts, String separator) {
         boolean first = true;
         String result = "";
         for (String part : parts) {
