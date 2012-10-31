@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import java.text.ParseException;
 
 public class DomsFileParser {
-    private static Logger log = LoggerFactory.getLogger(DomsFileParser.class);
-
     public static DomsObject parse(FFProbeLocationPropertyBasedDomsConfig config, String baseName, String line, MuxFileChannelCalculator muxFileChannelCalculator) throws ParseException, FileIgnoredException {
         String[] parts = line.split(" ", 3);
         if (line != null && !line.isEmpty()) {
