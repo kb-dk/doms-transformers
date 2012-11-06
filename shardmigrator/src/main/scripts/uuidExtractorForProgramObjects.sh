@@ -1,9 +1,8 @@
 #!/bin/bash
 
 cd $(dirname $(readlink -f $0))
-CONFIGFILE="../conf/fileenricher.properties"
+CONFIGFILE="../conf/shardmigrator.properties"
 OUTPUTFILE="../resources/$1"
-OUTPUTFILE="$1"
 WEBHOST=$(cat $CONFIGFILE | grep domsurl | cut -d "=" -f2 | cut -d "/" -f1,2,3)
 USER=$(cat $CONFIGFILE | grep domsuser | cut -d "=" -f2)
 PASS=$(cat $CONFIGFILE | grep domspass | cut -d "=" -f2)

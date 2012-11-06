@@ -61,6 +61,10 @@ public class DomsShardMigratorObjectHandlerTest {
 
         shardObjectPid = webservice.newObject(null, null, null);
 
+        webservice.modifyDatastream(programObjectPid,"DC",
+                IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("objects/27026d8e-bbb6-499f-b304-8511426ebfdb_dc.xml")
+                ),"comment");
+
         webservice.modifyDatastream(programObjectPid,"PBCORE",
                 IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("objects/27026d8e-bbb6-499f-b304-8511426ebfdb_pbcore.xml")
                 ),"comment");
