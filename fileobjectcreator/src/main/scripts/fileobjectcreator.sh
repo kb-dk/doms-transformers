@@ -1,10 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-CWD=$(dirname $0)
-pushd $CWD > /dev/null
-popd > /dev/null
+BASE_DIR=$(dirname $(dirname $(readlink -f $0 ) ) )
 
-CLASSPATH="-classpath conf:resources:lib/*"
+CLASSPATH="-classpath $BASE_DIR/conf:$BASE_DIR/resources:$BASE_DIR/lib/*"
 MAINCLASS="dk.statsbiblioteket.doms.transformers.fileobjectcreator.FileObjectCreator"
 java $CLASSPATH $MAINCLASS $*
 

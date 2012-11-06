@@ -1,6 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 
-CONFIGFILE="conf/fileenricher.properties"
+BASE_DIR=$(dirname $(dirname $(readlink -f $0 ) ) )
+
+if [ $# -ne 1 ]
+then
+  echo "Usage: $0 config-file"
+  exit 1
+fi
+
+CONFIGFILE=$1
 WEBHOST=$(grep domsurl $CONFIGFILE | cut -d "=" -f2 | cut -d "/" -f1,2,3 | sed -e "s/ //g")
 USER=$(grep domsuser $CONFIGFILE | cut -d "=" -f2 | sed -e "s/ //g")
 PASS=$(grep domspass $CONFIGFILE | cut -d "=" -f2 | sed -e "s/ //g")

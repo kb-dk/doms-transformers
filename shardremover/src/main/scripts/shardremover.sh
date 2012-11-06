@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
-cd $(dirname $(readlink -f $0))
+BASE_DIR=$(dirname $(dirname $(readlink -f $0 ) ) )
 
-CLASSPATH="-classpath ..conf:../resources:../lib/*"
+CLASSPATH="-classpath $BASE_DIR/conf:$BASE_DIR/resources:$BASE_DIR/lib/*"
 MAINCLASS="dk.statsbiblioteket.doms.transformers.shardremover.ShardRemover"
 java $CLASSPATH $MAINCLASS $*
 

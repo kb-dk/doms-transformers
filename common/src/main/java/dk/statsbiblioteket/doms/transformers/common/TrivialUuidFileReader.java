@@ -13,12 +13,16 @@ import java.util.List;
 public class TrivialUuidFileReader implements UuidFileReader {
     @Override
     public List<String> readUuids(File file) throws IOException {
-        List<String> uuids = new ArrayList<String>();
         BufferedReader reader = new BufferedReader(new FileReader(file));
+        return readUuids(reader);
+    }
+
+    public List<String> readUuids(BufferedReader reader) throws IOException {
+        List<String> uuids = new ArrayList<String>();
         String line;
         while ((line = reader.readLine()) != null) {
             if( !line.isEmpty()) {
-                uuids.add(line);                
+                uuids.add(line);
             }
         }
         return uuids;

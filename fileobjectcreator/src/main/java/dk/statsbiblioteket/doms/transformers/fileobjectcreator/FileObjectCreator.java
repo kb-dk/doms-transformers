@@ -16,8 +16,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URI;
-import java.net.URL;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -44,31 +42,43 @@ public class FileObjectCreator {
     private static BufferedReader fileListReader = null;
 
     public static void main(String[] args) {
-        if (args.length == 0) {
-            System.out.println("Reading data from stdin..");
-            fileListReader = new BufferedReader(new InputStreamReader(System.in));
-        } else {
-            System.out.println("Input file: " + args[0]);
-            try {
-                fileListReader = new BufferedReader(new FileReader(new File(args[0])));
-            } catch (FileNotFoundException e) {
-                System.err.println("File not found: " + args[0]);
+        File configFile = null;
+        switch (args.length) {
+            case 1:
+                configFile = new File(args[0]);
+                System.out.println("Reading data from stdin..");
+                fileListReader = new BufferedReader(new InputStreamReader(System.in));
+                run(configFile, fileListReader);
+                break;
+            case 2:
+                configFile = new File(args[0]);
+                System.out.println("Input file: " + args[1]);
+                try {
+                    fileListReader = new BufferedReader(new FileReader(new File(args[1])));
+                    run(configFile, fileListReader);
+                } catch (FileNotFoundException e) {
+                    System.err.println("File not found: " + args[1]);
+                    System.exit(1);
+                }
+                break;
+            default:
+                System.out.println("Usage: bin/fileobjectcreator.sh config-file [input-file]");
                 System.exit(1);
-            }
+        }
+    }
+
+    public static void run(File configFile, BufferedReader fileListReader) {
+        if (!configFile.exists()) {
+            System.out.println("Config file does not exist: " + config);
+            System.exit(1);
+        }
+
+        if (!configFile.canRead()) {
+            System.out.println("Could not read config file: " + config);
+            System.exit(1);
         }
 
         try {
-            File configFile = null;
-
-            try {
-                URL resource = Thread.currentThread().getContextClassLoader().getResource("fileobjectcreator.properties");
-                URI uri = resource.toURI();
-                configFile = new File(uri);
-            } catch (Exception e) {
-                System.err.println("fileobjectcreator.properties not found, try putting it in 'conf'.");
-                System.exit(1);
-            }
-
             config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
             System.out.println(config);
 
@@ -116,10 +126,6 @@ public class FileObjectCreator {
 
             new FileObjectCreator(fileListReader);
 
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + args[0]);
-            e.printStackTrace();
-            System.exit(1);
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);

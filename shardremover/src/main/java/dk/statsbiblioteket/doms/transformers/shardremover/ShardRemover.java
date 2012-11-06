@@ -12,7 +12,6 @@ import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -22,11 +21,20 @@ import java.util.List;
  * See the ShardMigrator tool for moving metadata from shards to programs first.
  */
 public class ShardRemover {
-    public static void main(String[] args) throws IOException, URISyntaxException {
+    public static void main(String[] args) throws IOException {
         //TODO: Setup apache CLI
-        File uuidfile = new File(Thread.currentThread().getContextClassLoader().getResource(args[0]).toURI());
-        File configfile = new File(Thread.currentThread().getContextClassLoader().getResource(args[1]).toURI());
 
+        if (args.length == 2) {
+            File configfile = new File(args[0]);
+            File uuidfile = new File(args[1]);
+            run(configfile, uuidfile);
+        } else {
+            System.out.println("bin/shardremover.sh config-file uuid-file");
+            System.exit(1);
+        }
+    }
+
+    public static void run(File configfile, File uuidfile) throws IOException {
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
         DomsConfig config = new PropertyBasedDomsConfig(configfile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();

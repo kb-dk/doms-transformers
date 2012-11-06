@@ -6,7 +6,6 @@ import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandl
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
-import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
 
 import javax.xml.bind.JAXBException;
@@ -15,9 +14,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.text.ParseException;
 import java.util.List;
 
@@ -28,42 +25,42 @@ import java.util.List;
 public class FileEnricher {
     public static void main(String[] args) throws IOException, JAXBException, URISyntaxException, ParseException {
         //TODO: Setup apache CLI
-        File uuidfile = new File(args[0]);
 
-        File configFile = null;
-
-        try {
-            URL resource = Thread.currentThread().getContextClassLoader().getResource("fileenricher.properties");
-            URI uri = resource.toURI();
-            configFile = new File(uri);
-        } catch (Exception e) {
-            System.err.println("fileenricher.properties not found, try putting it in 'conf'.");
-            System.exit(1);
-        }
-
+        File configFile;
         ChecksumParser checksumParser;
+        List<String> uuids;
+        TrivialUuidFileReader uuidFileReader = new TrivialUuidFileReader();
 
-        if (args.length <= 1) {
-            checksumParser = new ChecksumParser(new BufferedReader(new InputStreamReader(System.in)));
-        } else {
-            checksumParser = new ChecksumParser(new BufferedReader(new FileReader(new File(args[1]))));
+        switch (args.length) {
+            case 2:
+                configFile = new File(args[0]);
+                checksumParser = new ChecksumParser(new BufferedReader(new FileReader(new File(args[1]))));
+                System.out.println("Reading uuids from stdin..");
+                uuids = uuidFileReader.readUuids(new BufferedReader(new InputStreamReader(System.in)));
+                run(configFile, checksumParser, uuids);
+                break;
+            case 3:
+                configFile = new File(args[0]);
+                checksumParser = new ChecksumParser(new BufferedReader(new FileReader(new File(args[1]))));
+                System.out.println("Reading uuids from " + args[1]);
+                File uuidfile = new File(args[2]);
+                uuids = uuidFileReader.readUuids(uuidfile);
+                run(configFile, checksumParser, uuids);
+                break;
+            default:
+                System.out.println("Usage: bin/fileenricher.sh config-file checksum-file [uuid-file]");
+                System.exit(1);
         }
+    }
 
-
-        UuidFileReader uuidFileReader = new TrivialUuidFileReader();
+    private static void run(File configFile, ChecksumParser checksumParser, List<String> uuids) throws IOException, JAXBException, URISyntaxException, ParseException {
         FileEnricherConfig config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
-
-
 
         ObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config, webservice);
         ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksumParser.getNameChecksumsMap(), delegate);
 
-
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
-
-        List<String> uuids = uuidFileReader.readUuids(uuidfile);
         objectListHandler.transform(uuids);
     }
-
 }
