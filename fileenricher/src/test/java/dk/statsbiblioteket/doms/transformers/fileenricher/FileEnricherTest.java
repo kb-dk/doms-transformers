@@ -6,7 +6,8 @@ import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandl
 import dk.statsbiblioteket.doms.transformers.common.MockWebservice;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
-import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
+import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeContainingConfig;
+import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeLocationPropertyBasedDomsConfig;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
 import org.junit.Before;
@@ -19,19 +20,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: abr
- * Date: 7/17/12
- * Time: 3:44 PM
- * To change this template use File | Settings | File Templates.
- */
+
 public class FileEnricherTest {
 
     private String testMuxFileName = "mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts";
     private String testObjectPid;
     CentralWebservice webservice;
-    FileEnricherConfig config;
+    FFProbeContainingConfig config;
     File ffprobeFile;
     @Before
     public void setUp() throws Exception {

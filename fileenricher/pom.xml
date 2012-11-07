@@ -21,6 +21,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>dk.statsbiblioteket.doms.transformers</groupId>
+            <artifactId>fileobjectcreator</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>

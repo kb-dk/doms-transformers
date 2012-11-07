@@ -7,6 +7,7 @@ import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.client.exceptions.NotFoundException;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
+import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeContainingConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +32,7 @@ public class FFProbeEnricher {
      * @param config Configuration.
      * @param webservice The DOMS WebService.
      */
-    public FFProbeEnricher(FileEnricherConfig config, CentralWebservice webservice){
+    public FFProbeEnricher(FFProbeContainingConfig config, CentralWebservice webservice){
         this.config = config;
         this.webservice = webservice;
         ffprobeDir = config.getFFprobeFilesLocation();

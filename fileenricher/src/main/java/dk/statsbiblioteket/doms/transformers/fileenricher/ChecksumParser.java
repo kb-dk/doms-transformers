@@ -1,4 +1,4 @@
-package dk.statsbiblioteket.doms.transformers.common.checksums;
+package dk.statsbiblioteket.doms.transformers.fileenricher;
 
 import java.io.BufferedReader;
 import java.io.IOException;

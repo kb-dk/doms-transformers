@@ -1,25 +1,19 @@
 package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
-import dk.statsbiblioteket.doms.central.CentralWebservice;
-import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
-import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
-import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
+import dk.statsbiblioteket.doms.transformers.fileobjectcreator.MuxFileChannelCalculator;
 import dk.statsbiblioteket.util.FileAlreadyExistsException;
 import jsr166y.ForkJoinPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class FileObjectCreator {

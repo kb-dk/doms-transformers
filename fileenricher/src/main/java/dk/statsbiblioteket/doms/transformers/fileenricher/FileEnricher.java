@@ -6,7 +6,8 @@ import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandl
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
-import dk.statsbiblioteket.doms.transformers.common.checksums.ChecksumParser;
+import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeContainingConfig;
+import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeLocationPropertyBasedDomsConfig;
 
 import javax.xml.bind.JAXBException;
 import java.io.BufferedReader;
@@ -54,7 +55,7 @@ public class FileEnricher {
     }
 
     private static void run(File configFile, ChecksumParser checksumParser, List<String> uuids) throws IOException, JAXBException, URISyntaxException, ParseException {
-        FileEnricherConfig config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
+        FFProbeContainingConfig config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
 
 

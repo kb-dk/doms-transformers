@@ -1,9 +1,6 @@
 package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
-import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
-import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import dk.statsbiblioteket.doms.transformers.fileobjectcreator.MuxFileChannelCalculator;
 
 import java.text.ParseException;
 

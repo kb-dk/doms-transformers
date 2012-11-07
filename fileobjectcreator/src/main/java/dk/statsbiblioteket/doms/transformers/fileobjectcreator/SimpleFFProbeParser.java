@@ -1,4 +1,4 @@
-package dk.statsbiblioteket.doms.transformers.common;
+package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

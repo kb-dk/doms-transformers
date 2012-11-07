@@ -1,11 +1,11 @@
-package dk.statsbiblioteket.doms.transformers.fileenricher;
+package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
 import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 
 import java.io.File;
 import java.io.IOException;
 
-public class FFProbeLocationPropertyBasedDomsConfig extends PropertyBasedDomsConfig implements FileEnricherConfig{
+public class FFProbeLocationPropertyBasedDomsConfig extends PropertyBasedDomsConfig implements FFProbeContainingConfig {
 
     private static final String FFPROBE_FILE_LOCATION = "ffprobe.files.location";
 

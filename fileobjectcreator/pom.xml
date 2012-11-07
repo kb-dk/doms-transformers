@@ -20,11 +20,6 @@
         </dependency>
         <dependency>
             <groupId>dk.statsbiblioteket.doms.transformers</groupId>
-            <artifactId>fileenricher</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>dk.statsbiblioteket.doms.transformers</groupId>
             <artifactId>common</artifactId>
             <version>${project.version}</version>
             <classifier>tests</classifier>
