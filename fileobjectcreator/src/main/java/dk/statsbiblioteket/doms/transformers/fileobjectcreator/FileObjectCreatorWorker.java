@@ -24,13 +24,19 @@ public class FileObjectCreatorWorker extends RecursiveAction {
 
     private MuxFileChannelCalculator muxFileChannelCalculator;
     private FFProbeLocationPropertyBasedDomsConfig config;
+    private ResultWriter resultWriter;
     private String baseUrl;
     private List<String> data;
 
     private static boolean shutdown = false;
 
-    public FileObjectCreatorWorker(FFProbeLocationPropertyBasedDomsConfig config, String baseUrl, List<String> data, MuxFileChannelCalculator muxFileChannelCalculator) {
+    public FileObjectCreatorWorker(FFProbeLocationPropertyBasedDomsConfig config,
+                                   ResultWriter resultWriter,
+                                   String baseUrl,
+                                   List<String> data,
+                                   MuxFileChannelCalculator muxFileChannelCalculator) {
         this.config = config;
+        this.resultWriter = resultWriter;
         this.baseUrl = baseUrl;
         this.data = data;
         this.muxFileChannelCalculator = muxFileChannelCalculator;
@@ -44,7 +50,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                 if (domsObject != null) {
                     doWork(domsObject);
                 } else {
-                    FileObjectCreator.logIgnored(data.get(0));
+                    resultWriter.logIgnored(data.get(0));
                 }
             } catch (ParseException e) {
                 log.info("Error while parsing: " + data.get(0));
@@ -53,9 +59,9 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             }
         } else if (permissionToRun()) {
             int center = data.size()/2;
-            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(config, baseUrl, data.subList(0, center),
+            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(config, resultWriter, baseUrl, data.subList(0, center),
                         muxFileChannelCalculator);
-            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(config, baseUrl, data.subList(center, data.size()),
+            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(config, resultWriter, baseUrl, data.subList(center, data.size()),
                         muxFileChannelCalculator);
             invokeAll(workerA, workerB);
         }
@@ -82,7 +88,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                         formatUri = SimpleFFProbeParser.getFormatURIFromFile(ffProbeFile);
                         log.info("Got formatURI from \"" + ffProbeFile + "\": " + formatUri);
                     } catch (Exception e) {
-                        FileObjectCreator.logBadFFProbeData(domsObject);
+                        resultWriter.logBadFFProbeData(domsObject);
                         formatUri = domsObject.guessFormatUri();
                         if (formatUri != null) {
                             log.warn("Couldn't get formatURI from ffProbeFile, this should probably be investigated. "
@@ -90,7 +96,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                         } else {
                             String errorMsg = "Failed getting a formatURI for " + domsObject;
                             log.error(errorMsg, e);
-                            FileObjectCreator.logFailure(errorMsg);
+                            resultWriter.logFailure(errorMsg);
                             /* Possibly problematic early return. Due to the shear number of ways this can fail,
                                the entire function should probably be refactured instead.*/
                             return;
@@ -117,20 +123,20 @@ public class FileObjectCreatorWorker extends RecursiveAction {
 
                     webservice.markPublishedObject(pidsToMarkAsPublished, "Finalizing batch-creation of object.");
 
-                    FileObjectCreator.logSuccess(output + " (" + uuid + ")");
+                    resultWriter.logSuccess(output + " (" + uuid + ")");
                     log.info("Created (" + uuid + "): " + output);
-                    FileObjectCreator.logNewUuid(uuid);
+                    resultWriter.logNewUuid(uuid);
                 } else {
                     log.info("Already exists (" + uuid + "): " + output);
-                    FileObjectCreator.logExisting(uuid);
+                    resultWriter.logExisting(uuid);
                 }
 
             } catch (InvalidCredentialsException e) {
-                FileObjectCreator.logFailure(output);
+                resultWriter.logFailure(output);
                 log.error("Authentication-related error. Requesting shutdown..", e);
                 requestShutdown();
             } catch (InvalidResourceException e) {
-                FileObjectCreator.logFailure(output);
+                resultWriter.logFailure(output);
                 if (uuid == null) {
                     log.error("Inconsistent data, this really shouldn't happen: " +
                             "The most likely reason for this is that the template, \"doms:Template_RadioTVFile\", does not exist." +
@@ -142,13 +148,13 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                 }
                 requestShutdown();
             } catch (MethodFailedException e) {
-                FileObjectCreator.logFailure(output);
+                resultWriter.logFailure(output);
                 log.warn("Ingest of the following object failed: " + domsObject + "(uuid=\"" + uuid + "\")", e);
             } catch (Exception e) {
-                FileObjectCreator.logFailure(uuid);
+                resultWriter.logFailure(uuid);
                 if (uuid != null) {
                     log.error("Failure getting ffprobe data for " + uuid, e);
-                    FileObjectCreator.logBadFFProbeData(domsObject);
+                    resultWriter.logBadFFProbeData(domsObject);
                 } else {
                     log.error(e.getMessage(), e);
                 }
