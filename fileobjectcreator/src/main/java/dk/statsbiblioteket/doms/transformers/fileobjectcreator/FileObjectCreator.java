@@ -85,7 +85,7 @@ public class FileObjectCreator {
             resultWriter = new ResultWriter(baseName, new ResultWriterErrorHandler() {
                 @Override
                 public void handleError(Throwable t) {
-                    requestShutdown();
+                    FileObjectCreatorWorker.requestShutdown();
                     t.printStackTrace();
                     System.err.println(String.format("Could not write to logfile, shutting down.."));
                 }
@@ -124,21 +124,5 @@ public class FileObjectCreator {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-    }
-
-    public static CentralWebservice newWebservice() {
-        try {
-            CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
-            return webservice;
-        } catch (RuntimeException e) {
-            System.err.println("Error communication with DOMS. Config: " + config);
-            requestShutdown();
-        }
-        return null;
-    }
-
-    public static void requestShutdown() {
-        FileObjectCreatorWorker.requestShutdown();
-        log.info("Shutdown requested.");
     }
 }

@@ -4,6 +4,7 @@ import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
+import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
 import dk.statsbiblioteket.doms.transformers.common.SimpleFFProbeParser;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
 import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
@@ -79,7 +80,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             String output = domsObject.formatAsInput();
 
             try {
-                CentralWebservice webservice = FileObjectCreator.newWebservice();
+                CentralWebservice webservice = newWebservice();
                 uuid = webservice.getFileObjectWithURL(domsObject.getPermanentUrl());
                 if (uuid == null) {
                     String formatUri = null;
@@ -163,10 +164,21 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     }
 
     public static void requestShutdown() {
+        log.info("Shutdown requested.");
         shutdown = true;
     }
 
     private boolean permissionToRun() {
         return !shutdown;
+    }
+
+    private CentralWebservice newWebservice() {
+        try {
+            return new DomsWebserviceFactory(config).getWebservice();
+        } catch (RuntimeException e) {
+            System.err.println("Error communication with DOMS. Config: " + config);
+            requestShutdown();
+        }
+        return null;
     }
 }
