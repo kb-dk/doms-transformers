@@ -5,18 +5,11 @@ import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 import java.io.File;
 import java.io.IOException;
 
-/**
- * Created by IntelliJ IDEA.
- * User: abr
- * Date: 7/17/12
- * Time: 3:37 PM
- * To change this template use File | Settings | File Templates.
- */
 public class FFProbeLocationPropertyBasedDomsConfig extends PropertyBasedDomsConfig implements FileEnricherConfig{
 
     private static final String FFPROBE_FILE_LOCATION = "ffprobe.files.location";
 
-     @Override
+    @Override
     public String getFFprobeFilesLocation() {
         return properties.getProperty(FFPROBE_FILE_LOCATION,
                                       "/tmp/ffprobe.result/ffprobe.result/");
@@ -27,5 +20,17 @@ public class FFProbeLocationPropertyBasedDomsConfig extends PropertyBasedDomsCon
 
     public FFProbeLocationPropertyBasedDomsConfig(File configfile) throws IOException {
         super(configfile);
+    }
+
+    public String resolveFFProbeFileLocation(String fileName) {
+        return getFFprobeFilesLocation() + System.getProperty("file.separator") + fileName;
+    }
+
+    public File getFFProbeFile(String fileName) {
+        return new File(resolveFFProbeFileLocation(fileName + ".stdout"));
+    }
+
+    public File getFFProbeErrorsFile(String fileName) {
+        return new File(resolveFFProbeFileLocation(fileName + ".stderr"));
     }
 }

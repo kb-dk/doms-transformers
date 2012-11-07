@@ -6,6 +6,7 @@ import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.transformers.common.SimpleFFProbeParser;
 import dk.statsbiblioteket.doms.transformers.common.muxchannels.MuxFileChannelCalculator;
+import dk.statsbiblioteket.doms.transformers.fileenricher.FFProbeLocationPropertyBasedDomsConfig;
 import jsr166y.ForkJoinTask;
 import jsr166y.RecursiveAction;
 import org.slf4j.Logger;
@@ -22,10 +23,12 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     private static Logger log = LoggerFactory.getLogger(FileObjectCreatorWorker.class);
 
     private MuxFileChannelCalculator muxFileChannelCalculator;
+    private FFProbeLocationPropertyBasedDomsConfig config;
     private String baseUrl;
     private List<String> data;
 
-    public FileObjectCreatorWorker(String baseUrl, List<String> data, MuxFileChannelCalculator muxFileChannelCalculator) {
+    public FileObjectCreatorWorker(FFProbeLocationPropertyBasedDomsConfig config, String baseUrl, List<String> data, MuxFileChannelCalculator muxFileChannelCalculator) {
+        this.config = config;
         this.baseUrl = baseUrl;
         this.data = data;
         this.muxFileChannelCalculator = muxFileChannelCalculator;
@@ -35,7 +38,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     protected void compute() {
         if (data.size() == 1) {
             try {
-                DomsObject domsObject = DomsFileParser.parse(baseUrl, data.get(0), muxFileChannelCalculator);
+                DomsObject domsObject = DomsFileParser.parse(config, baseUrl, data.get(0), muxFileChannelCalculator);
                 if (domsObject != null) {
                     doWork(domsObject);
                 } else {
@@ -48,9 +51,9 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             }
         } else if (FileObjectCreator.permissionToRun()) {
             int center = data.size()/2;
-            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(baseUrl, data.subList(0, center),
+            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(config, baseUrl, data.subList(0, center),
                         muxFileChannelCalculator);
-            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(baseUrl, data.subList(center, data.size()),
+            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(config, baseUrl, data.subList(center, data.size()),
                         muxFileChannelCalculator);
             invokeAll(workerA, workerB);
         }
@@ -73,7 +76,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                 if (uuid == null) {
                     String formatUri = null;
                     try {
-                        File ffProbeFile = FileObjectCreator.getFFProbeFile(domsObject.getFileName() + ".stdout");
+                        File ffProbeFile = domsObject.getFFProbeFile();
                         formatUri = SimpleFFProbeParser.getFormatURIFromFile(ffProbeFile);
                         log.info("Got formatURI from \"" + ffProbeFile + "\": " + formatUri);
                     } catch (Exception e) {

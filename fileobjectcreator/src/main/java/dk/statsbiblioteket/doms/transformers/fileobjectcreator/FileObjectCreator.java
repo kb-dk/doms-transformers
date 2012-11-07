@@ -158,7 +158,7 @@ public class FileObjectCreator {
             }
 
             FileObjectCreatorWorker fileObjectCreatorWorker =
-                    new FileObjectCreatorWorker(baseUrl, data, muxFileChannelCalculator);
+                    new FileObjectCreatorWorker(config, baseUrl, data, muxFileChannelCalculator);
 
             ForkJoinPool forkJoinPool = new ForkJoinPool(Runtime.getRuntime().availableProcessors()*2);
             Long start = System.currentTimeMillis();
@@ -182,22 +182,6 @@ public class FileObjectCreator {
             requestShutdown();
         }
         return null;
-    }
-
-    public static FFProbeLocationPropertyBasedDomsConfig getConfig() {
-        return config;
-    }
-
-    public static String getFFProbeDir() {
-        return config.getFFprobeFilesLocation();
-    }
-
-    public static String getFFProbeFileLocation(String fileName) {
-        return getFFProbeDir() + System.getProperty("file.separator") + fileName;
-    }
-
-    public static File getFFProbeFile(String fileName) {
-        return new File(getFFProbeFileLocation(fileName));
     }
 
     public static synchronized void logSuccess(String data) {
