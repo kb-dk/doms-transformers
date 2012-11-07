@@ -4,14 +4,14 @@ import os
 import sys
 
 """
-Input: lines formatted as "checksum filesize filename"
+Input: lines formatted as "checksum filesize filename", and a directory containing ffprobe data.
 
 This tool is useful for two things:
 
 1) Filter away files with missing ffprobe data, and produce output with the same format as the input:
 cat data | fileobjectcreator/src/main/python/missingFFProbeFiles.py ~/tmp/ffprobe.result complete
 
-2) Create a list of files that lacks ffprobe data::
+2) Create a list of files that lacks ffprobe data:
 cat data | fileobjectcreator/src/main/python/missingFFProbeFiles.py ~/tmp/ffprobe.result incomplete
 """
 
