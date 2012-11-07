@@ -33,12 +33,17 @@ public class FileRecordingObjectListHandlerTest extends TestCase {
                 return "target";
             }
         };
-        new File("target").mkdirs();
+
+        File outputDirectory = new File(config.getOutputDirectory(), testObjectHandler.getName());
+        if (!outputDirectory.isDirectory() && !outputDirectory.mkdirs()) {
+            throw new IOException("Unable to create directory '" + outputDirectory.getPath() + "'");
+        }
+
         FileRecordingObjectListHandler handler = new FileRecordingObjectListHandler(config, testObjectHandler);
         handler.transform(Arrays.asList("uuid:cb8da856-fae8-473f-9070-8d24b5a84cfc",
                                         "uuid:99c1b516-3ea9-49ce-bfbc-ae1ea8faf0e3"));
-        List<String> successes = new TrivialUuidFileReader().readUuids(new File(config.getOutputDirectory(), "success_uuids.txt"));
-        List<String> failures = new TrivialUuidFileReader().readUuids(new File(config.getOutputDirectory(), "failure_uuids.txt"));
+        List<String> successes = new TrivialUuidFileReader().readUuids(new File(outputDirectory, "success_uuids.txt"));
+        List<String> failures = new TrivialUuidFileReader().readUuids(new File(outputDirectory, "failure_uuids.txt"));
         assertEquals(1, successes.size());
         assertEquals(1, failures.size());
         assertEquals("uuid:99c1b516-3ea9-49ce-bfbc-ae1ea8faf0e3", successes.get(0));
