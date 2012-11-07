@@ -7,12 +7,10 @@ import java.util.Properties;
 
 /** Configuration based on property file. */
 public class PropertyBasedConfig implements Config {
-    /** Property for file for recording success UUIDs. */
-    public static final String SUCCESS_FILE_PROPERTY
-            = "dk.statsbiblioteket.doms.transformers.successfile";
-    /** Property for file for recording failure UUIDs. */
-    public static final String FAILURE_FILE_PROPERTY
-            = "dk.statsbiblioteket.doms.transformers.failurefile";
+
+    /** Property specifying the directory where output files will be stored. */
+    public static final String OUTPUT_DIRECTORY_PROPERTY
+            = "dk.statsbiblioteket.doms.transformers.outputdirectory";
 
     /** Properties containing configuration. */
     protected final Properties properties;
@@ -42,12 +40,7 @@ public class PropertyBasedConfig implements Config {
     }
 
     @Override
-    public String getSuccessFile() {
-        return properties.getProperty(SUCCESS_FILE_PROPERTY, "success_uuids.txt");
-    }
-
-    @Override
-    public String getFailureFile() {
-        return properties.getProperty(FAILURE_FILE_PROPERTY, "failure_uuids.txt");
+    public String getOutputDirectory() {
+        return properties.getProperty(OUTPUT_DIRECTORY_PROPERTY, "output");
     }
 }

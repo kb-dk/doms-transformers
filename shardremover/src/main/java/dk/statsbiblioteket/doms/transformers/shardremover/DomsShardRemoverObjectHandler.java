@@ -49,44 +49,49 @@ public class DomsShardRemoverObjectHandler implements ObjectHandler {
     }
 
     @Override
-    public void transform(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException, 
+    public String getName() {
+        return getClass().getSimpleName();
+    }
+
+    @Override
+    public void transform(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException,
             ParserConfigurationException, SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
         List<Relation> shardRelations = webservice.getNamedRelations(uuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
         if (shardRelations.isEmpty()) {
             // nothing to do
         }
         String shardUuid = shardRelations.get(0).getObject();
-        
+
         webservice.markInProgressObject(Arrays.asList(uuid), "Updating radio/tv object");
-        // Add UUID to program object as extra ID (add as Identifier element in DC datastream)        
+        // Add UUID to program object as extra ID (add as Identifier element in DC datastream)
         String originalDC = webservice.getDatastreamContents(uuid, "DC");
         String newDC = addIdentifierToDC(originalDC, shardUuid);
         webservice.modifyDatastream(uuid, "DC", newDC, "Adding old shard ID to DC");
         // Remove relation to shard
-        webservice.deleteRelation(uuid, shardRelations.get(0), 
+        webservice.deleteRelation(uuid, shardRelations.get(0),
                 "Removing shard relation from program object as part of migration");
         // Remove shard object
         webservice.deleteObject(Arrays.asList(shardUuid), "Marking shard object as deleted");
-        
+
         webservice.markPublishedObject(Arrays.asList(uuid),"Done updating radio/tv object");
 
     }
-    
-    private String addIdentifierToDC(String originalDC, String shardUUID) throws ParserConfigurationException, 
+
+    private String addIdentifierToDC(String originalDC, String shardUUID) throws ParserConfigurationException,
             SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
-        DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance(); 
+        DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
         domFactory.setIgnoringComments(true);
-        DocumentBuilder builder = domFactory.newDocumentBuilder(); 
+        DocumentBuilder builder = domFactory.newDocumentBuilder();
         Document doc = builder.parse(new ByteArrayInputStream(originalDC.getBytes()));
 
         NodeList nodes = doc.getElementsByTagName("dc:identifier");
 
-        Text a = doc.createTextNode(shardUUID); 
-        Element p = doc.createElement("dc:identifier"); 
-        p.appendChild(a); 
+        Text a = doc.createTextNode(shardUUID);
+        Element p = doc.createElement("dc:identifier");
+        p.appendChild(a);
 
         nodes.item(0).getParentNode().insertBefore(p, nodes.item(0));
-        
+
         Transformer transformer = TransformerFactory.newInstance().newTransformer();
         transformer.setOutputProperty(OutputKeys.INDENT, "yes");
 

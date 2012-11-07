@@ -27,8 +27,12 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
      */
     public FileRecordingObjectListHandler(Config config, ObjectHandler objectHandler) throws IOException {
         this.objectHandler = objectHandler;
-        successFileWriter = new BufferedWriter(new FileWriter(new File(config.getSuccessFile())));
-        failureFileWriter = new BufferedWriter(new FileWriter(new File(config.getFailureFile())));
+        File outputDirectory = new File(config.getOutputDirectory(), objectHandler.getName());
+        if (!outputDirectory.isDirectory() && !outputDirectory.mkdirs()) {
+            throw new IOException("Unable to create directory '" + outputDirectory.getPath() + "'");
+        }
+        successFileWriter = new BufferedWriter(new FileWriter(new File(outputDirectory, "success_uuids.txt")));
+        failureFileWriter = new BufferedWriter(new FileWriter(new File(outputDirectory, "failure_uuids.txt")));
     }
 
     @Override

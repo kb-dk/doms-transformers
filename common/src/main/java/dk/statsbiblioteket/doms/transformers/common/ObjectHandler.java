@@ -10,4 +10,10 @@ public interface ObjectHandler {
      * @throws Exception on failure.
      */
     void transform(String uuid) throws Exception;
+
+    /**
+     * A name of the transformer used as identifier when naming output files.
+     * @return A name of the transformer used as identifier when naming output files.
+     */
+    String getName();
 }

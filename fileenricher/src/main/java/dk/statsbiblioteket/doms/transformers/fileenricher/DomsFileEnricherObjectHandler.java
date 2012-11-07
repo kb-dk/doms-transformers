@@ -37,6 +37,11 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
     }
 
     @Override
+    public String getName() {
+        return getClass().getSimpleName();
+    }
+
+    @Override
     public void transform(String uuid) throws Exception {
         List<String> datastreamProfilesIDs = getDatastreamProfilesIDs(uuid);
 

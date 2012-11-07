@@ -5,14 +5,8 @@ package dk.statsbiblioteket.doms.transformers.common;
  */
 public interface Config {
     /**
-     * Get file with full path for reporting success.
-     * @return The file for success uuids.
+     * Get path of output directory.
+     * @return The output directory.
      */
-    String getSuccessFile();
-
-    /**
-     * Get file with full path for reporting failure.
-     * @return The file for success uuids.
-     */
-    String getFailureFile();
+    String getOutputDirectory();
 }

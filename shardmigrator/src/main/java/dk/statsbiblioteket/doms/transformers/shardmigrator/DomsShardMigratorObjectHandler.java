@@ -62,6 +62,11 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
     }
 
     @Override
+    public String getName() {
+        return getClass().getSimpleName();
+    }
+
+    @Override
     public void transform(String programUuid) throws Exception {
         List<Relation> shardRelations = webservice.getNamedRelations(programUuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
         if (shardRelations.isEmpty()) {
@@ -131,7 +136,6 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
 
         webservice.markPublishedObject(Arrays.asList(programUuid),"Updating radio/tv datamodel");
     }
-
 
 
     public ShardMetadata deserializeShardMetadata(String shardMetadataString) throws JAXBException {
