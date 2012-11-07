@@ -37,7 +37,6 @@ public class FileObjectCreator {
     private static final char FAILURE_CHAR = '#';
     private static final char IGNORE_CHAR = '.';
     private static int logCounter = 0;
-    private static boolean shutdown = false;
 
     private static BufferedReader fileListReader = null;
 
@@ -256,10 +255,6 @@ public class FileObjectCreator {
         return "";
     }
 
-    public static boolean permissionToRun() {
-        return !shutdown;
-    }
-
     public static void requestShutdown(Throwable throwable) {
         requestShutdown();
         throwable.printStackTrace();
@@ -267,7 +262,7 @@ public class FileObjectCreator {
     }
 
     public static void requestShutdown() {
-        shutdown = true;
+        FileObjectCreatorWorker.requestShutdown();
         log.info("Shutdown requested.");
     }
 }

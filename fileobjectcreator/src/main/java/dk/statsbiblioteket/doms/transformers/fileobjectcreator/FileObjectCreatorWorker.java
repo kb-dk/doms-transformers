@@ -27,6 +27,8 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     private String baseUrl;
     private List<String> data;
 
+    private static boolean shutdown = false;
+
     public FileObjectCreatorWorker(FFProbeLocationPropertyBasedDomsConfig config, String baseUrl, List<String> data, MuxFileChannelCalculator muxFileChannelCalculator) {
         this.config = config;
         this.baseUrl = baseUrl;
@@ -49,7 +51,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             } catch (FileIgnoredException e) {
                 log.info("Ignored file: " + e.getFilename());
             }
-        } else if (FileObjectCreator.permissionToRun()) {
+        } else if (permissionToRun()) {
             int center = data.size()/2;
             ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(config, baseUrl, data.subList(0, center),
                         muxFileChannelCalculator);
@@ -62,7 +64,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     public void doWork(DomsObject domsObject) {
         String comment = "Batch-created by " + this.getClass().getName();
 
-        if (!FileObjectCreator.permissionToRun()) {
+        if (!permissionToRun()) {
             return;
         }
 
@@ -126,7 +128,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
             } catch (InvalidCredentialsException e) {
                 FileObjectCreator.logFailure(output);
                 log.error("Authentication-related error. Requesting shutdown..", e);
-                FileObjectCreator.requestShutdown();
+                requestShutdown();
             } catch (InvalidResourceException e) {
                 FileObjectCreator.logFailure(output);
                 if (uuid == null) {
@@ -138,7 +140,7 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                             "The most likely reason for this is that the object with uuid = \"" + uuid + "\" cannot be found." +
                             "Requesting shutdown..");
                 }
-                FileObjectCreator.requestShutdown();
+                requestShutdown();
             } catch (MethodFailedException e) {
                 FileObjectCreator.logFailure(output);
                 log.warn("Ingest of the following object failed: " + domsObject + "(uuid=\"" + uuid + "\")", e);
@@ -152,5 +154,13 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                 }
             }
         }
+    }
+
+    public static void requestShutdown() {
+        shutdown = true;
+    }
+
+    private boolean permissionToRun() {
+        return !shutdown;
     }
 }
