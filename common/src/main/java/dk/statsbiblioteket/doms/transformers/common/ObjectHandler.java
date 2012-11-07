@@ -9,7 +9,7 @@ public interface ObjectHandler {
      * @param uuid uuid of program objects.
      * @throws Exception on failure.
      */
-    void transform(String uuid) throws Exception;
+    MigrationStatus transform(String uuid) throws Exception;
 
     /**
      * A name of the transformer used as identifier when naming output files.

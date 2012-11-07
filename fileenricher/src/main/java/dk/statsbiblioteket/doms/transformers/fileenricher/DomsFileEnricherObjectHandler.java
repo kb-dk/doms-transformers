@@ -6,6 +6,7 @@ import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
+import dk.statsbiblioteket.doms.transformers.common.MigrationStatus;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeContainingConfig;
 import org.slf4j.Logger;
@@ -42,7 +43,7 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
     }
 
     @Override
-    public void transform(String uuid) throws Exception {
+    public MigrationStatus transform(String uuid) throws Exception {
         List<String> datastreamProfilesIDs = getDatastreamProfilesIDs(uuid);
 
         boolean enrichFFProbeData = shouldEnrich(uuid, datastreamProfilesIDs, BroadcastMetadataEnricher.FFPROBE_DATASTREAM_NAME, BroadcastMetadataEnricher.FFPROBE_ERRORS_DATASTREAM_NAME);
@@ -53,18 +54,34 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         if (filename != null && (enrichFFProbeData || enrichBroadcastMetadata)) {
             webservice.markInProgressObject(Arrays.asList(uuid), "Modifying object as part of datamodel upgrade");
 
+            int migrationSuccesses = 0;
+
             if (enrichFFProbeData) {
-                new FFProbeEnricher(config, webservice).transform(uuid);
+                MigrationStatus ffProbeMigrationStatus = new FFProbeEnricher(config, webservice).transform(uuid);
+                if (ffProbeMigrationStatus.equals(MigrationStatus.COMPLETE)) {
+                    migrationSuccesses++;
+                }
             }
 
             if (enrichBroadcastMetadata) {
-                new BroadcastMetadataEnricher(config, webservice, checksums, filename).transform(uuid);
+                MigrationStatus metadataMigrationStatus = new BroadcastMetadataEnricher(config, webservice, checksums, filename).transform(uuid);
+                if (metadataMigrationStatus.equals(MigrationStatus.COMPLETE)) {
+                    migrationSuccesses++;
+                }
             }
 
             webservice.markPublishedObject(Arrays.asList(uuid), "Modifying object as part of datamodel upgrade");
 
+            switch (migrationSuccesses) {
+                case 2:
+                    return MigrationStatus.COMPLETE;
+                case 1:
+                    return MigrationStatus.INCOMPLETE;
+                default:
+                    return MigrationStatus.FAILED;
+            }
         } else {
-            FileRecordingObjectListHandler.recordIgnored(uuid);
+            return MigrationStatus.IGNORED;
         }
     }
 

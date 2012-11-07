@@ -17,6 +17,7 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import dk.statsbiblioteket.doms.transformers.common.MigrationStatus;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -54,11 +55,12 @@ public class DomsShardRemoverObjectHandler implements ObjectHandler {
     }
 
     @Override
-    public void transform(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException,
+    public MigrationStatus transform(String uuid) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException,
             ParserConfigurationException, SAXException, IOException, TransformerFactoryConfigurationError, TransformerException {
         List<Relation> shardRelations = webservice.getNamedRelations(uuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
         if (shardRelations.isEmpty()) {
             // nothing to do
+            return MigrationStatus.IGNORED;
         }
         String shardUuid = shardRelations.get(0).getObject();
 
@@ -75,6 +77,7 @@ public class DomsShardRemoverObjectHandler implements ObjectHandler {
 
         webservice.markPublishedObject(Arrays.asList(uuid),"Done updating radio/tv object");
 
+        return MigrationStatus.COMPLETE;
     }
 
     private String addIdentifierToDC(String originalDC, String shardUUID) throws ParserConfigurationException,

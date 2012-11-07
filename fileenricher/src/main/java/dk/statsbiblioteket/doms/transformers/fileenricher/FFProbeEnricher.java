@@ -7,6 +7,7 @@ import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.client.exceptions.NotFoundException;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
+import dk.statsbiblioteket.doms.transformers.common.MigrationStatus;
 import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeContainingConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,12 +40,13 @@ public class FFProbeEnricher {
     }
 
 
-    public void transform(String uuid) throws Exception {
+    public MigrationStatus transform(String uuid) throws Exception {
         try {
             getFFProbeXml(uuid);
+            return MigrationStatus.COMPLETE;
         } catch (FileNotFoundException e) {
-            FileRecordingObjectListHandler.recordFailure("Missing ffprobe data for " + uuid, e);
-            ffProbeLog.warn("Missing ffprobe data for " + uuid, e);
+            ffProbeLog.error("Missing ffprobe data for '{}'", uuid, e);
+            return MigrationStatus.FAILED;
         }
     }
 
