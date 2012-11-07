@@ -27,11 +27,11 @@ import static org.junit.Assert.assertThat;
  * Time: 12:42 PM
  * To change this template use File | Settings | File Templates.
  */
-public class DomsFileEnricherObjectHandlerTest {
+public class BroadcastMetadataEnricherTest {
 
     String testObjectPid;
 
-    DomsFileEnricherObjectHandler handler;
+    BroadcastMetadataEnricher handler;
     ChecksumParser checksums;
     MuxFileChannelCalculator muxFileChannelCalculator;
 
@@ -51,7 +51,7 @@ public class DomsFileEnricherObjectHandlerTest {
         muxFileChannelCalculator = new MuxFileChannelCalculator(
                 Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
-        handler = new DomsFileEnricherObjectHandler(null, webservice, checksums.getNameChecksumsMap(), null);
+        handler = new BroadcastMetadataEnricher(null, webservice, checksums.getNameChecksumsMap(), null);
     }
 
     @After
@@ -94,27 +94,27 @@ public class DomsFileEnricherObjectHandlerTest {
         assertThat(metadata.getStopTime(), is(CalendarUtils.getXmlGregorianCalendar(testMuxStopTime)));
         assertNotNull(metadata.getChecksum());
     }
-    
+
     @Test
     public void testRadioFileNameTransform() throws Exception {
-      String testRadioFileName = "drp1_88.100_DR-P1_pcm_20080509045602_20080510045501_encoder5-2.wav";
-      String testRadioRecorder = "encoder5-2";
-      String testRadioChannel = "drp1";
-      String testRadioStartTime = "1210301762";
-      String testRadioStopTime = "1210388101";
-      String testRadioFormatName = "wav";
+        String testRadioFileName = "drp1_88.100_DR-P1_pcm_20080509045602_20080510045501_encoder5-2.wav";
+        String testRadioRecorder = "encoder5-2";
+        String testRadioChannel = "drp1";
+        String testRadioStartTime = "1210301762";
+        String testRadioStopTime = "1210388101";
+        String testRadioFormatName = "wav";
 
-      BroadcastMetadata metadata =
-              FileNameParser.decodeFilename(testRadioFileName, checksums.getNameChecksumsMap(), muxFileChannelCalculator);
-      assertThat(metadata.getRecorder(), is(testRadioRecorder));
-      assertThat(metadata.getStartTime(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStartTime)));
-      assertThat(metadata.getStopTime(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStopTime)));
-      assertThat(metadata.getChannels().getChannel().get(0).getChannelID(), is(testRadioChannel));
-      assertThat(metadata.getFormat(), is(testRadioFormatName));
+        BroadcastMetadata metadata =
+                FileNameParser.decodeFilename(testRadioFileName, checksums.getNameChecksumsMap(), muxFileChannelCalculator);
+        assertThat(metadata.getRecorder(), is(testRadioRecorder));
+        assertThat(metadata.getStartTime(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStartTime)));
+        assertThat(metadata.getStopTime(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStopTime)));
+        assertThat(metadata.getChannels().getChannel().get(0).getChannelID(), is(testRadioChannel));
+        assertThat(metadata.getFormat(), is(testRadioFormatName));
 
-      
+
     }
-    
+
     @Test
     public void testMPEGFileNameTransform() throws Exception {
         String testMPEGFileName = "tv2c_623.250_K40-TV2-Charlie_mpeg1_20080503121001_20080504030601_encoder3-2.mpeg";
@@ -131,6 +131,6 @@ public class DomsFileEnricherObjectHandlerTest {
         assertThat(metadata.getStopTime(), is(CalendarUtils.getXmlGregorianCalendar(testMPEGStopTime)));
         assertThat(metadata.getChannels().getChannel().get(0).getChannelID(), is(testMPEGChannel));
         assertThat(metadata.getFormat(), is(testMPEGFormatName));
-        
+
     }
 }

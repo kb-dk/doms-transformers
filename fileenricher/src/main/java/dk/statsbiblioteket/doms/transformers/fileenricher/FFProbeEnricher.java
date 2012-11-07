@@ -7,7 +7,6 @@ import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.client.exceptions.NotFoundException;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
-import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,14 +15,14 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
+public class FFProbeEnricher {
 
     private final DomsConfig config;
     private final CentralWebservice webservice;
 
     private final String ffprobeDir;
 
-    private static final Logger log = LoggerFactory.getLogger(DomsFFProbeFileEnricherObjectHandler.class);
+    private static final Logger log = LoggerFactory.getLogger(FFProbeEnricher.class);
     private static final Logger ffProbeLog = LoggerFactory.getLogger("ffprobe");
 
 
@@ -32,15 +31,13 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
      * @param config Configuration.
      * @param webservice The DOMS WebService.
      */
-    public DomsFFProbeFileEnricherObjectHandler(FileEnricherConfig config, CentralWebservice webservice){
+    public FFProbeEnricher(FileEnricherConfig config, CentralWebservice webservice){
         this.config = config;
         this.webservice = webservice;
         ffprobeDir = config.getFFprobeFilesLocation();
     }
 
 
-
-    @Override
     public void transform(String uuid) throws Exception {
         try {
             getFFProbeXml(uuid);
@@ -85,19 +82,19 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
     }
 
     private void addFFProbeToObject(String uuid, String ffprobe) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
-        webservice.modifyDatastream(uuid, DomsFileEnricherObjectHandler.FFPROBE_DATASTREAM_NAME, ffprobe, "Adding ffprobe as part of the radio/tv datamodel upgrade");
+        webservice.modifyDatastream(uuid, BroadcastMetadataEnricher.FFPROBE_DATASTREAM_NAME, ffprobe, "Adding ffprobe as part of the radio/tv datamodel upgrade");
     }
 
     private void addFFProbeErrorsToObject(String uuid, String ffprobeErrors) throws InvalidCredentialsException, MethodFailedException, InvalidResourceException {
-        webservice.modifyDatastream(uuid, DomsFileEnricherObjectHandler.FFPROBE_ERRORS_DATASTREAM_NAME, ffprobeErrors, "Adding ffprobe errors as part of the radio/tv datamodel upgrade");
+        webservice.modifyDatastream(uuid, BroadcastMetadataEnricher.FFPROBE_ERRORS_DATASTREAM_NAME, ffprobeErrors, "Adding ffprobe errors as part of the radio/tv datamodel upgrade");
     }
 
     private String getFFProbeFromObject(String uuid) throws NotFoundException, InvalidCredentialsException, MethodFailedException {
         try {
-            String contents = webservice.getDatastreamContents(uuid, DomsFileEnricherObjectHandler.FFPROBE_DATASTREAM_NAME);
+            String contents = webservice.getDatastreamContents(uuid, BroadcastMetadataEnricher.FFPROBE_DATASTREAM_NAME);
             return contents;
         } catch (InvalidResourceException e) {
-            throw new NotFoundException("Failed to retrieve " + DomsFileEnricherObjectHandler.FFPROBE_DATASTREAM_NAME + " datastream ",e);
+            throw new NotFoundException("Failed to retrieve " + BroadcastMetadataEnricher.FFPROBE_DATASTREAM_NAME + " datastream ",e);
         }
 
     }
@@ -112,10 +109,10 @@ public class DomsFFProbeFileEnricherObjectHandler implements ObjectHandler{
 
     private String getFFProbeErrorsFromObject(String uuid) throws NotFoundException, InvalidCredentialsException, MethodFailedException {
         try {
-            String contents = webservice.getDatastreamContents(uuid, DomsFileEnricherObjectHandler.FFPROBE_ERRORS_DATASTREAM_NAME);
+            String contents = webservice.getDatastreamContents(uuid, BroadcastMetadataEnricher.FFPROBE_ERRORS_DATASTREAM_NAME);
             return contents;
         } catch (InvalidResourceException e) {
-            throw new NotFoundException("Failed to retrieve " + DomsFileEnricherObjectHandler.FFPROBE_ERRORS_DATASTREAM_NAME + " datastream ",e);
+            throw new NotFoundException("Failed to retrieve " + BroadcastMetadataEnricher.FFPROBE_ERRORS_DATASTREAM_NAME + " datastream ", e);
         }
 
     }

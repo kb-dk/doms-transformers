@@ -60,12 +60,11 @@ public class FileEnricherTest {
 
     @Test
     public void testMain() throws Exception {
-        DomsFFProbeFileEnricherObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
         ChecksumParser checksums = new ChecksumParser(
                 new BufferedReader(
                         new InputStreamReader(
                                 Thread.currentThread().getContextClassLoader().getResourceAsStream("checksumTestFile"))));
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap(), delegate);
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap());
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
 
@@ -89,13 +88,12 @@ public class FileEnricherTest {
         ffprobeFile.getParentFile().mkdirs();
         FileUtils.copyFile(ffprobeContents,ffprobeFile);
 
-        DomsFFProbeFileEnricherObjectHandler delegate = new DomsFFProbeFileEnricherObjectHandler(config,webservice);
         ChecksumParser checksums = new ChecksumParser(
                 new BufferedReader(
                         new InputStreamReader(
                                 Thread.currentThread().getContextClassLoader().getResourceAsStream("checksumTestFile"))));
 
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap(), delegate);
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap());
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
 
