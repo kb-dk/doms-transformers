@@ -81,7 +81,7 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
                     return MigrationStatus.FAILED;
             }
         } else {
-            return MigrationStatus.IGNORED;
+            return MigrationStatus.NOOP;
         }
     }
 

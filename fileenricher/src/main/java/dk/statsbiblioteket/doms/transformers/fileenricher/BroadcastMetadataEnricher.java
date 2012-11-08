@@ -84,7 +84,7 @@ public class BroadcastMetadataEnricher {
             }
         } else {
             log.error("Missing checksum for '{}'", filename);
-            return MigrationStatus.FAILED;
+            return MigrationStatus.IGNORED;
         }
     }
 

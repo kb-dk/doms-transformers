@@ -60,7 +60,7 @@ public class DomsShardRemoverObjectHandler implements ObjectHandler {
         List<Relation> shardRelations = webservice.getNamedRelations(uuid, "http://doms.statsbiblioteket.dk/relations/default/0/1/#hasShard");
         if (shardRelations.isEmpty()) {
             // nothing to do
-            return MigrationStatus.IGNORED;
+            return MigrationStatus.NOOP;
         }
         String shardUuid = shardRelations.get(0).getObject();
 
