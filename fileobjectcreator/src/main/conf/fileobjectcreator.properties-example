@@ -1,5 +1,6 @@
-dk.statsbiblioteket.doms.transformers.domsurl = http://localhost:7880/centralWebservice-service/central/?wsdl
-dk.statsbiblioteket.doms.transformers.baseurl = http://bitfinder.statsbiblioteket.dk/bart/
-dk.statsbiblioteket.doms.transformers.domsuser = fedoraAdmin
-dk.statsbiblioteket.doms.transformers.domspass = fedoraAdminPass
+dk.statsbiblioteket.doms.transformers.outputdirectory=output
+dk.statsbiblioteket.doms.transformers.domsurl=http://localhost:7880/centralWebservice-service/central/?wsdl
+dk.statsbiblioteket.doms.transformers.baseurl=http://bitfinder.statsbiblioteket.dk/bart/
+dk.statsbiblioteket.doms.transformers.domsuser=fedoraAdmin
+dk.statsbiblioteket.doms.transformers.domspass=fedoraAdminPass
 ffprobe.files.location=/tmp/ffprobe.result/

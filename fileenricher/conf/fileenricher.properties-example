@@ -1,6 +1,5 @@
-dk.statsbiblioteket.doms.transformers.successfile=success_uuids.txt
-dk.statsbiblioteket.doms.transformers.failurefile=failure_uuids.txt
+dk.statsbiblioteket.doms.transformers.outputdirectory=output
 dk.statsbiblioteket.doms.transformers.domsurl=http://localhost:7880/centralWebservice-service/central/?wsdl
 dk.statsbiblioteket.doms.transformers.domsuser=fedoraAdmin
 dk.statsbiblioteket.doms.transformers.domspass=fedoraAdminPass
-ffprobe.files.location=ffprobe.result/ffprobe.result/
+ffprobe.files.location=/tmp/ffprobe.result/
