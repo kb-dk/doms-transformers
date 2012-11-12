@@ -31,14 +31,6 @@ public class PropertyBasedConfig implements Config {
         properties.load(new FileInputStream(configfile));
     }
 
-    public String getProperty(String property) {
-        return properties.getProperty(property);
-    }
-
-    public String getProperty(String property, String defaultValue) {
-        return properties.getProperty(property, defaultValue);
-    }
-
     @Override
     public String getOutputDirectory() {
         return properties.getProperty(OUTPUT_DIRECTORY_PROPERTY, "output");
