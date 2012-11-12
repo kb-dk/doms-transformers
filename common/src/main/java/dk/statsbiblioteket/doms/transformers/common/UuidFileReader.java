@@ -1,5 +1,6 @@
 package dk.statsbiblioteket.doms.transformers.common;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -15,4 +16,5 @@ public interface UuidFileReader {
      * @throws IOException on errors.
      */
     List<String> readUuids(File file) throws IOException;
+    List<String> readUuids(BufferedReader reader) throws IOException;
 }

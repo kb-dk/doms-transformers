@@ -6,6 +6,7 @@ import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandl
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
+import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
 import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeContainingConfig;
 import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeLocationPropertyBasedDomsConfig;
 
@@ -30,7 +31,7 @@ public class FileEnricher {
         File configFile;
         ChecksumParser checksumParser;
         List<String> uuids;
-        TrivialUuidFileReader uuidFileReader = new TrivialUuidFileReader();
+        UuidFileReader uuidFileReader = new TrivialUuidFileReader();
 
         switch (args.length) {
             case 2:
