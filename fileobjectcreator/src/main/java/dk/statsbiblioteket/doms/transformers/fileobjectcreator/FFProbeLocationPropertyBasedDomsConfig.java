@@ -7,15 +7,16 @@ import java.io.IOException;
 
 public class FFProbeLocationPropertyBasedDomsConfig extends PropertyBasedDomsConfig implements FFProbeContainingConfig {
 
-    private static final String FFPROBE_FILE_LOCATION = "ffprobe.files.location";
+    private static final String FFPROBE_FILE_LOCATION_PROPERTY = "ffprobe.files.location";
 
     @Override
     public String getFFprobeFilesLocation() {
-        return properties.getProperty(FFPROBE_FILE_LOCATION,
+        return properties.getProperty(FFPROBE_FILE_LOCATION_PROPERTY,
                                       "/tmp/ffprobe.result/ffprobe.result/");
     }
 
     public FFProbeLocationPropertyBasedDomsConfig() {
+        super();
     }
 
     public FFProbeLocationPropertyBasedDomsConfig(File configfile) throws IOException {

@@ -19,7 +19,7 @@ import java.util.List;
 public class FileObjectCreator {
     private static Logger log = LoggerFactory.getLogger(FileObjectCreator.class);
     private static final String baseName = "fileobjectcreator_";
-    private static FFProbeLocationPropertyBasedDomsConfig config;
+    private static FileObjectCreatorConfig config;
 
     private ResultWriter resultWriter;
 
@@ -63,7 +63,7 @@ public class FileObjectCreator {
         }
 
         try {
-            config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
+            config = new FileObjectCreatorConfig(configFile);
             System.out.println(config);
 
             new FileObjectCreator(fileListReader);
@@ -97,9 +97,10 @@ public class FileObjectCreator {
             MuxFileChannelCalculator muxFileChannelCalculator = new MuxFileChannelCalculator(
                     Thread.currentThread().getContextClassLoader().getResourceAsStream("muxChannels.csv"));
 
-            String baseUrl = config.getProperty("dk.statsbiblioteket.doms.transformers.baseurl", "");
-            if (baseUrl.isEmpty()) {
-                log.warn("Empty base URL.");
+            String baseUrl = config.getDomsBaseUrl();
+            if (baseUrl == null || baseUrl.isEmpty()) {
+                System.out.println("Empty or non-existing DOMS base URL property in configuration.");
+                System.exit(1);
             }
 
             FileObjectCreatorWorker fileObjectCreatorWorker =
