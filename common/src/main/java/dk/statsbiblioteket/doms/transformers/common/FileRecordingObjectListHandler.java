@@ -54,11 +54,13 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
                 try {
                     if (migrationStatus == null) {
                         writeError(uuid);
+                        //exceptionhandling odd
                         log.error("'{}' returned null as MigrationStatus.", objectHandler.getClass());
                     } else {
                         write(migrationStatus, uuid);
                     }
                 } catch (IOException e) {
+                    //Feels like overkill
                     e.printStackTrace();
                     System.exit(1);
                     break;
@@ -89,6 +91,7 @@ public class FileRecordingObjectListHandler implements ObjectListHandler {
     }
 
     public void writeError(String uuid) throws IOException {
+        //Feels like it should be a call to write
         errorWriter.write(uuid);
         errorWriter.newLine();
         errorWriter.flush();
