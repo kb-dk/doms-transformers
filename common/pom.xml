@@ -5,12 +5,12 @@
   <parent>
     <groupId>dk.statsbiblioteket.doms.transformers</groupId>
     <artifactId>transformers</artifactId>
-    <version>0.1.2-SNAPSHOT</version>
+    <version>0.1.3-SNAPSHOT</version>
   </parent>
 
   <groupId>dk.statsbiblioteket.doms.transformers</groupId>
   <artifactId>common</artifactId>
-  <version>0.1.2-SNAPSHOT</version>
+  <version>0.1.3-SNAPSHOT</version>
 
   <dependencies>
     <dependency>

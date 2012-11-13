@@ -14,8 +14,17 @@
 
     <fileSets>
         <fileSet>
+            <outputDirectory></outputDirectory>
+            <directory></directory>
+            <includes>
+                <include>README</include>
+            </includes>
+            <fileMode>0644</fileMode>
+            <directoryMode>0755</directoryMode>
+        </fileSet>
+        <fileSet>
             <outputDirectory>conf</outputDirectory>
-            <directory>src/main/conf</directory>
+            <directory>conf</directory>
             <excludes>
                 <exclude>fileobjectcreator.properties</exclude>
             </excludes>
