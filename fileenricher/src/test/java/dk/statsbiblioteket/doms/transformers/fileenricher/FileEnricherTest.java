@@ -2,11 +2,11 @@ package dk.statsbiblioteket.doms.transformers.fileenricher;
 
 import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
+import dk.statsbiblioteket.doms.transformers.common.FFProbeLocationDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.MockWebservice;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
-import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeContainingConfig;
 import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeLocationPropertyBasedDomsConfig;
 import org.apache.commons.io.FileUtils;
 import org.junit.After;
@@ -26,7 +26,7 @@ public class FileEnricherTest {
     private String testMuxFileName = "mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts";
     private String testObjectPid;
     CentralWebservice webservice;
-    FFProbeContainingConfig config;
+    FFProbeLocationDomsConfig config;
     File ffprobeFile;
     @Before
     public void setUp() throws Exception {

@@ -5,6 +5,7 @@ import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.transformers.common.DomsWebserviceFactory;
+import dk.statsbiblioteket.doms.transformers.common.FFProbeLocationDomsConfig;
 import dk.statsbiblioteket.doms.transformers.fileobjectcreator.MuxFileChannelCalculator;
 import jsr166y.ForkJoinTask;
 import jsr166y.RecursiveAction;
@@ -22,14 +23,14 @@ public class FileObjectCreatorWorker extends RecursiveAction {
     private static Logger log = LoggerFactory.getLogger(FileObjectCreatorWorker.class);
 
     private MuxFileChannelCalculator muxFileChannelCalculator;
-    private FFProbeLocationPropertyBasedDomsConfig config;
+    private FFProbeLocationDomsConfig config;
     private ResultWriter resultWriter;
     private String baseUrl;
     private List<String> data;
 
     private static boolean shutdown = false;
 
-    public FileObjectCreatorWorker(FFProbeLocationPropertyBasedDomsConfig config,
+    public FileObjectCreatorWorker(FFProbeLocationDomsConfig config,
                                    ResultWriter resultWriter,
                                    String baseUrl,
                                    List<String> data,

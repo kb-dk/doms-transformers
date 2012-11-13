@@ -6,9 +6,9 @@ import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
+import dk.statsbiblioteket.doms.transformers.common.FFProbeLocationDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.MigrationStatus;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
-import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeContainingConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,14 +22,13 @@ import java.util.List;
 import java.util.Map;
 
 public class DomsFileEnricherObjectHandler implements ObjectHandler {
-
-    private FFProbeContainingConfig config;
+    private FFProbeLocationDomsConfig config;
     private final CentralWebservice webservice;
     private final Map<String, String> checksums;
 
     private static final Logger log = LoggerFactory.getLogger(DomsFileEnricherObjectHandler.class);
 
-    public DomsFileEnricherObjectHandler(FFProbeContainingConfig config, CentralWebservice webservice, Map<String, String> checksums)
+    public DomsFileEnricherObjectHandler(FFProbeLocationDomsConfig config, CentralWebservice webservice, Map<String, String> checksums)
             throws JAXBException, IOException, ParseException, URISyntaxException {
 
         this.config = config;
