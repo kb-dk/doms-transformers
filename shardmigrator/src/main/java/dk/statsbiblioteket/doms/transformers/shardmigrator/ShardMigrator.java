@@ -8,6 +8,7 @@ import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.exceptions.CallbackException;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +21,7 @@ import java.util.List;
  * See the ShardRemover tool for removing shards once transformation of tools is complete.
  */
 public class ShardMigrator {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, CallbackException {
         //TODO: Setup apache CLI
 
         if (args.length == 2) {
@@ -33,7 +34,7 @@ public class ShardMigrator {
         }
     }
 
-    public static void run(File configfile, File uuidfile) throws IOException {
+    public static void run(File configfile, File uuidfile) throws IOException, CallbackException {
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
         PropertyBasedDomsConfig config = new PropertyBasedDomsConfig(configfile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();

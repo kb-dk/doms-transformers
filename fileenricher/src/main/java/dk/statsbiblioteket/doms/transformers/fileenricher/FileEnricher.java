@@ -6,9 +6,16 @@ import dk.statsbiblioteket.doms.transformers.common.FFProbeLocationDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.ExceptionLoggerCallback;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.OutputWriterCallback;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.exceptions.OutputWritingFailedException;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.StdoutDisplayCallback;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.exceptions.StopExecutionException;
 import dk.statsbiblioteket.doms.transformers.fileobjectcreator.FFProbeLocationPropertyBasedDomsConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBException;
 import java.io.BufferedReader;
@@ -25,7 +32,9 @@ import java.util.List;
  * Takes as input a file with program uuids (one per line). For each file, enriches metadata.
  */
 public class FileEnricher {
-    public static void main(String[] args) throws IOException, JAXBException, URISyntaxException, ParseException {
+    private static final Logger log = LoggerFactory.getLogger(FileEnricher.class);
+
+    public static void main(String[] args) throws IOException, StopExecutionException, JAXBException, URISyntaxException, ParseException {
         //TODO: Setup apache CLI
 
         File configFile;
@@ -55,12 +64,21 @@ public class FileEnricher {
         }
     }
 
-    private static void run(File configFile, ChecksumParser checksumParser, List<String> uuids) throws IOException, JAXBException, URISyntaxException, ParseException {
+    private static void run(File configFile, ChecksumParser checksumParser, List<String> uuids) throws IOException, StopExecutionException, JAXBException, URISyntaxException, ParseException {
         FFProbeLocationDomsConfig config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
 
         ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksumParser.getNameChecksumsMap());
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
-        objectListHandler.transform(uuids);
+        objectListHandler.addCallback(new OutputWriterCallback(config, objectHandler), OutputWritingFailedException.class);
+        objectListHandler.addCallback(new StdoutDisplayCallback());
+        objectListHandler.addCallback(new ExceptionLoggerCallback(log));
+        try {
+            objectListHandler.transform(uuids);
+        } catch (OutputWritingFailedException e) {
+            String msg = "Failed writing to output-file.";
+            log.error(msg, e);
+            System.err.println(msg);
+        }
     }
 }

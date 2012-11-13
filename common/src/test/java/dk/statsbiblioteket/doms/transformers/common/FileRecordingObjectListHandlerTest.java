@@ -1,5 +1,7 @@
 package dk.statsbiblioteket.doms.transformers.common;
 
+import dk.statsbiblioteket.doms.transformers.common.callbacks.OutputWriterCallback;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.exceptions.StopExecutionException;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -41,8 +43,14 @@ public class FileRecordingObjectListHandlerTest extends TestCase {
         }
 
         FileRecordingObjectListHandler handler = new FileRecordingObjectListHandler(config, testObjectHandler);
-        handler.transform(Arrays.asList("uuid:cb8da856-fae8-473f-9070-8d24b5a84cfc",
-                                        "uuid:99c1b516-3ea9-49ce-bfbc-ae1ea8faf0e3"));
+        handler.addCallback(new OutputWriterCallback(config, testObjectHandler));
+        try {
+            handler.transform(Arrays.asList("uuid:cb8da856-fae8-473f-9070-8d24b5a84cfc",
+                                            "uuid:99c1b516-3ea9-49ce-bfbc-ae1ea8faf0e3"));
+        } catch (StopExecutionException e) {
+            fail("Got exception: " + e);
+            e.printStackTrace();
+        }
         List<String> successes = new TrivialUuidFileReader().readUuids(new File(outputDirectory, MigrationStatus.COMPLETE.name().toLowerCase()));
         List<String> failures = new TrivialUuidFileReader().readUuids(new File(outputDirectory, MigrationStatus.FAILED.name().toLowerCase()));
         assertEquals(1, successes.size());

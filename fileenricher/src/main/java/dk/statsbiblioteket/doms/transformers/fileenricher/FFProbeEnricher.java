@@ -5,7 +5,6 @@ import dk.statsbiblioteket.doms.central.InvalidCredentialsException;
 import dk.statsbiblioteket.doms.central.InvalidResourceException;
 import dk.statsbiblioteket.doms.central.MethodFailedException;
 import dk.statsbiblioteket.doms.client.exceptions.NotFoundException;
-import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.FFProbeLocationConfig;
 import dk.statsbiblioteket.doms.transformers.common.MigrationStatus;
 import org.slf4j.Logger;

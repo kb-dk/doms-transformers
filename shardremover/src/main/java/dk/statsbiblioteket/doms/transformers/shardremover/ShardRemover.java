@@ -9,6 +9,7 @@ import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.exceptions.CallbackException;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +22,7 @@ import java.util.List;
  * See the ShardMigrator tool for moving metadata from shards to programs first.
  */
 public class ShardRemover {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, CallbackException {
         //TODO: Setup apache CLI
 
         if (args.length == 2) {
@@ -34,7 +35,7 @@ public class ShardRemover {
         }
     }
 
-    public static void run(File configfile, File uuidfile) throws IOException {
+    public static void run(File configfile, File uuidfile) throws IOException, CallbackException {
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
         DomsConfig config = new PropertyBasedDomsConfig(configfile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
