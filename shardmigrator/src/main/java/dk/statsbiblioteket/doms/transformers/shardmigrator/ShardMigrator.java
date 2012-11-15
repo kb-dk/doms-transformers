@@ -8,7 +8,13 @@ import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.TrivialUuidFileReader;
 import dk.statsbiblioteket.doms.transformers.common.UuidFileReader;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.ExceptionLoggerCallback;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.OutputWriterCallback;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.StdoutDisplayCallback;
 import dk.statsbiblioteket.doms.transformers.common.callbacks.exceptions.CallbackException;
+import dk.statsbiblioteket.doms.transformers.common.callbacks.exceptions.OutputWritingFailedException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -21,6 +27,7 @@ import java.util.List;
  * See the ShardRemover tool for removing shards once transformation of tools is complete.
  */
 public class ShardMigrator {
+    private static final Logger log = LoggerFactory.getLogger(ShardMigrator.class);
     public static void main(String[] args) throws IOException, CallbackException {
         //TODO: Setup apache CLI
 
@@ -38,12 +45,21 @@ public class ShardMigrator {
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
         PropertyBasedDomsConfig config = new PropertyBasedDomsConfig(configfile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
+
         ObjectHandler objectHandler = new DomsShardMigratorObjectHandler(config, webservice);
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
+        objectListHandler.addCallback(new OutputWriterCallback(config, objectHandler), OutputWritingFailedException.class);
+        objectListHandler.addCallback(new StdoutDisplayCallback());
+        objectListHandler.addCallback(new ExceptionLoggerCallback(log));
         System.out.println("created all the preliminaries");
 
         List<String> uuids = uuidFileReader.readUuids(uuidfile);
-        objectListHandler.transform(uuids);
+        try {
+            objectListHandler.transform(uuids);
+        } catch (OutputWritingFailedException e) {
+            String msg = "Failed writing to output-file.";
+            log.error(msg, e);
+            System.err.println(msg);
+        }
     }
-
 }
