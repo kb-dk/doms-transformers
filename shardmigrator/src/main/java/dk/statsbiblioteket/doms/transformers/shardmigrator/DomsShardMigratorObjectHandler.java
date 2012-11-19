@@ -219,7 +219,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
             endDate = fmt.parse(stopTime);
         }
         
-        String channelID = xpath.selectString(dom, "//pb:pbcorePublisher[/pb:publisherRole='channel_name']/pb:publisher");
+        String channelID = xpath.selectString(dom, "//pb:pbcorePublisher[pb:publisherRole='channel_name']/pb:publisher");
         
         programBroadcast.setChannelId(channelID);
         programBroadcast.setTimeStart(CalendarUtils.getXmlGregorianCalendar(startDate));
