@@ -79,7 +79,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
         List<Relation> consistsOfRelations = webservice.getNamedRelations(shardUuid,
                 "http://doms.statsbiblioteket.dk/relations/default/0/1/#consistsOf");
 
-        //get pbcore
+        //get dublin core
         String dcOriginal = webservice.getDatastreamContents(programUuid, "DC");
 
         //get pbcore
