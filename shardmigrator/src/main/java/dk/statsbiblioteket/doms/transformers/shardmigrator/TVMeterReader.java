@@ -118,6 +118,8 @@ public class TVMeterReader {
             handlePart(program, part3);
     
             program.setParsedProgramClassification(classification);
+        } else {
+            return null;
         }
         return program;
     }
