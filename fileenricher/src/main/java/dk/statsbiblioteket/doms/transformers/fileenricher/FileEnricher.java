@@ -53,7 +53,7 @@ public class FileEnricher {
             case 3:
                 configFile = new File(args[0]);
                 checksumParser = new ChecksumParser(new BufferedReader(new FileReader(new File(args[1]))));
-                System.out.println("Reading uuids from " + args[1]);
+                System.out.println("Reading uuids from " + args[2]);
                 File uuidfile = new File(args[2]);
                 uuids = uuidFileReader.readUuids(uuidfile);
                 run(configFile, checksumParser, uuids);
