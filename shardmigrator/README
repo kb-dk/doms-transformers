@@ -1,0 +1,21 @@
+# README file detailing the use of ShardMigrator
+
+## Prerequisites
+A DOMS updated to data model version 0.11.6.1.
+
+
+## Acquiring needed files
+The following data is needed to run the ShardMigrator:
+* a file containing a newline-separated list of program uuids to be migrated
+  (can be generated with `bin/uuidExtractorForProgramObjects.sh <path-to-shardmigrator.properties>`
+  or `bin/uuidExtractorForInactiveProgramObjects.sh <path-to-shardmigrator.properties>`)
+
+
+## Updating config files
+Example configuration-files can be found in the conf-directory.
+* shardmigrator.properties must be updated with relavant values.
+* logback.xml must be on the classpath, ie. in the conf-directory by default.
+
+
+## Running the ShardMigrator
+./bin/shardmigrator.sh <shardmigrator.properties> <uuids>
