@@ -12,6 +12,16 @@
 
     <fileSets>
         <fileSet>
+            <outputDirectory></outputDirectory>
+            <directory></directory>
+            <includes>
+                <include>README</include>
+                <include>CHANGELOG</include>
+            </includes>
+            <fileMode>0644</fileMode>
+            <directoryMode>0755</directoryMode>
+        </fileSet>
+        <fileSet>
             <outputDirectory>resources</outputDirectory>
             <directory>src/main/resources</directory>
         </fileSet>
