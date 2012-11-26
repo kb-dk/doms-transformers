@@ -46,7 +46,7 @@
 
   <xs:complexType name="overlap">
     <xs:sequence>
-      <xs:element minOccurs="0" name="file1UUId" type="xs:string"/>
+      <xs:element minOccurs="0" name="file1UUID" type="xs:string"/>
       <xs:element minOccurs="0" name="file2UUID" type="xs:string"/>
       <xs:element name="overlapLength" type="xs:long"/>
       <xs:element name="overlapType" type="xs:int"/>
