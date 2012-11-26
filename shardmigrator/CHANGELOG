@@ -1,0 +1,10 @@
+Version 0.1.4
+Fixed a critical bug that caused the hole- and overlap-analysis to be migrated
+without file/uuid information.
+Removed old badly named shardmigrator configuration example.
+
+8357342 2012-11-26 11:55:29 +0100       Adam Tulinius   Remove shardmigrator.properties, which should never have been under version control.
+b2836f3 2012-11-26 11:39:55 +0100       Adam Tulinius   Bugfix: Fix fatal typo in ProgramStructure.xsd, and add missing URL-part in convertShardStructure.
+
+Version 0.1.3
+Initial release.
