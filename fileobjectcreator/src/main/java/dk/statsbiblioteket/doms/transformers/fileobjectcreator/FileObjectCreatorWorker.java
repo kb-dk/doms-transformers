@@ -56,6 +56,8 @@ public class FileObjectCreatorWorker extends RecursiveAction {
                 log.info("Error while parsing: " + data.get(0));
             } catch (FileIgnoredException e) {
                 log.info("Ignored file: " + e.getFilename());
+            } catch (Exception e) {
+                log.error("Well well, this was unexpected. I was just processing '{}' when this exception showed up :(", data.get(0), e);
             }
         } else if (permissionToRun()) {
             int center = data.size()/2;
