@@ -53,7 +53,10 @@ public class FileNameParser {
             result = decodeRadioFilename(filename);
         } else if (filename.endsWith(".mpeg") || filename.endsWith(".wmv") || filename.endsWith(".mp4")) {
             result = decodeAnalogTVFilename(filename);
+        } else {
+            throw new ParseException("Failed to match filename '"+filename+"' to any of the handled cases",0);
         }
+
 
         if (result != null) {
             result.setChecksum(checksum);
