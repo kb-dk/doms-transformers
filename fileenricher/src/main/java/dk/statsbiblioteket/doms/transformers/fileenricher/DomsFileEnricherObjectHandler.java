@@ -25,15 +25,17 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
     private FFProbeLocationDomsConfig config;
     private final CentralWebservice webservice;
     private final Map<String, String> checksums;
+    private Map<String, String> filesizes;
 
     private static final Logger log = LoggerFactory.getLogger(DomsFileEnricherObjectHandler.class);
 
-    public DomsFileEnricherObjectHandler(FFProbeLocationDomsConfig config, CentralWebservice webservice, Map<String, String> checksums)
+    public DomsFileEnricherObjectHandler(FFProbeLocationDomsConfig config, CentralWebservice webservice, Map<String, String> checksums, Map<String, String> filesizes)
             throws JAXBException, IOException, ParseException, URISyntaxException {
 
         this.config = config;
         this.webservice = webservice;
         this.checksums = checksums;
+        this.filesizes = filesizes;
     }
 
     @Override
@@ -63,7 +65,7 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
             }
 
             if (enrichBroadcastMetadata) {
-                MigrationStatus metadataMigrationStatus = new BroadcastMetadataEnricher(config, webservice, checksums, filename).transform(uuid);
+                MigrationStatus metadataMigrationStatus = new BroadcastMetadataEnricher(config, webservice, checksums, filesizes, filename).transform(uuid);
                 if (metadataMigrationStatus.equals(MigrationStatus.COMPLETE)) {
                     migrationSuccesses++;
                 }

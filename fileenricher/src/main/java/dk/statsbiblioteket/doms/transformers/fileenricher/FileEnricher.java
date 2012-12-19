@@ -68,7 +68,7 @@ public class FileEnricher {
         FFProbeLocationDomsConfig config = new FFProbeLocationPropertyBasedDomsConfig(configFile);
         CentralWebservice webservice = new DomsWebserviceFactory(config).getWebservice();
 
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksumParser.getNameChecksumsMap());
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksumParser.getNameChecksumsMap(), checksumParser.getSizeMap());
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
         objectListHandler.addCallback(new OutputWriterCallback(config, objectHandler), OutputWritingFailedException.class);
         objectListHandler.addCallback(new StdoutDisplayCallback());

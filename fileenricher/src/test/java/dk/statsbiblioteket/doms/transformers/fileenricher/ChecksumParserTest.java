@@ -31,5 +31,6 @@ public class ChecksumParserTest {
                             new InputStreamReader(
                                     Thread.currentThread().getContextClassLoader().getResourceAsStream("checksumTestFile"))));
         assertThat(checksums.getNameChecksumsMap().size(), is(3));
+        assertThat(checksums.getSizeMap().size(), is(3));
     }
 }

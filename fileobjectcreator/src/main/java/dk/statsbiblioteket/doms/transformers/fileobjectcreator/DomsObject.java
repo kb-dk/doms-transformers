@@ -32,7 +32,7 @@ public class DomsObject {
         this.fileName = fileName;
         this.checksum = checksum;
         this.size = size;
-        metadata = new FileNameParser(this.fileName, this.checksum, muxFileChannelCalculator).getBroadCastMetadata();
+        metadata = new FileNameParser(this.fileName, this.checksum, this.size, muxFileChannelCalculator).getBroadCastMetadata();
     }
 
     public String toString() {
@@ -93,6 +93,8 @@ public class DomsObject {
     public String guessFormatUri() {
         if (nameToUriMap == null) {
             nameToUriMap = new HashMap<String, String>();
+            nameToUriMap.put("mpegts-singlechannel-audio", "info:mime/video/MP2T;codecs=\"mp2\""); // FIXME: this is wrong, now go fix it.
+            nameToUriMap.put("mpegts-singlechannel-video", "info:mime/video/MP2T;codecs=\"h264,mp2\""); // FIXME: this is wrong, now go fix it
             nameToUriMap.put("mpegts-multichannel-video", null); // shouldn't be used directly, needs furhter processing.
             nameToUriMap.put("mpeg1", "info:pronom/x-fmt/385");
             nameToUriMap.put("mpeg2", "info:pronom/x-fmt/386");

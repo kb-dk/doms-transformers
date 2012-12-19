@@ -1,7 +1,6 @@
 package dk.statsbiblioteket.doms.transformers.fileobjectcreator;
 
 import dk.statsbiblioteket.doms.transformers.common.FFProbeLocationDomsConfig;
-import dk.statsbiblioteket.doms.transformers.fileobjectcreator.MuxFileChannelCalculator;
 
 import java.text.ParseException;
 

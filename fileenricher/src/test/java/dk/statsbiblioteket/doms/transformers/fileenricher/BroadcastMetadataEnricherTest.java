@@ -38,7 +38,7 @@ public class BroadcastMetadataEnricherTest {
 
 
         webservice = new MockWebservice();
-        handler = new BroadcastMetadataEnricher(null, webservice, checksums.getNameChecksumsMap(), null);
+        handler = new BroadcastMetadataEnricher(null, webservice, checksums.getNameChecksumsMap(), checksums.getSizeMap(), null);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class BroadcastMetadataEnricherTest {
 
         String filename = "mux1.1287514800-2010-10-19-21.00.00_1287518400-2010-10-19-22.00.00_dvb1-1.ts";
 
-        BroadcastMetadataEnricher handler = new BroadcastMetadataEnricher(null, webservice, checksums.getNameChecksumsMap(), null);
+        BroadcastMetadataEnricher handler = new BroadcastMetadataEnricher(null, webservice, checksums.getNameChecksumsMap(), checksums.getSizeMap(), null);
         handler.transform(testObjectPid);
     }
 
@@ -61,7 +61,7 @@ public class BroadcastMetadataEnricherTest {
         Set<String> filenames = checksums.getNameChecksumsMap().keySet();
         for (String filename : filenames) {
             BroadcastMetadata metadata =
-                    new FileNameParser(filename, checksums.getNameChecksumsMap().get(filename), muxFileChannelCalculator).getBroadCastMetadata();
+                    new FileNameParser(filename, checksums.getNameChecksumsMap().get(filename), checksums.getSizeMap().get(filename), muxFileChannelCalculator).getBroadCastMetadata();
             if (metadata == null){
                 System.out.println("failed to parse file '"+filename+"'");
             }
@@ -79,7 +79,7 @@ public class BroadcastMetadataEnricherTest {
         assertThat(muxID, is(Integer.parseInt("1")));
 
         BroadcastMetadata metadata =
-                new FileNameParser(testMuxFileName, checksums.getNameChecksumsMap().get(testMuxFileName), muxFileChannelCalculator).getBroadCastMetadata();
+                new FileNameParser(testMuxFileName, checksums.getNameChecksumsMap().get(testMuxFileName), checksums.getSizeMap().get(testMuxFileName), muxFileChannelCalculator).getBroadCastMetadata();
         assertThat(metadata.getRecorder(), is(testMuxRecorder));
         assertThat(metadata.getStartTime(), is(CalendarUtils.getXmlGregorianCalendar(testMuxStartTime)));
         assertThat(metadata.getStopTime(), is(CalendarUtils.getXmlGregorianCalendar(testMuxStopTime)));
@@ -96,7 +96,7 @@ public class BroadcastMetadataEnricherTest {
         String testRadioFormatName = "wav";
 
         BroadcastMetadata metadata =
-                new FileNameParser(testRadioFileName, checksums.getNameChecksumsMap().get(testRadioFileName), muxFileChannelCalculator).getBroadCastMetadata();
+                new FileNameParser(testRadioFileName, checksums.getNameChecksumsMap().get(testRadioFileName), checksums.getSizeMap().get(testRadioFileName), muxFileChannelCalculator).getBroadCastMetadata();
         assertThat(metadata.getRecorder(), is(testRadioRecorder));
         assertThat(metadata.getStartTime(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStartTime)));
         assertThat(metadata.getStopTime(), is(CalendarUtils.getXmlGregorianCalendar(testRadioStopTime)));
@@ -114,7 +114,7 @@ public class BroadcastMetadataEnricherTest {
         String testMPEGFormatName = "mpeg1";
 
         BroadcastMetadata metadata =
-                new FileNameParser(testMPEGFileName, checksums.getNameChecksumsMap().get(testMPEGFileName), muxFileChannelCalculator).getBroadCastMetadata();
+                new FileNameParser(testMPEGFileName, checksums.getNameChecksumsMap().get(testMPEGFileName), checksums.getSizeMap().get(testMPEGFileName), muxFileChannelCalculator).getBroadCastMetadata();
         assertThat(metadata.getRecorder(), is(testMPEGRecorder));
         assertThat(metadata.getStartTime(), is(CalendarUtils.getXmlGregorianCalendar(testMPEGStartTime)));
         assertThat(metadata.getStopTime(), is(CalendarUtils.getXmlGregorianCalendar(testMPEGStopTime)));

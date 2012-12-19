@@ -59,7 +59,7 @@ public class FileEnricherTest {
                 new BufferedReader(
                         new InputStreamReader(
                                 Thread.currentThread().getContextClassLoader().getResourceAsStream("checksumTestFile"))));
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap());
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap(), checksums.getSizeMap());
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
 
@@ -88,7 +88,7 @@ public class FileEnricherTest {
                         new InputStreamReader(
                                 Thread.currentThread().getContextClassLoader().getResourceAsStream("checksumTestFile"))));
 
-        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap());
+        ObjectHandler objectHandler = new DomsFileEnricherObjectHandler(config, webservice, checksums.getNameChecksumsMap(), checksums.getSizeMap());
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
 
