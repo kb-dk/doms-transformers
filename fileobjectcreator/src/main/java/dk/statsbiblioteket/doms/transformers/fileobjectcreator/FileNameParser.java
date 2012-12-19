@@ -18,6 +18,14 @@ public class FileNameParser {
     private String size;
     private final MuxFileChannelCalculator muxChannelCalculator;
 
+    public FileNameParser(String input, MuxFileChannelCalculator muxChannelCalculator) {
+        String[] inputParts = input.split(" ");
+        this.filename = inputParts[2];
+        this.checksum = inputParts[0];
+        this.size = inputParts[1];
+        this.muxChannelCalculator = muxChannelCalculator;
+    }
+
     public FileNameParser(String filename, String checksum, String size, MuxFileChannelCalculator muxChannelCalculator) {
         this.filename = filename;
         this.checksum = checksum;
