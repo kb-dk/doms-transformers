@@ -50,31 +50,39 @@ public class DomsFileEnricherObjectHandler implements ObjectHandler {
         boolean enrichFFProbeData = shouldEnrich(uuid, datastreamProfilesIDs, BroadcastMetadataEnricher.FFPROBE_DATASTREAM_NAME, BroadcastMetadataEnricher.FFPROBE_ERRORS_DATASTREAM_NAME);
         boolean enrichBroadcastMetadata = shouldEnrich(uuid, datastreamProfilesIDs, BroadcastMetadataEnricher.BROADCAST_METADATA_DATASTREAM_NAME);
 
+        int pendingMigrations = 0;
+
+        if (enrichFFProbeData) {
+            pendingMigrations++;
+        }
+
+        if (enrichBroadcastMetadata) {
+            pendingMigrations++;
+        }
+
         String filename = getFilenameFromObject(uuid);
 
-        if (filename != null && (enrichFFProbeData || enrichBroadcastMetadata)) {
+        if (filename != null && pendingMigrations > 0) {
             webservice.markInProgressObject(Arrays.asList(uuid), "Modifying object as part of datamodel upgrade");
-
-            int migrationSuccesses = 0;
 
             if (enrichFFProbeData) {
                 MigrationStatus ffProbeMigrationStatus = new FFProbeEnricher(config, webservice).transform(uuid);
                 if (ffProbeMigrationStatus.equals(MigrationStatus.COMPLETE)) {
-                    migrationSuccesses++;
+                    pendingMigrations--;
                 }
             }
 
             if (enrichBroadcastMetadata) {
                 MigrationStatus metadataMigrationStatus = new BroadcastMetadataEnricher(config, webservice, checksums, filesizes, filename).transform(uuid);
                 if (metadataMigrationStatus.equals(MigrationStatus.COMPLETE)) {
-                    migrationSuccesses++;
+                    pendingMigrations--;
                 }
             }
 
             webservice.markPublishedObject(Arrays.asList(uuid), "Modifying object as part of datamodel upgrade");
 
-            switch (migrationSuccesses) {
-                case 2:
+            switch (pendingMigrations) {
+                case 0:
                     return MigrationStatus.COMPLETE;
                 case 1:
                     return MigrationStatus.INCOMPLETE;
