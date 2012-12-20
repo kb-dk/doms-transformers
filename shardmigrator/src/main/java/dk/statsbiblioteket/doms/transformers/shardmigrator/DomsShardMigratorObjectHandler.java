@@ -40,6 +40,7 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
 
 /**
  * Use DOMS to handle object transformation for shard removal for a UUID.
@@ -112,7 +113,7 @@ public class DomsShardMigratorObjectHandler implements ObjectHandler {
             dc.getTitleOrCreatorOrSubject().add(elementType);
             //Note: This will only work on valid pbcore containing at least one id. That's okay with me.
             pbcoreFinal = pbcoreOriginal.replaceFirst("<pbcoreIdentifier>", "<pbcoreIdentifier>\n"
-                    + "    <identifier>" + tvmeterId + "</identifier>\n"
+                    + "    <identifier>" + Matcher.quoteReplacement(tvmeterId) + "</identifier>\n"
                     + "    <identifierSource>tvmeter</identifierSource>\n" + "  </pbcoreIdentifier>\n  <pbcoreIdentifier>");
         }
 
