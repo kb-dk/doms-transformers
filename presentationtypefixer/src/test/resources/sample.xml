@@ -1,0 +1,115 @@
+
+
+<ns2:PBCoreDescriptionDocument xmlns:ns2="http://www.pbcore.org/PBCore/PBCoreNamespace.html">
+  <ns2:pbcoreIdentifier>
+    <ns2:identifier>10215249RitzauProgram</ns2:identifier>
+    <ns2:identifierSource>id</ns2:identifierSource>
+  </ns2:pbcoreIdentifier>
+  <ns2:pbcoreIdentifier>
+    <ns2:identifier>00011305162029571305162054102000100011002100110010001100800010001000210020120000TV AVISEN                                                   TV AVISEN                                                   TV AVISEN                                                        EXTERN    010000000000000000000          16:9      111000000000001213520400          000001TvmeterProgram</ns2:identifier>
+    <ns2:identifierSource>tvmeter</ns2:identifierSource>
+  </ns2:pbcoreIdentifier>
+  <ns2:pbcoreTitle>
+    <ns2:title>TV Avisen</ns2:title>
+    <ns2:titleType>titel</ns2:titleType>
+  </ns2:pbcoreTitle>
+  <ns2:pbcoreTitle>
+    <ns2:title>TV AVISEN                                                   </ns2:title>
+    <ns2:titleType>originaltitel</ns2:titleType>
+  </ns2:pbcoreTitle>
+  <ns2:pbcoreDescription>
+    <ns2:description></ns2:description>
+  </ns2:pbcoreDescription>
+  <ns2:pbcoreGenre>
+    <ns2:genre>hovedgenre: Nyheder &amp; Aktualitet</ns2:genre>
+  </ns2:pbcoreGenre>
+  <ns2:pbcoreGenre>
+    <ns2:genre>undergenre: Nyheder</ns2:genre>
+  </ns2:pbcoreGenre>
+  <ns2:pbcoreGenre>
+    <ns2:genre>indhold_emne: Samfundsforhold (fakta)</ns2:genre>
+  </ns2:pbcoreGenre>
+  <ns2:pbcorePublisher>
+    <ns2:publisher>dr1</ns2:publisher>
+    <ns2:publisherRole>channel_name</ns2:publisherRole>
+  </ns2:pbcorePublisher>
+  <ns2:pbcorePublisher>
+    <ns2:publisher>DR1</ns2:publisher>
+    <ns2:publisherRole>kanalnavn</ns2:publisherRole>
+  </ns2:pbcorePublisher>
+  <ns2:pbcoreInstantiation>
+    <ns2:dateCreated>2012</ns2:dateCreated>
+    <ns2:formatLocation>Statsbiblioteket; Radio/TV-samlingen</ns2:formatLocation>
+    <ns2:formatStandard>ikke hd</ns2:formatStandard>
+    <ns2:formatDuration>1453000</ns2:formatDuration>
+    <ns2:formatAspectRatio>16:9</ns2:formatAspectRatio>
+    <ns2:formatColors>farve</ns2:formatColors>
+    <ns2:formatChannelConfiguration>ikke surround</ns2:formatChannelConfiguration>
+    <ns2:pbcoreDateAvailable>
+      <ns2:dateAvailableStart>2013-05-16T20:29:57+0200</ns2:dateAvailableStart>
+      <ns2:dateAvailableEnd>2013-05-16T20:54:10+0200</ns2:dateAvailableEnd>
+    </ns2:pbcoreDateAvailable>
+    <ns2:pbcoreFormatID>
+      <ns2:formatIdentifier>10215249RitzauProgram</ns2:formatIdentifier>
+      <ns2:formatIdentifierSource>id</ns2:formatIdentifierSource>
+    </ns2:pbcoreFormatID>
+    <ns2:pbcoreFormatID>
+      <ns2:formatIdentifier>00011305162029571305162054102000100011002100110010001100800010001000210020120000TV AVISEN                                                   TV AVISEN                                                   TV AVISEN                                                        EXTERN    010000000000000000000          16:9      111000000000001213520400          000001TvmeterProgram</ns2:formatIdentifier>
+      <ns2:formatIdentifierSource>tvmeter</ns2:formatIdentifierSource>
+    </ns2:pbcoreFormatID>
+  </ns2:pbcoreInstantiation>
+  <ns2:pbcoreExtension>
+    <ns2:extension>antalepisoder:0</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>premiere:ikke premiere</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>genudsendelse:ikke genudsendelse</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>hovedgenre_id:9</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>kanalid:3</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>live:ikke live</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>produktionsland_id:0</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>program_id:39706748</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>program_ophold:ikke program ophold</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>undergenre_id:666</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>urllink:www.dr.dk/nyheder/</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>afsnit_id:0</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>saeson_id:0</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>serie_id:0</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>tekstet:ikke tekstet</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>th:ikke tekstet for hørehæmmede</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>ttv:ikke tekst-tv</ns2:extension>
+  </ns2:pbcoreExtension>
+  <ns2:pbcoreExtension>
+    <ns2:extension>showviewcode:58210</ns2:extension>
+  </ns2:pbcoreExtension>
+</ns2:PBCoreDescriptionDocument>

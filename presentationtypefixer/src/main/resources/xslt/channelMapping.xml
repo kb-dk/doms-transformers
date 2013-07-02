@@ -1,0 +1,101 @@
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:ns2="http://www.pbcore.org/PBCore/PBCoreNamespace.html"
+                xmlns:my="some.uri" exclude-result-prefixes="my"
+
+        >
+    <my:map>
+        <entry key="folketinget">Moving Image</entry>
+        <entry key="drboo">Sound</entry>
+        <entry key="drp4blm">Sound</entry>
+        <entry key="drp4fyn">Sound</entry>
+        <entry key="drp4k94">Sound</entry>
+        <entry key="drp4miv">Sound</entry>
+        <entry key="drp4nor">Sound</entry>
+        <entry key="drp4re">Sound</entry>
+        <entry key="drp1">Sound</entry>
+        <entry key="drp3">Sound</entry>
+        <entry key="dr1">Moving Image</entry>
+        <entry key="dr2">Moving Image</entry>
+        <entry key="drk">Moving Image</entry>
+        <entry key="drp2">Sound</entry>
+        <entry key="drp4k">Sound</entry>
+        <entry key="drram">Moving Image</entry>
+        <entry key="tv2d">Moving Image</entry>
+        <entry key="dk4">Moving Image</entry>
+        <entry key="drpk">Sound</entry>
+        <entry key="tv2l">Moving Image</entry>
+        <entry key="tv2z">Moving Image</entry>
+        <entry key="tv2news">Moving Image</entry>
+        <entry key="drbo">Sound</entry>
+        <entry key="drol">Sound</entry>
+        <entry key="drp4b">Sound</entry>
+        <entry key="drp4f">Sound</entry>
+        <entry key="novafm">Sound</entry>
+        <entry key="drp4mv">Sound</entry>
+        <entry key="drp4nj">Sound</entry>
+        <entry key="drp4o">Sound</entry>
+        <entry key="drp4s">Sound</entry>
+        <entry key="drp5000">Sound</entry>
+        <entry key="drx">Sound</entry>
+        <entry key="kanal5">Moving Image</entry>
+        <entry key="tv2c">Moving Image</entry>
+        <entry key="tv2radio">Sound</entry>
+        <entry key="tv2s">Moving Image</entry>
+        <entry key="tv2sport">Moving Image</entry>
+        <entry key="sbsnet">Moving Image</entry>
+        <entry key="kanal4">Moving Image</entry>
+        <entry key="drrar">Sound</entry>
+        <entry key="voice">Sound</entry>
+        <entry key="thevoice">Sound</entry>
+        <entry key="tv2f">Moving Image</entry>
+        <entry key="tv2mv">Moving Image</entry>
+        <entry key="tv3">Moving Image</entry>
+        <entry key="tv3p">Moving Image</entry>
+        <entry key="tv3puls">Moving Image</entry>
+        <entry key="tvdk">Moving Image</entry>
+        <entry key="tv2oj">Moving Image</entry>
+        <entry key="drp5">Sound</entry>
+        <entry key="drp7m">Sound</entry>
+        <entry key="drp6b">Sound</entry>
+        <entry key="kanaloestjylland">Moving Image</entry>
+        <entry key="drmamara">Sound</entry>
+        <entry key="drp8j">Sound</entry>
+        <entry key="kanalsyd">Moving Image</entry>
+        <entry key="kanal6">Moving Image</entry>
+        <entry key="tlcdanmark">Moving Image</entry>
+        <entry key="rakl">Sound</entry>
+        <entry key="tvfyn">Moving Image</entry>
+        <entry key="tv2ost">Moving Image</entry>
+        <entry key="tv2n">Moving Image</entry>
+        <entry key="tv2born">Moving Image</entry>
+        <entry key="100fm">Sound</entry>
+        <entry key="bbce">Moving Image</entry>
+        <entry key="bbcw">Moving Image</entry>
+        <entry key="bbck">Moving Image</entry>
+        <entry key="mtv">Moving Image</entry>
+        <entry key="svt1">Moving Image</entry>
+        <entry key="svt2">Moving Image</entry>
+        <entry key="nrk1">Moving Image</entry>
+        <entry key="animal">Moving Image</entry>
+        <entry key="discov">Moving Image</entry>
+        <entry key="ard">Moving Image</entry>
+        <entry key="3sat">Moving Image</entry>
+        <entry key="rtl">Moving Image</entry>
+        <entry key="tv5mon">Moving Image</entry>
+        <entry key="natgeo">Moving Image</entry>
+        <entry key="arte">Moving Image</entry>
+        <entry key="drhd">Moving Image</entry>
+        <entry key="dr3">Moving Image</entry>
+        <entry key="tv2fri">Moving Image</entry>
+        <entry key="radio2">Sound</entry>
+        <entry key="radiocity">Sound</entry>
+        <entry key="24syv">Sound</entry>
+        <entry key="drup">Moving Image</entry>
+        <entry key="drultra">Moving Image</entry>
+        <entry key="voicetv">Moving Image</entry>
+        <entry key="zdf">Moving Image</entry>
+        <entry key="7eren">Moving Image</entry>
+
+    </my:map>
+
+</xsl:stylesheet>

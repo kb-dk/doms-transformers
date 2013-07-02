@@ -24,6 +24,7 @@
         <module>shardmigrator</module>
         <module>shardremover</module>
         <module>fileenricher</module>
+        <module>presentationtypefixer</module>
         <module>fileobjectcreator</module>
         <module>common</module>
     </modules>
