@@ -1,36 +1,28 @@
 package dk.statsbiblioteket.doms.transformers.presentationtypefixer;
 
-import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.transformers.common.FileRecordingObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.MockWebservice;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
 import dk.statsbiblioteket.doms.transformers.common.ObjectListHandler;
 import dk.statsbiblioteket.doms.transformers.common.PropertyBasedDomsConfig;
-import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-/**
- * Created with IntelliJ IDEA.
- * User: abr
- * Date: 7/2/13
- * Time: 3:26 PM
- * To change this template use File | Settings | File Templates.
- */
 public class PresentationTypeFixerTest {
     private PropertyBasedDomsConfig config;
     private MockWebservice webservice;
     private String testObjectPid;
+    private String originalContents;
 
     @Before
     public void setUp() throws Exception {
@@ -38,9 +30,9 @@ public class PresentationTypeFixerTest {
         webservice = new MockWebservice();
         testObjectPid = webservice.newObject(null,null,null);
 
-        String contents = IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("sample.xml"));
+        originalContents = IOUtils.toString(Thread.currentThread().getContextClassLoader().getResourceAsStream("sample.xml"));
 
-        webservice.modifyDatastream(testObjectPid,"PBCORE",contents,"sdf");
+        webservice.modifyDatastream(testObjectPid,"PBCORE", originalContents,"sdf");
 
         config = new PropertyBasedDomsConfig(new File(Thread.currentThread().getContextClassLoader().getResource("presentationtypefixer.properties").toURI()));
 
@@ -54,6 +46,8 @@ public class PresentationTypeFixerTest {
     @Test
     public void testMain() throws Exception {
 
+        List<String> originalCalls = webservice.getCalls();
+        assertFalse(originalContents.contains("formatMediaType"));
         ObjectHandler objectHandler = new DomsPresentationTypeFixerObjectHandler(config, webservice);
 
         ObjectListHandler objectListHandler = new FileRecordingObjectListHandler(config, objectHandler);
@@ -63,8 +57,17 @@ public class PresentationTypeFixerTest {
 
         objectListHandler.transform(uuids);
 
+        assertEquals("By here, there should have been one get, one set inactive, one modify and one set active",originalCalls.size(), webservice.getCalls().size() - 4);
+
         String pbcore = webservice.getDatastreamContents(testObjectPid, "PBCORE");
         assertTrue(pbcore.contains("formatMediaType"));
+        assertEquals("As previous, but one more get",originalCalls.size(), webservice.getCalls().size() - 5);
+
+        objectListHandler.transform(uuids);
+        pbcore = webservice.getDatastreamContents(testObjectPid, "PBCORE");
+        assertTrue(pbcore.contains("formatMediaType"));
+
+        assertEquals("As before, but two more gets, one for the transform which should not modify or change state and one here",originalCalls.size(), webservice.getCalls().size() - 7);
 
     }
 

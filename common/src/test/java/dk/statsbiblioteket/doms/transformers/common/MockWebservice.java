@@ -10,6 +10,7 @@ import dk.statsbiblioteket.doms.central.Relation;
 import dk.statsbiblioteket.doms.central.SearchResult;
 import dk.statsbiblioteket.doms.central.User;
 import dk.statsbiblioteket.doms.central.ViewBundle;
+import edu.emory.mathcs.backport.java.util.Collections;
 
 import javax.jws.WebParam;
 import java.util.ArrayList;
@@ -19,13 +20,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Created by IntelliJ IDEA.
- * User: abr
- * Date: 7/17/12
- * Time: 2:52 PM
- * To change this template use File | Settings | File Templates.
- */
 public class MockWebservice implements CentralWebservice {
 
 
@@ -33,8 +27,11 @@ public class MockWebservice implements CentralWebservice {
 
     Map<String, String> urlLookupTable = new HashMap<String, String>();
 
+    List<String> calls = new ArrayList<String>();
+
     @Override
     public String newObject(@WebParam(name = "pid", targetNamespace = "") String pid, @WebParam(name = "oldID", targetNamespace = "") List<String> oldID, @WebParam(name = "comment", targetNamespace = "") String comment) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName());
         MockObject mockObject = new MockObject();
         mockObject.pid = "uuid:" + UUID.randomUUID().toString();
         objects.put(mockObject.pid, mockObject);
@@ -43,6 +40,7 @@ public class MockWebservice implements CentralWebservice {
 
     @Override
     public ObjectProfile getObjectProfile(@WebParam(name = "pid", targetNamespace = "") String pid) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName());
         MockObject object = objects.get(pid);
         if (object == null) {
             throw new InvalidResourceException("sdf", "sdf");
@@ -56,6 +54,7 @@ public class MockWebservice implements CentralWebservice {
     @Override
     public void setObjectLabel(@WebParam(name = "pid", targetNamespace = "") String pid,
                                @WebParam(name = "name", targetNamespace = "") String name, @WebParam(name = "comment", targetNamespace = "") String comment) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         MockObject object = objects.get(pid);
         if (object == null) {
             throw new InvalidResourceException("sdf", "sdf");
@@ -68,11 +67,12 @@ public class MockWebservice implements CentralWebservice {
 
     @Override
     public void deleteObject(@WebParam(name = "pids", targetNamespace = "") List<String> pids, @WebParam(name = "comment", targetNamespace = "") String comment) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
-        //To change body of implemented methods use File | Settings | File Templates.
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
     }
 
     @Override
     public void markPublishedObject(@WebParam(name = "pids", targetNamespace = "") List<String> pids, @WebParam(name = "comment", targetNamespace = "") String comment) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         for (String pid : pids) {
             MockObject object = objects.get(pid);
             if (object == null) {
@@ -84,6 +84,7 @@ public class MockWebservice implements CentralWebservice {
 
     @Override
     public void markInProgressObject(@WebParam(name = "pids", targetNamespace = "") List<String> pids, @WebParam(name = "comment", targetNamespace = "") String comment) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         for (String pid : pids) {
             MockObject object = objects.get(pid);
             if (object == null) {
@@ -97,6 +98,7 @@ public class MockWebservice implements CentralWebservice {
     @Override
     public void modifyDatastream(@WebParam(name = "pid", targetNamespace = "") String pid,
                                  @WebParam(name = "datastream", targetNamespace = "") String datastream, @WebParam(name = "contents", targetNamespace = "") String contents, @WebParam(name = "comment", targetNamespace = "") String comment) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         MockObject object = objects.get(pid);
         if (object == null) {
             throw new InvalidResourceException("sdf", "sdf");
@@ -110,6 +112,7 @@ public class MockWebservice implements CentralWebservice {
 
     @Override
     public String getDatastreamContents(@WebParam(name = "pid", targetNamespace = "") String pid, @WebParam(name = "datastream", targetNamespace = "") String datastream) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         MockObject object = objects.get(pid);
         if (object == null) {
             throw new InvalidResourceException("sdf", "sdf");
@@ -129,6 +132,7 @@ public class MockWebservice implements CentralWebservice {
                                         @WebParam(name = "permanentURL", targetNamespace = "") String permanentURL,
                                         @WebParam(name = "formatURI", targetNamespace = "") String formatURI,
                                         @WebParam(name = "comment", targetNamespace = "") String comment) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         MockObject object = objects.get(pid);
         if (object == null) {
             throw new InvalidResourceException("sdf", "sdf");
@@ -143,6 +147,7 @@ public class MockWebservice implements CentralWebservice {
     @Override
     public String getFileObjectWithURL(@WebParam(name = "URL", targetNamespace = "") String url)
             throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         String pid = urlLookupTable.get(url);
         if (pid == null) {
             throw new InvalidResourceException("sfds","sdfdsf");
@@ -152,6 +157,7 @@ public class MockWebservice implements CentralWebservice {
 
     @Override
     public void addRelation(@WebParam(name = "pid", targetNamespace = "") String pid, @WebParam(name = "relation", targetNamespace = "") Relation relation, @WebParam(name = "comment", targetNamespace = "") String comment) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         MockObject object = objects.get(pid);
         if (object == null){
             throw new InvalidResourceException("sdfs","Dfsd");
@@ -167,6 +173,7 @@ public class MockWebservice implements CentralWebservice {
 
     @Override
     public List<Relation> getRelations(@WebParam(name = "pid", targetNamespace = "") String pid) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         MockObject object = objects.get(pid);
         if (object == null){
             throw new InvalidResourceException("sdfs","Dfsd");
@@ -186,6 +193,7 @@ public class MockWebservice implements CentralWebservice {
 
     @Override
     public List<Relation> getNamedRelations(@WebParam(name = "pid", targetNamespace = "") String pid, @WebParam(name = "predicate", targetNamespace = "") String predicate) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         List<Relation> relations = getRelations(pid);
         List<Relation> output = new ArrayList<Relation>();
         for (Relation relation : relations) {
@@ -198,12 +206,14 @@ public class MockWebservice implements CentralWebservice {
 
     @Override
     public List<Relation> getInverseRelations(@WebParam(name = "pid", targetNamespace = "") String pid) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         //TODO
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
     public List<Relation> getInverseRelationsWithPredicate(@WebParam(name = "pid", targetNamespace = "") String pid, @WebParam(name = "predicate", targetNamespace = "") String predicate) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         //TODO
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -212,7 +222,7 @@ public class MockWebservice implements CentralWebservice {
     public void deleteRelation(@WebParam(name = "pid", targetNamespace = "") String pid,
                                @WebParam(name = "relation", targetNamespace = "") Relation relation,
                                @WebParam(name = "comment", targetNamespace = "") String comment) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
-
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         MockObject mockobject = objects.get(pid);
 
         for (Relation relation1 : mockobject.relations) {
@@ -227,46 +237,59 @@ public class MockWebservice implements CentralWebservice {
 
     @Override
     public ViewBundle getViewBundle(@WebParam(name = "pid", targetNamespace = "") String pid, @WebParam(name = "ViewAngle", targetNamespace = "") String viewAngle) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         throw new IllegalAccessError();
     }
 
     @Override
     public List<RecordDescription> getIDsModified(@WebParam(name = "since", targetNamespace = "") long since, @WebParam(name = "collectionPid", targetNamespace = "") String collectionPid, @WebParam(name = "viewAngle", targetNamespace = "") String viewAngle, @WebParam(name = "state", targetNamespace = "") String state, @WebParam(name = "offset", targetNamespace = "") Integer offset, @WebParam(name = "limit", targetNamespace = "") Integer limit) throws InvalidCredentialsException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         throw new IllegalAccessError();
     }
 
     @Override
     public long getLatestModified(@WebParam(name = "collectionPid", targetNamespace = "") String collectionPid, @WebParam(name = "viewAngle", targetNamespace = "") String viewAngle, @WebParam(name = "state", targetNamespace = "") String state) throws InvalidCredentialsException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         throw new IllegalAccessError();
     }
 
     @Override
     public List<String> findObjectFromDCIdentifier(@WebParam(name = "string", targetNamespace = "") String string) throws InvalidCredentialsException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         throw new IllegalAccessError();
     }
 
     @Override
     public List<SearchResult> findObjects(@WebParam(name = "query", targetNamespace = "") String query, @WebParam(name = "offset", targetNamespace = "") int offset, @WebParam(name = "pageSize", targetNamespace = "") int pageSize) throws InvalidCredentialsException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         throw new IllegalAccessError();
     }
 
     @Override
     public void lockForWriting() throws InvalidCredentialsException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         throw new IllegalAccessError();
     }
 
     @Override
     public void unlockForWriting() throws InvalidCredentialsException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         throw new IllegalAccessError();
     }
 
     @Override
     public User createTempAdminUser(@WebParam(name = "username", targetNamespace = "") String username, @WebParam(name = "roles", targetNamespace = "") List<String> roles) throws InvalidCredentialsException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         throw new IllegalAccessError();
     }
 
     @Override
     public List<String> getObjectsInCollection(@WebParam(name = "collectionPid", targetNamespace = "") String collectionPid, @WebParam(name = "contentModelPid", targetNamespace = "") String contentModelPid) throws InvalidCredentialsException, InvalidResourceException, MethodFailedException {
+        calls.add("Called "+Thread.currentThread().getStackTrace()[1].getMethodName()); 
         throw new IllegalAccessError();
+    }
+
+    public List<String> getCalls() {
+        return Collections.unmodifiableList(new ArrayList(calls));
     }
 }

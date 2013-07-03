@@ -1,0 +1,20 @@
+# README file detailing the use of PresentationTypeFixer
+
+## Prerequisites
+A DOMS
+
+
+## Acquiring needed files
+The following data is needed to run the PresentationTypeFixer:
+* a file containing a newline-separated list of program uuids to be fixed
+  (can be generated with `bin/uuidExtractorForProgramObjects.sh <path-to-presentationtypefixer.properties>`)
+
+
+## Updating config files
+Example configuration-files can be found in the conf-directory.
+* presentationtypefixer.properties must be updated with relavant values.
+* logback.xml must be on the classpath, i.e. in the conf-directory by default.
+
+
+## Running the ShardMigrator
+./bin/presentationtypefixer.sh <presentationtypefixer.properties> <uuids>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:ns2="http://www.pbcore.org/PBCore/PBCoreNamespace.html"
-                xmlns:my="some.uri" exclude-result-prefixes="my"
+                xmlns:my="http://doms.statsbiblioteket.dk/digitv/mediatype/channelmapping" exclude-result-prefixes="my"
         >
 
 

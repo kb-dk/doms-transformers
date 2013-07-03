@@ -27,7 +27,7 @@ import java.text.ParseException;
 import java.util.List;
 
 /**
- * Tool for enriching Radio/TV file metadata.
+ * Tool for fixing missing presentationType in Radio/TV metadata.
  * Takes as input a file with program uuids (one per line). For each file, enriches metadata.
  */
 public class PresentationTypeFixer {
@@ -42,21 +42,21 @@ public class PresentationTypeFixer {
         UuidFileReader uuidFileReader = new TrivialUuidFileReader();
 
         switch (args.length) {
-            case 2:
+            case 1:
                 configFile = new File(args[0]);
                 System.out.println("Reading uuids from stdin..");
                 uuids = uuidFileReader.readUuids(new BufferedReader(new InputStreamReader(System.in)));
                 run(configFile, uuids);
                 break;
-            case 3:
+            case 2:
                 configFile = new File(args[0]);
-                System.out.println("Reading uuids from " + args[2]);
-                File uuidfile = new File(args[2]);
+                System.out.println("Reading uuids from " + args[1]);
+                File uuidfile = new File(args[1]);
                 uuids = uuidFileReader.readUuids(uuidfile);
                 run(configFile, uuids);
                 break;
             default:
-                System.out.println("Usage: bin/presentationtypefixer.sh config-file checksum-file [uuid-file]");
+                System.out.println("Usage: bin/presentationtypefixer.sh config-file [uuid-file]");
                 System.exit(1);
         }
     }

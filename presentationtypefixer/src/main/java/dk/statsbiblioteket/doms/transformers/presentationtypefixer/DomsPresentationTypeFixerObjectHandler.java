@@ -10,8 +10,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.xml.bind.JAXBException;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.StringWriter;
@@ -20,7 +23,7 @@ import java.text.ParseException;
 import java.util.Arrays;
 
 public class DomsPresentationTypeFixerObjectHandler implements ObjectHandler {
-    public static final String MODIFYING_OBJECT_AS_PART_OF_DATAMODEL_UPGRADE = "Modifying object as part of datamodel upgrade";
+    public static final String COMMENT = "Fixing the missing pbcore format media type";
     public static final String PBCORE = "PBCORE";
     private final CentralWebservice webservice;
 
@@ -43,14 +46,11 @@ public class DomsPresentationTypeFixerObjectHandler implements ObjectHandler {
         String pbcoreOriginal = webservice.getDatastreamContents(uuid, PBCORE);
 
 
-        javax.xml.transform.Source xmlSource =
-                new javax.xml.transform.stream.StreamSource(new ByteArrayInputStream(pbcoreOriginal.getBytes()), "originalPBCore");
-        javax.xml.transform.Source xsltSource =
-                new javax.xml.transform.stream.StreamSource(
-                        Thread
-                                .currentThread()
-                                .getContextClassLoader()
-                                .getResourceAsStream("xslt/addFormatMediaType.xslt"));
+        Source xmlSource =
+                new StreamSource(new ByteArrayInputStream(pbcoreOriginal.getBytes()), "originalPBCore");
+        Source xsltSource =
+                new StreamSource(
+                        Thread.currentThread().getContextClassLoader().getResourceAsStream("xslt/addFormatMediaType.xslt"));
 
         StringWriter pbcore = new StringWriter();
         StreamResult pbcoreResult = new StreamResult(pbcore);
@@ -58,9 +58,9 @@ public class DomsPresentationTypeFixerObjectHandler implements ObjectHandler {
         // create an instance of TransformerFactory
         TransformerFactory transFact = TransformerFactory.newInstance();
 
-        javax.xml.transform.Transformer trans =
+        Transformer trans =
                 transFact.newTransformer(xsltSource);
-        trans.setParameter("channelMapping", Thread.currentThread().getContextClassLoader().getResource("xslt/channelMapping.xml"));
+        trans.setParameter("channelMapping", Thread.currentThread().getContextClassLoader().getResource("channelMapping.xml"));
         trans.transform(xmlSource, pbcoreResult);
         pbcore.flush();
 
@@ -69,12 +69,12 @@ public class DomsPresentationTypeFixerObjectHandler implements ObjectHandler {
         XMLUnit.setIgnoreWhitespace(true);
         Diff diff = new Diff(pbcoreOriginal, newPBCore);
         if (!diff.identical()) {
-            System.out.println(diff.toString());
-            webservice.markInProgressObject(Arrays.asList(uuid), MODIFYING_OBJECT_AS_PART_OF_DATAMODEL_UPGRADE);
 
-            webservice.modifyDatastream(uuid, PBCORE,newPBCore, MODIFYING_OBJECT_AS_PART_OF_DATAMODEL_UPGRADE);
+            webservice.markInProgressObject(Arrays.asList(uuid), COMMENT);
 
-            webservice.markPublishedObject(Arrays.asList(uuid), MODIFYING_OBJECT_AS_PART_OF_DATAMODEL_UPGRADE);
+            webservice.modifyDatastream(uuid, PBCORE, newPBCore, COMMENT);
+
+            webservice.markPublishedObject(Arrays.asList(uuid), COMMENT);
 
             return MigrationStatus.COMPLETE;
         } else {
@@ -83,8 +83,6 @@ public class DomsPresentationTypeFixerObjectHandler implements ObjectHandler {
 
 
     }
-
-
 
 
 }
