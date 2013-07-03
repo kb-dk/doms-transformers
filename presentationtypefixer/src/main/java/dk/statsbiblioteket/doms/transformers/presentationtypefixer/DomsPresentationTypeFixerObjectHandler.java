@@ -4,6 +4,7 @@ import dk.statsbiblioteket.doms.central.CentralWebservice;
 import dk.statsbiblioteket.doms.transformers.common.DomsConfig;
 import dk.statsbiblioteket.doms.transformers.common.MigrationStatus;
 import dk.statsbiblioteket.doms.transformers.common.ObjectHandler;
+import org.custommonkey.xmlunit.DetailedDiff;
 import org.custommonkey.xmlunit.Diff;
 import org.custommonkey.xmlunit.XMLUnit;
 import org.slf4j.Logger;
@@ -21,6 +22,7 @@ import java.io.StringWriter;
 import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.Arrays;
+import java.util.List;
 
 public class DomsPresentationTypeFixerObjectHandler implements ObjectHandler {
     public static final String COMMENT = "Fixing the missing pbcore format media type";
@@ -69,8 +71,9 @@ public class DomsPresentationTypeFixerObjectHandler implements ObjectHandler {
         XMLUnit.setIgnoreWhitespace(true);
         XMLUnit.setIgnoreAttributeOrder(true);
 
+
         Diff diff = new Diff(pbcoreOriginal, newPBCore);
-        if (!diff.identical()) {
+        if (!diff.similar()) {
 
             webservice.markInProgressObject(Arrays.asList(uuid), COMMENT);
 
