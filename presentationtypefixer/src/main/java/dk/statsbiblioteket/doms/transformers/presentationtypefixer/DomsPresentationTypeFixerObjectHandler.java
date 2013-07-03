@@ -67,6 +67,8 @@ public class DomsPresentationTypeFixerObjectHandler implements ObjectHandler {
         String newPBCore = pbcore.toString();
 
         XMLUnit.setIgnoreWhitespace(true);
+        XMLUnit.setIgnoreAttributeOrder(true);
+
         Diff diff = new Diff(pbcoreOriginal, newPBCore);
         if (!diff.identical()) {
 
