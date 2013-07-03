@@ -17,7 +17,8 @@
             <outputDirectory></outputDirectory>
             <directory></directory>
             <includes>
-              <include>README</include>
+                <include>README</include>
+                <include>CHANGELOG</include>
             </includes>
             <fileMode>0644</fileMode>
             <directoryMode>0755</directoryMode>
