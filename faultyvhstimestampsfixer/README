@@ -1,0 +1,20 @@
+# README file detailing the use of FaultyVhsTimestampsFixer
+
+## Prerequisites
+A DOMS
+
+
+## Acquiring needed files
+The following data is needed to run the FaultyVhsTimestampsFixer:
+* a file containing a newline-separated list of vhs file object uuids to be fixed
+  (can be generated with `bin/uuidExtractorForVHSFiles.sh <path-to-faultyvhstimestampsfixer.properties>`)
+
+
+## Updating config files
+Example configuration-files can be found in the conf-directory.
+* faultyvhstimestampsfixer.properties must be updated with relavant values.
+* logback.xml must be on the classpath, i.e. in the conf-directory by default.
+
+
+## Running the ShardMigrator
+./bin/faultyvhstimestampsfixer.sh <faultyvhstimestampsfixer.properties> <uuids>
