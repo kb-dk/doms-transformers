@@ -5,12 +5,12 @@
     <parent>
         <groupId>dk.statsbiblioteket.doms.transformers</groupId>
         <artifactId>transformers</artifactId>
-        <version>0.1.7-SNAPSHOT</version>
+        <version>1.0</version>
     </parent>
 
     <groupId>dk.statsbiblioteket.doms.transformers</groupId>
     <artifactId>fileenricher</artifactId>
-    <version>0.1.7-SNAPSHOT</version>
+    <version>1.0</version>
 
     <dependencies>
         <dependency>
