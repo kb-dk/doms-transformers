@@ -1,0 +1,11 @@
+<ns3:vhs_metadata xmlns:ns2="http://doms.statsbiblioteket.dk/types/broadcast_metadata/0/1/#" xmlns:ns3="http://doms.statsbiblioteket.dk/types/vhs_metadata/0/1/#" xmlns:ns4="http://www.ffmpeg.org/schema/ffprobe" xmlns:ns5="http://www.ffmpeg.org/schema/ffprobe/stderr">
+  <ns3:channelID>tv2d</ns3:channelID>
+  <ns3:filename>tv2d_digivid_TV2-Danmark_mpeg2_19910915220000_19910916000200_digibox04.sb.statsbiblioteket.dk.mpeg</ns3:filename>
+  <ns3:checksum>6a095f0351b2e98be13cfff710e3f910
+</ns3:checksum>
+  <ns3:recorder>digibox04</ns3:recorder>
+  <ns3:vhs_label>3</ns3:vhs_label>
+  <ns3:stop_time>1991-02-16T00:09:00</ns3:stop_time>
+  <ns3:quality>6</ns3:quality>
+  <ns3:recorded_duration>03:02:25.204</ns3:recorded_duration>
+</ns3:vhs_metadata>

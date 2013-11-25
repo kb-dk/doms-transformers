@@ -5,12 +5,12 @@
     <parent>
         <groupId>dk.statsbiblioteket.doms.transformers</groupId>
         <artifactId>transformers</artifactId>
-        <version>1.0</version>
+        <version>0.1.7-SNAPSHOT</version>
     </parent>
 
     <groupId>dk.statsbiblioteket.doms.transformers</groupId>
     <artifactId>shardmigrator</artifactId>
-    <version>1.0</version>
+    <version>0.1.7-SNAPSHOT</version>
 
     <dependencies>
         <dependency>
@@ -46,6 +46,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
+            <version>2.4</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>

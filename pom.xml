@@ -3,12 +3,12 @@
     <parent>
         <groupId>dk.statsbiblioteket.doms</groupId>
         <artifactId>doms</artifactId>
-        <version>1.0</version>
+        <version>0.1.1</version>
     </parent>
 
     <groupId>dk.statsbiblioteket.doms.transformers</groupId>
     <artifactId>transformers</artifactId>
-    <version>1.0</version>
+    <version>0.1.7-SNAPSHOT</version>
     <name>Doms Transformers package</name>
 
     <packaging>pom</packaging>
@@ -25,6 +25,7 @@
         <module>shardremover</module>
         <module>fileenricher</module>
         <module>presentationtypefixer</module>
+        <module>faultyvhstimestampsfixer</module>
         <module>fileobjectcreator</module>
         <module>common</module>
     </modules>
@@ -35,12 +36,17 @@
             <dependency>
                 <groupId>dk.statsbiblioteket.doms.domsutil</groupId>
                 <artifactId>domsutil-webservice-common</artifactId>
-                <version>1.0</version>
+                <version>0.0.20</version>
             </dependency>
             <dependency>
               <groupId>dk.statsbiblioteket.doms.ingestClient</groupId>
               <artifactId>ingestClientImpl</artifactId>
-              <version>1.0</version>
+              <version>0.0.13</version>
+            </dependency>
+            <dependency>
+                <groupId>dk.statsbiblioteket.sbutil</groupId>
+                <artifactId>sbutil</artifactId>
+                <version>0.5.5</version>
             </dependency>
             <dependency>
                 <groupId>xmlunit</groupId>
