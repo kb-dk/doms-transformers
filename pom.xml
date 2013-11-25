@@ -3,7 +3,7 @@
     <parent>
         <groupId>dk.statsbiblioteket.doms</groupId>
         <artifactId>doms</artifactId>
-        <version>0.1.1</version>
+        <version>1.0</version>
     </parent>
 
     <groupId>dk.statsbiblioteket.doms.transformers</groupId>
@@ -35,17 +35,12 @@
             <dependency>
                 <groupId>dk.statsbiblioteket.doms.domsutil</groupId>
                 <artifactId>domsutil-webservice-common</artifactId>
-                <version>0.0.20</version>
+                <version>1.0</version>
             </dependency>
             <dependency>
               <groupId>dk.statsbiblioteket.doms.ingestClient</groupId>
               <artifactId>ingestClientImpl</artifactId>
-              <version>0.0.13</version>
-            </dependency>
-            <dependency>
-                <groupId>dk.statsbiblioteket.sbutil</groupId>
-                <artifactId>sbutil</artifactId>
-                <version>0.5.5</version>
+              <version>1.0</version>
             </dependency>
             <dependency>
                 <groupId>xmlunit</groupId>
