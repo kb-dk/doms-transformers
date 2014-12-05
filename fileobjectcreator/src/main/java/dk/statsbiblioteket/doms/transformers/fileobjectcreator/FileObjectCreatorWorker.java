@@ -42,29 +42,40 @@ public class FileObjectCreatorWorker extends RecursiveAction {
         this.muxFileChannelCalculator = muxFileChannelCalculator;
     }
 
+    private FileObjectCreatorWorker(FFProbeLocationDomsConfig config,
+                                   ResultWriter resultWriter,
+                                   String baseUrl,
+                                   List<String> data,
+                                   MuxFileChannelCalculator muxFileChannelCalculator, 
+                                   int from, int to) {
+        this(config, resultWriter, baseUrl, data, muxFileChannelCalculator);
+        this.from = from;
+        this.to = to;
+    }
+
     @Override
     protected void compute() {
-        if (data.size() == 1) {
+        if (to - from == 1) {
             try {
-                DomsObject domsObject = DomsFileParser.parse(config, baseUrl, data.get(0), muxFileChannelCalculator);
+                DomsObject domsObject = DomsFileParser.parse(config, baseUrl, data.get(to - from), muxFileChannelCalculator);
                 if (domsObject != null) {
                     doWork(domsObject);
                 } else {
-                    resultWriter.logIgnored(data.get(0));
+                    resultWriter.logIgnored(data.get(to - from));
                 }
             } catch (ParseException e) {
-                log.info("Error while parsing: " + data.get(0));
+                log.info("Error while parsing: " + data.get(to - from));
             } catch (FileIgnoredException e) {
                 log.info("Ignored file: " + e.getFilename());
             } catch (Exception e) {
-                log.error("Well well, this was unexpected. I was just processing '{}' when this exception showed up :(", data.get(0), e);
+                log.error("Well well, this was unexpected. I was just processing '{}' when this exception showed up :(", data.get(to - from), e);
             }
         } else if (permissionToRun()) {
             int center = data.size()/2;
-            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(config, resultWriter, baseUrl, data.subList(0, center),
-                        muxFileChannelCalculator);
-            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(config, resultWriter, baseUrl, data.subList(center, data.size()),
-                        muxFileChannelCalculator);
+            ForkJoinTask<Void> workerA = new FileObjectCreatorWorker(config, resultWriter, baseUrl, data,
+                        muxFileChannelCalculator, from, center);
+            ForkJoinTask<Void> workerB = new FileObjectCreatorWorker(config, resultWriter, baseUrl, data,
+                        muxFileChannelCalculator, from +  center, to);
             invokeAll(workerA, workerB);
         }
     }
